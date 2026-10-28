@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package shared.product_commissions;
+
+import "google/protobuf/timestamp.proto";
+
+// Product commission images (denormalized from product)
+message ProductCommissionImages {
+  optional string avatar = 1;
+  repeated string others = 2;
+}
+
+// Product commission category (denormalized from product)
+message ProductCommissionCategory {
+  string id   = 1;
+  string name = 2;
+}
+
+// Product commission domain entity
+message ProductCommission {
+  string                             id                   = 1;
+  optional string                    affiliate_id         = 2;  // null = global commission
+  string                             product_id           = 3;
+  string                             name                 = 4; // Denormalized from product
+  string                             code                 = 5; // Denormalized from product
+  ProductCommissionImages            images               = 6; // Denormalized from product
+  double                             cost_price           = 7; // Denormalized from product
+  int32                              stock                = 8; // Denormalized from product
+  double                             commission_rate      = 9; // Effective rate for this row
+  double                             estimated_commission = 10; // costPrice * commissionRate / 100, rounded
+  bool                               is_custom_rate       = 11; // Whether rate was explicitly set per-product
+  google.protobuf.Timestamp          created_at           = 12;
+  google.protobuf.Timestamp          updated_at           = 13;
+  optional ProductCommissionCategory category             = 14;
+}
+
+// Paginated product commissions response
+message ProductCommissionsPage {
+  repeated ProductCommission data          = 1;
+  bool                       has_next_page = 2;
+  int32                      total         = 3;
+  int32                      page          = 4;
+  int32                      limit         = 5;
+  int32                      total_pages   = 6;
+}

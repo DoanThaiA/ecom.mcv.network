@@ -1,0 +1,221 @@
+syntax = "proto3";
+
+package customer;
+
+enum Source {
+    UNKNOWN = 0;
+    ZALO = 1;
+    LINE = 2;
+    CRM = 3;
+    MMENU_FOOD = 4;
+    MMENU_ADMIN = 5;
+    ZALO_MINI_APP = 6;
+    WEB_REGISTER = 7;
+    CCHAT_WEBSITE = 8;
+    FACEBOOK = 9;
+    GOOGLE = 10;
+}
+
+message Age {
+  int32 from = 1;
+  int32 to = 2;
+}
+
+enum SortOrder {
+  asc = 0;
+  desc = 1;
+}
+
+message CustomerSource {
+    Source source = 1; // zalo, line, crm, referral ...
+    string zalo_user_id = 2;
+    string line_user_id = 3;
+    string registered_at_text = 4; // dd/mm/yyyy
+    string note = 5; // nguồn khách hàng?
+    string customer_name = 6;
+    string customer_image_url = 7;
+    optional string description = 8;
+    int32 numbers_of_customer = 9;
+    string created_at_text = 10;
+    string code = 11;
+    string brand_id = 12;
+    string brand_code = 13;
+    string source_name = 14;
+    string customer_source_id = 15;
+    string zalo_app_id = 16;
+    string cchat_user_id = 17;
+}
+
+message Company {
+    string company_id = 1;
+    string company_name = 2;
+    string company_code = 3;
+}
+
+message Brand {
+    string brand_id = 1;
+    string brand_name = 2;
+    string brand_code = 3;
+}
+
+message Merchant {
+    string merchant_id = 1;
+    string merchant_name = 2;
+    string merchant_code = 3;
+}
+
+message CustomerGroup {
+    string group_id = 1;
+    string group_name = 2;
+    string group_code = 3;
+    optional string description = 4;
+    string numbers_of_customer = 5;
+    int64 created_at = 6;
+    string created_at_text = 7;
+    string brand_id = 8;
+}
+
+message GetCustomerGroupsRequest {
+    string brand_id = 1;
+    string brand_code = 2;
+}
+
+message GetCustomerGroupsResponse {
+    string message = 1;
+    int32 code = 2;
+    repeated CustomerGroup customer_groups = 3;
+}
+
+message CustomerRank {
+    string rank_id = 1;
+    string rank_name = 2;
+    string rank_code = 3;
+    string rank_color = 4;
+}
+
+// thông kê khách hàng và khách quay lại
+message CustomerFrequency {
+  // khách hàng mới
+  double number_of_new_customers = 1;
+  double percentage_of_new_customers = 4;
+  // khách quay lại một lần
+  double number_of_visited_once = 2;
+  double percentage_of_visited_once = 5;
+  // khách quay lại từ 2 lần trở lên
+  double number_of_visited_more_than_once = 3;
+  double percentage_of_visited_more_than_once = 6;
+  // khách quay lại 2 lần
+  double number_of_visited_twice = 7;
+  double percentage_of_visited_twice = 8;
+  // khách quay lại từ 3 lần trở lên
+  double number_of_visited_more_than_twice = 9;
+  double percentage_of_visited_more_than_twice = 10;
+}
+
+message OrderSource {
+  string order_source = 1;
+  double total_payment_amount_per_order_source = 2;
+}
+
+message ConsumptionOverview {
+    double total_payment_amount = 1;
+    double average_payment_amount_per_bill = 2;
+    double order_frequency = 3; // X days/order
+    int32 number_of_orders = 4;
+    string most_recent_order_at_text = 5; // dd/mm/yyyy
+    double cumulative_payment_amount = 6;
+    double cumulative_point_amount = 7;
+    double average_payment_amount_per_customer = 8;
+}
+
+message InteractiveChannel {
+  Source source = 1; // zalo, line ...
+  string zalo_user_id = 2;
+  string line_user_id = 3;
+  string zalo_app_id = 4;
+  string registered_at_text = 5; // dd/mm/yyyy
+  string customer_name = 6;
+  string customer_image_url = 7;
+  string facebook_user_id = 8;
+  string google_user_id = 9;
+}
+
+message RegistrationChannel {
+    string registration_id = 1;
+    string registration_date_at_text = 2; // Ngày đăng ký
+    string registration_name = 3; // Ngày đăng ký
+}
+
+message CustomerTaxInfo {
+    string tax_code = 1;
+    string name = 2;
+    string buyer_name = 3;
+    string email = 4;
+    string phone = 5;
+    string address = 6;
+}
+
+message Customer {
+    string code = 1;
+    optional string name = 2;
+    string date_of_birth = 3; // dùng để hiển thị
+    string gender = 4; // male, female, other
+    string phone = 5;
+    string email = 6;
+    string address = 7;
+    string status = 8;
+    repeated CustomerSource customer_sources = 9;
+    Brand brand = 10; // deprecated
+    CustomerRank rank = 11;
+    repeated CustomerGroup groups = 12;
+    repeated string tags = 13;
+    optional string note = 14;
+    repeated string image_urls = 15;
+    string customer_id = 16;
+    ConsumptionOverview consumption_overview = 17;
+    repeated InteractiveChannel interactive_channels = 18;
+    RegistrationChannel registration_channel = 19;
+    int64 date_of_birth_epoch = 20;
+    Company company = 21;
+    repeated Brand brands = 22;
+    repeated Merchant merchants = 23;
+    string city = 24;
+    string district = 25;
+    string ward = 26;
+    repeated string applied_discount_merchant_ids = 27;
+    repeated string applied_discount_merchant_codes = 28;
+    // optional
+    // use for import customer from excel (invalid data)
+    string invalid_reason = 29;
+    CustomerTaxInfo customer_tax_info = 30;
+}
+
+message CreateOrUpdateCustomerRequest {
+    Customer customer = 1;
+    string update_by_user_id = 2;
+}
+
+message CreateOrUpdateCustomerResponse {
+    int32 code = 1;
+    string message = 2;
+    Customer customer = 3;
+}
+
+message GetCustomerRequest {
+    string brand_id = 1;
+    string phone = 2;
+    string zalo_user_id = 3;
+    string brand_code = 4;
+    string line_user_id = 5;
+};
+
+message GetCustomerResponse {
+    int32 code = 1;
+    string message = 2;
+    Customer customer = 3;
+};
+
+service CustomerRoutes {
+    rpc createOrUpdateCustomer(CreateOrUpdateCustomerRequest) returns (CreateOrUpdateCustomerResponse) {}
+    rpc getCustomer(GetCustomerRequest) returns (GetCustomerResponse) {}
+}

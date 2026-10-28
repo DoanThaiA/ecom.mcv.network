@@ -1,0 +1,9 @@
+{
+  "notFound": "Không tìm thấy khuyến mãi vận chuyển",
+  "notActive": "Khuyến mãi vận chuyển không hoạt động",
+  "notApplicable": "Khuyến mãi vận chuyển không áp dụng cho đơn hàng này",
+  "startTimeMustBeBeforeEndTime": "Thời gian bắt đầu phải trước thời gian kết thúc",
+  "configRequired": "Cấu hình khuyến mãi là bắt buộc cho loại đã chọn",
+  "percentageMax": "Giảm giá theo phần trăm không được vượt quá 100%",
+  "overlapping": "Chỉ được phép có một khuyến mãi vận chuyển cùng loại hoạt động tại một thời điểm. Khoảng thời gian bị trùng với khuyến mãi vận chuyển đã có."
+}

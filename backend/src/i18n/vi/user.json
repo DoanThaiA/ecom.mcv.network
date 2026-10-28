@@ -1,0 +1,10 @@
+{
+  "emailAlreadyExists": "Email đã tồn tại",
+  "imageNotExists": "Hình ảnh không tồn tại",
+  "roleNotExists": "Vai trò không tồn tại",
+  "statusNotExists": "Trạng thái không tồn tại",
+  "userNotFound": "Không tìm thấy người dùng",
+  "cannotDeleteOwnAccount": "Không thể tự xóa tài khoản của bạn",
+  "cannotUpdateOwnRole": "Không thể tự cập nhật vai trò của bạn",
+  "cannotUpdateOwnStatus": "Không thể tự cập nhật trạng thái của bạn"
+}

@@ -1,0 +1,17 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: {{ include "cchat-backend.fullname" . }}
+  namespace: cchat
+spec:
+  timeoutSec: 60
+  healthCheck:
+    type: HTTP
+    requestPath: /api/health
+    port: {{ .Values.service.port }}
+  cdn:
+    enabled: false
+    cachePolicy:
+      includeHost: true
+      includeProtocol: true
+      includeQueryString: false

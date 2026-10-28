@@ -1,0 +1,45 @@
+{
+  "cartItems": [
+    {
+      "id": "cart-item-1",
+      "productId": "prod-1",
+      "product": {
+        "id": "prod-1",
+        "name": "Áo thun nam",
+        "price": 299000,
+        "images": ["https://example.com/product1.jpg"],
+        "status": "ACTIVE"
+      },
+      "variantId": "v1",
+      "variant": {
+        "size": "M",
+        "color": "Đen",
+        "stock": 100
+      },
+      "quantity": 2,
+      "price": 299000,
+      "total": 598000
+    },
+    {
+      "id": "cart-item-2",
+      "productId": "prod-2",
+      "product": {
+        "id": "prod-2",
+        "name": "Quần jean nam",
+        "price": 599000,
+        "images": ["https://example.com/product2.jpg"],
+        "status": "ACTIVE"
+      },
+      "variantId": "v3",
+      "variant": {
+        "size": "L",
+        "color": "Xanh đen",
+        "stock": 30
+      },
+      "quantity": 1,
+      "price": 599000,
+      "total": 599000
+    }
+  ],
+  "emptyCart": []
+}

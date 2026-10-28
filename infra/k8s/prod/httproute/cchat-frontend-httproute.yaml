@@ -1,0 +1,33 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: cchat-frontend-prod
+  namespace: cchat
+spec:
+  parentRefs:
+    - name: external-http-gateway
+      kind: Gateway
+      sectionName: https # listener's name
+  hostnames:
+    - cchat.mmenu.io
+  rules:
+    - backendRefs: # match all paths
+        - name: cchat-frontend-prod
+          port: 3000
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: cchat-frontend-internal
+  namespace: cchat
+spec:
+  parentRefs:
+    - name: external-http-gateway
+      kind: Gateway
+      sectionName: https # listener's name
+  hostnames:
+    - internalcchat.mmenu.io
+  rules:
+    - backendRefs: # match all paths
+        - name: cchat-frontend-internal
+          port: 3000

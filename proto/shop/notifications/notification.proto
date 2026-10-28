@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package shop.notifications;
+
+import "shared/push-notifications/push-notification.proto";
+import "google/protobuf/empty.proto";
+
+// Get user notifications request (paginated)
+message GetUserNotificationsRequest {
+  optional int32 page  = 1;
+  optional int32 limit = 2;
+}
+
+// Get user notifications response (paginated)
+message GetUserNotificationsResponse {
+  repeated shared.push_notifications.UserNotification data          = 1;
+  bool                                                has_next_page = 2;
+  int32                                               total         = 3;
+  int32                                               page          = 4;
+  int32                                               limit         = 5;
+  int32                                               total_pages   = 6;
+}
+
+// Get unread notification count response
+message UnreadCountResponse {
+  int32 count = 1;
+}
+
+// Mark notification as read request
+message MarkNotificationReadRequest {
+  string notification_id = 1;
+}
+
+// Mark notification as read response
+message MarkNotificationReadResponse {
+  bool success = 1;
+}
+
+// Mark all notifications as read response
+message MarkAllNotificationsReadResponse {
+  bool success = 1;
+}
+
+// Shop notification service
+service ShopNotificationService {
+  // Get user's notifications (paginated)
+  rpc GetNotifications(GetUserNotificationsRequest) returns (GetUserNotificationsResponse);
+
+  // Get unread notification count
+  rpc GetUnreadCount(google.protobuf.Empty) returns (UnreadCountResponse);
+
+  // Mark a notification as read
+  rpc MarkAsRead(MarkNotificationReadRequest) returns (MarkNotificationReadResponse);
+
+  // Mark all notifications as read
+  rpc MarkAllAsRead(google.protobuf.Empty) returns (MarkAllNotificationsReadResponse);
+}

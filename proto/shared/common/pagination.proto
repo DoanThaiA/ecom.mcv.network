@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package shared.common;
+
+// Infinity pagination response
+message InfinityPaginationResponse {
+  repeated bytes data          = 1; // Generic data field, can be Any type or specific message type
+  bool           has_next_page = 2;
+  int32          total         = 3;
+  int32          page          = 4;
+  int32          limit         = 5;
+  int32          total_pages   = 6;
+}

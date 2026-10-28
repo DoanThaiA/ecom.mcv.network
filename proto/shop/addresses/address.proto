@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package addresses;
+
+import "google/protobuf/timestamp.proto";
+
+// Shipping address entity
+message Address {
+  string                             id            = 1;
+  string                             user_id       = 2;
+  string                             full_name     = 3;
+  string                             phone         = 4;
+  optional string                    email         = 5;
+  optional string                    notes         = 6;
+  string                             street        = 7;
+  int32                              city_id       = 8; // city ID
+  string                             city_name     = 9;
+  int32                              district_id   = 10; // district ID
+  string                             district_name = 11;
+  int32                              ward_id       = 12; // ward ID
+  string                             ward_name     = 13;
+  bool                               is_default    = 14;
+  google.protobuf.Timestamp          created_at    = 15;
+  google.protobuf.Timestamp          updated_at    = 16;
+  optional google.protobuf.Timestamp deleted_at    = 17;
+}
+
+// Create address DTO
+message CreateAddress {
+  string          full_name     = 1;
+  string          phone         = 2;
+  optional string email         = 3;
+  optional string notes         = 4;
+  string          street        = 5;
+  int32           city_id       = 6;
+  string          city_name     = 7;
+  int32           district_id   = 8;
+  string          district_name = 9;
+  int32           ward_id       = 10;
+  string          ward_name     = 11;
+  optional bool   is_default    = 12;
+}
+
+// Update address DTO
+message UpdateAddress {
+  optional string full_name     = 1;
+  optional string phone         = 2;
+  optional string email         = 3;
+  optional string notes         = 4;
+  optional string street        = 5;
+  optional int32  city_id       = 6;
+  optional string city_name     = 7;
+  optional int32  district_id   = 8;
+  optional string district_name = 9;
+  optional int32  ward_id       = 10;
+  optional string ward_name     = 11;
+  optional bool   is_default    = 12;
+}
+
+// Filter address DTO
+message FilterAddress {
+  optional string user_id     = 1;
+  optional int32  city_id     = 2;
+  optional int32  district_id = 3;
+  optional bool   is_default  = 4;
+}
+
+// Sort address DTO
+message SortAddress {
+  string order_by = 1;
+  string order    = 2;
+}

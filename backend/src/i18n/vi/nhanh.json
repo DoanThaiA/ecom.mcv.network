@@ -1,0 +1,21 @@
+{
+  "credentialsNotConfigured": "Chưa cấu hình thông tin xác thực Nhanh.vn",
+  "wrongToken": "Mã truy cập Nhanh.vn không hợp lệ",
+  "failedToGetAccessToken": "Không thể lấy access token từ Nhanh.vn",
+  "failedToCheckAccessToken": "Không thể kiểm tra access token với Nhanh.vn",
+  "noAccessTokenInResponse": "Không có access token trong phản hồi từ Nhanh.vn",
+  "noAccessToken": "Không có token truy cập Nhanh.vn. Vui lòng xác thực trước",
+  "apiTimeout": "Yêu cầu API Nhanh.vn hết thời gian",
+  "apiError": "Lỗi API Nhanh.vn",
+  "invalidAccessCode": "Mã truy cập không hợp lệ hoặc đã hết hạn",
+  "accessCodeExpired": "Mã truy cập đã hết hạn (mã có hiệu lực trong 10 phút)",
+  "invalidTokenResponse": "Phản hồi token không hợp lệ từ Nhanh.vn",
+  "productNotFound": "Không tìm thấy sản phẩm trong Nhanh.vn",
+  "rateLimitExceeded": "Đã vượt quá giới hạn API Nhanh.vn. Vui lòng thử lại sau",
+  "fullSyncStarted": "Đã khởi động đồng bộ",
+  "shippingCalculationFailed": "Không thể tính phí vận chuyển. Vui lòng thử lại",
+  "addressResolutionFailed": "Không thể xác minh địa chỉ giao hàng",
+  "noCarriersAvailable": "Không có đơn vị vận chuyển khả dụng cho địa chỉ này",
+  "depotNotFound": "Không tìm thấy kho hàng cho sản phẩm",
+  "locationNotFound": "Không tìm thấy địa điểm"
+}

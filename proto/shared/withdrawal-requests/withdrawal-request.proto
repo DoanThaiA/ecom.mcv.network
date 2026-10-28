@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package shared.withdrawal_requests;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// Withdrawal request domain entity
+message WithdrawalRequest {
+  string                                id                  = 1;
+  string                                affiliate_id        = 2;
+  string                                agent_name          = 3;
+  string                                recipient_name      = 4;
+  string                                bank_account_number = 5;
+  string                                bank_name           = 6;
+  double                                amount              = 7;
+  optional string                       note                = 8;
+  shared.common.WithdrawalRequestStatus status              = 9;
+  google.protobuf.Timestamp             request_date        = 10;
+  optional string                       processed_by        = 11;
+  optional google.protobuf.Timestamp    processed_date      = 12;
+  optional string                       rejection_reason    = 13;
+  google.protobuf.Timestamp             created_at          = 14;
+  google.protobuf.Timestamp             updated_at          = 15;
+}
+
+// Withdrawal request list item (for paginated list response)
+message WithdrawalRequestListItem {
+  string                                id                  = 1;
+  string                                affiliate_id        = 2;
+  string                                agent_name          = 3;
+  string                                recipient_name      = 4;
+  string                                bank_account_number = 5;
+  string                                bank_name           = 6;
+  double                                amount              = 7;
+  shared.common.WithdrawalRequestStatus status              = 8;
+  google.protobuf.Timestamp             request_date        = 9;
+  optional string                       rejection_reason    = 10;
+  google.protobuf.Timestamp             created_at          = 11;
+}

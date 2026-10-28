@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package cms.depots;
+
+import "google/protobuf/timestamp.proto";
+
+// Depot domain entity
+message Depot {
+  string                    id          = 1;
+  string                    business_id = 2;
+  string                    source      = 3; // 'nhanh' | 'shopify'
+  string                    name        = 4;
+  optional string           phone       = 5;
+  optional string           address     = 6;
+  optional int32            city_id     = 7;
+  optional int32            district_id = 8;
+  optional int32            ward_id     = 9;
+  google.protobuf.Timestamp created_at  = 10;
+  google.protobuf.Timestamp updated_at  = 11;
+}
+
+// Filter depot DTO
+message FilterDepot {
+  optional string search = 1;
+}
+
+// Query depot DTO
+message QueryDepot {
+  optional int32       page    = 1;
+  optional int32       limit   = 2;
+  optional FilterDepot filters = 3;
+}

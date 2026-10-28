@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package cms.push_notifications;
+
+import "shared/common/enums.proto";
+import "shared/push-notifications/push-notification.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// Create push notification request
+message CreatePushNotificationRequest {
+  shared.common.PushNotificationCategory category     = 1;
+  string                                 title        = 2;
+  string                                 subtitle     = 3;
+  optional string                        url          = 4;
+  optional google.protobuf.Timestamp     scheduled_at = 5;
+  shared.common.PushNotificationStatus   status       = 6;
+}
+
+// Update push notification request (draft only)
+message UpdatePushNotificationRequest {
+  string                                          push_notification_id = 1;
+  optional shared.common.PushNotificationCategory category             = 2;
+  optional string                                 title                = 3;
+  optional string                                 subtitle             = 4;
+  optional string                                 url                  = 5;
+  optional google.protobuf.Timestamp              scheduled_at         = 6;
+}
+
+// Filter push notification
+message FilterPushNotification {
+  optional string                                 search   = 1;
+  optional shared.common.PushNotificationStatus   status   = 2;
+  optional shared.common.PushNotificationCategory category = 3;
+}
+
+// Sort push notification
+message SortPushNotification {
+  string order_by = 1; // 'createdAt' | 'scheduledAt' | 'sentAt' | 'title'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query push notifications request
+message QueryPushNotificationsRequest {
+  optional int32                  page    = 1;
+  optional int32                  limit   = 2;
+  optional FilterPushNotification filters = 3;
+  repeated SortPushNotification   sort    = 4;
+}
+
+// Query push notifications response (paginated)
+message QueryPushNotificationsResponse {
+  repeated shared.push_notifications.PushNotificationListItem data          = 1;
+  bool                                                        has_next_page = 2;
+  int32                                                       total         = 3;
+  int32                                                       page          = 4;
+  int32                                                       limit         = 5;
+  int32                                                       total_pages   = 6;
+}
+
+// Get push notification by ID request
+message GetPushNotificationRequest {
+  string push_notification_id = 1;
+}
+
+// Delete push notification request
+message DeletePushNotificationRequest {
+  string push_notification_id = 1;
+}
+
+// Send push notification request
+message SendPushNotificationRequest {
+  string push_notification_id = 1;
+}
+
+// Recall push notification request
+message RecallPushNotificationRequest {
+  string push_notification_id = 1;
+}
+
+// Push notification service for CMS management
+service PushNotificationService {
+  // Create a new push notification
+  rpc CreatePushNotification(CreatePushNotificationRequest) returns (shared.push_notifications.PushNotification);
+
+  // Get push notification by ID
+  rpc GetPushNotification(GetPushNotificationRequest) returns (shared.push_notifications.PushNotification);
+
+  // Query push notifications with pagination
+  rpc QueryPushNotifications(QueryPushNotificationsRequest) returns (QueryPushNotificationsResponse);
+
+  // Update push notification (draft only)
+  rpc UpdatePushNotification(UpdatePushNotificationRequest) returns (shared.push_notifications.PushNotification);
+
+  // Delete push notification (soft delete, draft only)
+  rpc DeletePushNotification(DeletePushNotificationRequest) returns (google.protobuf.Empty);
+
+  // Send push notification
+  rpc SendPushNotification(SendPushNotificationRequest) returns (shared.push_notifications.PushNotification);
+
+  // Recall push notification
+  rpc RecallPushNotification(RecallPushNotificationRequest) returns (shared.push_notifications.PushNotification);
+}

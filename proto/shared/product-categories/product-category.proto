@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package shared.product_categories;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "google/protobuf/timestamp.proto";
+
+// Product category domain entity
+message ProductCategory {
+  string                              id                  = 1;
+  string                              business_id         = 2;
+  string                              source              = 3; // 'nhanh' | 'shopify'
+  string                              code                = 4;
+  string                              name                = 5;
+  optional string                     parent_id           = 6;
+  optional int32                      order               = 7;
+  optional string                     image               = 8;
+  optional string                     content             = 9;
+  shared.common.ProductCategoryStatus status              = 10;
+  google.protobuf.Timestamp           created_at          = 11;
+  google.protobuf.Timestamp           updated_at          = 12;
+  optional string                     slug                = 13; // SEO-friendly URL slug
+  optional shared.common.Localization name_localization   = 14;
+}
+
+// Filter product category DTO
+message FilterProductCategory {
+  optional string                              search    = 1;
+  optional shared.common.ProductCategoryStatus status    = 2;
+  optional string                              parent_id = 3;
+}
+
+// Sort product category DTO
+message SortProductCategory {
+  string order_by = 1;
+  string order    = 2;
+}
+
+// Query product category DTO
+message QueryProductCategory {
+  optional FilterProductCategory filters = 1;
+  repeated SortProductCategory   sort    = 2;
+}

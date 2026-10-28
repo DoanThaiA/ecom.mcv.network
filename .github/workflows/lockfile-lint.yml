@@ -1,0 +1,31 @@
+name: Lockfile Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/package-lock.json'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install lockfile-lint
+        run: npm install -g lockfile-lint
+
+      - name: Validate lockfiles
+        run: |
+          for dir in frontend cms; do
+            if [ -f "$dir/package-lock.json" ]; then
+              echo "Validating $dir/package-lock.json"
+              lockfile-lint --path "$dir/package-lock.json" --type npm \
+                --allowed-hosts npm registry.npmjs.org \
+                --allowed-schemes https:
+            fi
+          done

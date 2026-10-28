@@ -1,0 +1,38 @@
+{
+  "singleAddress": {
+    "id": "addr-1",
+    "userId": "user-1",
+    "fullName": "Nguyễn Văn A",
+    "phone": "0912345678",
+    "address": "123 Đường ABC",
+    "ward": "Phường 1",
+    "district": "Quận 1",
+    "city": "TP.HCM",
+    "isDefault": true,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  "addresses": [
+    {
+      "id": "addr-1",
+      "userId": "user-1",
+      "fullName": "Nguyễn Văn A",
+      "phone": "0912345678",
+      "address": "123 Đường ABC",
+      "ward": "Phường 1",
+      "district": "Quận 1",
+      "city": "TP.HCM",
+      "isDefault": true
+    },
+    {
+      "id": "addr-2",
+      "userId": "user-1",
+      "fullName": "Nguyễn Văn A",
+      "phone": "0912345678",
+      "address": "456 Đường XYZ",
+      "ward": "Phường 2",
+      "district": "Quận 3",
+      "city": "TP.HCM",
+      "isDefault": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "notFound": "Không tìm thấy tiến trình",
+  "alreadyRunning": "Một tiến trình cùng loại đang chạy",
+  "cannotCancel": "Không thể hủy tiến trình",
+  "syncCooldown": "Vui lòng đợi ít nhất 5 phút giữa các lần đồng bộ cùng loại",
+  "started": "Tiến trình đã bắt đầu"
+}

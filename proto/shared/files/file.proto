@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package shared.files;
+
+// File DTO
+message File {
+  string id   = 1;
+  string path = 2;
+}
+
+// File upload DTO (for S3 presigned)
+message FileUpload {
+  string file_name = 1;
+  int64  file_size = 2;
+}
+
+// File response DTO (local and S3)
+message FileResponse {
+  File file = 1;
+}
+
+// File response DTO with upload URL (S3 presigned)
+message FileResponseWithUploadUrl {
+  File   file              = 1;
+  string upload_signed_url = 2;
+}

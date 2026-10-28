@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package shared.product_banners;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// Product info embedded in ProductBanner
+message ProductBannerProduct {
+  string          id     = 1; // Product ID
+  string          name   = 2; // Product name
+  string          code   = 3; // Product code/SKU
+  optional string avatar = 4; // Product avatar image URL
+}
+
+// Embedded product banner data for Product entity
+// Contains denormalized banner info for efficient product listing queries
+message EmbeddedProductBanner {
+  string                              id       = 1; // Product banner ID reference
+  string                              name     = 2; // Banner name
+  string                              image    = 3; // Banner image URL
+  shared.common.ProductBannerPosition position = 4; // Banner position on product image
+  optional double                     ratio    = 5; // Optional aspect ratio
+}
+
+// ProductBanner domain entity
+// Represents a banner overlay that can be applied to product images
+message ProductBanner {
+  string                              id         = 1; // Internal product banner ID
+  string                              name       = 2; // Banner name (for CMS identification)
+  string                              image      = 3; // Banner image URL
+  shared.common.ProductBannerPosition position   = 4; // Banner position on product image (default: BOTTOM)
+  optional double                     ratio      = 5;  // Optional aspect ratio for the banner
+  bool                                is_active  = 6; // Whether the banner is active (default: true)
+  repeated ProductBannerProduct       products   = 7; // Products this banner applies to
+  google.protobuf.Timestamp           created_at = 8; // Banner creation timestamp
+  google.protobuf.Timestamp           updated_at = 9; // Banner last update timestamp
+  optional google.protobuf.Timestamp  deleted_at = 10; // Banner deletion timestamp (soft delete)
+}
+
+// ProductBanner list item (for list views)
+message ProductBannerListItem {
+  string                              id            = 1;
+  string                              name          = 2;
+  string                              image         = 3;
+  shared.common.ProductBannerPosition position      = 4;
+  optional double                     ratio         = 5;
+  bool                                is_active     = 6;
+  int32                               product_count = 7; // Number of products assigned
+  google.protobuf.Timestamp           created_at    = 8;
+  google.protobuf.Timestamp           updated_at    = 9;
+}

@@ -1,0 +1,156 @@
+syntax = "proto3";
+
+package shared.returns;
+
+import "google/protobuf/timestamp.proto";
+
+// ==================== Enums ====================
+
+// Loai yeu cau doi tra
+enum ReturnRequestType {
+  RETURN_REQUEST_TYPE_UNSPECIFIED = 0;
+  RETURN_REQUEST_TYPE_RETURN      = 1; // Tra hang hoan tien
+  RETURN_REQUEST_TYPE_EXCHANGE    = 2; // Doi hang
+}
+
+// Trang thai xu ly
+enum ReturnRequestStatus {
+  RETURN_REQUEST_STATUS_UNSPECIFIED = 0;
+  RETURN_REQUEST_STATUS_PENDING     = 1; // Cho xu ly
+  RETURN_REQUEST_STATUS_APPROVED    = 2; // Da duyet
+  RETURN_REQUEST_STATUS_REJECTED    = 3; // Tu choi
+  RETURN_REQUEST_STATUS_COMPLETED   = 4; // Hoan thanh
+}
+
+// Ly do tra hang
+enum ReturnReason {
+  RETURN_REASON_UNSPECIFIED   = 0;
+  RETURN_REASON_WRONG_PRODUCT = 1; // Gui sai san pham
+  RETURN_REASON_DEFECTIVE     = 2; // Loi tu nha san xuat
+  RETURN_REASON_DAMAGED       = 3; // Hong trong van chuyen
+  RETURN_REASON_POOR_QUALITY  = 4; // Chat luong kem
+  RETURN_REASON_OTHER         = 5; // Ly do khac
+}
+
+// Ly do doi hang
+enum ExchangeReason {
+  EXCHANGE_REASON_UNSPECIFIED = 0;
+  EXCHANGE_REASON_WRONG_SIZE  = 1; // Sai size
+  EXCHANGE_REASON_WRONG_COLOR = 2; // Sai mau
+  EXCHANGE_REASON_DEFECTIVE   = 3; // Loi tu nha san xuat
+  EXCHANGE_REASON_OTHER       = 4; // Ly do khac
+}
+
+// ==================== Embedded Types ====================
+
+// Thong tin khach hang (snapshot luc tao request)
+message ReturnCustomer {
+  string          name    = 1;
+  string          phone   = 2;
+  optional string email   = 3;
+  optional string address = 4;
+}
+
+// San pham trong don hang (snapshot)
+message ReturnOrderItem {
+  string          product_id = 1;
+  optional string variant_id = 2;
+  string          code       = 3;
+  string          name       = 4;
+  optional string image      = 5;
+  double          price      = 6;
+  int32           quantity   = 7;
+}
+
+// Thong tin Nhanh.vn (snapshot)
+message ReturnNhanhInfo {
+  optional int64  order_id    = 1;        // Nhanh order ID
+  optional string sync_status = 2;    // Nhanh sync status
+}
+
+// Thong tin don hang (snapshot luc tao request)
+message ReturnOrderSnapshot {
+  string                   order_id     = 1;
+  string                   order_number = 2;
+  double                   order_amount = 3;
+  repeated ReturnOrderItem items        = 4;
+  optional ReturnNhanhInfo nhanh        = 5; // Nhanh.vn sync info
+}
+
+// Thong tin ngan hang de hoan tien
+message BankInfo {
+  string bank_name      = 1;
+  string account_number = 2;
+  string account_holder = 3;
+}
+
+// ==================== Main Entity ====================
+
+// Yeu cau doi tra
+message ReturnRequest {
+  string id      = 1;
+  string user_id = 2;
+
+  // Embedded snapshots
+  ReturnCustomer      customer       = 3;
+  ReturnOrderSnapshot order_snapshot = 4;
+
+  // Request details
+  ReturnRequestType       request_type     = 5;
+  repeated ReturnReason   return_reasons   = 6;
+  repeated ExchangeReason exchange_reasons = 7;
+  optional string         other_reason     = 8;
+
+  // Images - direct S3 URLs
+  repeated string images = 9;
+
+  // Bank info for refund
+  optional BankInfo bank_info = 10;
+
+  // Status
+  ReturnRequestStatus status     = 11;
+  optional string     admin_note = 12;
+
+  // Timestamps
+  google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+}
+
+// ==================== API DTOs ====================
+
+// Tao yeu cau doi tra (tu Shop/Frontend)
+message CreateReturnRequestDto {
+  string                  order_number     = 1;
+  ReturnRequestType       request_type     = 2;
+  repeated ReturnReason   return_reasons   = 3;
+  repeated ExchangeReason exchange_reasons = 4;
+  optional string         other_reason     = 5;
+  repeated string         image_ids        = 6; // File IDs from upload
+  optional BankInfo       bank_info        = 7;
+}
+
+// Cap nhat yeu cau (tu CMS)
+message UpdateReturnRequestDto {
+  optional ReturnRequestStatus status     = 1;
+  optional string              admin_note = 2;
+}
+
+// Query filters
+message QueryReturnRequestDto {
+  optional int32               page         = 1;
+  optional int32               limit        = 2;
+  optional ReturnRequestStatus status       = 3;
+  optional ReturnRequestType   request_type = 4;
+  optional string              order_number = 5;
+  optional string              from_date    = 6;
+  optional string              to_date      = 7;
+}
+
+// Response voi pagination
+message ReturnRequestListResponse {
+  repeated ReturnRequest data        = 1;
+  int32                  total       = 2;
+  int32                  page        = 3;
+  int32                  limit       = 4;
+  int32                  total_pages = 5;
+}

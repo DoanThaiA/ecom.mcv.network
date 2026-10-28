@@ -1,0 +1,52 @@
+{
+  "carts": [
+    {
+      "_id": "69560246cb83ba223ed66d02",
+      "sessionId": "c45025ee-a536-45dd-9630-be4d4919a5d1",
+      "items": [
+        {
+          "productId": "69561269abd3fed1bcd6caa4",
+          "variantId": "695611dbabd3fed1bcd6a637",
+          "code": "14QDS2002ST-ghi tây-L",
+          "name": "Quần suông cạp Rachel - ghi tây - L",
+          "image": "https://pos.nvncdn.com/312d68-57499/ps/20241224_pi3X6clzxa.jpeg?v=1735027606",
+          "price": 510000,
+          "quantity": 1,
+          "attributes": [
+            {
+              "id": 91307,
+              "name": "Kích Thước",
+              "value": "L"
+            }
+          ],
+          "isGift": false
+        }
+      ],
+      "comboInstances": []
+    }
+  ],
+  "singleCart": {
+    "_id": "69560246cb83ba223ed66d02",
+    "sessionId": "c45025ee-a536-45dd-9630-be4d4919a5d1",
+    "items": [
+      {
+        "productId": "69561269abd3fed1bcd6caa4",
+        "variantId": "695611dbabd3fed1bcd6a637",
+        "code": "14QDS2002ST-ghi tây-L",
+        "name": "Quần suông cạp Rachel - ghi tây - L",
+        "image": "https://pos.nvncdn.com/312d68-57499/ps/20241224_pi3X6clzxa.jpeg?v=1735027606",
+        "price": 510000,
+        "quantity": 1,
+        "attributes": [
+          {
+            "id": 91307,
+            "name": "Kích Thước",
+            "value": "L"
+          }
+        ],
+        "isGift": false
+      }
+    ],
+    "comboInstances": []
+  }
+}

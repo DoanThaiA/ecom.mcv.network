@@ -1,0 +1,81 @@
+{
+  "cart": {
+    "notFound": "Cart not found",
+    "itemNotFound": "Item not found in cart",
+    "cleared": "Cart cleared successfully",
+    "authRequiredForMerge": "User must be authenticated to merge cart",
+    "createFailed": "Failed to create cart"
+  },
+  "order": {
+    "notFound": "Order not found",
+    "created": "Order created successfully",
+    "cancelled": "Order cancelled successfully",
+    "cannotCancel": "Order cannot be cancelled in current status",
+    "notAuthorized": "Not authorized to access this order",
+    "notYourOrder": "You cannot create a return/exchange request for this order",
+    "invalidStatusTransition": "Invalid status transition from {from} to {to}",
+    "cartEmpty": "Cart is empty",
+    "noItemsSelected": "No valid items selected for checkout",
+    "tokenInvalid": "Invalid or expired confirmation token",
+    "tokenExpired": "Confirmation token has expired"
+  },
+  "checkout": {
+    "sessionNotFound": "Checkout session not found",
+    "sessionExpired": "Checkout session has expired",
+    "sessionAlreadyCompleted": "Checkout session has already been completed",
+    "sessionNotActive": "Checkout session is not active",
+    "notAuthorized": "Not authorized to access this checkout session",
+    "noItemsSelected": "No valid items selected for checkout",
+    "validationFailed": "Checkout validation failed",
+    "orderCreated": "Order created successfully",
+    "voucherMinimumNotMet": "Minimum order value of {minimum} is required to use this voucher",
+    "voucherNotApplicableWithOtherPromotions": "Voucher {voucherCode} cannot be used with other promotions"
+  },
+  "flashSale": {
+    "ended": "Flash sale has ended",
+    "insufficientStock": "Flash sale stock is insufficient"
+  },
+  "product": {
+    "notFound": "Product not found",
+    "notAvailable": "Product is not available",
+    "outOfStock": "Product is out of stock",
+    "insufficientInventory": "Insufficient inventory available"
+  },
+  "session": {
+    "required": "Session ID is required"
+  },
+  "review": {
+    "orderNotCompleted": "Order is not completed",
+    "alreadyReviewed": "Order has already been reviewed",
+    "notYourOrder": "You are not authorized to review this order",
+    "incompleteReview": "Please review all items in your order before submitting",
+    "fileTooLarge": "File size exceeds the limit (Image 5MB, Video 50MB)",
+    "tooManyFiles": "You can only upload up to 5 files",
+    "success": "Review submitted successfully. Thank you for your feedback!",
+    "notFound": "Review not found"
+  },
+  "promotion": {
+    "invalidPromotion": "Promotion is invalid or has ended",
+    "invalidTier": "Invalid promotion tier",
+    "invalidGiftProduct": "Invalid gift product",
+    "variantRequired": "Please select a product variant",
+    "invalidVariant": "Invalid product variant",
+    "giftOutOfStock": "Gift product is out of stock",
+    "notEligible": "Cart does not meet the promotion requirements",
+    "giftNotFound": "Gift not found in cart",
+    "giftAdded": "Gift added successfully",
+    "giftRemoved": "Gift removed successfully",
+    "giftQuantityExceeded": "You have reached the maximum gift quantity for this promotion",
+    "giftLimitReached": "This promotion has reached its total gift limit",
+    "invalidVoucher": "Invalid or expired voucher code",
+    "voucherLoginRequired": "Please login to use this voucher",
+    "productDiscountApplied": "Discount program applied successfully",
+    "productDiscountRemoved": "Discount program removed",
+    "productDiscountNotEligible": "Not eligible to apply this discount program",
+    "productDiscountVoucherInvalid": "Product discount code is invalid or expired",
+    "orderDiscountNotEligible": "Not eligible to apply this order discount program",
+    "noEligibleProductsForVoucher": "No products in cart are eligible for this voucher",
+    "voucherUsageLimitExceeded": "This voucher has reached its usage limit",
+    "voucherMaxUsagePerCustomerExceeded": "You have reached the maximum usage limit for this voucher"
+  }
+}

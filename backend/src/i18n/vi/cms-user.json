@@ -1,0 +1,15 @@
+{
+  "permissionGroupNotExists": "Nhóm quyền không tồn tại",
+  "superAdminForbidden": "Không thể thiết lập quyền super admin qua API",
+  "affiliateIdRequired": "ID đại lý là bắt buộc cho tài khoản đại lý",
+  "affiliateNotFound": "Không tìm thấy đại lý",
+  "affiliateAlreadyLinked": "Đại lý này đã có tài khoản CMS liên kết",
+  "passwordRequired": "Mật khẩu là bắt buộc cho tài khoản quản trị website",
+  "welcomeEmailSubject": "Tài khoản CMS của bạn đã được tạo",
+  "welcomeText1": "Chào mừng bạn đến với CChat CMS!",
+  "welcomeText2": "Tài khoản CMS đại lý của bạn đã được tạo thành công. Bạn có thể đăng nhập bằng thông tin đăng nhập bên dưới.",
+  "welcomeText3": "Thông tin đăng nhập của bạn:",
+  "welcomePasswordLabel": "Mật khẩu tạm thời",
+  "welcomeText4": "Vì lý do bảo mật, vui lòng đổi mật khẩu sau lần đăng nhập đầu tiên.",
+  "welcomeLoginBtn": "Đăng nhập CMS"
+}

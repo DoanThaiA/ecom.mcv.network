@@ -1,0 +1,11 @@
+{
+  "notFound": "Inventory record not found",
+  "created": "Inventory created successfully",
+  "updated": "Inventory updated successfully",
+  "deleted": "Inventory deleted successfully",
+  "syncStarted": "Inventory synchronization started",
+  "syncCompleted": "Inventory synchronization completed",
+  "syncFailed": "Inventory synchronization failed",
+  "outOfStock": "Product is out of stock",
+  "insufficientStock": "Insufficient stock available"
+}

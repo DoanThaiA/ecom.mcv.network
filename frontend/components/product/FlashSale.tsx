@@ -1,0 +1,196 @@
+"use client";
+
+import { useState, useEffect, useMemo, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Box, Flex, Text } from "@radix-ui/themes";
+import { ProductSlider } from "./ProductSlider";
+import { formatCountdown } from "@/lib/utils/format";
+import { useScrollToHash } from "@/lib/hooks/useScrollToHash";
+import { useIsDesktop } from "@/lib/hooks/useBreakpoint";
+import { useIntersectionObserver } from "@/lib/hooks/useIntersectionObserver";
+import type { Product } from "@/types/gen/shared/shared/products/product";
+
+interface FlashSaleProps {
+  title: string;
+  seeAllText?: string;
+  endsInText?: string;
+  products: Product[];
+  endTime: Date | string;
+  seeAllLink?: string;
+  locale?: string;
+  showTimer?: boolean;
+  isProductDetail?: boolean;
+}
+
+export function FlashSale({
+  seeAllText,
+  endsInText = "Kết thúc sau",
+  products,
+  endTime,
+  seeAllLink = "#",
+  locale = "vi",
+  showTimer = true,
+  isProductDetail = false,
+}: FlashSaleProps) {
+  const [totalSeconds, setTotalSeconds] = useState(0);
+  const isDesktop = useIsDesktop();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  // Intersection Observer for lazy loading video - trigger when section is 200px from viewport
+  const { ref: sectionRef, isIntersecting } =
+    useIntersectionObserver<HTMLDivElement>({
+      rootMargin: "200px",
+    });
+
+  // Play/pause video based on visibility
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isIntersecting) {
+      video.play().catch(() => {
+        // Ignore autoplay errors (browser restrictions)
+      });
+    } else {
+      video.pause();
+    }
+  }, [isIntersecting]);
+
+  // Scroll to flashsale section if URL has #flashsale
+  // Dùng elementId khác với hash để tránh browser auto-scroll
+  useScrollToHash("flashsale", "flashsale-section");
+
+  useEffect(() => {
+    if (!showTimer) return;
+
+    // Convert endTime to Date if it's a string
+    const endTimeDate =
+      typeof endTime === "string" ? new Date(endTime) : endTime;
+
+    // Check if we have a valid timestamp (more reliable than instanceof)
+    const timestamp = endTimeDate?.getTime?.();
+    if (!timestamp || isNaN(timestamp)) {
+      return;
+    }
+
+    // Tính toán ngay lập tức để tránh hiển thị 00:00:00 trong 1 giây đầu
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const distance = timestamp - now;
+      return distance < 0 ? 0 : Math.floor(distance / 1000);
+    };
+
+    // Set giá trị ban đầu ngay lập tức
+    setTotalSeconds(calculateTimeLeft());
+
+    const timer = setInterval(() => {
+      const timeLeft = calculateTimeLeft();
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        setTotalSeconds(0);
+      } else {
+        setTotalSeconds(timeLeft);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [endTime, showTimer]);
+  const timeLeft = formatCountdown(totalSeconds);
+
+  // Memoize ProductSlider để không re-render khi timer cập nhật
+  const memoizedProductSlider = useMemo(
+    () => (
+      <ProductSlider
+        products={products}
+        locale={locale}
+        displayMode="grid"
+        gridCols="grid-cols-2 md:grid-cols-4 lg:grid-cols-7"
+        fromFlashSale={true}
+        seeAllText={seeAllText}
+        seeAllLink={seeAllLink}
+      />
+    ),
+    [products, locale, seeAllText, seeAllLink]
+  );
+
+  return (
+    <Box ref={sectionRef} className="relative px-8 lg:px-12 pb-4">
+      {/* Background Video Layer - Use poster for instant LCP, lazy load video */}
+      <Box className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          ref={videoRef}
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          preload="none"
+          poster={
+            isProductDetail
+              ? "/assets/images/flash-sale-background-product-detail.webp"
+              : isDesktop
+              ? "/assets/images/flash-sale-poster-desktop.webp"
+              : "/assets/images/flash-sale-poster-mobile.webp"
+          }
+        >
+          <source
+            src={
+              isProductDetail
+                ? "/assets/video/flash-sale-background-product-detail.mp4"
+                : isDesktop
+                ? "/assets/video/flash-sale-background-desktop.mp4"
+                : "/assets/video/flash-sale-background-mobile.mp4"
+            }
+            type="video/mp4"
+          />
+        </video>
+      </Box>
+
+      {/* Foreground Content - Title, Countdown, Products */}
+      <Box className="relative z-20 pt-5">
+        {/* Title + Countdown */}
+        <Flex justify="between" align="center" className="mb-5 gap-4">
+          <Link
+            href={seeAllLink}
+            className="cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src="/assets/svg/flash-sale.svg"
+              alt="Flash Sale Content Overlay"
+              width={300}
+              height={80}
+              className="h-[30px] w-auto"
+              priority
+            />
+          </Link>
+          {showTimer && (
+            <Flex align="center" gap="4">
+              <Text className="text-xs lg:text-sm text-white">
+                {endsInText}:
+              </Text>
+              <Flex align="center" className="gap-[2px]">
+                <Box className="bg-gradient-to-r bg-[#fff] text-black w-6 h-6 lg:w-8 lg:h-8 rounded flex items-center justify-center font-medium text-sm lg:text-base">
+                  {timeLeft.hours}
+                </Box>
+                <Text className="text-white font-medium text-sm lg:text-base">
+                  :
+                </Text>
+                <Box className="bg-gradient-to-r bg-[#fff] text-black w-6 h-6 lg:w-8 lg:h-8 rounded flex items-center justify-center font-medium text-sm lg:text-base">
+                  {timeLeft.minutes}
+                </Box>
+                <Text className="text-white font-medium text-sm lg:text-base">
+                  :
+                </Text>
+                <Box className="bg-gradient-to-r bg-[#fff] text-black w-6 h-6 lg:w-8 lg:h-8 rounded flex items-center justify-center font-medium text-sm lg:text-base">
+                  {timeLeft.seconds}
+                </Box>
+              </Flex>
+            </Flex>
+          )}
+        </Flex>
+
+        {/* Products Slider - responsive columns with 2 rows per breakpoint */}
+        {memoizedProductSlider}
+      </Box>
+    </Box>
+  );
+}

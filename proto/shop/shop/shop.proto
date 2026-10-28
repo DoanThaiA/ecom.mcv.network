@@ -1,0 +1,575 @@
+syntax = "proto3";
+
+package shop.shop;
+
+import "shared/carts/cart.proto";
+import "shared/checkout-sessions/checkout-session.proto";
+import "shared/common/enums.proto";
+import "shared/locations/location.proto";
+import "shared/orders/order.proto";
+import "shared/products/product.proto";
+import "google/protobuf/timestamp.proto";
+import "shop/products/product.proto";
+
+// ==================== Cart Service DTOs ====================
+
+// Add to cart request
+message AddToCartRequest {
+  string          product_id = 1;
+  optional string variant_id = 2;
+  int32           quantity   = 3;
+}
+
+// Update cart item request
+message UpdateCartItemRequest {
+  string          product_id        = 1;
+  optional string variant_id        = 2;
+  int32           quantity          = 3;
+  optional string combo_instance_id = 4;
+}
+
+// Remove from cart request
+message RemoveFromCartRequest {
+  string          product_id        = 1;
+  optional string variant_id        = 2;
+  optional string combo_instance_id = 3;
+}
+
+// Combo item variant selection for adding combo to cart
+message ComboItemVariantInput {
+  string product_id = 1;
+  string variant_id = 2;
+}
+
+// Add combo to cart request
+message AddComboToCartRequest {
+  string                         combo_id = 1;
+  repeated ComboItemVariantInput items    = 2;
+}
+
+// Merge guest cart request
+message MergeGuestCartRequest {
+  string guest_session_id = 1;
+}
+
+message GetCartRequest {}
+
+message ClearCartRequest {}
+
+// ==================== Order Service DTOs ====================
+
+// Cancel order request
+message CancelOrderRequest {
+  string          order_id = 1;
+  optional string reason   = 2;
+}
+
+// Update payment method request
+message UpdatePaymentRequest {
+  string                      order_id       = 1;
+  shared.orders.PaymentMethod payment_method = 2;
+}
+
+// Update payment method response
+message UpdatePaymentResponse {
+  bool                         success     = 1;
+  optional shared.orders.Order order       = 2;
+  optional string              payment_url = 3;
+}
+
+// Lookup order request
+message LookupOrderRequest {
+  string order_number = 1;
+  string phone        = 2;
+}
+
+// Get orders response (paginated)
+message GetOrdersResponse {
+  repeated shared.orders.Order docs          = 1;
+  bool                         has_next_page = 2;
+  int32                        total         = 3;
+  int32                        page          = 4;
+  int32                        limit         = 5;
+  int32                        total_pages   = 6;
+}
+
+message GetOrderRequest { string order_id = 1; }
+
+message GetOrderByNumberRequest { string order_number = 1; }
+
+// Get orders request with pagination
+message GetOrdersRequest {
+  optional int32 page  = 1; // Page number (starts from 1), default: 1
+  optional int32 limit = 2; // Items per page (max 50), default: 10
+}
+
+// ==================== Shipping Service DTOs ====================
+
+// Location list response
+message LocationListResponse {
+  repeated shared.locations.Location data = 1;
+}
+
+message GetCitiesRequest {}
+
+message GetDistrictsRequest { int32 city_id = 1; }
+
+message GetWardsRequest { int32 district_id = 1; }
+
+// ==================== Checkout Service DTOs ====================
+
+// Checkout session item input
+message CheckoutSessionItemInput {
+  string          product_id = 1;
+  optional string variant_id = 2;
+  int32           quantity   = 3;
+}
+
+// Checkout combo item variant input
+message CheckoutComboItemVariantInput {
+  string          product_id = 1;
+  optional string variant_id = 2;
+}
+
+// Checkout session combo input
+message CheckoutSessionComboInput {
+  string                                 combo_id          = 1;
+  optional string                        combo_instance_id = 2;
+  repeated CheckoutComboItemVariantInput items             = 3;
+}
+
+// Checkout session customer input
+message CheckoutSessionCustomerInput {
+  optional string name  = 1;
+  optional string phone = 2;
+  optional string email = 3;
+}
+
+// Checkout session address input
+message CheckoutSessionAddressInput {
+  optional string address     = 1;
+  optional string ward        = 2;
+  optional string district    = 3;
+  optional string city        = 4;
+  optional int32  city_id     = 5;
+  optional int32  district_id = 6;
+  optional int32  ward_id     = 7;
+}
+
+// Upsert checkout session request
+message UpsertCheckoutSessionRequest {
+  optional string                       id                     = 1;
+  repeated CheckoutSessionItemInput     items                  = 2;
+  repeated CheckoutSessionComboInput    combos                 = 3;
+  optional bool                         clear_cart_after_order = 4;
+  optional CheckoutSessionCustomerInput customer               = 5;
+  optional CheckoutSessionAddressInput  shipping_address       = 6;
+  optional shared.orders.PaymentMethod  payment_method         = 7;
+  optional string                       note                   = 8;
+}
+
+message GetCheckoutSessionRequest { string id = 1; }
+
+message DeleteCheckoutSessionRequest { string id = 1; }
+
+// Place order request
+message PlaceOrderRequest {
+  string                               session_id     = 1;
+  optional shared.orders.PaymentMethod payment_method = 2;
+  optional string                      note           = 3;
+}
+
+// Flash sale price adjustment info (when flash sale auto-reverted to regular price at order time)
+message FlashSaleAdjustment {
+  string product_id       = 1;
+  string product_name     = 2;
+  int32  flash_sale_price = 3;
+  int32  regular_price    = 4;
+}
+
+// Place order response
+message PlaceOrderResponse {
+  bool                                                  success                = 1;
+  optional shared.orders.Order                          order                  = 2;
+  optional string                                       payment_url            = 3;
+  optional string                                       qr_url                 = 4;
+  optional string                                       qr_data                = 5;
+  optional string                                       message                = 6;
+  repeated shared.checkout_sessions.ItemValidationError validation_errors      = 7;
+  repeated string                                       missing_fields         = 8;
+  repeated FlashSaleAdjustment                          flash_sale_adjustments = 9;
+  optional bool                                         prices_adjusted        = 10;
+}
+
+// ==================== Flash Sale Service DTOs ====================
+
+// Shop active flash sale response
+message ShopActiveFlashSaleResponse {
+  string                           id            = 1;
+  string                           name          = 2;
+  google.protobuf.Timestamp        start_time    = 3;
+  google.protobuf.Timestamp        end_time      = 4;
+  repeated shared.products.Product data          = 5;
+  int32                            total         = 6;
+  bool                             has_next_page = 7;
+  int32                            page          = 8;
+  int32                            limit         = 9;
+  int32                            total_pages   = 10;
+}
+
+// Shop flash sale detail response
+message ShopFlashSaleDetailResponse {
+  string                           id            = 1;
+  string                           name          = 2;
+  google.protobuf.Timestamp        start_time    = 3;
+  google.protobuf.Timestamp        end_time      = 4;
+  string                           status        = 5;
+  repeated shared.products.Product data          = 6;
+  int32                            total         = 7;
+  bool                             has_next_page = 8;
+  int32                            page          = 9;
+  int32                            limit         = 10;
+  int32                            total_pages   = 11;
+}
+
+// Shop flash sale products response
+message ShopFlashSaleProductsResponse {
+  repeated shared.products.Product data          = 1;
+  int32                            total         = 2;
+  bool                             has_next_page = 3;
+  int32                            page          = 4;
+  int32                            limit         = 5;
+  int32                            total_pages   = 6;
+}
+
+message GetShopFlashSaleRequest {
+  string         flash_sale_id = 1;
+  optional int32 page          = 2;
+  optional int32 limit         = 3;
+}
+
+message GetActiveFlashSaleRequest {}
+
+message GetFlashSaleProductsRequest {
+  optional int32                            page    = 1;
+  optional int32                            limit   = 2;
+  optional .shop.products.ShopFilterProduct filters = 3;
+  optional .shop.products.ShopSortProduct   sort    = 4;
+}
+
+// ==================== Promotion Service DTOs ====================
+
+// Gift product variant info for display
+message GiftProductVariantResponse {
+  string                                    variant_id      = 1;
+  string                                    name            = 2;
+  repeated shared.products.ProductAttribute attributes      = 3;
+  int32                                     available_stock = 4;
+  bool                                      is_available    = 5;
+}
+
+// Gift product detail for display
+message GiftProductDetailResponse {
+  string                              product_id      = 1;
+  string                              code            = 2;
+  string                              name            = 3;
+  string                              image           = 4;
+  double                              price           = 5;
+  int32                               available_stock = 6;
+  bool                                has_variants    = 7;
+  repeated GiftProductVariantResponse variants        = 8;
+}
+
+// Eligible gift tier response
+message EligibleGiftTierResponse {
+  string                             tier_id         = 1;
+  int32                              min_order_value = 2;
+  repeated GiftProductDetailResponse gift_products   = 3;
+  bool                               is_claimed      = 4;
+}
+
+// Cart gift info response
+message CartGiftInfoResponse {
+  string          product_id     = 1;
+  optional string variant_id     = 2;
+  string          promotion_id   = 3;
+  string          tier_id        = 4;
+  string          product_name   = 5;
+  string          product_image  = 6;
+  double          original_price = 7;
+  optional int32  quantity       = 8;
+}
+
+// Bundle deal eligibility response
+message BundleDealEligibilityResponse {
+  string                            promotion_id                         = 1;
+  string                            promotion_name                       = 2;
+  shared.common.BundleDealSubType   sub_type                             = 3;
+  double                            cart_total                           = 4;
+  optional int32                    amount_needed_for_next_tier          = 5;
+  optional EligibleGiftTierResponse next_tier                            = 6;
+  repeated EligibleGiftTierResponse eligible_tiers                       = 7;
+  optional CartGiftInfoResponse     current_gift                         = 8;
+  optional bool                     not_applicable_with_other_promotions = 9;
+  optional int32                    required_quantity                    = 10;
+  optional int32                    current_required_quantity            = 11;
+  optional int32                    gift_quantity                        = 12;
+  optional int32                    remaining_gift_quantity              = 13;
+  repeated GiftProductDetailResponse required_products                   = 14;
+  repeated GiftProductDetailResponse gift_products                       = 15;
+  optional double                   minimum_order_value                  = 16;
+  optional int32                    max_gift_quantity                    = 17;
+  repeated CartGiftInfoResponse     current_gifts                        = 18;
+}
+
+// Check bundle deal eligibility request
+message CheckBundleDealEligibilityRequest {
+  double cart_total = 1;
+}
+
+// Add gift to cart request
+message AddGiftToCartRequest {
+  string          promotion_id = 1;
+  string          tier_id      = 2;
+  string          product_id   = 3;
+  optional string variant_id   = 4;
+  optional int32  quantity     = 5;
+}
+
+// Remove gift from cart request
+message RemoveGiftFromCartRequest {
+  string          product_id = 1;
+  optional string variant_id = 2;
+}
+
+// Apply voucher request
+message ApplyVoucherRequest {
+  string checkout_session_id = 1;
+  string code                = 2;
+}
+
+// Remove voucher request
+message RemoveVoucherRequest {
+  string checkout_session_id = 1;
+  string code                = 2;
+}
+
+// ==================== Product Discount Eligibility DTOs ====================
+
+// Eligible product info in a product discount promotion
+message EligibleProductResponse {
+  string product_id       = 1;
+  string product_name     = 2;
+  string product_image    = 3;
+  string product_code     = 4;
+  double original_price   = 5;
+  double discounted_price = 6;
+  double discount_amount  = 7;
+}
+
+// Product discount eligibility response
+message ProductDiscountEligibilityResponse {
+  string                               promotion_id                         = 1;
+  string                               promotion_name                       = 2;
+  shared.common.ProductDiscountSubType sub_type                             = 3;
+  shared.common.DiscountType           discount_type                        = 4;
+  double                               discount_value                       = 5;
+  optional double                      max_discount_value                   = 6;
+  double                               minimum_order_value                  = 7;
+  bool                                 is_eligible                          = 8;
+  repeated EligibleProductResponse     eligible_products                    = 9;
+  double                               potential_discount                   = 10;
+  optional double                      amount_needed_for_eligibility        = 11;
+  optional google.protobuf.Timestamp   end_date                             = 12;
+  optional bool                        not_applicable_with_other_promotions = 13;
+}
+
+// Check product discount eligibility request
+message CheckProductDiscountEligibilityRequest {
+  double          cart_total  = 1;
+  repeated string product_ids = 2;
+}
+
+// Apply product discount request
+message ApplyProductDiscountRequest {
+  string promotion_id        = 1;
+  string checkout_session_id = 2;
+}
+
+// Remove product discount request
+message RemoveProductDiscountRequest {
+  string checkout_session_id = 1;
+  string promotion_id        = 2;
+}
+
+// ==================== Order Discount Eligibility DTOs ====================
+
+// Order discount eligibility response (for AUTO_APPLY type - CTKM Giảm giá hóa đơn)
+message OrderDiscountEligibilityResponse {
+  string                             promotion_id                         = 1;
+  string                             promotion_name                       = 2;
+  shared.common.OrderDiscountSubType sub_type                             = 3;
+  shared.common.DiscountType         discount_type                        = 4;
+  double                             discount_value                       = 5;
+  optional double                    max_discount_value                   = 6;
+  double                             minimum_order_value                  = 7;
+  bool                               is_eligible                          = 8;
+  double                             potential_discount                   = 9;
+  optional double                    amount_needed_for_eligibility        = 10;
+  optional bool                      not_applicable_with_other_promotions = 11;
+  optional google.protobuf.Timestamp end_date                             = 12;
+}
+
+// ==================== Unified Promotion Eligibility DTOs ====================
+
+// Check all promotion eligibility request (unified)
+message CheckPromotionEligibilityRequest {
+  double          cart_total  = 1;
+  repeated string product_ids = 2; // Optional, for product discount eligibility
+}
+
+// Unified promotion eligibility response
+// Contains eligibility info for all promotion types (except vouchers)
+message PromotionEligibilityResponse {
+  repeated BundleDealEligibilityResponse      bundle_deals      = 1;
+  repeated ProductDiscountEligibilityResponse product_discounts = 2;
+  repeated OrderDiscountEligibilityResponse   order_discounts   = 3; // Order discount (CTKM Giảm giá hóa đơn AUTO_APPLY)
+}
+
+// ==================== Product Promotion Highlights DTOs ====================
+
+// Request PDP promotion highlights for a saleable product.
+message GetProductPromotionHighlightsRequest { string product_id = 1; }
+
+// Compact customer-safe product reference used by PDP gift promotions.
+message ProductPromotionGiftProduct {
+  string product_id     = 1;
+  string name           = 2;
+  string image          = 3;
+  double original_price = 4;
+  bool   is_available   = 5;
+}
+
+message ProductPromotionShippingTier {
+  double                     minimum_order_value = 1;
+  shared.common.DiscountType discount_type       = 2;
+  double                     discount_value      = 3;
+}
+
+message ProductPromotionShippingPromotion {
+  string                                      promotion_id        = 1;
+  string                                      promotion_name      = 2;
+  shared.common.ShippingPromotionType         type                = 3;
+  optional double                             minimum_order_value = 4;
+  repeated ProductPromotionShippingTier       tiers               = 5;
+  google.protobuf.Timestamp                   end_time             = 6;
+}
+
+message ProductPromotionOrderDiscount {
+  string                             promotion_id                         = 1;
+  string                             promotion_name                       = 2;
+  shared.common.OrderDiscountSubType sub_type                             = 3;
+  optional string                    promo_code                           = 4;
+  shared.common.DiscountType         discount_type                        = 5;
+  double                             discount_value                       = 6;
+  optional double                    max_discount_value                   = 7;
+  double                             minimum_order_value                  = 8;
+  bool                               not_applicable_with_other_promotions = 9;
+  bool                               single_use_per_customer              = 10;
+  google.protobuf.Timestamp          end_time                             = 11;
+}
+
+message ProductPromotionGiftTier {
+  double                                   minimum_order_value = 1;
+  repeated ProductPromotionGiftProduct     gift_products       = 2;
+}
+
+message ProductPromotionGiftPromotion {
+  string                                 promotion_id                         = 1;
+  string                                 promotion_name                       = 2;
+  shared.common.BundleDealSubType        sub_type                             = 3;
+  repeated ProductPromotionGiftTier      tiers                                = 4;
+  optional int32                         required_quantity                    = 5;
+  repeated ProductPromotionGiftProduct   required_products                    = 6;
+  optional int32                         gift_quantity                        = 7;
+  repeated ProductPromotionGiftProduct   gift_products                        = 8;
+  optional double                        minimum_order_value                  = 9;
+  bool                                   not_applicable_with_other_promotions = 10;
+  google.protobuf.Timestamp              end_time                             = 11;
+}
+
+message ProductPromotionHighlightsResponse {
+  string                                      product_id           = 1;
+  repeated ProductPromotionShippingPromotion shipping_promotions  = 2;
+  repeated ProductPromotionOrderDiscount     order_discounts      = 3;
+  repeated ProductPromotionGiftPromotion     gift_promotions      = 4;
+}
+
+// ==================== Service Definitions ====================
+
+// Cart service
+service CartService {
+  rpc GetCart(GetCartRequest) returns (shared.carts.Cart);
+  rpc AddToCart(AddToCartRequest) returns (shared.carts.Cart);
+  rpc AddComboToCart(AddComboToCartRequest) returns (shared.carts.Cart);
+  rpc UpdateCartItem(UpdateCartItemRequest) returns (shared.carts.Cart);
+  rpc RemoveFromCart(RemoveFromCartRequest) returns (shared.carts.Cart);
+  rpc ClearCart(ClearCartRequest) returns (shared.carts.Cart);
+  rpc MergeGuestCart(MergeGuestCartRequest) returns (shared.carts.Cart);
+}
+
+// Order service
+service OrderService {
+  rpc GetOrder(GetOrderRequest) returns (shared.orders.Order);
+  rpc GetOrderByNumber(GetOrderByNumberRequest) returns (shared.orders.Order);
+  rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse);
+  rpc LookupOrder(LookupOrderRequest) returns (shared.orders.Order);
+  rpc UpdatePayment(UpdatePaymentRequest) returns (UpdatePaymentResponse);
+  rpc CancelOrder(CancelOrderRequest) returns (shared.orders.Order);
+}
+
+// Shipping service
+service ShippingService {
+  rpc GetCities(GetCitiesRequest) returns (LocationListResponse);
+  rpc GetDistricts(GetDistrictsRequest) returns (LocationListResponse);
+  rpc GetWards(GetWardsRequest) returns (LocationListResponse);
+}
+
+// Checkout service
+service CheckoutService {
+  rpc UpsertCheckoutSession(UpsertCheckoutSessionRequest) returns (shared.checkout_sessions.CheckoutSession);
+  rpc GetCheckoutSession(GetCheckoutSessionRequest) returns (shared.checkout_sessions.CheckoutSession);
+  rpc DeleteCheckoutSession(DeleteCheckoutSessionRequest) returns (shared.checkout_sessions.CheckoutSession);
+  rpc PlaceOrder(PlaceOrderRequest) returns (PlaceOrderResponse);
+}
+
+// Flash sale service
+service ShopFlashSaleService {
+  rpc GetActiveFlashSale(GetActiveFlashSaleRequest) returns (ShopActiveFlashSaleResponse);
+  rpc GetFlashSaleProducts(GetFlashSaleProductsRequest) returns (ShopFlashSaleProductsResponse);
+  rpc GetFlashSaleById(GetShopFlashSaleRequest) returns (ShopFlashSaleDetailResponse);
+}
+
+// Promotion service
+service ShopPromotionService {
+  rpc GetProductPromotionHighlights(GetProductPromotionHighlightsRequest) returns (ProductPromotionHighlightsResponse);
+
+  // Unified promotion eligibility check (recommended)
+  rpc CheckPromotionEligibility(CheckPromotionEligibilityRequest) returns (PromotionEligibilityResponse);
+
+  // Bundle deal (gift) operations
+  rpc CheckBundleDealEligibility(CheckBundleDealEligibilityRequest) returns (BundleDealEligibilityResponse); // Deprecated: use CheckPromotionEligibility
+  rpc AddGiftToCart(AddGiftToCartRequest) returns (shared.carts.Cart);
+  rpc RemoveGiftFromCart(RemoveGiftFromCartRequest) returns (shared.carts.Cart);
+
+  // Voucher operations
+  rpc ApplyVoucher(ApplyVoucherRequest) returns (shared.checkout_sessions.CheckoutSession);
+  rpc RemoveVoucher(RemoveVoucherRequest) returns (shared.checkout_sessions.CheckoutSession);
+
+  // Product discount (AUTO_APPLY promotion) operations
+  rpc CheckProductDiscountEligibility(CheckProductDiscountEligibilityRequest) returns (ProductDiscountEligibilityResponse); // Deprecated: use CheckPromotionEligibility
+  // Apply product discount promotion to checkout session
+  rpc ApplyProductDiscount(ApplyProductDiscountRequest) returns (shared.checkout_sessions.CheckoutSession);
+  // Remove product discount promotion from checkout session
+  rpc RemoveProductDiscount(RemoveProductDiscountRequest) returns (shared.checkout_sessions.CheckoutSession);
+}

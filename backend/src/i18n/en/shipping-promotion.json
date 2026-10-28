@@ -1,0 +1,9 @@
+{
+  "notFound": "Shipping promotion not found",
+  "notActive": "Shipping promotion is not active",
+  "notApplicable": "Shipping promotion is not applicable for this order",
+  "startTimeMustBeBeforeEndTime": "Start time must be before end time",
+  "configRequired": "Promotion configuration is required for the selected type",
+  "percentageMax": "Percentage discount cannot exceed 100%",
+  "overlapping": "Only one shipping promotion of the same type can be active at a time. The time range overlaps with an existing shipping promotion."
+}

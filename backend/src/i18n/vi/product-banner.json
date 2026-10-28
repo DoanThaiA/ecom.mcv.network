@@ -1,0 +1,8 @@
+{
+  "notFound": "Không tìm thấy banner sản phẩm",
+  "created": "Tạo banner sản phẩm thành công",
+  "updated": "Cập nhật banner sản phẩm thành công",
+  "deleted": "Xóa banner sản phẩm thành công",
+  "productsAssigned": "Gán sản phẩm thành công",
+  "productsRemoved": "Xóa sản phẩm khỏi banner thành công"
+}

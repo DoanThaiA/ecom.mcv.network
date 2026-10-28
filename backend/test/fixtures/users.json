@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "_id": "695779419c41c6352db614f5",
+      "phone": "+84388971017",
+      "password": "$2b$10$KbJAL3MviPpfzra.cnvdy.8jNXGHQJaaB.Eit/zdbnRHaTgGFVWVe",
+      "provider": "phone",
+      "socialId": null,
+      "firstName": "Mai",
+      "lastName": "",
+      "status": 1,
+      "socialAccounts": [],
+      "cdpCustomerId": "695779412cb606b1b47096f4"
+    },
+    {
+      "_id": "6957799f9c41c6352db61513",
+      "email": "hothiquynhmai2003@gmail.com",
+      "password": "$2b$10$WVEy.OhjOv/Va13zmOETeeYXmYcqDiAwpYgGDBFIwpKb5refEOiFe",
+      "provider": "email",
+      "socialId": null,
+      "firstName": "Test",
+      "lastName": "",
+      "status": 1,
+      "socialAccounts": [],
+      "cdpCustomerId": "6957799f2cb606b1b4709726"
+    }
+  ],
+  "singleUser": {
+    "_id": "695779419c41c6352db614f5",
+    "phone": "+84388971017",
+    "password": "$2b$10$KbJAL3MviPpfzra.cnvdy.8jNXGHQJaaB.Eit/zdbnRHaTgGFVWVe",
+    "provider": "phone",
+    "socialId": null,
+    "firstName": "Mai",
+    "lastName": "",
+    "status": 1,
+    "socialAccounts": [],
+    "cdpCustomerId": "695779412cb606b1b47096f4"
+  }
+}

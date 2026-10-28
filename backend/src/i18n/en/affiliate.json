@@ -1,0 +1,7 @@
+{
+  "phoneAlreadyExists": "Phone number already exists",
+  "codeGenerationFailed": "Failed to generate unique affiliate code",
+  "notFound": "Affiliate not found",
+  "typeNotExists": "Affiliate type does not exist",
+  "statusNotExists": "Affiliate status does not exist"
+}

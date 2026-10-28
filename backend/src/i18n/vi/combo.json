@@ -1,0 +1,13 @@
+{
+  "notFound": "Không tìm thấy combo",
+  "productsNotFound": "Một hoặc nhiều sản phẩm không tồn tại",
+  "percentageDiscountMax": "Phần trăm giảm giá không được vượt quá 100%",
+  "fixedDiscountExceedsPrice": "Số tiền giảm giá không được vượt quá giá gốc",
+  "invalidDateRange": "Khoảng thời gian không hợp lệ",
+  "comboNotActive": "Combo không hoạt động",
+  "comboExpired": "Combo đã hết hạn",
+  "comboNotYetValid": "Combo chưa có hiệu lực",
+  "variantRequired": "Tất cả sản phẩm trong combo cần chọn biến thể",
+  "variantNotFound": "Biến thể được chọn không tồn tại",
+  "productRequired": "Tất cả sản phẩm trong combo phải được chọn"
+}

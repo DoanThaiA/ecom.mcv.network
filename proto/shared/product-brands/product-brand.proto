@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package shared.product_brands;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// Product brand domain entity
+message ProductBrand {
+  string                           id          = 1;
+  string                           business_id = 2;
+  string                           source      = 3; // 'nhanh' | 'shopify'
+  optional string                  code        = 4;
+  string                           name        = 5;
+  shared.common.ProductBrandStatus status      = 6;
+  optional string                  parent_id   = 7;
+  google.protobuf.Timestamp        created_at  = 8;
+  google.protobuf.Timestamp        updated_at  = 9;
+}
+
+// Filter product brand DTO
+message FilterProductBrand {
+  optional string                           search = 1;
+  optional shared.common.ProductBrandStatus status = 2;
+}
+
+// Sort product brand DTO
+message SortProductBrand {
+  string order_by = 1;
+  string order    = 2;
+}
+
+// Query product brand DTO
+message QueryProductBrand {
+  optional int32              page    = 1;
+  optional int32              limit   = 2;
+  optional FilterProductBrand filters = 3;
+  repeated SortProductBrand   sort    = 4;
+}

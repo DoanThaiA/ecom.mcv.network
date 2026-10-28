@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package cms.products;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "shared/products/product.proto";
+
+// Filter product DTO
+message FilterProduct {
+  optional string                      search      = 1;
+  optional shared.common.ProductStatus status      = 2;
+  optional string                      category_id = 3; // Single category filter
+  optional string                      brand_id    = 4;
+  optional string                      type        = 5;
+  // Reserved field 6 (previously parents_only - removed as only parent/standalone products are used)
+  // Reserved field 7 (previously include_variants - removed as variants are always embedded)
+  reserved 6, 7;
+  repeated string category_ids = 8; // Multiple category filter
+  repeated string product_ids  = 9; // Filter by specific product IDs
+  optional double min_price    = 10; // Minimum price filter (prices.retail)
+  optional double max_price    = 11; // Maximum price filter (prices.retail)
+}
+
+// Sort product DTO
+message SortProduct {
+  string order_by = 1;
+  string order    = 2;
+}
+
+// Query product DTO
+message QueryProduct {
+  optional int32         page    = 1;
+  optional int32         limit   = 2;
+  optional FilterProduct filters = 3;
+  repeated SortProduct   sort    = 4;
+}
+
+// Update product details request DTO
+message UpdateProductDetailsRequest {
+  optional string                              description              = 1;
+  optional string                              content                  = 2;
+  optional shared.products.ProductDetails      details                  = 3;
+  optional shared.common.Localization          name_localization        = 4;
+  optional shared.common.Localization          description_localization = 5;
+  optional shared.products.DetailsLocalization details_localization     = 6;
+  optional shared.common.ProductBadge          badge                    = 7; // CMS-only promotional badge
+  optional string                              size_guide               = 8; // Size guide image URL (CMS-managed)
+  optional shared.products.ProductDescriptionMedia description_media    = 9; // CMS-managed product-description media
+}
+
+// Individual product hide update item
+message ProductHideUpdateItem {
+  string product_id = 1;
+  bool   hide       = 2;
+}
+
+// Bulk update hide request DTO (max 50 items)
+message BulkUpdateHideRequest {
+  repeated ProductHideUpdateItem items = 1; // min: 1, max: 50
+}
+
+// Bulk update hide response DTO
+message BulkUpdateHideResponse {
+  int32 updated_count = 1;
+}

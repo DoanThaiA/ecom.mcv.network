@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package shared.flash_sales;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// Flash sale product - a product with discount settings within a flash sale
+message FlashSaleProduct {
+  string                     product_id           = 1;
+  shared.common.DiscountType discount_type        = 2;
+  double                     discount_value       = 3; // Admin enters: amount (VND) or percentage
+  int32                      promotional_quantity = 4; // Max units at flash sale price
+  int32                      sold_count           = 5; // Units sold at flash sale price
+  bool                       is_enabled           = 6; // Product toggle
+}
+
+// Flash sale product with product details (for response)
+message FlashSaleProductResponse {
+  string                     product_id           = 1;
+  optional string            product_name         = 2;
+  optional string            product_code         = 3;
+  optional string            product_image        = 4;
+  optional double            original_price       = 5;  // Original retail price
+  optional double            discount_price       = 6;  // Price after discount applied
+  shared.common.DiscountType discount_type        = 7;
+  double                     discount_value       = 8;
+  int32                      promotional_quantity = 9;
+  int32                      sold_count           = 10;
+  bool                       is_enabled           = 11;
+  optional int32             order                = 12;
+}
+
+// Paginated flash sale products payload
+message FlashSaleProductsPage {
+  repeated FlashSaleProductResponse data          = 1;
+  bool                              has_next_page = 2;
+  int32                             total         = 3;
+  int32                             page          = 4;
+  int32                             limit         = 5;
+  int32                             total_pages   = 6;
+}
+
+// Flash sale domain entity
+message FlashSale {
+  string                             id         = 1;
+  string                             name       = 2;
+  google.protobuf.Timestamp          start_time = 3;
+  google.protobuf.Timestamp          end_time   = 4;
+  bool                               is_enabled = 5;
+  repeated FlashSaleProduct          products   = 6;
+  google.protobuf.Timestamp          created_at = 7;
+  google.protobuf.Timestamp          updated_at = 8;
+  optional google.protobuf.Timestamp deleted_at = 9;
+}
+
+// Flash sale response with enriched data (for API responses)
+message FlashSaleResponse {
+  string                             id            = 1;
+  string                             name          = 2;
+  google.protobuf.Timestamp          start_time    = 3;
+  google.protobuf.Timestamp          end_time      = 4;
+  bool                               is_enabled    = 5;
+  shared.common.FlashSaleStatus      status        = 6; // Computed from time + is_enabled
+  int32                              product_count = 7; // Computed field
+  FlashSaleProductsPage              products      = 8;
+  google.protobuf.Timestamp          created_at    = 9;
+  google.protobuf.Timestamp          updated_at    = 10;
+  optional google.protobuf.Timestamp deleted_at    = 11;
+}
+
+// Flash sale list item (without full product details)
+message FlashSaleListItem {
+  string                        id            = 1;
+  string                        name          = 2;
+  google.protobuf.Timestamp     start_time    = 3;
+  google.protobuf.Timestamp     end_time      = 4;
+  bool                          is_enabled    = 5;
+  shared.common.FlashSaleStatus status        = 6; // Computed from time + is_enabled
+  int32                         product_count = 7; // Computed field
+  google.protobuf.Timestamp     created_at    = 8;
+  google.protobuf.Timestamp     updated_at    = 9;
+}

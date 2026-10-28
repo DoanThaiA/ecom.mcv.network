@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "entryFile": "main",
+  "compilerOptions": {
+    "tsConfigPath": "tsconfig.build.json",
+    "assets": [{ "include": "i18n/**/*", "watchAssets": true }],
+    "watchAssets": true,
+    "deleteOutDir": true
+  },
+  "projects": {
+    "worker": {
+      "type": "application",
+      "root": "worker",
+      "entryFile": "main",
+      "sourceRoot": "worker/src",
+      "compilerOptions": {
+        "tsConfigPath": "worker/tsconfig.json",
+        "assets": [],
+        "deleteOutDir": true
+      }
+    }
+  }
+}

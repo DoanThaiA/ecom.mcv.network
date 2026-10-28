@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package cms.auth;
+
+import "shared/files/file.proto";
+import "cms/cms-users/cms-user.proto";
+
+// Auth CMS login DTO
+message AuthCmsLogin {
+  string email    = 1;
+  string password = 2;
+}
+
+// CMS Login response DTO
+message CmsLoginResponse {
+  string                token         = 1;
+  string                refresh_token = 2;
+  int64                 token_expires = 3;
+  cms.cms_users.CmsUser user          = 4;
+}
+
+// Auth CMS update DTO
+message AuthCmsUpdate {
+  optional shared.files.File photo        = 1;
+  optional string            first_name   = 2;
+  optional string            last_name    = 3;
+  optional string            email        = 4;
+  optional string            password     = 5;
+  optional string            old_password = 6;
+}

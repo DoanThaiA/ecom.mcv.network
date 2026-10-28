@@ -1,0 +1,39 @@
+{
+  "singleUser": {
+    "id": "user-1",
+    "phone": "0912345678",
+    "email": "test@example.com",
+    "firstName": "Văn",
+    "lastName": "Nguyễn",
+    "fullName": "Nguyễn Văn A",
+    "dateOfBirth": "1990-01-01",
+    "gender": "male",
+    "avatar": "https://example.com/avatar.jpg",
+    "isVerified": true,
+    "status": "ACTIVE",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  "users": [
+    {
+      "id": "user-1",
+      "phone": "0912345678",
+      "email": "user1@example.com",
+      "firstName": "Văn",
+      "lastName": "Nguyễn",
+      "fullName": "Nguyễn Văn A",
+      "status": "ACTIVE",
+      "isVerified": true
+    },
+    {
+      "id": "user-2",
+      "phone": "0987654321",
+      "email": "user2@example.com",
+      "firstName": "Thị",
+      "lastName": "Trần",
+      "fullName": "Trần Thị B",
+      "status": "ACTIVE",
+      "isVerified": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "notFound": "Không tìm thấy sản phẩm",
+  "created": "Tạo sản phẩm thành công",
+  "updated": "Cập nhật sản phẩm thành công",
+  "deleted": "Xóa sản phẩm thành công",
+  "syncStarted": "Bắt đầu đồng bộ sản phẩm",
+  "syncCompleted": "Đồng bộ sản phẩm hoàn tất",
+  "syncFailed": "Đồng bộ sản phẩm thất bại",
+  "businessIdNotFound": "Không tìm thấy Business ID",
+  "codeAlreadyExists": "Sản phẩm với mã {code} đã tồn tại",
+  "quantityMustBePositive": "Số lượng phải là số dương"
+}

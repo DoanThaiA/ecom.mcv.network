@@ -1,0 +1,67 @@
+name: Frontend PR Check
+
+on:
+  pull_request:
+    branches:
+      - internal
+    # Không lọc theo paths: branch protection của nhánh internal yêu cầu status
+    # check tên "Test" do job test bên dưới cung cấp. Nếu workflow không kích
+    # hoạt thì check không bao giờ được báo cáo và PR treo vĩnh viễn — xảy ra
+    # với mọi PR không đụng frontend/. Job đang tắt nên lần chạy chỉ mất vài
+    # giây và báo SKIPPED, đủ để branch protection thoả mãn. Khi bật lại
+    # lint/test, lọc theo file thay đổi ở cấp job thay vì ở đây.
+
+concurrency:
+  group: frontend-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    # Temporarily disabled while the GitHub account billing limit is being resolved.
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+  test:
+    name: Test
+    # Temporarily disabled while the GitHub account billing limit is being resolved.
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npx vitest run

@@ -1,0 +1,162 @@
+syntax = "proto3";
+
+package shared.orders;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// ==================== Enums ====================
+
+// Order status enumeration
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_PENDING     = 1;
+  ORDER_STATUS_CONFIRMED   = 2;
+  ORDER_STATUS_PROCESSING  = 3;
+  ORDER_STATUS_SHIPPED     = 4;
+  ORDER_STATUS_DELIVERED   = 5;
+  ORDER_STATUS_CANCELLED   = 6;
+  ORDER_STATUS_REFUNDED    = 7;
+}
+
+// Payment status enumeration
+enum PaymentStatus {
+  PAYMENT_STATUS_UNSPECIFIED = 0;
+  PAYMENT_STATUS_PENDING     = 1;
+  PAYMENT_STATUS_PAID        = 2;
+  PAYMENT_STATUS_FAILED      = 3;
+  PAYMENT_STATUS_REFUNDED    = 4;
+}
+
+// Payment method enumeration
+enum PaymentMethod {
+  PAYMENT_METHOD_UNSPECIFIED      = 0;
+  PAYMENT_METHOD_COD              = 1;
+  PAYMENT_METHOD_BANK_TRANSFER    = 2;
+  PAYMENT_METHOD_CARD             = 3;
+  PAYMENT_METHOD_EWALLET          = 4;
+  PAYMENT_METHOD_ONEPAY_INTERCARD = 5; // OnePay International cards (Visa, MC, JCB, AMEX, CUP)
+  PAYMENT_METHOD_ONEPAY_DOMESTIC  = 6; // OnePay Domestic ATM cards (Vietnamese banks)
+  PAYMENT_METHOD_INFOCMS_VIETQR   = 7; // InfoCMS VietQR payment
+}
+
+// Nhanh.vn sync status enumeration
+enum NhanhSyncStatus {
+  NHANH_SYNC_STATUS_UNSPECIFIED = 0;
+  NHANH_SYNC_STATUS_PENDING     = 1;
+  NHANH_SYNC_STATUS_SYNCED      = 2;
+  NHANH_SYNC_STATUS_FAILED      = 3;
+}
+
+// CDP sync status enumeration
+enum CdpSyncStatus {
+  CDP_SYNC_STATUS_UNSPECIFIED = 0;
+  CDP_SYNC_STATUS_PENDING     = 1;
+  CDP_SYNC_STATUS_SYNCED      = 2;
+  CDP_SYNC_STATUS_FAILED      = 3;
+  CDP_SYNC_STATUS_SKIPPED     = 4;
+}
+
+// ==================== Order Messages ====================
+
+// Order customer info
+message OrderCustomer {
+  string          name  = 1;
+  string          phone = 2;
+  optional string email = 3;
+}
+
+// Order shipping address
+message OrderAddress {
+  string          street   = 1;
+  optional string ward     = 2;
+  optional string district = 3;
+  string          city     = 4;
+  optional string country  = 5;
+}
+
+// Nhanh.vn sync info
+message OrderNhanhSyncInfo {
+  optional int64                     order_id     = 1;
+  optional string                    tracking_url = 2;
+  NhanhSyncStatus                    sync_status  = 3;
+  optional google.protobuf.Timestamp synced_at    = 4;
+  optional string                    sync_error   = 5;
+}
+
+// CDP sync info
+message OrderCdpSyncInfo {
+  optional string                    customer_id = 1;
+  CdpSyncStatus                      sync_status = 2;
+  optional google.protobuf.Timestamp synced_at   = 3;
+  optional string                    sync_error  = 4;
+}
+
+// Order item discount detail
+message OrderItemDiscountDetail {
+  shared.common.DiscountDetailType type                     = 1;
+  string                           reference_id             = 2;
+  string                           reference_name           = 3;
+  shared.common.DiscountType       discount_type            = 4;
+  double                           discount_value           = 5;
+  double                           discount_amount_per_unit = 6;
+  double                           discount_amount          = 7;
+}
+
+// Order item
+message OrderItem {
+  string                           product_id        = 1;
+  optional string                  variant_id        = 2;
+  string                           code              = 3;
+  string                           name              = 4;
+  optional string                  image             = 5;
+  double                           price             = 6;
+  int32                            quantity          = 7;
+  double                           subtotal          = 8;
+  double                           discount          = 9;
+  optional string                  combo_instance_id = 10;
+  optional string                  combo_id          = 11;
+  optional string                  combo_name        = 12;
+  optional string                  flash_sale_id     = 13;
+  optional string                  flash_sale_name   = 14;
+  double                           original_price    = 15;
+  repeated OrderItemDiscountDetail discount_details  = 16;
+}
+
+// Order discount detail
+message OrderDiscountDetail {
+  shared.common.DiscountDetailType type            = 1;
+  string                           reference_id    = 2;
+  string                           reference_name  = 3;
+  optional string                  instance_id     = 4;
+  shared.common.DiscountType       discount_type   = 5;
+  double                           discount_value  = 6;
+  double                           discount_amount = 7;
+}
+
+// Order
+message Order {
+  string                             id                  = 1;
+  string                             order_number        = 2;
+  optional string                    user_id             = 3;
+  string                             session_id          = 4;
+  OrderCustomer                      customer            = 5;
+  OrderAddress                       shipping_address    = 6;
+  repeated OrderItem                 items               = 7;
+  double                             subtotal            = 8;
+  double                             shipping_fee        = 9;
+  double                             discount            = 10;
+  repeated OrderDiscountDetail       discount_details    = 11;
+  double                             total_discount      = 12;
+  double                             total               = 13;
+  OrderStatus                        status              = 14;
+  PaymentStatus                      payment_status      = 15;
+  PaymentMethod                      payment_method      = 16;
+  optional string                    note                = 17;
+  optional google.protobuf.Timestamp cancelled_at        = 18;
+  optional string                    cancellation_reason = 19;
+  google.protobuf.Timestamp          created_at          = 20;
+  google.protobuf.Timestamp          updated_at          = 21;
+  optional OrderNhanhSyncInfo        nhanh               = 22;
+  optional OrderCdpSyncInfo          cdp                 = 23;
+}

@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package cms.affiliate_analytics;
+
+import "shared/affiliate-order-commissions/affiliate-order-commission.proto";
+
+// ==================== Order List ====================
+
+// Query affiliate orders request
+message QueryAffiliateOrdersRequest {
+  string          affiliate_id = 1;
+  optional int32  page         = 2;
+  optional int32  limit        = 3;
+  optional string date_from    = 4; // ISO date string
+  optional string date_to      = 5; // ISO date string
+}
+
+// Affiliate order list item (subset of full commission record)
+message AffiliateOrderListItem {
+  string                                                              id               = 1;
+  string                                                              order_id         = 2;
+  string                                                              order_number     = 3;
+  string                                                              order_status     = 4;
+  shared.affiliate_order_commissions.AffiliateOrderCommissionCustomer customer         = 5;
+  double                                                              order_total      = 6;
+  double                                                              total_discount   = 7;
+  double                                                              payment_amount   = 8;
+  double                                                              total_commission = 9;
+  string                                                              created_at       = 10;
+}
+
+// Query affiliate orders response (paginated)
+message QueryAffiliateOrdersResponse {
+  repeated AffiliateOrderListItem data          = 1;
+  bool                            has_next_page = 2;
+  int32                           total         = 3;
+  int32                           page          = 4;
+  int32                           limit         = 5;
+  int32                           total_pages   = 6;
+}
+
+// ==================== Performance Overview ====================
+
+// Query affiliate analytics request (date range filter)
+message QueryAffiliateAnalyticsRequest {
+  string          affiliate_id = 1;
+  optional string date_from    = 2; // ISO date string
+  optional string date_to      = 3; // ISO date string
+}
+
+// Affiliate performance overview response
+message AffiliateOverviewResponse {
+  int32  total_clicks         = 1;
+  int32  successful_orders    = 2;
+  int32  conversion_rate      = 3; // Percentage (0-100)
+  double revenue_generated    = 4;
+  double estimated_commission = 5;
+}
+
+// ==================== Per-Product Analytics ====================
+
+// Query affiliate product analytics request
+message QueryAffiliateProductAnalyticsRequest {
+  string          affiliate_id  = 1;
+  optional int32  page          = 2;
+  optional int32  limit         = 3;
+  optional string date_from     = 4; // ISO date string
+  optional string date_to       = 5; // ISO date string
+  optional string search        = 6; // Search by product name or code
+  optional string category_name = 7; // Filter by category name
+}
+
+// Product analytics category info
+message ProductAnalyticsCategory {
+  string id   = 1;
+  string name = 2;
+}
+
+// Per-product analytics item
+message AffiliateProductAnalyticsItem {
+  string                            product_id           = 1;
+  string                            product_code         = 2;
+  string                            product_name         = 3;
+  optional ProductAnalyticsCategory category             = 4;
+  double                            commission_rate      = 5;
+  int32                             clicks               = 6;
+  int32                             successful_orders    = 7;
+  int32                             conversion_rate      = 8; // Percentage (0-100)
+  double                            revenue_generated    = 9;
+  double                            estimated_commission = 10;
+}
+
+// Query affiliate product analytics response (paginated)
+message QueryAffiliateProductAnalyticsResponse {
+  repeated AffiliateProductAnalyticsItem data          = 1;
+  bool                                   has_next_page = 2;
+  int32                                  total         = 3;
+  int32                                  page          = 4;
+  int32                                  limit         = 5;
+  int32                                  total_pages   = 6;
+}
+
+// Affiliate analytics service for CMS
+service AffiliateAnalyticsService {
+  // Get paginated order list for an affiliate
+  rpc QueryAffiliateOrders(QueryAffiliateOrdersRequest) returns (QueryAffiliateOrdersResponse);
+
+  // Get performance overview for an affiliate (clicks, orders, conversion, revenue, commission)
+  rpc GetAffiliateOverview(QueryAffiliateAnalyticsRequest) returns (AffiliateOverviewResponse);
+
+  // Get per-product analytics for an affiliate
+  rpc GetAffiliateProductAnalytics(QueryAffiliateProductAnalyticsRequest) returns (QueryAffiliateProductAnalyticsResponse);
+}

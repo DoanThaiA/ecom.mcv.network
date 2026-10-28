@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package shared.shipping;
+
+import "google/protobuf/timestamp.proto";
+import "shared/common/enums.proto";
+
+// ==================== Freeship Config ====================
+
+// Configuration for freeship promotion type
+message FreeshippingConfig {
+  double minimum_order_value = 1; // Minimum order subtotal for free shipping
+}
+
+// ==================== Shipping Discount Config ====================
+
+// A single tier in a shipping discount promotion
+message ShippingDiscountTier {
+  double                     minimum_order_value = 1;
+  shared.common.DiscountType discount_type       = 2; // FIXED (VND) or PERCENTAGE (%)
+  double                     discount_value      = 3;
+}
+
+// Configuration for shipping discount promotion type
+message ShippingDiscountConfig {
+  repeated ShippingDiscountTier tiers = 1; // Sorted by minimum_order_value ascending
+}
+
+// ==================== Shipping Promotion Domain Types ====================
+
+// Shipping promotion domain entity
+message ShippingPromotion {
+  string                              id         = 1;
+  shared.common.ShippingPromotionType type       = 2;
+  string                              name       = 3;
+  google.protobuf.Timestamp           start_time = 4;
+  google.protobuf.Timestamp           end_time   = 5;
+  bool                                is_enabled = 6;
+
+  // Type-specific configuration (oneof for type safety)
+  oneof config {
+    FreeshippingConfig     freeshipping_config      = 10;
+    ShippingDiscountConfig shipping_discount_config = 11;
+  }
+
+  google.protobuf.Timestamp          created_at = 20;
+  google.protobuf.Timestamp          updated_at = 21;
+  optional google.protobuf.Timestamp deleted_at = 22;
+}
+
+// Shipping promotion list item (for list view)
+message ShippingPromotionListItem {
+  string                                id         = 1;
+  shared.common.ShippingPromotionType   type       = 2;
+  string                                name       = 3;
+  google.protobuf.Timestamp             start_time = 4;
+  google.protobuf.Timestamp             end_time   = 5;
+  bool                                  is_enabled = 6;
+  shared.common.ShippingPromotionStatus status     = 7; // Computed from start_time, end_time, is_enabled
+  int32                                 tier_count = 8; // 1 for freeship, number of tiers for shipping_discount
+  google.protobuf.Timestamp             created_at = 9;
+  google.protobuf.Timestamp             updated_at = 10;
+}

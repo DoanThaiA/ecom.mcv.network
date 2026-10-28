@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package common;
+
+message PaginationRequest {
+  int32 limit = 1;
+  int32 page = 2;
+}
+
+message PaginationResponse {
+  int32 current_page = 1;
+  int32 total_item = 2;
+  int32 total_page = 3;
+  int32 total_count = 4;
+}
+
+enum ThirdPartyName {
+  MMENU_POS = 0;
+}
+
+enum PaymentMethod {
+  CASH = 0;
+  BANK_TRANSFER = 1;
+  CARD_SWIPE = 2;
+  OTHER = 3;
+  DEBT = 4;
+}
+
+enum SortOrder {
+  asc = 0;
+  desc = 1;
+}
+
+message FileResponse {
+  bytes file_content = 1;
+  string file_name = 2;
+  string file_type = 3;
+}
+
+enum TimeChoice {
+  ALL_TIME = 0;
+  TIME_FRAME = 1;
+  BIRTH_DAY = 2;
+}
+
+enum UnitType {
+  // theo %
+  PERCENTAGE = 0;
+  // theo so tien
+  ABSOLUTE_AMOUNT = 1;
+}
+
+message PaymentDetail {
+  string paymentMethod = 1;
+  double paymentAmount = 2;
+}

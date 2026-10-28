@@ -1,0 +1,258 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package customerTransaction;
+
+message ThirdPartyTransactionInfo {
+  common.ThirdPartyName name = 1;
+  string transaction_id = 2; // third party transaction id
+  string merchant_id = 3;  // third party merchant id
+  string merchant_name = 4;
+}
+
+enum TransactionType {
+  ORDER = 0;
+  DEBT = 1;
+  DEBT_PAYMENT = 2;
+  POINT_INCREMENT = 3;
+  POINT_DEDUCTION = 4;
+  PAYMENT_AMOUNT_DEDUCTION = 5;
+  ORDER_CANCELLATION = 6;
+  DEBT_CANCELLATION = 7;
+}
+
+enum PointTransactionSubtype {
+  POINT_EARN = 0;
+  POINT_EXCHANGE = 1;
+  POINT_RECHARGE = 2;
+  VOUCHER_EXCHANGE = 3;
+  ORDER_PAYMENT = 4;
+  ORDER_CANCEL = 5;
+  POINT_RESET = 6;
+}
+
+enum OrderTransactionSource {
+  MMENU_POS = 0;
+  KIOSK = 1;
+  MMENU_FOOD = 2;
+  TABLET = 3;
+  QR_ORDER = 4;
+  ZALO_MINI_APP = 5;
+}
+
+enum AdditionalFeeType {
+  fee_type_unknown = 0;
+  absoluteAmount = 1;
+  percentage = 2;
+}
+
+// next: 18
+message OrderTransactionItem {
+  string name = 1;
+  double quantity = 2;
+  double price = 3;
+  double total_price = 4;
+  string topping_display_text = 5;
+  string attached_dish_display_text = 6;
+  double total_tax_included_price = 7;
+  string item_code = 8;
+}
+
+message CustomerOrderTransactionDetail {
+  string approved_by_employee_name = 1;
+  double number_of_customers = 2;
+  repeated OrderTransactionItem order_transaction_items = 3;
+  string note = 4;
+  string merchant_address_text = 5;
+  double pretax_payment_amount = 6;
+  double payment_amount = 7;
+  double customer_paid_amount = 8;
+  double return_amount = 9;
+  common.PaymentMethod payment_method = 10;
+
+  message CustomerDebtPaymentTransaction {
+    int64 created_at_epoch = 1;
+    double payment_amount = 2;
+    common.PaymentMethod payment_method = 3;
+  }
+  repeated CustomerDebtPaymentTransaction customer_debt_payment_transactions = 11;
+
+  message AppliedPromotion {
+    string promotion_name = 1;
+    double discount_amount = 2;
+    string discount_reason = 3;
+    int32 apply_time = 4;
+  }
+  repeated AppliedPromotion applied_promotions = 12;
+  message TaxPaymentAmountDetail {
+    double tax_rate = 1;
+    double tax_payment_amount = 2;
+  }
+  repeated TaxPaymentAmountDetail tax_payment_amount_details = 13;
+
+  message AdditionalFeeDetail {
+    double additional_fee_amount = 1;
+    string additional_fee_reason = 2;
+    double additional_fee_value = 3;
+    AdditionalFeeType additional_fee_type = 4;
+  }
+  AdditionalFeeDetail additional_fee_detail = 14;
+
+  double point_used = 15;
+  double point_earned = 16;
+  double rounding_amount = 17;
+
+  message AdditionalFeeV2Item {
+    string name = 1;
+    AdditionalFeeType additional_fee_type = 2;
+    double additional_fee_value = 3;
+    double pretax_amount = 4;
+    double aftertax_amount = 5;
+  }
+
+  repeated AdditionalFeeV2Item additional_fee_v2_items = 18;
+}
+
+message CustomerOrderTransaction {
+  string bill_no = 1;
+  double discount_amount = 2;
+  double voucher_discount_amount = 3;
+  double payment_amount = 4;
+  OrderTransactionSource order_source = 5;
+  string pay_status = 6;
+  CustomerOrderTransactionDetail customer_order_transaction_detail = 7;
+  double points_earned = 8;
+  repeated string voucher_codes = 9; // cdp voucher applied on order
+  string payment_method = 10;
+  double primary_payment_amount = 11;
+  string secondary_payment_method = 12;
+  double secondary_payment_amount = 13;
+  double order_item_quantity = 14;
+  message OrderItems {
+    string sku_code = 1;
+    string item_name = 2;
+    double item_quantity = 3;
+    string item_code = 4;
+    double item_price = 5;
+  }
+  repeated OrderItems order_items = 15;
+  double pretax_payment_amount = 16; // pam
+  repeated string gift_card_codes = 17; // cdp gift card applied on order
+  double cdp_promotion_discount_amount = 18;
+  message CdpPromotion {
+    string promotion_code = 1;
+    double discount_amount = 2;
+  }
+  repeated CdpPromotion cdp_promotions = 19;
+  repeated common.PaymentDetail payment_detail_by_method = 20;
+}
+
+message CustomerDebtTransaction {
+  string id = 1; // deprecated
+  string bill_no = 2;
+  double discount_amount = 3;
+  double voucher_discount_amount = 4;
+  double payment_amount = 5;
+  string merchant_name = 6;
+  double amount_owed = 7;
+  string pay_status = 8;
+  message CustomerDebtPaymentTransaction {
+    string transaction_id = 1;
+    double debt_payment_amount = 2;
+    common.PaymentMethod payment_method = 3;
+  }
+  repeated CustomerDebtPaymentTransaction customer_debt_payment_transactions = 9;
+  string customer_order_transaction_id = 10;
+}
+
+message CustomerDebtPaymentTransaction {
+  string id = 1; // deprecated
+  string customer_id = 2; // deprecated
+  string customer_name = 3; // deprecated
+  double payment_amount = 4;
+  common.PaymentMethod payment_method = 5;
+  double customer_paid_amount = 6;
+  double return_amount = 7;
+  message CustomerDebtTransaction {
+    string transaction_id = 1;
+    double debt_payment_amount = 2;
+    string bill_no = 3;
+  }
+  repeated CustomerDebtTransaction customer_debt_transactions = 8;
+  string merchant_name = 9;
+}
+
+message CustomerPointTransaction {
+  double payment_amount = 1;
+  common.PaymentMethod payment_method = 2;
+  double point_amount = 3;
+  string note = 4;
+  string receipt_no = 5;
+  string employee_user_id = 6;
+  string employee_name = 7;
+  PointTransactionSubtype transaction_subtype = 8;
+  string original_rank_id = 9;
+  string updated_rank_id = 10;
+  string voucher_id = 11;
+  string voucher_code = 12;
+  string bill_no = 13;
+}
+
+message CustomerPaymentAmountDeductionTransaction {
+  double payment_amount = 1;
+  string original_rank_id = 2;
+  string updated_rank_id = 3;
+}
+
+message CustomerOrderCancellationTransaction {
+  string bill_no = 1;
+  double payment_amount = 2;
+  string original_order_transaction_id = 3;
+  string cancellation_reason = 4;
+  bool is_cancel_paid_status = 5;
+}
+
+message CustomerDebtCancellationTransaction {
+  string bill_no = 1;
+  double amount_cancelled = 2;
+  string original_debt_transaction_id = 3;
+  string cancellation_reason = 4;
+  string customer_order_transaction_id = 5;
+}
+
+// nextId: 17
+message CustomerTransaction {
+  string id = 1;
+  string company_code = 2;
+  string brand_code = 3;
+  string merchant_code = 4;
+  string customer_id = 5;
+  string created_at_text = 6;
+  TransactionType transaction_type = 7;
+  ThirdPartyTransactionInfo third_party_transaction_info = 8;
+  oneof customerTransactionPayload {
+    CustomerOrderTransaction customer_order_transaction = 9;
+    CustomerDebtTransaction customer_debt_transaction = 10;
+    CustomerDebtPaymentTransaction customer_debt_payment_transaction = 11;
+    CustomerPointTransaction customer_point_transaction = 12;
+    CustomerPaymentAmountDeductionTransaction customer_payment_amount_deduction_transaction = 13;
+    CustomerOrderCancellationTransaction customer_order_cancellation_transaction = 15;
+    CustomerDebtCancellationTransaction customer_debt_cancellation_transaction = 16;
+  }
+  string customer_rank_id = 14;
+}
+
+message CreateOrUpdateCustomerTransactionRequest {
+  CustomerTransaction customer_transaction = 1;
+}
+
+message CreateOrUpdateCustomerTransactionResponse {
+  int32 code = 1;
+  string message = 2;
+  CustomerTransaction customer_transaction = 3;
+}
+
+service CustomerTransactionRoutes {
+  rpc createOrUpdateCustomerTransaction(CreateOrUpdateCustomerTransactionRequest) returns (CreateOrUpdateCustomerTransactionResponse) {}
+}

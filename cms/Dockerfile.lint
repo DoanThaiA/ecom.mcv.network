@@ -1,0 +1,11 @@
+FROM node:18
+
+WORKDIR /cdp-client
+
+COPY ./client /cdp-client
+
+RUN rm -rf node_modules
+RUN npm ci
+
+RUN npm run lint
+

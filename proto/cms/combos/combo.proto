@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package cms.combos;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "shared/combos/combo.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// Create combo item DTO
+message CreateComboItem {
+  string product_id = 1;
+  int32  quantity   = 2; // min: 1, max: 10
+}
+
+// Create combo DTO
+message CreateComboRequest {
+  string                             name              = 1;
+  optional string                    description       = 2;
+  optional string                    image             = 3;
+  repeated CreateComboItem           items             = 4; // min: 1, max: 5
+  shared.common.DiscountType         discount_type     = 5;
+  double                             discount_value    = 6;
+  optional shared.common.ComboStatus status            = 7;
+  optional google.protobuf.Timestamp valid_from        = 8;
+  optional google.protobuf.Timestamp valid_to          = 9;
+  optional shared.common.Localization name_localization = 10;
+}
+
+// Update combo item DTO
+message UpdateComboItem {
+  string product_id = 1;
+  int32  quantity   = 2;
+}
+
+// Update combo DTO
+message UpdateComboRequest {
+  string                              combo_id          = 1;
+  optional string                     name              = 2;
+  optional string                     description       = 3;
+  optional string                     image             = 4;
+  repeated UpdateComboItem            items             = 5;
+  optional shared.common.DiscountType discount_type     = 6;
+  optional double                     discount_value    = 7;
+  optional shared.common.ComboStatus  status            = 8;
+  optional google.protobuf.Timestamp  valid_from        = 9;
+  optional google.protobuf.Timestamp  valid_to          = 10;
+  optional shared.common.Localization name_localization = 11;
+}
+
+// Filter combo DTO
+message FilterCombo {
+  optional string                    search     = 1;
+  optional shared.common.ComboStatus status     = 2;
+  optional bool                      is_valid   = 3;      // Only show valid combos (within date range)
+  optional string                    product_id = 4;   // Combos containing this product
+}
+
+// Sort combo DTO
+message SortCombo {
+  string order_by = 1; // 'createdAt' | 'name' | 'originalPrice'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query combos request
+message QueryCombosRequest {
+  optional int32       page    = 1;
+  optional int32       limit   = 2;
+  optional FilterCombo filters = 3;
+  repeated SortCombo   sort    = 4;
+}
+
+// Query combos response (paginated)
+message QueryCombosResponse {
+  repeated shared.combos.ComboResponse data          = 1;
+  bool                                 has_next_page = 2;
+  int32                                total         = 3;
+  int32                                page          = 4;
+  int32                                limit         = 5;
+  int32                                total_pages   = 6;
+}
+
+// Get combo by ID request
+message GetComboRequest {
+  string combo_id = 1;
+}
+
+// Delete combo request
+message DeleteComboRequest {
+  string combo_id = 1;
+}
+
+// Combo service for CMS combo management
+service ComboService {
+  // Create a new combo
+  rpc CreateCombo(CreateComboRequest) returns (shared.combos.ComboResponse);
+
+  // Get combo by ID
+  rpc GetCombo(GetComboRequest) returns (shared.combos.ComboResponse);
+
+  // Query combos with pagination
+  rpc QueryCombos(QueryCombosRequest) returns (QueryCombosResponse);
+
+  // Update combo
+  rpc UpdateCombo(UpdateComboRequest) returns (shared.combos.ComboResponse);
+
+  // Delete combo (soft delete)
+  rpc DeleteCombo(DeleteComboRequest) returns (google.protobuf.Empty);
+}

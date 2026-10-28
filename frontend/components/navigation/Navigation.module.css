@@ -1,0 +1,29 @@
+.navButton {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.navButton::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: transform 0.2s ease-in-out;
+}
+
+.navButton:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navButton:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.navButton:active {
+  transform: scale(0.95);
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}

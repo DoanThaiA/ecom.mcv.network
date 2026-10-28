@@ -1,0 +1,133 @@
+syntax = "proto3";
+
+package shared.topics;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "google/protobuf/timestamp.proto";
+
+// Topic banner media - responsive URLs for different devices
+message TopicBannerMedia {
+  optional string mobile  = 1; // Media URL for mobile devices
+  optional string tablet  = 2; // Media URL for tablet devices
+  optional string desktop = 3; // Media URL for desktop devices
+}
+
+// Topic banner response - a banner item within a topic (with details)
+message TopicBannerResponse {
+  string                        id         = 1;
+  shared.common.BannerMediaType media_type = 2; // IMAGE or VIDEO
+  TopicBannerMedia              media      = 3; // Responsive media URLs
+  optional string               link       = 4; // Optional click URL
+  int32                         order      = 5; // Display order within topic
+}
+
+// Topic product - a product reference within a topic
+message TopicProduct {
+  string product_id = 1;
+  int32  order      = 2;
+}
+
+// Topic category - a category reference within a topic
+message TopicCategory {
+  string category_id = 1;
+  int32  order       = 2;
+}
+
+// Topic product with details (for response)
+message TopicProductResponse {
+  string          product_id    = 1;
+  int32           order         = 2;
+  optional string product_name  = 3;
+  optional string product_image = 4;
+  optional double product_price = 5;
+  optional string product_code  = 6;
+}
+
+// Topic category with details (for response)
+message TopicCategoryResponse {
+  string          category_id    = 1;
+  int32           order          = 2;
+  optional string category_name  = 3;
+  optional string category_image = 4;
+  optional string category_slug  = 5;
+}
+
+// Topic domain entity
+message Topic {
+  string                              id          = 1;
+  string                              business_id = 2;
+  string                              name        = 3;
+  string                              slug        = 4;
+  optional string                     description = 5;
+  optional string                     image       = 6;
+  int32                               order       = 7;
+  shared.common.TopicStatus           status      = 8;
+  repeated TopicProductResponse       products    = 9;
+  google.protobuf.Timestamp           created_at  = 10;
+  google.protobuf.Timestamp           updated_at  = 11;
+  optional google.protobuf.Timestamp  deleted_at  = 12;
+  optional shared.common.Localization localization = 13;
+  shared.common.TopicType             type         = 14;
+  repeated TopicCategoryResponse      categories   = 15;
+  int32                               product_count = 16;
+  int32                               category_count = 17;
+  repeated TopicBannerResponse        banners       = 18;
+  int32                               banner_count  = 19;
+}
+
+// Shop topic item (for navigation/listing)
+message ShopTopicItem {
+  string                              id            = 1;
+  string                              name          = 2;
+  string                              slug          = 3;
+  optional string                     image         = 4;
+  int32                               product_count  = 5;
+  optional shared.common.Localization localization   = 6;
+  shared.common.TopicType             type           = 7;
+  int32                               category_count = 8;
+  int32                               banner_count   = 9;
+}
+
+// Shop topic product (for display)
+message ShopTopicProduct {
+  string          id    = 1;
+  string          name  = 2;
+  optional string image = 3;
+  double          price = 4;
+  optional string code  = 5;
+}
+
+// Shop topic category (for display)
+message ShopTopicCategory {
+  string          id            = 1;
+  string          name          = 2;
+  optional string image         = 3;
+  optional string slug          = 4;
+  int32           product_count = 5;
+}
+
+// Shop topic banner (for display)
+message ShopTopicBanner {
+  string                        id         = 1;
+  shared.common.BannerMediaType media_type = 2; // IMAGE or VIDEO
+  TopicBannerMedia              media      = 3;
+  optional string               link       = 4;
+  int32                         order      = 5;
+}
+
+// Shop topic full response (for landing page)
+message ShopTopicResponse {
+  string                              id              = 1;
+  string                              name            = 2;
+  string                              slug            = 3;
+  shared.common.TopicType             type            = 4;
+  optional string                     description     = 5;
+  optional string                     image           = 6;
+  repeated ShopTopicProduct           products        = 7;
+  repeated ShopTopicCategory          categories      = 8;
+  int32                               total_products  = 9;
+  int32                               total_categories = 10;
+  optional shared.common.Localization localization    = 11;
+  repeated ShopTopicBanner            banners         = 12;
+}

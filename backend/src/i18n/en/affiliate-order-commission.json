@@ -1,0 +1,5 @@
+{
+  "notFound": "Affiliate order commission not found",
+  "orderAlreadyHasCommission": "This order already has a commission record",
+  "affiliateNotActive": "Affiliate is not active"
+}

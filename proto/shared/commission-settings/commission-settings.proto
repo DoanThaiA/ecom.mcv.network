@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package shared.commission_settings;
+
+import "google/protobuf/timestamp.proto";
+
+// Commission settings singleton entity
+message CommissionSettings {
+  string                             id                       = 1;
+  double                             default_commission_rate  = 2;
+  bool                               auto_update_products     = 3;
+  google.protobuf.Timestamp          updated_at               = 4;
+  optional google.protobuf.Timestamp last_product_sync_cursor = 5;
+}
+
+// Commission settings response (with derived fields)
+message CommissionSettingsResponse {
+  string                             id                       = 1;
+  double                             default_commission_rate  = 2;
+  bool                               auto_update_products     = 3;
+  bool                               is_recalculating         = 4; // Derived from active recalculation job
+  google.protobuf.Timestamp          updated_at               = 5;
+  optional google.protobuf.Timestamp last_product_sync_cursor = 6;
+}

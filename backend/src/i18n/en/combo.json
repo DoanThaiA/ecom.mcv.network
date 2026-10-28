@@ -1,0 +1,13 @@
+{
+  "notFound": "Combo not found",
+  "productsNotFound": "One or more products not found",
+  "percentageDiscountMax": "Percentage discount cannot exceed 100%",
+  "fixedDiscountExceedsPrice": "Fixed discount cannot exceed original price",
+  "invalidDateRange": "Invalid date range",
+  "comboNotActive": "Combo is not active",
+  "comboExpired": "Combo has expired",
+  "comboNotYetValid": "Combo is not yet valid",
+  "variantRequired": "All combo products require variant selection",
+  "variantNotFound": "Selected variant not found",
+  "productRequired": "All required combo products must be included"
+}

@@ -1,0 +1,90 @@
+name: worker-build-gke-staging
+
+on:
+  push:
+    branches:
+      - staging
+    paths:
+      - backend/worker/version.json
+
+env:
+  GCP_DOCKER_REPO: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker/cchat-worker
+  GCP_PROJECT: mmenu-api-prod
+  GKE_CLUSTER: k8s-cluster
+
+jobs:
+  build-image:
+    if: github.ref_name == 'staging'
+    runs-on: 'arc-runner-set'
+    services:
+      docker:
+        image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_dind:28
+        ports:
+          - 2375:2375
+        options: >-
+          --privileged
+          --env DOCKER_TLS_CERTDIR=
+    container:
+      image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_aws:28
+      env:
+        DOCKER_HOST: unix:///var/run/docker.sock
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            backend
+      - name: before script
+        run: |
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d | docker login -u _json_key --password-stdin asia-southeast1-docker.pkg.dev
+      - name: build
+        run: |
+          cd backend
+          CI_COMMIT_BRANCH=${{ github.ref_name }}
+          IMAGE_TAG=$CI_COMMIT_BRANCH-$(cat worker/version.json | sed "s/[^0-9\.]//g" | sed '/^$/d')
+
+          echo "Build image ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG"
+          docker build -t ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG -t ${{ env.GCP_DOCKER_REPO }}:$CI_COMMIT_BRANCH -f worker.Dockerfile .
+          docker push ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG
+          docker push ${{ env.GCP_DOCKER_REPO }}:$CI_COMMIT_BRANCH
+
+  deploy:
+    needs: build-image
+    if: always() && needs.build-image.result == 'success' && github.ref_name == 'staging'
+    runs-on: 'arc-runner-set'
+    services:
+      docker:
+        image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_dind:28
+        ports:
+          - 2375:2375
+        options: >-
+          --privileged
+          --env DOCKER_TLS_CERTDIR=
+    container:
+      image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_gcp:28
+      env:
+        DOCKER_HOST: unix:///var/run/docker.sock
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            backend
+      - name: before script
+        run: |
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d | docker login -u _json_key --password-stdin asia-southeast1-docker.pkg.dev
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d > sa.json && gcloud auth activate-service-account ${{ secrets.GKE_CICD_SA }} --key-file sa.json --project=${{ env.GCP_PROJECT }}
+          gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region asia-southeast1
+      - name: deploy
+        run: |
+          cd backend
+          CI_COMMIT_BRANCH=${{ github.ref_name }}
+          IMAGE_TAG=$CI_COMMIT_BRANCH-$(cat worker/version.json | sed "s/[^0-9\.]*//g" | sed '/^$/d')
+          IMAGE_URL=${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG
+
+          echo "Deploy image ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG"
+          echo "Deploy $IMAGE_URL to staging deployment"
+          kubectl set image deployment/cchat-worker-staging -n cchat cchat-worker=$IMAGE_URL
+      - name: mark staging deploy success
+        run: |
+          curl -X POST https://webhook.mmenu.io/mark-deploy \
+            -H "Content-Type: application/json" \
+            -d "{\"project\":\"cchat-worker-staging\",\"commitSha\":\"${GITHUB_SHA}\"}"

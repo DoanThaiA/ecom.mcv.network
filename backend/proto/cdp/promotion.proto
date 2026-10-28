@@ -1,0 +1,281 @@
+syntax = "proto3";
+
+import "common.proto";
+import "customerRank.proto";
+import "merchant.proto";
+
+package promotion;
+
+enum PromotionStatus {
+  UNKNOWN  = 0;
+  ONGOING  = 1; // đang diễn ra
+  ENDED    = 2; // đã kết thúc
+  CANCELED = 3; // đã huỷ
+  PAUSED   = 4; // tạm dừng
+}
+
+enum PromotionType {
+  DISCOUNT_BY_INVOICE = 0; // giảm giá theo hoá đơn
+  DISCOUNT_BY_PRODUCT = 1; // giảm giá theo sản phẩm
+}
+
+// áp dụng theo ngày trong tuần
+enum WeekDay {
+  MONDAY    = 0;
+  TUESDAY   = 1;
+  WEDNESDAY = 2;
+  THURSDAY  = 3;
+  FRIDAY    = 4;
+  SATURDAY  = 5;
+  SUNDAY    = 6;
+}
+
+// Duplicated from voucher.proto to break circular dependency
+message RequiredProduct {
+  string sku_code = 1;
+  string name     = 2;
+  bool   required = 3; // bat buoc can mua
+}
+
+// áp dụng theo khung giờ
+message AppliedTimeInterval {
+  string start_time = 1; // optional
+  string end_time   = 2; // optional
+}
+
+// đối tượng áp dụng
+// next: 2
+enum PromotionAppliedType {
+  ALL_CUSTOMER  = 0; // toàn bộ khách
+  CUSTOMER_RANK = 1; // hạng thành viên
+}
+
+// điều kiện áp dụng (checkbox)
+message PromotionApplyCondition {
+  double min_bill_amount                                    = 1; // Giá trị hoá đơn tối thiểu
+  int32  minimum_quantity_for_applied                       = 2; // Số lượng sản phẩm cần mua
+  bool   is_not_simultaneously_applied_with_other_promotion = 3; // Không áp dụng kèm khuyến mãi khác
+  bool   is_applied_once_for_each_account                   = 4; // mỗi khách chỉ được dùng 1 lần khuyến mãi
+  bool   is_only_apply_for_selected_orders                  = 5; // chỉ áp dụng với 1 số đơn được chọn
+  bool   is_only_apply_for_cdp_customers                    = 6; // chỉ áp dụng với khách hàng CDP
+  int32  max_number_of_applicable_products                  = 7; // số lượng sản phẩm tối đa được chọn
+}
+
+// sản phẩm được áp dụng khuyến mãi
+message ProductPromotion {
+  string product_id   = 1;
+  string product_name = 2;
+  string product_code = 3;
+}
+
+// danh mục được áp dụng khuyến mãi
+message ProductCategoryAppliedPromotion {
+  string product_category_id   = 1;
+  string product_category_name = 2;
+  string product_category_code = 3;
+}
+
+// Đối tượng chương trình khuyến mãi
+message Promotion {
+  string                     promotion_id                      = 1;
+  string                     brand_id                          = 2;
+  string                     promotion_code                    = 3;
+  string                     promotion_name                    = 4;
+  PromotionType              promotion_type                    = 5;
+  string                     started_date                      = 6; // YYYY-MM-DD
+  string                     end_date                          = 7; // YYYY-MM-DD
+  bool                       is_applied_for_specific_merchants = 8;
+  repeated merchant.Merchant merchants                         = 9;
+  PromotionStatus            status                            = 10;
+  string                     promotion_description             = 11;
+
+  bool                         is_applied_for_weekday       = 12; // áp dụng theo ngày trong tuần
+  repeated WeekDay             applied_weekdays             = 13;
+  bool                         is_applied_for_time_interval = 14; // áp dụng theo khung giờ
+  repeated AppliedTimeInterval applied_time_intervals       = 15;
+  repeated string              non_applicable_dates         = 16; // ngày không áp dụng (YYYY-MM-DD)
+
+  PromotionAppliedType                     promotion_applied_for               = 17; // đối tượng áp dụng
+  repeated customerRank.CustomerRank       apply_to_customer_rank              = 18; // hạng thành viên áp dụng
+  bool                                     discount_after_tax                  = 19; // giảm giá trước hay sau thuế
+  common.UnitType                          discount_type                       = 20; // giảm số tiền hoặc %
+  double                                   discount_value                      = 21;
+  repeated ProductPromotion                product_applied_promotions          = 22; // sản phẩm áp dụng khuyến mãi
+  repeated ProductCategoryAppliedPromotion product_category_applied_promotions = 23; // danh mục áp dụng khuyến mãi
+  PromotionApplyCondition                  promotion_apply_condition           = 24; // điều kiện áp dụng (checkbox)
+  // Sản phẩm cần mua, tổng số lượng >= minimum_product_quantity, và bắt buộc có sản phẩm mà required = true
+  repeated RequiredProduct required_products = 25;
+  int64                    updated_at_epoch  = 26;
+}
+
+message GetPromotionsRequest {
+  string           brand_id    = 1;
+  string           from_date   = 2;
+  string           to_date     = 3;
+  PromotionStatus  status      = 4;
+  string           search_text = 5;
+  string           merchant_id = 6;
+  int32            page        = 7;
+  int32            limit       = 8;
+  common.SortOrder sort_order  = 9;
+  string           sort_field  = 10;
+}
+
+message GetPromotionsResponse {
+  int32                     code       = 1;
+  string                    message    = 2;
+  repeated Promotion        promotions = 3;
+  common.PaginationResponse pagination = 4;
+}
+
+message CreateOrUpdatePromotionRequest {
+  Promotion promotion = 1;
+}
+
+message CreateOrUpdatePromotionResponse {
+  int32     code      = 1;
+  string    message   = 2;
+  Promotion promotion = 3;
+}
+
+message GetPromotionDetailRequest {
+  string promotion_id = 1;
+}
+
+message GetPromotionDetailResponse {
+  int32     code      = 1;
+  string    message   = 2;
+  Promotion promotion = 3;
+}
+
+message DeletePromotionRequest {
+  string brand_id     = 1;
+  string promotion_id = 2;
+}
+
+message DeletePromotionResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message ChangePromotionStatusRequest {
+  string          promotion_id = 1;
+  PromotionStatus status       = 2;
+}
+
+message ChangePromotionStatusResponse {
+  int32     code              = 1;
+  string    message           = 2;
+  Promotion updated_promotion = 3;
+}
+
+message GetPromotionsForSpecificMerchantRequest {
+  string brand_code    = 1;
+  string merchant_code = 2;
+}
+
+message GetPromotionsForSpecificMerchantResponse {
+  int32              code       = 1;
+  string             message    = 2;
+  repeated Promotion promotions = 3;
+}
+
+message GetPromotionsUsedByCustomerRequest {
+  string brand_code  = 1;
+  string customer_id = 2;
+}
+
+message GetPromotionsUsedByCustomerResponse {
+  int32  code    = 1;
+  string message = 2;
+  message PromotionUsed {
+    string promotion_id = 1;
+  }
+  repeated PromotionUsed promotions = 3;
+}
+
+message UsePromotionRequest {
+  string          customer_id                = 1;
+  repeated string promotion_ids              = 2;
+  string          third_party_transaction_id = 3;
+}
+
+message UsePromotionResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message RemovePromotionRequest {
+  string          customer_id                = 1;
+  repeated string promotion_ids              = 2;
+  string          third_party_transaction_id = 3;
+}
+
+message RemovePromotionResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message ProductAppliedPromotion {
+  string productId              = 1;
+  string productName            = 2;
+  string productCategoryId      = 3;
+  string productCategoryName    = 4;
+  string skuCode                = 5;
+  double discountRate           = 6;
+  double discountAmount         = 7;
+  double discountQuantity       = 8;
+  string dishOrderId            = 9;
+  double beforeTaxDiscountPrice = 10;
+  double afterTaxDiscountPrice  = 11;
+  double taxDiscountPrice       = 12;
+}
+
+message UpdatePromotionReportForTransactionRequest {
+  string brand_code    = 1;
+  string merchant_code = 2;
+  message CdpPromotion {
+    string                           promotion_code           = 1;
+    double                           discount_amount          = 2;
+    repeated ProductAppliedPromotion productAppliedPromotions = 3;
+  }
+  repeated CdpPromotion cdp_promotions       = 3;
+  string                transaction_start_at = 4; // date string
+  string                transaction_end_at   = 5; // date string
+  string                transaction_no       = 6;
+  double                payment_amount       = 7;
+  bool                  is_cancel            = 8;
+  string                customer_id          = 9;
+}
+
+message UpdatePromotionReportForTransactionResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message ExportPromotionReportExcelRequest {
+  string          promotion_id = 1;
+  string          from_date    = 2;
+  string          to_date      = 3;
+  optional string merchant_id  = 4;
+}
+
+message ExportPromotionReportExcelResponse {
+  int32               code      = 1;
+  string              message   = 2;
+  common.FileResponse file_data = 3;
+}
+
+service PromotionRoutes {
+  rpc getPromotions(GetPromotionsRequest) returns (GetPromotionsResponse);
+  rpc createOrUpdatePromotion(CreateOrUpdatePromotionRequest) returns (CreateOrUpdatePromotionResponse);
+  rpc getPromotionDetail(GetPromotionDetailRequest) returns (GetPromotionDetailResponse);
+  rpc deletePromotion(DeletePromotionRequest) returns (DeletePromotionResponse);
+  rpc changePromotionStatus(ChangePromotionStatusRequest) returns (ChangePromotionStatusResponse);
+  rpc getPromotionsForSpecificMerchant(GetPromotionsForSpecificMerchantRequest) returns (GetPromotionsForSpecificMerchantResponse);
+  rpc getPromotionsUsedByCustomer(GetPromotionsUsedByCustomerRequest) returns (GetPromotionsUsedByCustomerResponse);
+  rpc usePromotion(UsePromotionRequest) returns (UsePromotionResponse);
+  rpc removePromotion(RemovePromotionRequest) returns (RemovePromotionResponse);
+  rpc updatePromotionReport(UpdatePromotionReportForTransactionRequest) returns (UpdatePromotionReportForTransactionResponse);
+  rpc exportPromotionReportExcel(ExportPromotionReportExcelRequest) returns (ExportPromotionReportExcelResponse);
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["../src/*"]
+    },
+    "rootDirs": ["./src", "../src"]
+  },
+  "include": ["src/**/*", "../src/**/*"],
+  "exclude": ["node_modules", "dist", "../src/test"]
+}

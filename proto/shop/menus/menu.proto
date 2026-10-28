@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package shop.menus;
+
+import "google/protobuf/empty.proto";
+import "shared/common/localization.proto";
+
+// Shop menu item (flat list for frontend)
+message ShopMenuItem {
+  string          id          = 1;
+  string          name        = 2;
+  optional string parent_id   = 3;
+  string          type        = 4; // Menu type (category, topic, url)
+  optional string category_id = 5; // Category ID when type = CATEGORY
+  optional string topic_id    = 6; // Topic ID when type = TOPIC
+  string          url         = 7; // Resolved URL
+  int32           order       = 8;
+  optional shared.common.Localization localization = 9; // Localization
+}
+
+// Shop menu list response
+message ShopMenuListResponse {
+  repeated ShopMenuItem menus = 1;
+}
+
+// Shop menu service for public menu endpoints
+service ShopMenuService {
+  // Get all active menus for navigation
+  rpc GetActiveMenus(google.protobuf.Empty) returns (ShopMenuListResponse);
+}

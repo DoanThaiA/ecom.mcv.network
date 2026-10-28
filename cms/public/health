@@ -1,0 +1,5 @@
+{
+  "status": "healthy",
+  "service": "cchat-cms",
+  "timestamp": "{{TIMESTAMP}}"
+}

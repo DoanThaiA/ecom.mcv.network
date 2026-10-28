@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package shop.combos;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// A single variant attribute, e.g. { name: "Màu sắc", value: "Đỏ" }
+message ShopComboVariantAttribute {
+  string name  = 1;
+  string value = 2;
+}
+
+// Shop combo variant option (for variant selection)
+message ShopComboVariant {
+  string                             id         = 1;
+  string                             name       = 2;
+  double                             price      = 3;
+  optional string                    code       = 4; // SKU code, e.g. "AH023-Đỏ-M"
+  repeated ShopComboVariantAttribute attributes = 5; // Color/size options
+  optional int32                     available  = 6; // Sellable stock, 0 when out of stock
+  optional string                    image      = 7; // Variant photo, so the card follows the chosen colour
+}
+
+// Shop combo item response (with variant options)
+message ShopComboItem {
+  string                    product_id        = 1;
+  int32                     quantity          = 2;
+  optional string           product_name      = 3;
+  optional string           product_image     = 4;
+  optional double           product_price     = 5;
+  bool                      is_parent_product = 6; // Requires variant selection if true
+  repeated ShopComboVariant variants          = 7; // Available variants for selection
+  optional string           product_code      = 8; // Parent code, prefix of variant codes
+  optional int32            available         = 9; // Product stock, used when there is no variant to pick
+}
+
+// Shop combo response (public)
+message ShopCombo {
+  string                             id              = 1;
+  string                             name            = 2;
+  optional string                    description     = 3;
+  optional string                    image           = 4;
+  repeated ShopComboItem             items           = 5;
+  shared.common.DiscountType         discount_type   = 6;
+  double                             discount_value  = 7;
+  double                             original_price  = 8;
+  double                             final_price     = 9;
+  double                             discount_amount = 10;
+  optional google.protobuf.Timestamp valid_from      = 11;
+  optional google.protobuf.Timestamp valid_to        = 12;
+}
+
+// Get combos for product request
+message GetCombosForProductRequest {
+  string product_id = 1;
+}
+
+// Get combos for product response
+message GetCombosForProductResponse {
+  repeated ShopCombo combos = 1;
+  int32              total  = 2;
+}
+
+// Get shop combo by ID request
+message GetShopComboRequest {
+  string combo_id = 1;
+}
+
+// Shop combo service for public combo endpoints
+service ShopComboService {
+  // Get combos for a product
+  rpc GetCombosForProduct(GetCombosForProductRequest) returns (GetCombosForProductResponse);
+
+  // Get combo details by ID
+  rpc GetShopCombo(GetShopComboRequest) returns (ShopCombo);
+}

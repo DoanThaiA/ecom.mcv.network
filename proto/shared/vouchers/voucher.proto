@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package shared.vouchers;
+
+// Voucher applied to checkout or order
+message Voucher {
+  string          code                                 = 1;
+  string          name                                 = 2;
+  string          source                               = 3; // "CMS" or "CDP"
+  optional string id                                   = 4;
+  double          discount_amount                      = 5;
+  optional int32  discount_type                        = 6; // 0: Fixed, 1: Percent
+  optional double discount_value                       = 7;
+  optional double minimum_order_value                  = 8;
+  optional double max_discount_value                   = 9;
+  optional bool   not_applicable_with_other_promotions = 10;
+}

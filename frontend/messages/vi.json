@@ -1,0 +1,2027 @@
+{
+  "common": {
+    "language": "Tiếng Việt",
+    "feedback": {
+      "question": "Bài viết có hữu ích cho bạn không?",
+      "contactInfo": "Nếu quý khách có đóng góp ý kiến bổ sung cho CCHAT hoặc có thắc mắc mà chưa được giải đáp hãy liên hệ với chúng tôi qua email",
+      "orCall": "hoặc số điện thoại",
+      "thankYou": "CSKH để được giải đáp, trân trọng cảm ơn quý khách hàng!"
+    },
+    "confirmDelete": "Bạn có chắc chắn muốn xóa địa chỉ này?",
+    "deleteAddressTitle": "Xóa địa chỉ",
+    "buttons": {
+      "cancel": "Hủy",
+      "confirm": "Xác nhận",
+      "apply": "Áp dụng",
+      "save": "Lưu",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "continue": "Tiếp tục",
+      "submit": "Gửi",
+      "backToHome": "Quay lại Trang chủ",
+      "viewAll": "Xem tất cả",
+      "loadMore": "Xem thêm",
+      "close": "Đóng",
+      "update": "Cập nhật"
+    },
+    "form": {
+      "fullName": "Họ và tên",
+      "fullNamePlaceholder": "Nhập họ và tên",
+      "email": "Email",
+      "emailPlaceholder": "Nhập email",
+      "phone": "Số điện thoại",
+      "phonePlaceholder": "Nhập số điện thoại",
+      "password": "Mật khẩu",
+      "passwordPlaceholder": "Nhập mật khẩu",
+      "newPassword": "Mật khẩu mới",
+      "newPasswordPlaceholder": "Nhập mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu",
+      "confirmPasswordPlaceholder": "Nhập lại mật khẩu",
+      "address": "Địa chỉ",
+      "addressPlaceholder": "Nhập địa chỉ",
+      "street": "Tên đường, Toà nhà, Số nhà",
+      "streetPlaceholder": "Nhập tên đường, toà nhà, số nhà",
+      "city": "Tỉnh/Thành phố",
+      "cityPlaceholder": "Chọn Tỉnh/Thành phố",
+      "district": "Quận/Huyện",
+      "districtPlaceholder": "Chọn Quận/Huyện",
+      "ward": "Phường/Xã",
+      "wardPlaceholder": "Chọn Phường/Xã",
+      "setAsDefault": "Đặt làm mặc định"
+    },
+    "errors": {
+      "required": "Vui lòng nhập thông tin này",
+      "fullNameRequired": "Vui lòng nhập họ và tên",
+      "emailOrPhoneRequired": "Vui lòng nhập email hoặc số điện thoại",
+      "emailInvalid": "Email không hợp lệ",
+      "phoneInvalid": "Số điện thoại không hợp lệ",
+      "passwordRequired": "Vui lòng nhập mật khẩu",
+      "passwordInvalid": "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.",
+      "confirmPasswordRequired": "Vui lòng nhập lại mật khẩu",
+      "confirmPasswordMismatch": "Mật khẩu không khớp",
+      "saveFailed": "Không thể lưu thông tin. Vui lòng kiểm tra lại và thử lại.",
+      "loadFailed": "Không thể tải địa chỉ",
+      "saveAddressFailed": "Không thể lưu địa chỉ",
+      "deleteAddressFailed": "Không thể xóa địa chỉ",
+      "setDefaultFailed": "Không thể đặt làm mặc định"
+    },
+    "status": {
+      "loading": "Đang tải...",
+      "saving": "Đang lưu...",
+      "submitting": "Đang gửi...",
+      "processing": "Đang xử lý...",
+      "updating": "Đang cập nhật...",
+      "connected": "Đã kết nối",
+      "disconnected": "Mất kết nối",
+      "reconnecting": "Đang kết nối lại...",
+      "geocoding": "Đang tìm vị trí..."
+    },
+    "success": {
+      "saved": "Lưu thành công",
+      "deleted": "Xóa thành công",
+      "updated": "Cập nhật thành công"
+    },
+    "commerce": {
+      "addToCart": "Thêm vào giỏ",
+      "buyNow": "Mua ngay",
+      "flashSale": "Flash Sale",
+      "outOfStock": "Hết hàng",
+      "inStock": "Còn hàng"
+    },
+    "auth": {
+      "signIn": "Đăng nhập",
+      "signUp": "Đăng ký",
+      "logout": "Đăng xuất"
+    },
+    "order": {
+      "orderNumber": "Mã đơn hàng",
+      "orderDate": "Ngày đặt hàng",
+      "orderStatus": "Trạng thái đơn hàng",
+      "shippingAddress": "Địa chỉ giao hàng",
+      "paymentMethod": "Phương thức thanh toán",
+      "subtotal": "Tạm tính",
+      "shippingFee": "Phí vận chuyển",
+      "discount": "Giảm giá",
+      "total": "Tổng tiền"
+    },
+    "labels": {
+      "size": "Kích cỡ",
+      "color": "Màu sắc",
+      "quantity": "Số lượng",
+      "price": "Đơn giá",
+      "products": "sản phẩm",
+      "default": "Mặc định"
+    },
+    "categoryNotFound": "Danh mục không tồn tại"
+  },
+  "nav": {
+    "cart": "Giỏ hàng",
+    "profile": "Tài khoản",
+    "aboutCChat": "Về CChat",
+    "download": "Tải ứng dụng",
+    "notifications": "Thông báo",
+    "search": "Tìm kiếm...",
+    "shirts": "Sơ mi",
+    "pants": "Quần áu",
+    "blouses": "Sơ mi kiểu",
+    "suits": "Bộ công sở",
+    "skirts": "Chân váy",
+    "dresses": "Đầm váy",
+    "tshirts": "Áo thun",
+    "accessories": "Phụ kiện",
+    "aoDai": "Áo dài",
+    "categories": "Danh mục"
+  },
+  "promo": {
+    "newOrderDiscount": "Đăng ký thành viên nhận ngay ưu đãi 50,000đ cho đơn hàng mới"
+  },
+  "footer": {
+    "callToBuy": "Gọi mua hàng",
+    "callTime": "(08:00 - 21:00)",
+    "phoneNumber": "0868 506 800",
+    "allDaysOfWeek": "Tất cả các ngày trong tuần",
+    "feedbackComplaint": "Góp ý, khiếu nại",
+    "feedbackTime": "(08:00 - 17:00)",
+    "policies": "Chính sách",
+    "policyTerms": "Chính sách điều khoản",
+    "policyVIP": "Chính sách khách hàng thân thiết",
+    "policyPayment": "Chính sách thanh toán",
+    "policyReturn": "Chính sách đổi/trả hàng",
+    "policyWarranty": "Chính sách bảo hành",
+    "policyDelivery": "Chính sách vận chuyển",
+    "policyPrivacy": "Chính sách bảo mật",
+    "aboutCChat": "Về CChat",
+    "introduction": "Giới thiệu",
+    "careers": "Tuyển dụng",
+    "storeSystem": "Hệ thống cửa hàng",
+    "storeSystemButton": "HỆ THỐNG CỬA HÀNG CCHAT",
+    "storeSystemSection": "Hệ thống cửa hàng CCHAT",
+    "viewStoreSystem": "XEM HỆ THỐNG CỬA HÀNG CCHAT",
+    "storeList": "Danh sách cửa hàng",
+    "shopeeStore": "Gian hàng CChat trên Shopee",
+    "lazadaStore": "Gian hàng CChat trên Lazada",
+    "newsPromotion": "Tin tức, khuyến mại",
+    "newsPromotionSection": "Tin tức & Khuyến mãi",
+    "customerService": "Dịch vụ khách hàng",
+    "shoppingGuide": "Hướng dẫn mua hàng",
+    "faq": "Hỏi đáp - Q&A",
+    "fashionTrends": "Xu hướng thời trang 2025",
+    "megaSale": "Đại tiệc sale",
+    "megaLivestream": "Mega livestream",
+    "downloadApp": "Tải ứng dụng CChat",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "followCChat": "Theo dõi CChat",
+    "companyInfo": "Công ty TNHH sản xuất & TMDV Trang Anh. Địa chỉ: Số 38, ngõ 27 Lý Sơn, tổ 30 Phường Ngọc Thuỵ, Thành phố Hà Nội, Việt Nam. Mã số thuế: 0108731654",
+    "companyName": "Công ty TNHH sản xuất & TMDV Trang Anh",
+    "address": "Địa chỉ: Số 38, ngõ 27 Lý Sơn, tổ 30, Phường Ngọc Thụy, Quận Long Biên, Thành phố Hà Nội, Việt Nam",
+    "taxCode": "Mã số thuế: 0108731654",
+    "copyright": "© CCHAT All rights reserved",
+    "hotline": "Hotline",
+    "shopeeStoreLabel": "Gian hàng CCHAT",
+    "onShopee": "Trên Shopee",
+    "emailLabel": "Email",
+    "emailAddress": "cskh@cchat.vn",
+    "tiktokStoreLabel": "Gian hàng CCHAT",
+    "onTiktok": "Trên Tiktok",
+    "tiktokShop": "Gian hàng CChat Trên Tiktok shop",
+    "shopeeShop": "Gian hàng CChat Trên Shopee",
+    "fanpageLabel": "Fanpage",
+    "onFacebook": "Facebook",
+    "facebook": "Facebook",
+    "tiktok": "Tiktok",
+    "businessPartner": "Hợp tác kinh doanh",
+    "franchiseAgent": "Đại lý nhượng quyền",
+    "affiliate": "Affiliate",
+    "stores": {
+      "baTrieu": "CChat - Bà Triệu",
+      "baTrieuAddress": "Số 58B Bà Triệu, Hoàn Kiếm, Hà Nội",
+      "chuaBoc": "CChat - Chùa Bốc",
+      "chuaBocAddress": "187 Chùa Bốc, Đống Đa, Hà Nội",
+      "phamNgocThach": "CChat - Phạm Ngọc Thạch",
+      "phamNgocThachAddress": "102A.B1 Phạm Ngọc Thạch, Đống Đa, Hà Nội",
+      "hangVoi": "CChat - Hàng Vôi",
+      "hangVoiAddress": "42 Hàng Vôi, Hoàn Kiếm, Hà Nội",
+      "haiPhong": "CChat - Hải Phòng",
+      "haiPhongAddress": "Tầng 2 Aeon Mall Hải Phòng"
+    }
+  },
+  "home": {
+    "title": "Chào mừng đến CChat Website",
+    "subtitle": "Ứng dụng chat hiện đại của bạn với Radix UI theme",
+    "getStarted": "Bắt đầu",
+    "modern": "🚀 Hiện đại",
+    "modernDesc": "Xây dựng với công nghệ mới nhất",
+    "fast": "⚡ Nhanh",
+    "fastDesc": "Tối ưu hóa hiệu suất",
+    "beautiful": "🎨 Đẹp mắt",
+    "beautifulDesc": "Hệ thống theme Radix UI",
+    "promotionText": "Nhập CMFIV25 giảm 50K cho đơn đổi thứ đóng từ 499K",
+    "exploreNow": "Khám phá",
+    "heroTitle": "AUTUMN HAZE",
+    "heroSubtitle": "NEW COLLECTION IS COMING",
+    "seeAll": "Xem tất cả",
+    "productName": "Tên sản phẩm",
+    "topProducts": "TOP SẢN PHẨM HOT NHẤT TUẦN",
+    "newBadge": "Mới",
+    "preorderBadge": "Đáng mua",
+    "comboProducts": "Combo sản phẩm",
+    "comboDeals": "COMBO ƯU ĐÃI",
+    "newProducts": "Sản phẩm mới",
+    "comingSoon": "Sắp ra mắt",
+    "endsIn": "Kết thúc sau",
+    "buyNow": "MUA NGAY",
+    "superSaleTitle": "SIÊU SALE BLACK FRIDAY",
+    "discountText": "GIẢM NGAY 30% LÊN ĐẾN 50K",
+    "categories": "DANH MỤC SẢN PHẨM",
+    "saleBannerAlt": "Banner khuyến mãi"
+  },
+  "sizeGuide": {
+    "title": "HƯỚNG DẪN CHỌN SIZE",
+    "height": "Chiều cao",
+    "weight": "Cân nặng",
+    "yourSize": "Bạn phù hợp với size {size}",
+    "fitDescription": "vừa vặn, mặc thoải mái, chuẩn dáng",
+    "stretchMaterial": "Chất liệu có độ giãn tốt cho cơ thể của bạn",
+    "formFitting": "Form suông ôm gọn cơ thể cho phép chọn size theo thông dáng chuẩn",
+    "sizeChart": "Bảng cùng với kích size của bạn độ dáng là bị bo",
+    "consultNote": "Bảng cùng của size trên đó đi thêm khảo, vui kiểm chat với nhân viên để được tư vấn chính xác"
+  },
+  "signin": {
+    "title": "ĐĂNG NHẬP",
+    "benefitsTitle": "Rất nhiều đặc quyền và quyền lợi mua sắm đang chờ bạn",
+    "voucherBenefit": "Voucher\nƯu đãi",
+    "exclusiveGiftBenefit": "Quà tặng",
+    "cashbackBenefit": "Độc quyền\nHoàn tiền",
+    "phoneNumber": "Số điện thoại",
+    "phoneNumberPlaceholder": "Nhập số điện thoại của bạn",
+    "emailOrPhone": "Email hoặc Số điện thoại",
+    "emailOrPhonePlaceholder": "Nhập email hoặc số điện thoại",
+    "forgotPassword": "Quên mật khẩu?",
+    "signInButton": "Đăng nhập",
+    "lockedButton": "Thử lại sau {minutes}:{seconds}",
+    "orSignInWith": "hoặc đăng nhập bằng",
+    "facebook": "Facebook",
+    "google": "Google",
+    "zalo": "Zalo",
+    "noAccount": "Bạn chưa có tài khoản?",
+    "signUpNow": "Đăng ký ngay!",
+    "errors": {
+      "phoneNumberRequired": "Vui lòng nhập số điện thoại",
+      "phoneNumberInvalid": "Số điện thoại không hợp lệ",
+      "emailOrPhoneRequired": "Vui lòng nhập email hoặc số điện thoại",
+      "emailOrPhoneEmpty": "Vui lòng nhập Số điện thoại/email",
+      "invalidFormat": "Số điện thoại/Email không hợp lệ",
+      "wrongCredentials": "Thông tin đăng nhập chưa chính xác",
+      "lockedOut": "Bạn đã nhập sai quá 5 lần. Vui lòng thử lại sau 15 phút",
+      "captchaInvalid": "Mã captcha chưa chính xác",
+      "loginFailed": "Đăng nhập thất bại. Vui lòng kiểm tra lại số điện thoại và mật khẩu.",
+      "networkError": "Lỗi kết nối. Vui lòng thử lại sau.",
+      "unknownError": "Đã xảy ra lỗi. Vui lòng thử lại.",
+      "featureNotImplemented": "Tính năng này chưa được triển khai",
+      "googleLoginFailed": "Đăng nhập Google thất bại. Vui lòng thử lại.",
+      "oauthRedirectFailed": "Không thể kết nối với OAuth provider",
+      "oauthCallbackFailed": "Đăng nhập thất bại",
+      "registerFailed": "Đăng ký thất bại"
+    },
+    "captcha": {
+      "placeholder": "Nhập mã captcha",
+      "refresh": "Làm mới"
+    },
+    "captchaCountdown": "Captcha sẽ tự động ẩn sau {minutes}:{seconds}"
+  },
+  "signup": {
+    "title": "ĐĂNG KÝ",
+    "subtitle": "Tham gia CChat và bắt đầu trò chuyện ngay hôm nay",
+    "emailOrPhone": "Email hoặc Số điện thoại",
+    "emailOrPhonePlaceholder": "Nhập email hoặc số điện thoại",
+    "signUpButton": "Tiếp tục",
+    "signingUp": "Đang đăng ký...",
+    "haveAccount": "Đã có tài khoản?",
+    "signIn": "Đăng nhập",
+    "errors": {
+      "emailOrPhoneRequired": "Vui lòng nhập email hoặc số điện thoại",
+      "phoneNumberInvalid": "Số điện thoại hoặc Email không hợp lệ"
+    },
+    "success": {
+      "emailRegistration": "Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.",
+      "phoneRegistration": "Đăng ký thành công! Vui lòng xác thực số điện thoại."
+    }
+  },
+  "auth": {
+    "loginSuccess": "Đăng nhập thành công!",
+    "sessionExpired": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại."
+  },
+  "otpSource": {
+    "title": "CHỌN CÁCH THỨC NHẬN OTP",
+    "description": "Chọn nơi bạn muốn nhận mã xác thực",
+    "emailOption": "Email",
+    "emailDescription": "Nhận mã OTP qua email",
+    "phoneOption": "Tin nhắn điện thoại",
+    "phoneDescription": "Nhận mã xác nhận qua số điện thoại",
+    "zaloOption": "Zalo",
+    "zaloDescription": "Nhận mã xác nhận qua tài khoản Zalo",
+    "continueButton": "Tiếp tục",
+    "sendToPhone": "Gửi đến số điện thoại {phone}"
+  },
+  "emailVerificationNotice": {
+    "title": "Xác thực email",
+    "description": "Vui lòng kiểm tra email {email} để xác thực tài khoản",
+    "resendButton": "Gửi lại email xác thực ({seconds}s)",
+    "resendButtonReady": "Gửi lại email xác thực",
+    "backToSignIn": "Về đăng nhập"
+  },
+  "forgotPasswordEmailSent": {
+    "title": "QUÊN MẬT KHẨU",
+    "description": "Vui lòng kiểm tra email để đổi mật khẩu",
+    "backToSignIn": "Về đăng nhập"
+  },
+  "phoneVerification": {
+    "title": "XÁC THỰC SỐ ĐIỆN THOẠI",
+    "description": "Nhập mã xác thực vừa được gửi tới số",
+    "verifyButton": "Tiếp tục",
+    "resendCode": "Gửi lại mã",
+    "resendCodeIn": "Không nhận được mã? ({seconds}s)",
+    "errors": {
+      "incompleteCode": "Vui lòng nhập đầy đủ 6 số",
+      "invalidCode": "Mã xác thực không chính xác",
+      "codeExpired": "Mã xác thực đã hết hạn. Vui lòng gửi lại mã",
+      "tooManyAttempts": "Bạn đã nhập sai mã xác thực quá 3 lần. Vui lòng quay lại sau 15 phút nữa",
+      "dailyLimitReached": "Bạn đã hết số lần nhận mã xác thực trong ngày",
+      "lockedCountdown": "Bạn đã nhập sai quá 3 lần. Vui lòng thử lại sau {minutes} phút {seconds} giây"
+    },
+    "success": {
+      "verifiedSignup": "Xác thực thành công! Bạn có thể đăng nhập ngay bây giờ.",
+      "verifiedForgotPassword": "Xác thực thành công! Vui lòng đặt lại mật khẩu.",
+      "resendCodeSuccess": "Đã gửi lại mã xác thực thành công!"
+    }
+  },
+  "signupSuccess": {
+    "title": "ĐĂNG KÝ THÀNH CÔNG",
+    "message": "Chúc mừng bạn đã đăng ký tài khoản thành công!",
+    "redirectingIn": "Tự động chuyển về trang chủ sau {seconds}s"
+  },
+  "verifySignup": {
+    "successTitle": "Đăng ký tài khoản thành công.",
+    "successMessage": "Chúc bạn có những trải nghiệm mua sắm tuyệt vời cùng CChat.",
+    "errorTitle": "Đăng ký tài khoản không thành công do link xác thực đã quá thời hạn cho phép.",
+    "errorMessage": "Bạn vui lòng thực hiện lại đăng ký tài khoản.",
+    "registerAgain": "ĐĂNG KÝ TÀI KHOẢN"
+  },
+  "forgotPassword": {
+    "title": "Quên mật khẩu",
+    "description": "Nhập email hoặc số điện thoại bạn đã sử dụng để đăng ký tài khoản",
+    "emailOrPhone": "Số điện thoại/Email",
+    "emailOrPhonePlaceholder": "Nhập email hoặc số điện thoại",
+    "phoneNumber": "Số điện thoại",
+    "phoneNumberPlaceholder": "Nhập số điện thoại của bạn",
+    "sendCodeButton": "Tiếp tục",
+    "backToSignIn": "Quay lại đăng nhập",
+    "errors": {
+      "emailOrPhoneRequired": "Vui lòng nhập email hoặc số điện thoại",
+      "emailInvalid": "Email không hợp lệ",
+      "phoneNumberRequired": "Vui lòng nhập số điện thoại",
+      "phoneNumberInvalid": "Số điện thoại không hợp lệ"
+    }
+  },
+  "resetPassword": {
+    "title": "TẠO MẬT KHẨU MỚI",
+    "submitButton": "Tiếp tục",
+    "resetting": "Đang đặt lại...",
+    "linkExpiredTitle": "Link đã hết hạn",
+    "linkExpiredMessage": "Link đặt lại mật khẩu này đã hết hạn. Vui lòng yêu cầu link mới.",
+    "backToHomeButton": "Quay về Trang chủ",
+    "success": "Mật khẩu đã được đặt lại thành công!",
+    "successTitle": "Đổi mật khẩu thành công!",
+    "successMessage": "Mật khẩu của bạn đã được cập nhật thành công. Bạn có thể đăng nhập bằng mật khẩu mới ngay bây giờ.",
+    "canCloseTab": "Bạn có thể đóng trang này một cách an toàn.",
+    "loading": "Đang tải..."
+  },
+  "myReviews": {
+    "pageTitle": "Đánh giá của tôi",
+    "noReviews": "Bạn chưa có đánh giá nào"
+  },
+  "changePassword": {
+    "title": "ĐỔI MẬT KHẨU",
+    "currentPassword": "Mật khẩu hiện tại",
+    "currentPasswordPlaceholder": "Nhập mật khẩu hiện tại",
+    "submitButton": "Đổi mật khẩu",
+    "errors": {
+      "currentPasswordRequired": "Vui lòng nhập mật khẩu hiện tại"
+    },
+    "success": {
+      "passwordUpdated": "Đổi mật khẩu thành công"
+    }
+  },
+  "userMenu": {
+    "accountInfo": "Thông tin tài khoản",
+    "changePassword": "Đổi mật khẩu",
+    "orderHistory": "Lịch sử đơn hàng",
+    "logout": "Đăng xuất"
+  },
+  "notifications": {
+    "title": "Thông báo",
+    "markAllRead": "Đánh dấu đã đọc",
+    "noNotifications": "Chưa có thông báo nào",
+    "mockData": {
+      "orderConfirmed": {
+        "title": "Đơn hàng đã được xác nhận",
+        "message": "Đơn hàng #{orderId} của bạn đã được xác nhận và đang được xử lý.",
+        "time": "5 phút trước"
+      },
+      "specialDiscount": {
+        "title": "Giảm giá đặc biệt",
+        "message": "Giảm giá 30% cho tất cả sản phẩm áo sơ mi. Áp dụng đến hết tuần này!",
+        "time": "1 giờ trước"
+      },
+      "orderDelivered": {
+        "title": "Đơn hàng đã giao",
+        "message": "Đơn hàng #{orderId} đã được giao thành công.",
+        "time": "1 ngày trước"
+      },
+      "newPromotion": {
+        "title": "Chương trình khuyến mãi mới",
+        "message": "Flash Sale cuối tuần - Giảm đến 50% cho các sản phẩm được chọn!",
+        "time": "2 ngày trước"
+      },
+      "pointsEarned": {
+        "title": "Nhận điểm thưởng",
+        "message": "Bạn đã nhận được 100 điểm thưởng từ đơn hàng #{orderId}.",
+        "time": "3 ngày trước"
+      }
+    }
+  },
+  "product": {
+    "addToCart": "Thêm vào giỏ hàng"
+  },
+  "productDetail": {
+    "breadcrumb": "Trang chủ",
+    "category1": "Danh mục cấp 1",
+    "category2": "Danh mục cấp 2",
+    "selectSize": "Chọn size",
+    "selectColor": "Chọn màu",
+    "size": "Kích cỡ",
+    "color": "Màu sắc",
+    "soldOut": "Hết hàng",
+    "almostSoldOut": "Sắp hết hàng",
+    "sizeGuideLink": "Hướng dẫn chọn size",
+    "quantity": "Số lượng",
+    "addToCartButton": "Thêm vào giỏ hàng",
+    "buyNowButton": "Mua ngay",
+    "description": "Mô tả sản phẩm",
+    "descriptionTitle": "MÔ TẢ SẢN PHẨM",
+    "previousImage": "Ảnh trước",
+    "nextImage": "Ảnh tiếp theo",
+    "material": "Chất liệu",
+    "careInstructions": "Hướng dẫn bảo quản",
+    "sizeGuide": "Bảng size",
+    "relatedProducts": "GỢI Ý SẢN PHẨM",
+    "productInfo": "Thông tin sản phẩm",
+    "sku": "Mã sản phẩm",
+    "category": "Danh mục",
+    "tags": "Tags",
+    "share": "Chia sẻ",
+    "freeShipping": "Giao hàng toàn quốc",
+    "freeShippingDesc": "sản phẩm trên 300k",
+    "returnPolicy": "Đổi trả sản phẩm",
+    "returnPolicyDesc": "Đổi trả miễn phí 90 ngày",
+    "payment": "Thanh toán",
+    "paymentDesc": "Thanh toán khi nhận hàng",
+    "support": "Hỗ trợ mua nhanh",
+    "supportDesc": "0868 506 800 (08:00 - 21:00)",
+    "comboOfferTitle": "Ưu đãi riêng dành cho bạn",
+    "suggestedProducts": "GỢI Ý XEM THÊM",
+    "comboPrice": "Giá combo",
+    "comboProductsTitle": "Combo sản phẩm",
+    "totalPrice": "Tổng giá",
+    "youSave": "Bạn tiết kiệm được",
+    "adding": "Đang thêm...",
+    "processing": "Đang xử lý...",
+    "maxQuantityReached": "Số lượng tối đa có thể mua là {max} sản phẩm",
+    "productCode": "Mã SP",
+    "flashSaleEnds": "Kết thúc sau",
+    "appliedVoucher": "Ưu đãi áp dụng cho đơn hàng này",
+    "policyAuthentic": "Sản phẩm chính hãng",
+    "policyHotline": "Hotline 0868 506 800 (8h-17h)",
+    "policyHotlineDesc": "tất cả các ngày trong tuần",
+    "policyReturn7Days": "Đổi trả trong 7 ngày",
+    "package": "Package",
+    "productDescription": "Mô tả sản phẩm",
+    "keyFeatures": "Ưu điểm nổi bật của sản phẩm",
+    "usageAndCare": "Hướng dẫn sử dụng và bảo quản",
+    "purchaseNotes": "Lưu ý khi mua hàng",
+    "aboutBrand": "Về Thương Hiệu Đối Tác Của Chúng Tôi",
+    "conclusion": "Kết Luận",
+    "specProductName": "Tên sản phẩm",
+    "specProductCode": "Mã sản phẩm",
+    "specMaterial": "Chất liệu",
+    "specStyle": "Kiểu dáng",
+    "specHighlights": "Đặc điểm nổi bật",
+    "specSuitableFor": "Phù hợp",
+    "specCare": "Bảo quản",
+    "collapse": "THU GỌN",
+    "expand": "XEM THÊM",
+    "pleaseSelectAllVariants": "Vui lòng chọn đầy đủ các tùy chọn",
+    "pleaseSelectAllProducts": "Vui lòng chọn đầy đủ sản phẩm",
+    "pleaseSelectColor": "Vui lòng chọn màu",
+    "pleaseSelectSize": "Vui lòng chọn kích cỡ",
+    "addedToCart": "Đã thêm vào giỏ hàng",
+    "addComboToCart": "Thêm Combo",
+    "defaultMaterial": "Dạ",
+    "defaultStyle": "Dáng suông",
+    "defaultHighlights": "2 hàng khuy, xẻ chồng thân sau, túi cơi đôi có nắp, cơ ngực giả, tay xẻ chồng đinh khuy giả",
+    "defaultSuitableFor": "Đi làm công sở hàng ngày, đi chơi...",
+    "defaultCare": "Giặt máy ở chế độ nhẹ, nhiệt độ thường - Sấy khô ở nhiệt độ thấp - Giặt với sản phầm cùng màu - không ngâm sản phẩm - không sử dụng hoá chất tẩy rửa",
+    "failedToProceedCheckout": "Không thể tiếp tục thanh toán. Vui lòng thử lại.",
+    "selectProduct": "Chọn sản phẩm",
+    "selectVariant": "Chọn",
+    "promotions": {
+      "title": "Ưu đãi",
+      "shippingLabel": "Vận chuyển",
+      "orderLabel": "Khuyến mãi",
+      "giftLabel": "Quà tặng kèm",
+      "giftListLabel": "Danh sách quà tặng kèm, cuộn ngang để xem thêm",
+      "freeShipping": "Freeship",
+      "shippingDiscount": "Giảm ship {value}",
+      "shippingTierCondition": "Đơn từ {amount}: giảm phí vận chuyển {value}",
+      "orderDiscount": "Giảm {value}",
+      "morePromotions": "+{count}",
+      "minimumOrder": "Đơn hàng tối thiểu {amount}",
+      "maximumDiscount": "Giảm tối đa {amount}",
+      "promotionEnds": "Áp dụng đến {date}",
+      "notStackable": "Không áp dụng cùng chương trình khuyến mãi khác",
+      "singleUse": "Mỗi khách hàng chỉ được áp dụng một lần",
+      "promoCodeLabel": "Mã nhập",
+      "copyCode": "Sao chép mã {code}",
+      "copy": "Sao chép",
+      "copied": "Đã sao chép",
+      "viewPromotionDetails": "Xem chi tiết ưu đãi {promotion}",
+      "viewMorePromotions": "Xem thêm {count} ưu đãi",
+      "buyToGetGiftCondition": "Đơn từ {amount}, nhận quà tặng",
+      "buyXGetYCondition": "Mua {requiredQuantity} sản phẩm thuộc danh sách áp dụng, nhận {giftQuantity} quà tặng",
+      "giftPrice": "Giá quà tặng",
+      "giftPriceValue": "Giá quà tặng: {amount}",
+      "giftUnavailable": "Tạm hết quà",
+      "originalPrice": "Giá gốc {amount}"
+    }
+  },
+  "search": {
+    "title": "KẾT QUẢ TÌM KIẾM",
+    "searchingFor": "Đang tìm kiếm",
+    "noResultsForKeyword": "Không có kết quả phù hợp với từ khoá tìm kiếm",
+    "searchResults": "Kết quả tìm kiếm",
+    "noResults": "Không tìm thấy sản phẩm",
+    "trendingKeywords": "Từ khoá nổi bật hôm nay",
+    "recentlyViewed": "Đã xem gần đây",
+    "noRecentlyViewed": "Không có sản phẩm đã xem gần đây"
+  },
+  "productListing": {
+    "title": "DANH SÁCH SẢN PHẨM",
+    "productsCount": "sản phẩm",
+    "sortBy": "Sắp xếp theo",
+    "sortDefault": "Mặc định",
+    "sortNameAsc": "Tên: A-Z",
+    "sortNameDesc": "Tên: Z-A",
+    "sortPriceAsc": "Giá: Thấp đến Cao",
+    "sortPriceDesc": "Giá: Cao đến Thấp",
+    "sortOldest": "Cũ nhất",
+    "sortNewest": "Mới nhất",
+    "sortDiscountAsc": "Giảm giá: Thấp đến Cao",
+    "sortDiscountDesc": "Giảm giá: Cao đến Thấp",
+    "sortDiscountPercentAsc": "% Giảm: Thấp đến Cao",
+    "sortDiscountPercentDesc": "% Giảm: Cao đến Thấp",
+    "sortBestSeller": "Bán chạy nhất",
+    "filters": "Bộ lọc",
+    "productCategories": "Danh mục sản phẩm",
+    "priceRange": "Mức giá",
+    "priceRangeLabel": "Khoảng giá",
+    "minPrice": "Tối thiểu",
+    "maxPrice": "Tối đa",
+    "size": "Kích cỡ",
+    "color": "Màu sắc",
+    "trend": "Xu hướng",
+    "applyFilters": "Áp dụng",
+    "clearFilters": "Xóa lọc",
+    "noProducts": "Không tìm thấy sản phẩm phù hợp",
+    "quickAddToCart": "Thêm nhanh vào giỏ hàng +",
+    "reset": "THIẾT LẬP LẠI",
+    "apply": "ÁP DỤNG",
+    "selectColor": "Chọn màu",
+    "selectSize": "Chọn kích cỡ",
+    "productType": "Loại hàng",
+    "suggestedProducts": "GỢI Ý SẢN PHẨM",
+    "productTypes": {
+      "new": "Hàng mới",
+      "bestSeller": "Bán chạy",
+      "superDeal": "Siêu ưu đãi",
+      "clearance": "Xả hàng"
+    },
+    "categories": {
+      "custom": "Đồ đặt",
+      "shirts": "Áo sơ mi",
+      "blouses": "Áo sơ mi kiểu",
+      "tshirts": "Áo thun",
+      "jackets": "Áo khoác",
+      "sleeveless": "Áo không tay",
+      "sets": "Set bộ",
+      "skirts": "Chân váy",
+      "dresses": "Đầm váy",
+      "pants": "Quần áu",
+      "suits": "Bộ công sở",
+      "accessories": "Phụ kiện",
+      "aoDai": "Áo dài"
+    },
+    "colors": {
+      "burgundy": "Phối màu",
+      "red": "Đỏ",
+      "blue": "Xanh",
+      "orange": "Cam",
+      "gray": "Ghi",
+      "black": "Đen",
+      "green": "Xanh",
+      "blueWhite": "Xanh trắng",
+      "teal": "Xanh ngọc",
+      "beige": "Be",
+      "taupe": "Nâu xám",
+      "lightGray": "Xám nhạt",
+      "olive": "Ô liu",
+      "darkGray": "Xám đậm"
+    },
+    "trends": {
+      "older": "Cũ hơn",
+      "young20": "Young 20"
+    }
+  },
+  "viewAll": {
+    "flashSale": "FLASH SALE",
+    "topProducts": "TOP SẢN PHẨM HOT NHẤT TUẦN",
+    "comboProducts": "Combo sản phẩm",
+    "comboDeals": "COMBO ƯU ĐÃI",
+    "newProducts": "Sản phẩm mới",
+    "allProducts": "Tất cả sản phẩm",
+    "allCategories": "DANH MỤC SẢN PHẨM",
+    "noCategories": "Không có danh mục nào",
+    "showingProducts": "Hiển thị sản phẩm",
+    "hours": "Giờ",
+    "minutes": "Phút",
+    "seconds": "Giây"
+  },
+  "flashSale": {
+    "pageTitle": "FLASH SALE",
+    "totalProducts": "{count} sản phẩm"
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Trang không tồn tại",
+    "description": "Xin lỗi, chúng tôi không thể tìm thấy trang bạn đang tìm kiếm.",
+    "or": "hoặc",
+    "continueShopping": "Tiếp tục mua sắm"
+  },
+  "account": {
+    "pageTitle": "Thông tin tài khoản",
+    "accountInfo": "Thông tin tài khoản",
+    "accountInfoShort": "Thông tin",
+    "changePassword": "Đổi mật khẩu",
+    "changePasswordShort": "Mật khẩu",
+    "orderHistory": "Lịch sử đơn hàng",
+    "orderHistoryShort": "Đơn hàng",
+    "logout": "Đăng xuất",
+    "logoutShort": "Đăng xuất",
+    "firstName": "Họ",
+    "lastName": "Tên",
+    "editButton": "Chỉnh sửa",
+    "editDialogTitle": "CHỈNH SỬA THÔNG TIN TÀI KHOẢN",
+    "updateButton": "Cập nhật",
+    "cancelButton": "Hủy",
+    "firstNamePlaceholder": "Nhập họ",
+    "lastNamePlaceholder": "Nhập tên",
+    "logoutDialogTitle": "Xác nhận",
+    "logoutDialogMessage": "Bạn có chắc chắn muốn đăng xuất tài khoản trên thiết bị này?",
+    "logoutConfirm": "Đăng xuất",
+    "logoutCancel": "Hủy",
+    "changeAvatar": "Nhấn để thay đổi ảnh đại diện",
+    "logoutSuccess": "Đăng xuất thành công",
+    "profileUpdated": "Cập nhật thông tin thành công",
+    "emailUpdatePending": "Email xác thực đã được gửi đến địa chỉ email mới của bạn. Vui lòng kiểm tra hộp thư để xác nhận thay đổi."
+  },
+  "linkedAccounts": {
+    "title": "Liên kết tài khoản",
+    "titleShort": "Liên kết",
+    "description": "Quản lý tài khoản mạng xã hội của bạn",
+    "link": "Liên kết",
+    "unlink": "Bỏ liên kết",
+    "linked": "Đã liên kết",
+    "notLinked": "Chưa liên kết",
+    "unlinkConfirmTitle": "Xác nhận bỏ liên kết",
+    "unlinkConfirmMessage": "Bạn có chắc chắn muốn bỏ liên kết tài khoản {provider}?",
+    "linkSuccess": "Liên kết tài khoản thành công",
+    "unlinkSuccess": "Bỏ liên kết tài khoản thành công",
+    "linkError": "Không thể liên kết tài khoản. Vui lòng thử lại.",
+    "unlinkError": "Không thể bỏ liên kết tài khoản. Vui lòng thử lại.",
+    "linking": "Đang liên kết với {provider}",
+    "unlinking": "Đang bỏ liên kết..."
+  },
+  "orderHistory": {
+    "pageTitle": "LỊCH SỬ ĐƠN HÀNG",
+    "total": "Tổng",
+    "requestReturn": "Yêu cầu trả hàng",
+    "writeReview": "Viết đánh giá",
+    "readReview": "Xem lại đánh giá",
+    "reviewed": "Đã đánh giá",
+    "checking": "Đang kiểm tra...",
+    "yourReview": "Đánh giá của bạn",
+    "reviewImages": "Hình ảnh đánh giá",
+    "noReviewFound": "Không tìm thấy đánh giá",
+    "height": "Chiều cao",
+    "weight": "Cân nặng",
+    "fit": "Độ vừa",
+    "fitOptions": {
+      "tight": "Chật",
+      "perfect": "Vừa vặn",
+      "loose": "Rộng"
+    },
+    "noOrders": "Bạn chưa có đơn hàng nào",
+    "moreProducts": "sản phẩm khác",
+    "items": "sản phẩm",
+    "products": "sản phẩm",
+    "viewDetail": "Xem chi tiết",
+    "viewMore": "Xem thêm",
+    "orderStatusLabel": "Trạng thái đơn",
+    "paymentStatusLabel": "Thanh toán",
+    "status": {
+      "pending": "Chờ xác nhận",
+      "confirmed": "Đã xác nhận",
+      "processing": "Đang xử lý",
+      "shipped": "Đang giao hàng",
+      "delivered": "Đã giao",
+      "cancelled": "Đã hủy"
+    },
+    "paymentStatus": {
+      "pending": "Chờ thanh toán",
+      "paid": "Đã thanh toán",
+      "failed": "Thanh toán thất bại",
+      "refunded": "Đã hoàn tiền"
+    }
+  },
+  "orderDetail": {
+    "pageTitle": "CHI TIẾT ĐƠN HÀNG",
+    "orderInformation": "Thông tin đơn hàng",
+    "orderDate": "Ngày đặt hàng",
+    "orderStatus": "Trạng thái đơn hàng",
+    "orderStatusLabel": "Trạng thái đơn",
+    "paymentStatusLabel": "Thanh toán",
+    "productList": "Danh sách sản phẩm",
+    "paymentSummary": "Thông tin thanh toán",
+    "discount": "Giảm giá",
+    "deliveryInformation": "Thông tin giao hàng",
+    "backToOrderHistory": "Trở lại",
+    "orderNotFound": "Không tìm thấy đơn hàng",
+    "loading": "Đang tải đơn hàng...",
+    "productInfo": "Thông tin sản phẩm",
+    "shippingInfo": "Thông tin vận chuyển",
+    "confirmOrder": "Xác nhận đơn hàng",
+    "savings": "Tiết kiệm",
+    "status": {
+      "unspecified": "Chưa xác định",
+      "pending": "Chờ xác nhận",
+      "confirmed": "Đã xác nhận",
+      "processing": "Đang xử lý",
+      "shipped": "Đang vận chuyển",
+      "delivered": "Giao hàng thành công",
+      "cancelled": "Đã hủy",
+      "refunded": "Đã hoàn tiền"
+    },
+    "paymentStatus": {
+      "pending": "Chờ thanh toán",
+      "paid": "Đã thanh toán",
+      "failed": "Thanh toán thất bại",
+      "refunded": "Đã hoàn tiền"
+    },
+    "paymentMethods": {
+      "cod": "Thanh toán khi nhận hàng (COD)",
+      "onepayInternational": "OnePay Quốc tế (Visa/Mastercard)",
+      "onepayDomestic": "OnePay Nội địa (Thẻ ATM)",
+      "qr": "Thanh toán QR (VietQR)",
+      "onepay_intercard": "Thẻ quốc tế (Visa/Mastercard)",
+      "onepay_domestic": "Thẻ ATM nội địa",
+      "infocms_vietqr": "VietQR"
+    },
+    "writeReview": "Viết đánh giá",
+    "reviewed": "Đã đánh giá",
+    "processingPayment": "Đang xử lý thanh toán...",
+    "paymentPending": "Đơn hàng đang chờ thanh toán",
+    "payNow": "Thanh toán ngay",
+    "paymentRetryFailed": "Thanh toán thất bại, vui lòng thử lại",
+    "note": "Ghi chú",
+    "street": "Địa chỉ",
+    "sessionExpired": "Phiên đã hết hạn"
+  },
+  "cart": {
+    "pageTitle": "GIỎ HÀNG",
+    "loading": "Đang tải giỏ hàng...",
+    "emptyCart": "Giỏ hàng trống",
+    "emptyCartMessage": "Chưa có sản phẩm nào trong giỏ hàng của bạn",
+    "continueShopping": "Tiếp tục mua sắm",
+    "productName": "Tên sản phẩm",
+    "price": "Đơn giá",
+    "quantity": "Số lượng",
+    "total": "Thành tiền",
+    "size": "Kích cỡ",
+    "color": "Màu sắc",
+    "comboProduct": "Combo sản phẩm",
+    "remove": "Xóa",
+    "updateCart": "Cập nhật giỏ hàng",
+    "clearCart": "Xóa giỏ hàng",
+    "cartSummary": "Tóm tắt đơn hàng",
+    "subtotal": "Tạm tính",
+    "discount": "Giảm giá",
+    "totalAmount": "Tổng cộng",
+    "checkout": "Thanh toán",
+    "itemsInCart": "sản phẩm",
+    "removeConfirm": "Xóa sản phẩm",
+    "removeMessage": "Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?",
+    "clearCartConfirm": "Xóa giỏ hàng",
+    "clearCartMessage": "Bạn có chắc chắn muốn xoá tất cả các sản phẩm trong giỏ hàng?",
+    "addedToCart": "Đã thêm vào giỏ hàng",
+    "addedToCartSuccess": "Thêm vào giỏ hàng thành công",
+    "viewCart": "XEM GIỎ HÀNG",
+    "subtotalLabel": "Tạm tính",
+    "products": "sản phẩm",
+    "errorAddingToCart": "Lỗi khi thêm vào giỏ hàng",
+    "cartUpdated": "Đã cập nhật giỏ hàng",
+    "maxQuantityReached": "Đã đạt số lượng tối đa",
+    "freeShipping": "Miễn phí vận chuyển cho đơn hàng từ 500.000đ",
+    "gift": "QUÀ TẶNG",
+    "shippingTitle": "Thông tin vận chuyển",
+    "notes": "Ghi chú đơn hàng",
+    "notesPlaceholder": "Ghi chú thêm cho đơn hàng của bạn...",
+    "shippingMethod": "Phương thức vận chuyển",
+    "standard": "Giao hàng tiêu chuẩn",
+    "express": "Giao hàng nhanh",
+    "standardDesc": "Giao hàng trong 3-5 ngày làm việc",
+    "expressDesc": "Giao hàng trong 1-2 ngày làm việc",
+    "estimatedDelivery": "Dự kiến giao hàng",
+    "saveAddress": "Lưu địa chỉ này",
+    "proceedToPayment": "Tiếp tục thanh toán",
+    "paymentDetailsTitle": "Chi tiết thanh toán",
+    "freeShippingLabel": "Miễn phí",
+    "voucherDiscount": "Voucher giảm giá",
+    "allProducts": "Tất cả sản phẩm",
+    "clearAll": "Xoá tất cả",
+    "shippingInfoTitle": "THÔNG TIN VẬN CHUYỂN",
+    "paymentMethodTitle": "HÌNH THỨC THANH TOÁN",
+    "selectFromAddressBook": "Chọn từ sổ địa chỉ",
+    "otherRecipient": "Người khác nhận hàng hộ (nếu có)",
+    "paymentCOD": "Thanh toán khi nhận hàng",
+    "paymentZaloPay": "Thanh toán qua Zalopay",
+    "paymentMoMo": "Thanh toán qua Ví MoMo",
+    "paymentOnePayInternational": "OnePay Quốc tế (Visa/Mastercard)",
+    "paymentOnePayDomestic": "OnePay Nội địa (Thẻ ATM)",
+    "paymentVietQR": "Thanh toán QR (VietQR)",
+    "returnPolicy": "Nếu bạn không hài lòng với sản phẩm của chúng tôi, bạn hoàn toàn có thể trả lại sản phẩm. Tìm hiểu thêm tại đây.",
+    "allPaymentSupported": "Hỗ trợ mọi hình thức thanh toán",
+    "voucherWallet": "Ví Voucher",
+    "enterDiscountCode": "Nhập mã giảm giá",
+    "apply": "ÁP DỤNG",
+    "placeOrder": "ĐẶT HÀNG",
+    "placingOrder": "Đang đặt hàng...",
+    "pleaseEnterShippingInfo": "Vui lòng nhập đầy đủ thông tin giao hàng",
+    "updateAddress": "Cập nhật",
+    "deleteAddress": "Xóa",
+    "defaultAddress": "Mặc định",
+    "oldAddressInfo": "Một vài thông tin đã cũ, vui lòng giúp chúng tôi cập nhật địa chỉ này.",
+    "editShippingInfo": "Chỉnh sửa thông tin vận chuyển",
+    "addShippingAddress": "Thêm địa chỉ vận chuyển",
+    "addNewAddress": "Thêm địa chỉ mới",
+    "manageAddresses": "Quản lý địa chỉ",
+    "noShippingAddresses": "Bạn chưa thêm địa chỉ giao hàng nào.",
+    "goToAccountSettings": "Đến cài đặt tài khoản",
+    "clearingCart": "Đang xóa...",
+    "totalShippingFee": "Tổng tiền phí vận chuyển",
+    "calculating": "Đang tính...",
+    "cchatVoucher": "CCHAT voucher",
+    "selectAll": "Chọn tất cả",
+    "voucher": "Voucher",
+    "enterDiscountCodePlaceholder": "Nhập mã giảm giá",
+    "please": "Vui lòng",
+    "signInOrSignUp": "đăng nhập / đăng ký",
+    "appliedVouchers": "Ưu đãi đã áp dụng",
+    "appliedDiscounts": "Ưu đãi áp dụng",
+    "selectPromotion": "Chọn ưu đãi",
+    "applying": "Đang áp dụng...",
+    "promotionPicker": {
+      "title": "Chọn ưu đãi",
+      "enterVoucherCode": "Nhập mã voucher",
+      "orSelectPromotion": "Hoặc chọn ưu đãi",
+      "availablePromotions": "Ưu đãi khả dụng",
+      "unavailablePromotions": "Ưu đãi chưa đủ điều kiện",
+      "noPromotions": "Không có ưu đãi nào",
+      "applySuccess": "Áp dụng ưu đãi thành công",
+      "applyError": "Có lỗi xảy ra khi áp dụng ưu đãi",
+      "removeSuccess": "Đã gỡ ưu đãi",
+      "exclusiveConflict": "Không thể thêm ưu đãi khi đã có ưu đãi độc quyền. Vui lòng xóa ưu đãi độc quyền trước."
+    },
+    "shippingPromotion": {
+      "title": "Ưu đãi vận chuyển",
+      "shippingFeeDiscount": "Giảm phí vận chuyển",
+      "applySuccess": "Áp dụng ưu đãi vận chuyển thành công",
+      "removeSuccess": "Đã gỡ ưu đãi vận chuyển",
+      "removedDueToQuantityChange": "Ưu đãi vận chuyển đã được gỡ do thay đổi số lượng. Vui lòng áp dụng lại."
+    },
+    "voucherCodeRequired": "Vui lòng nhập mã voucher",
+    "checkoutSessionNotFound": "Không tìm thấy phiên thanh toán. Vui lòng thử lại.",
+    "voucherAppliedSuccess": "Áp dụng voucher thành công!",
+    "voucherApplyError": "Không thể áp dụng voucher. Vui lòng kiểm tra mã và thử lại.",
+    "voucherRemovedSuccess": "Đã xóa mã giảm giá",
+    "voucherRemoveError": "Không thể xóa mã giảm giá",
+    "vouchersPageTitle": "Mã giảm giá",
+    "availableVouchers": "Ưu đãi khả dụng",
+    "unavailableVouchers": "Ưu đãi không khả dụng",
+    "noVouchersApplied": "Chưa có voucher nào được áp dụng",
+    "confirmButton": "XÁC NHẬN",
+    "confirmingRemoval": "Đang xử lý...",
+    "vouchersRemoveSuccess": "Đã cập nhật voucher thành công",
+    "vouchersRemoveError": "Không thể xóa một số voucher. Vui lòng thử lại.",
+    "voucherMinOrder": "Đơn tối thiểu {amount}",
+    "saved": "Tiết kiệm",
+    "selectCity": "Chọn tỉnh/thành phố",
+    "giftPromotion": "Quà tặng",
+    "specialOffers": "Ưu đãi dành riêng cho bạn",
+    "giftFromOrder": "Tặng đơn từ 799k có đồ thu đông",
+    "get": "Lấy ngay",
+    "orderNotEligible": "Đơn hàng chưa thoả mãn điều kiện áp dụng mã",
+    "discountPercent": "-100%",
+    "voucherCode": "WELCOMEABC",
+    "voucherDesc": "Giảm 15% tối đa 50k cho đơn bất kỳ (Không áp dụng cho danh mục SALE)",
+    "voucherExpiry": "HSD: dd/mm/yyyy",
+    "voucherConditions": "Điều kiện",
+    "country": "Quốc gia",
+    "countryPlaceholder": "Nhập quốc gia",
+    "failedToCalculateCheckout": "Không thể tính toán đơn hàng. Vui lòng thử lại.",
+    "failedToUpdateCheckout": "Không thể cập nhật thông tin đơn hàng. Vui lòng thử lại.",
+    "orderPlacedSuccessfully": "Đặt hàng thành công!",
+    "flashSalePriceAdjusted": "{name} không còn ưu đãi flash sale, đã áp dụng giá gốc {price}",
+    "failedToPlaceOrder": "Không thể đặt hàng. Vui lòng thử lại.",
+    "cannotPlaceOrder": "Không thể đặt hàng",
+    "hasUnavailableItems": "Một số sản phẩm không còn hàng",
+    "unavailableItemsWarning": "Một số sản phẩm trong đơn hàng không còn khả dụng. Vui lòng xóa chúng để tiếp tục đặt hàng.",
+    "missingFields": "Thiếu thông tin bắt buộc",
+    "processingPayment": "Đang xử lý thông tin thanh toán",
+    "retryPayment": "Thanh toán lại",
+    "paymentSessionExpired": "Phiên thanh toán đã hết hạn. Vui lòng thanh toán lại.",
+    "paymentRetryFailed": "Thanh toán lại thất bại. Vui lòng thử lại.",
+    "giftTag": "Quà tặng",
+    "changeGift": "Thay đổi",
+    "totalPayment": "Tổng thanh toán",
+    "giftOffer": {
+      "title": "Ưu đãi dành riêng cho bạn",
+      "buyMoreHint": "Mua thêm {amount} để nhận quà",
+      "giftBadge": "Quà tặng",
+      "claimButton": "Lấy ngay",
+      "changeButton": "Thay đổi",
+      "selectGiftTitle": "Chọn quà tặng",
+      "minOrderHint": "Quà tặng khi mua từ {amount}",
+      "selectVariant": "Chọn phân loại",
+      "outOfStock": "Hết hàng",
+      "stockInfo": "Còn lại:",
+      "confirmButton": "Xác nhận",
+      "selecting": "Đang chọn...",
+      "addSuccess": "Đã thêm quà tặng vào giỏ hàng",
+      "addError": "Không thể thêm quà tặng",
+      "removeError": "Không thể xóa quà tặng",
+      "noImage": "Không có ảnh",
+      "minOrderLabel": "Tặng hóa đơn giá trị từ {amount}",
+      "buyMoreToUnlock": "Mua thêm {amount}",
+      "buyXGetYHint": "Mua {current}/{required} sản phẩm để nhận quà",
+      "buyXGetYEligible": "Bạn đã đủ điều kiện nhận quà",
+      "buyMoreProductsToUnlock": "Thêm {count} SP nữa",
+      "selectedCount": "Đã chọn {current}/{max} quà",
+      "selectVariantFirst": "Chọn phân loại trước",
+      "maxGiftsReached": "Đã chọn đủ số lượng quà",
+      "selectGiftsButton": "Chọn quà ({current}/{max})",
+      "addVariant": "Thêm phân loại"
+    },
+    "productDiscount": {
+      "title": "Ưu đãi",
+      "availableTitle": "Ưu đãi khả dụng",
+      "unavailableTitle": "Ưu đãi không khả dụng",
+      "applied": "Đã áp dụng",
+      "appliedVoucher": "Đã áp dụng voucher",
+      "discountLabel": "Giảm",
+      "maxDiscount": "tối đa",
+      "minOrderLabel": "Đơn tối thiểu {amount}",
+      "eligibleProductsCount": "{count} sản phẩm đủ điều kiện",
+      "potentialSaving": "Tiết kiệm được",
+      "buyMoreHint": "Mua thêm {amount} để áp dụng",
+      "buyMoreToUnlock": "Mua thêm {amount} để mở khóa {name}",
+      "applyButton": "Áp dụng",
+      "removeButton": "Gỡ bỏ",
+      "applying": "Đang áp dụng...",
+      "notEligible": "Chưa đủ điều kiện",
+      "applySuccess": "Áp dụng chương trình giảm giá thành công",
+      "applyError": "Không thể áp dụng chương trình giảm giá",
+      "removeSuccess": "Đã gỡ chương trình giảm giá",
+      "removeError": "Không thể gỡ chương trình giảm giá"
+    },
+    "reduce": "Giảm",
+    "cancelPayment": "Huỷ thanh toán",
+    "itemRemoved": "Đã xóa sản phẩm khỏi giỏ hàng",
+    "failedToRemoveItem": "Không thể xóa sản phẩm",
+    "failedToUpdateQuantity": "Không thể cập nhật số lượng. Vui lòng thử lại.",
+    "failedToClearCart": "Không thể xóa giỏ hàng. Vui lòng thử lại.",
+    "maxDiscountPerProduct": "Tối đa",
+    "maxDiscount": "Tối đa",
+    "forOrdersAbove": "cho đơn trên",
+    "perEligibleProduct": "SP áp dụng",
+    "validUntil": "HSD",
+    "discountPerProduct": "Giảm"
+  },
+  "addressBook": {
+    "pageTitle": "Địa chỉ",
+    "title": "Địa chỉ của tôi",
+    "empty": "Chưa có địa chỉ nào",
+    "emptyDescription": "Thêm địa chỉ giao hàng đầu tiên của bạn để bắt đầu",
+    "streetAddress": "Địa chỉ đường phố",
+    "addNewAddress": "Thêm địa chỉ mới",
+    "addAddress": "Thêm địa chỉ",
+    "addAddressTitle": "Thêm địa chỉ",
+    "editAddress": "Chỉnh sửa địa chỉ",
+    "editAddressTitle": "Sửa địa chỉ",
+    "deleteAddress": "Xóa địa chỉ",
+    "deleteConfirm": "Bạn có chắc chắn muốn xóa địa chỉ này không?",
+    "setAsDefault": "Đặt làm mặc định",
+    "defaultBadge": "Mặc định",
+    "saveChanges": "Lưu thay đổi"
+  },
+  "authCallback": {
+    "processing": "Đang xử lý...",
+    "loggingIn": "Đang đăng nhập với {provider}",
+    "success": "Đăng nhập thành công!",
+    "redirecting": "Đang chuyển hướng...",
+    "error": "Lỗi đăng nhập",
+    "errorMessage": "Không thể đăng nhập. Vui lòng thử lại.",
+    "authCancelled": "Bạn đã hủy đăng nhập",
+    "invalidProvider": "Nhà cung cấp không hợp lệ"
+  },
+  "confirmEmail": {
+    "title": "XÁC THỰC EMAIL",
+    "verifying": "Đang xác thực email của bạn...",
+    "success": "Email đã được xác thực!",
+    "successMessage": "Cảm ơn bạn! Email của bạn đã được xác thực thành công.",
+    "successAction": "Bạn có thể đóng trang này và tiếp tục sử dụng dịch vụ.",
+    "error": "Xác thực thất bại",
+    "errorMessage": "Không thể xác thực email của bạn. Link có thể đã hết hạn hoặc không hợp lệ.",
+    "errorAction": "Vui lòng thử đăng ký lại hoặc liên hệ với chúng tôi để được hỗ trợ.",
+    "invalidToken": "Link xác thực không hợp lệ hoặc đã hết hạn."
+  },
+  "confirmNewEmail": {
+    "title": "XÁC THỰC THAY ĐỔI EMAIL",
+    "verifying": "Đang xác thực email mới của bạn...",
+    "success": "Thay đổi email thành công!",
+    "successMessage": "Địa chỉ email của bạn đã được cập nhật thành công.",
+    "successAction": "Bạn có thể đóng trang này và tiếp tục sử dụng dịch vụ.",
+    "error": "Xác thực thất bại",
+    "errorMessage": "Không thể xác thực email mới của bạn. Link có thể đã hết hạn hoặc không hợp lệ.",
+    "errorAction": "Vui lòng thử cập nhật email lại hoặc liên hệ với chúng tôi để được hỗ trợ.",
+    "invalidToken": "Link xác thực không hợp lệ hoặc đã hết hạn."
+  },
+  "orderSuccess": {
+    "title": "Đặt hàng thành công!",
+    "orderCode": "Mã đơn hàng",
+    "copyOrderCode": "Sao chép mã đơn hàng",
+    "copied": "Đã sao chép!",
+    "message": "Chúng tôi sẽ xử lý đơn hàng của bạn trong thời gian sớm nhất. Cảm ơn bạn đã đặt hàng tại CChat.",
+    "trackOrderButton": "THEO DÕI ĐƠN HÀNG TẠI ĐÂY",
+    "signUpNowButton": "ĐĂNG KÝ NGAY ĐỂ THEO DÕI ĐƠN HÀNG",
+    "signUpMessage": "Tạo tài khoản để dễ dàng theo dõi đơn hàng và nhận các ưu đãi độc quyền.",
+    "youMayAlsoLike": "Có thể bạn sẽ thích"
+  },
+  "orderConfirm": {
+    "title": "Đơn hàng đã được xác nhận!",
+    "message": "Đơn hàng của bạn đã được xác nhận. Chúng tôi sẽ xử lý đơn hàng của bạn trong thời gian sớm nhất. Cảm ơn bạn đã đặt hàng tại CChat.",
+    "confirmTitle": "Xác nhận đơn hàng",
+    "confirmMessage": "Vui lòng kiểm tra thông tin đơn hàng bên dưới và nhấn xác nhận để hoàn tất đơn hàng của bạn.",
+    "confirmButton": "XÁC NHẬN ĐƠN HÀNG",
+    "loading": "Đang tải thông tin đơn hàng...",
+    "invalidToken": "Link xác nhận đơn hàng không hợp lệ hoặc đã hết hạn.",
+    "orderNotFound": "Không tìm thấy đơn hàng. Vui lòng kiểm tra lại link xác nhận.",
+    "customer": "Khách hàng",
+    "phone": "Số điện thoại",
+    "orderItems": "Sản phẩm",
+    "expand": "Xem",
+    "collapse": "Thu gọn",
+    "paymentMethods": {
+      "cod": "Thanh toán khi nhận hàng (COD)",
+      "bank_transfer": "Chuyển khoản ngân hàng",
+      "card": "Thẻ tín dụng/ghi nợ",
+      "ewallet": "Ví điện tử",
+      "onepay_intercard": "Thẻ quốc tế",
+      "onepay_domestic": "Thẻ ATM nội địa",
+      "infocms_vietqr": "VietQR",
+      "onepayInternational": "OnePay Quốc tế (Visa/Mastercard)",
+      "onepayDomestic": "OnePay Nội địa (Thẻ ATM)",
+      "qr": "Thanh toán QR (VietQR)"
+    }
+  },
+  "paymentSuccess": {
+    "title": "Thanh toán thành công!",
+    "message": "Cảm ơn bạn đã thanh toán. Chúng tôi sẽ xử lý đơn hàng của bạn trong thời gian sớm nhất.",
+    "viewOrderHistory": "XEM LỊCH SỬ ĐƠN HÀNG",
+    "paymentFailed": "Thanh toán không thành công",
+    "supportHotline": "Liên hệ hỗ trợ",
+    "hotlineNumber": "0868 506 800",
+    "errorCodes": {
+      "1": "Ngân hàng từ chối cấp phép giao dịch",
+      "2": "Ngân hàng phát hành thẻ từ chối cấp phép giao dịch",
+      "3": "Không nhận được kết quả phản hồi từ Ngân hàng",
+      "4": "Thẻ hết hạn sử dụng hoặc ngày hết hạn không đúng",
+      "5": "Số dư/Hạn mức của thẻ không đủ để thanh toán",
+      "6": "Không nhận được kết quả phản hồi từ Ngân hàng",
+      "7": "Lỗi trong quá trình xử lý giao dịch",
+      "8": "Ngân hàng không hỗ trợ thanh toán trực tuyến",
+      "9": "Tên chủ thẻ/tài khoản không hợp lệ",
+      "10": "Thẻ hết hạn hoặc bị khóa",
+      "11": "Thẻ/Tài khoản chưa đăng ký dịch vụ thanh toán trực tuyến",
+      "12": "Ngày phát hành hoặc hết hạn không hợp lệ",
+      "13": "Giao dịch vượt quá hạn mức thanh toán trực tuyến",
+      "14": "Số thẻ không hợp lệ",
+      "21": "Số dư tài khoản không đủ để thanh toán",
+      "22": "Thông tin tài khoản không hợp lệ",
+      "23": "Thẻ/Tài khoản bị khóa hoặc chưa được kích hoạt",
+      "24": "Thông tin thẻ/tài khoản không hợp lệ",
+      "25": "Mã xác thực OTP không hợp lệ",
+      "26": "Mã xác thực OTP đã hết hiệu lực",
+      "98": "Xác thực giao dịch bị hủy",
+      "99": "Giao dịch đã bị hủy",
+      "B": "Lỗi trong quá trình xác thực giao dịch",
+      "D": "Lỗi trong quá trình xác thực giao dịch",
+      "F": "Xác thực giao dịch không thành công",
+      "U": "Xác thực mã bảo mật không thành công",
+      "Z": "Giao dịch bị từ chối",
+      "253": "Hết thời hạn nhập thông tin thanh toán",
+      "invalid_signature": "Xác minh thanh toán không thành công",
+      "default": "Đã xảy ra lỗi"
+    }
+  },
+  "paymentMethods": {
+    "cod": "Thanh toán khi nhận hàng",
+    "onepayIntercard": "Thẻ quốc tế",
+    "onepayDomestic": "Thẻ ATM nội địa",
+    "vietqr": "VietQR"
+  },
+  "paymentQR": {
+    "title": "Thanh toán đơn hàng",
+    "scanQR": "Quét mã QR để thanh toán",
+    "amount": "Số tiền thanh toán",
+    "orderCode": "Mã đơn hàng",
+    "bankName": "Ngân hàng",
+    "accountNumber": "Số tài khoản",
+    "accountName": "Chủ tài khoản",
+    "content": "Nội dung chuyển khoản",
+    "timeRemaining": "Thời gian còn lại",
+    "minutes": "phút",
+    "seconds": "giây",
+    "expired": "Mã QR đã hết hạn",
+    "refreshQR": "Làm mới mã QR",
+    "paymentNote": "Sau khi thanh toán, đơn hàng sẽ được xác nhận trong vòng 1-2 phút",
+    "paidButton": "Tôi đã thanh toán",
+    "processing": "Đang xử lý...",
+    "cancelButton": "Hủy đơn hàng",
+    "zalopay": "ZaloPay",
+    "momo": "MoMo",
+    "bankTransfer": "Chuyển khoản ngân hàng"
+  },
+  "qrDialog": {
+    "title": "Quét mã QR để thanh toán",
+    "scanInstruction": "Sử dụng ứng dụng ngân hàng để quét mã",
+    "noQrData": "Không có dữ liệu QR"
+  },
+  "policyPlaceholder": {
+    "comingSoon": "Đang cập nhật",
+    "contentBeingUpdated": "Nội dung đang được cập nhật, vui lòng quay lại sau."
+  },
+  "deliveryPolicy": {
+    "pageTitle": "CHÍNH SÁCH GIAO HÀNG",
+    "banner": {
+      "line1": "THỜI GIAN GIAO HÀNG",
+      "line2": "3 - 5 NGÀY"
+    },
+    "section1": {
+      "title": "THỜI GIAN GIAO HÀNG <highlight>3-5 NGÀY</highlight>",
+      "description": "Thông thường sau khi CCHAT nhận được thông tin đặt hàng của khách hàng, chúng tôi sẽ xử lý đơn hàng <highlight>trong vòng 24h</highlight> và sẽ phản hồi lại cho khách hàng về việc thanh toán cũng như giao nhận.",
+      "deliveryTimeInfo": "Thời gian giao hàng bình thường sẽ khoảng từ <highlight>3- 5 ngày</highlight> kể từ ngày khách hàng được chốt đơn hàng hoặc theo thoả thuận với khách hàng khi đặt hàng."
+    },
+    "section2": {
+      "delayIntro": "Tuy nhiên, cũng sẽ có các trường hợp việc giao hàng bị kéo dài hơn do những nguyên nhân bất khả kháng như:",
+      "delayReasons": {
+        "reason1": "Nhân viên của CCHAT không thể liên lạc được với khách hàng qua điện thoại nên không thể <highlight>xác nhận đơn hàng</highlight> cũng như giao hàng cho bên vận chuyển.",
+        "reason2": "Địa chỉ, số điện thoại khách hàng cung cấp <highlight>không chính xác</highlight>.",
+        "reason3": "Số lượng đơn đặt hàng của CCHAT quá tải khiến việc xử lý đơn hàng bị chậm trễ",
+        "reason4": "Đơn vị đối tác vận chuyển gặp vấn đề khiến việc giao hàng đến tay khách hàng bị chậm trễ."
+      },
+      "deliveryAttempts": "Đơn hàng của khách hàng sẽ được <highlight>giao tối đa 3 lần</highlight>, nếu lần 1 không giao thành công thì nhân viên vận chuyển sẽ liên hệ lại bạn sau 1-2 ngày làm việc kế tiếp. Như vậy, nếu sau 3 lần giao hàng không thành công thì đơn hàng sẽ bị huỷ.",
+      "checkOrder": "Để kiểm tra thông tin hoặc tình trạng đơn hàng, khách hàng vui lòng gọi điện tới số Hotline <highlight>0868 506 800</highlight> để nhân viên chăm sóc khách hàng của CCHAT kiểm tra cho bạn.",
+      "checkProduct": "Bạn hoàn toàn có thể kiểm tra sản phẩm trước khi nhận hàng và thanh toán cho nhân viên vận chuyển. Trong trường hợp khách hàng gặp vấn đề phát sinh hãy liên hệ ngay <highlight>0868 506 800</highlight> để được hỗ trợ kịp thời."
+    }
+  },
+  "news": {
+    "title": "TIN TỨC",
+    "latestNews": "TIN MỚI NHẤT",
+    "relatedArticles": "BÀI VIẾT LIÊN QUAN",
+    "breadcrumbHome": "Tin tức",
+    "mostViewed": "Xem nhiều nhất",
+    "featured": "NỔI BẬT",
+    "noArticles": "Chưa có bài viết nào",
+    "readMore": "Đọc thêm →"
+  },
+  "about": {
+    "hero": {
+      "title": "GIỚI THIỆU\nTHƯƠNG HIỆU CCHAT",
+      "descriptionPart1": "Thương hiệu thời trang ",
+      "smartCasual": "smart casual",
+      "descriptionPart2": " mang lại sự trẻ trung và tự tin cho người phụ nữ hiện đại",
+      "slogan": "Thanh lịch - Trẻ trung - Hiện đại - Ứng dụng linh hoạt",
+      "learnMore": "Tìm hiểu thêm"
+    },
+    "timeline": {
+      "number": "01",
+      "title": "HÀNH TRÌNH PHÁT TRIỂN",
+      "description": "Từ năm 2017, với cửa hàng đầu tiên tại Hà Nội, CCHAT bắt đầu hành trình tạo dựng một thương hiệu thời trang hiện đại dành cho phụ nữ Việt. Bằng sự kiên trì và đổi mới không ngừng, CCHAT liên tục phát triển:",
+      "years": {
+        "2018": "2018",
+        "2019": "2019",
+        "2020": "2020",
+        "2021-now": "2021 – nay"
+      },
+      "items": {
+        "2018": "Mở rộng hệ thống điểm bán",
+        "2019": "Chạm mốc 50.000 lượt khách mua mỗi tháng",
+        "2020": "Tăng trưởng doanh thu gấp 200%",
+        "2021-now": "Phát triển mạnh mẽ, mở rộng hơn 20 chi nhánh trên toàn quốc, khẳng định vị thế trong ngành thời trang nữ"
+      }
+    },
+    "visionMission": {
+      "number": "02",
+      "title": "TẦM NHÌN & SỨ MỆNH",
+      "tabs": {
+        "vision": "Tầm nhìn",
+        "mission": "Sứ mệnh"
+      },
+      "vision": {
+        "part1": "Trở thành ",
+        "highlight1": "thương hiệu thời trang số 1",
+        "part2": " tại Việt Nam – nơi phụ nữ tìm thấy ",
+        "highlight2": "sự tự tin và phong cách riêng,",
+        "part3": " và cũng là nơi mỗi thành viên trong công ty tìm thấy niềm ",
+        "highlight3": "hạnh phúc, tự hào và ý nghĩa",
+        "part4": " trong hành trình cống hiến"
+      },
+      "mission": {
+        "description": "Truyền cảm hứng mặc đẹp cho người phụ nữ"
+      }
+    },
+    "customerValue": {
+      "number": "03",
+      "title": "GIÁ TRỊ KHÁCH HÀNG",
+      "description": "CCHAT luôn đặt khách hàng làm trọng tâm với 3 giá trị chính:",
+      "items": {
+        "image": "Hình ảnh: Chuyên nghiệp – tận tâm",
+        "product": "Tính năng sản phẩm: Đa dạng – đổi mới – chất lượng cao",
+        "service": "Dịch vụ: Đồng hành – tin cậy"
+      },
+      "conclusion": "Những giá trị này giúp CCHAT không chỉ bán sản phẩm, mà còn tạo ra một trải nghiệm mua sắm trọn vẹn cho phụ nữ Việt."
+    },
+    "coreValue": {
+      "number": "04",
+      "title": "GIÁ TRỊ CỐT LÕI",
+      "intro": "Bốn giá trị nền tảng được xem như \"kim chỉ nam\" cho toàn bộ đội ngũ CCHAT:",
+      "centerText": "Giá trị cốt lõi CCHAT",
+      "values": {
+        "integrity": {
+          "title": "CHÍNH TRỰC",
+          "desc": "Suy nghĩ, lời nói, hành động trung thực"
+        },
+        "proactive": {
+          "title": "CHỦ ĐỘNG & TRÁCH NHIỆM",
+          "desc": "Tìm hiểu, đóng góp"
+        },
+        "openness": {
+          "title": "KHOÁNG ĐẠT",
+          "desc": "Chấp nhận rằng cho dù bạn có nhiều nỗ thế nữa"
+        },
+        "gratitude": {
+          "title": "LÒNG TRẮC ẨN",
+          "desc": "Đồng cảm, chia sẻ"
+        }
+      },
+      "conclusion": "Những giá trị này góp phần tạo nên một đội ngũ tận tâm, luôn nỗ lực mang đến những sản phẩm chỉn chu và dịch vụ tốt nhất"
+    },
+    "brandManifesto": {
+      "number": "05",
+      "title": "TUYÊN NGÔN THƯƠNG HIỆU",
+      "paragraph1": "Chúng tôi tin rằng mọi người phụ nữ đều mang trong mình một vẻ đẹp độc nhất. CCHAT tôn tại để đánh thức vẻ đẹp ấy - theo cách tinh tế, nhẹ nhàng và đầy cảm hứng.",
+      "paragraph2": "Chúng tôi không tạo ra quần áo chỉ để mặc. Chúng tôi tạo ra thiết kế để phụ nữ tự tin bước vào cuộc sống, để họ mím cười khi soi gương, và để họ thấy mình xứng đáng với những điều tốt đẹp hơn mỗi ngày.",
+      "paragraph3": "Thời trang của CCHAT là sự kết hợp giữa thanh lịch – trẻ trung – hiện đại - ứng dụng linh hoạt. Các sản phẩm của CCHAT được hoàn thiện bằng chất liệu tốt với những đường cắt tỉ mỉ để tôn dáng của cả một mẫu người.",
+      "paragraph4": "Chúng tôi tin vào sự biến hoá dịu dàng: chỉ một thiết kế phù hợp cũng đủ để thay đổi cảm xúc của cả một ngày. Dù để bạn dưỡng thăng hơn, bước tự tin hơn và sống rực rỡ hơn.",
+      "conclusion": "CCHAT — nơi vẻ đẹp thật của bạn được đánh thức bằng sự sáng tạo và cảm hứng!"
+    },
+    "brandStory": {
+      "number": "06",
+      "title": "CÂU CHUYỆN THƯƠNG HIỆU",
+      "question": "CCHAT bắt đầu từ một câu hỏi đơn giản: Điều gì khiến một người phụ nữ cảm thấy đẹp thật sự?",
+      "paragraph1": "Không phải những món đồ đắt đỏ. Không phải chay theo xu hướng. Mà là khoảnh khắc họ mặc một thiết kế khiến họ thấy chính họ – thấy mình trẻ trung hơn, tự tin hơn, và nhận được niềm vui nhỏ bé nhưng thật sự hiện diện.",
+      "paragraph2": "Từ khoảnh khắc ấy, CCHAT ra đời.",
+      "paragraph3": "Chúng tôi chọn con đường của sự tinh tế và sáng tạo: Những thiết kế thanh lịch, nhẹ nhàng, những luôn có một điểm nhấn riêng - đủ khác biệt để bạn cảm thấy đặc biệt, đủ thực tế để bạn có thể mặc mỗi ngày.",
+      "paragraph4": "Mỗi sản phẩm của CCHAT được tạo nên từ: chất liệu tốt, đường cắt tôn dáng và tư duy thiết kế hướng đến để phụ nữ luôn cảm thấy phiên bản đẹp nhất của chính mình.",
+      "paragraph5": "CCHAT tin rằng thời trang không chỉ là thứ bạn mặc. Đó là cách bạn kể câu chuyện của chính mình — một câu chuyện tự tin, hạnh phúc và đầy cảm hứng.",
+      "conclusionPart1": "Chúng tôi chỉ đóng một vai trò nhỏ: giúp bạn ",
+      "conclusionHighlight": "tỏa sáng theo cách rất riêng",
+      "conclusionPart2": "."
+    },
+    "brandPersonality": {
+      "number": "07",
+      "title": "TÍNH CÁCH THƯƠNG HIỆU",
+      "archetype1": "NHÀ ẢO THUẬT",
+      "archetype2": "NGƯỜI BÌNH THƯỜNG",
+      "traits": {
+        "flexible": {
+          "title": "Linh hoạt",
+          "desc": "Linh hoạt trong ứng dụng sản phẩm: dễ dàng cách phối đồ, bối cảnh, hoạt động..."
+        },
+        "prudent": {
+          "title": "Thận thiện",
+          "desc": "Dịch vụ khách hàng, không gian, hoạt động truyền thông và trải nghiệm tạo cảm giác thân thiện, gần gũi."
+        },
+        "smart": {
+          "title": "Thông minh",
+          "desc": "Những thiết kế thông minh giúp người mặc che khuyết điểm, hack tuổi, hack dáng..."
+        },
+        "reliable": {
+          "title": "Đáng tin cậy",
+          "desc": "Làm đúng những điều tuyên bố và cam kết. Thuộc lòng và hiểu nghiệm thu và trải nghiệm xứng đáng hoặc vượt hơn mong đợi của khách hàng."
+        },
+        "attractive": {
+          "title": "Lôi cuốn",
+          "desc": "Hình ảnh, hoạt động gây ấn tượng và có tinh thần hoạt, cải làm truyền."
+        },
+        "courteous": {
+          "title": "Thực tế",
+          "desc": "Hình ảnh chỉnh chu, bối cảnh thủy tiết. Không tạo cảm giác vẻ rao hay 'thổi phồng quá mức' giá trị mà tập trung vào khách hàng nhận được."
+        },
+        "energetic": {
+          "title": "Năng động",
+          "desc": "Giúp người phụ nữ dễ dáng hơn và làm việc tốt trong mọi hoạt động: gia đình, sự nghiệp, và chăm sóc bản thân."
+        }
+      }
+    },
+    "brandDNA": {
+      "number": "08",
+      "title": "BRAND DNA",
+      "positioning": {
+        "title": "Định vị thương hiệu",
+        "description": "Thương hiệu thời trang smart casual mang lại sự trẻ trung và tự tin cho người phụ nữ hiện đại"
+      },
+      "personality": {
+        "title": "Tính cách thương hiệu",
+        "description": "Linh hoạt, Thông minh, Lôi cuốn, Năng động, Thận thiện, Đáng tin cậy và Thực tế."
+      },
+      "coreAttribute": {
+        "title": "Đặc tính cốt lõi",
+        "description": "Thời trang nữ smart casual với thiết kế sáng tạo, liên tục đổi mới với chất lượng cao hơn giá thành."
+      },
+      "philosophy": {
+        "title": "Triết lý vận hành",
+        "description": "ĐẸP TỪ KHI CHẤT"
+      }
+    }
+  },
+  "returnPolicy": {
+    "pageTitle": "CHÍNH SÁCH ĐỔI TRẢ HÀNG",
+    "registerButton": "Đăng ký đổi/trả hàng",
+    "requestButton": "Yêu cầu đổi trả",
+    "banner": {
+      "line1": "ĐỔI TRẢ MIỄN PHÍ",
+      "line2": "TRONG VÒNG 7 NGÀY"
+    },
+    "section1": {
+      "number": "01",
+      "title": "THỜI GIAN ĐỔI / TRẢ",
+      "description": "CCHAT tiếp nhận yêu cầu đổi trả của khách hàng trong:",
+      "storeOrder": "Đơn tại cửa hàng: 07 ngày từ ngày mua hàng",
+      "onlineOrder": "Đơn online: 07 ngày từ khi đơn hàng giao thành công"
+    },
+    "section2": {
+      "number": "02",
+      "title": "CHÍNH SÁCH ÁP DỤNG",
+      "exchangePolicy": {
+        "title": "Chính sách đổi hàng",
+        "description": "Áp dụng đổi hàng 1 lần/ 1 đơn hàng"
+      },
+      "exchangeApplicable": {
+        "title": "Các trường hợp áp dụng đổi hàng",
+        "items": {
+          "item1": "Theo nhu cầu đổi size, đổi mẫu của khách hàng và đơn hàng, sản phẩm đảm bảo đủ điều kiện áp dụng của Cchat.",
+          "item2": "Khách hàng đổi sang mẫu khác sẽ thanh toán số tiền chênh lệch nếu giá trị đơn hàng đổi lớn hơn giá trị sản phẩm gửi đổi hàng. CChat không hoàn lại tiền dư dưới mọi hình thức.",
+          "item3": "Tất cả các trường hợp sản phẩm, đơn hàng có phát sinh lỗi được xác nhận từ CChat:",
+          "item3a": "Sản phẩm lỗi do sản xuất: rách, bẩn, trầy xước, bung cúc, hỏng khóa, lỗi đường may, lỗi chất liệu, mốc bẩn, loang màu, hoen gỉ, gãy rụng...",
+          "item3b": "Giao sai/ thiếu sản phẩm so với đơn đặt hàng: màu sắc, size, số lượng, loại sản phẩm."
+        }
+      },
+      "exchangeNotApplicable": {
+        "title": "Các trường hợp không áp dụng đổi hàng",
+        "items": {
+          "item1": "Mua hàng hoặc nhận hàng (đơn hàng online) quá 7 ngày.",
+          "item2": "Hàng phụ kiện: khuyên tai, vòng tay, vong cổ, chocker, cặp, tag áo, hoa cài, khăn lụa...",
+          "item3": "Sản phẩm mặc dán: Áo quây, áo 2 dây, áo sát nách, ba lỗ (cotton, thun, len)",
+          "item4": "Sản phẩm thuộc dòng underwear.",
+          "item5": "Hàng sale trên 50%."
+        }
+      },
+      "returnPolicy": {
+        "title": "Chính sách trả hàng",
+        "items": {
+          "item1": "Khách hàng được trả hàng trong trường hợp sản phẩm hoặc đơn hàng có phát sinh lỗi được xác nhận từ CChat và không có nhu cầu đổi sang sản phẩm khác.",
+          "item2": "Sản phẩm lỗi do sản xuất: rách, bẩn, trầy xước, bung cúc, hỏng khóa, lỗi đường may, lỗi chất liệu, mốc bẩn, loang màu, hoen gỉ, gãy rụng...",
+          "item3": "Giao sai/ thiếu sản phẩm so với đơn đặt hàng: màu sắc, size, số lượng, loại sản phẩm.",
+          "item4": "Hoàn tiền qua tài khoản ngân hàng mà khách hàng cung cấp.",
+          "item5": "CChat chịu 100% phí trả hàng."
+        }
+      },
+      "productConditions": {
+        "title": "Điều kiện của sản phẩm đổi / trả",
+        "items": {
+          "item1": "Sản phẩm còn nguyên vẹn, đầy đủ tem mác, phụ kiện, hộp, túi, quà tặng đi kèm.",
+          "item2": "Sản phẩm chưa chỉnh sửa, chưa sử dụng, chưa giặt ủi, không có mùi lạ, không bị hư hỏng do tác động bên ngoài.",
+          "item3": "Sản phẩm được sử dụng và bảo quản theo đúng hướng dẫn của CChat.",
+          "item4": "Đơn hàng đổi có giá tương đương hoặc cao hơn giá các sản phẩm đã mua."
+        }
+      },
+      "fees": {
+        "title": "Chi phí đổi / trả hàng",
+        "description": "Khi khách hàng gửi yêu cầu đổi / trả hàng cho CCHAT, ngoài phần chênh lệch giá sản phẩm khách hàng cần thanh toán thêm các khoản phí sau",
+        "byRequest": {
+          "number": "01",
+          "title": "Đổi / trả theo nhu cầu",
+          "description": "Khách hàng thanh toán phí đổi hàng 2 chiều, bao gồm:",
+          "items": {
+            "item1": "Phí giao hàng",
+            "item2": "Phí giao đơn hàng đổi mới: 30.000VNĐ"
+          }
+        },
+        "byDefect": {
+          "number": "02",
+          "title": "Đổi / trả do lỗi từ CCHAT",
+          "description": "Khách hàng không cần thanh toán phí đổi hàng"
+        }
+      },
+      "process": {
+        "title": "Các bước thực hiện đổi / trả sản phẩm",
+        "online": {
+          "number": "01",
+          "title": "Đối với đơn hàng online",
+          "steps": {
+            "step1": "Bước 1: Khách hàng gửi yêu cầu đổi / trả sản phẩm cho CCHAT",
+            "step2": "Bước 2: Khách hàng cung cấp hình ảnh / video sản phẩm đổi / trả theo yêu cầu từ CCHAT",
+            "step3": "Bước 3: Khách hàng gửi lại sản phẩm đổi / trả cho CCHAT theo hướng dẫn",
+            "step4": "Bước 4: Sau khi nhận hàng CCHAT tiến hành xử lý yêu cầu đổi / trả trong 2 ngày làm việc"
+          }
+        },
+        "inStore": {
+          "number": "02",
+          "title": "Đối với đơn hàng mua trực tiếp tại cửa hàng",
+          "description": "Khách hàng mua tại cửa hàng nào sẽ mang trực tiếp sản phẩm + hoá đơn mua hàng qua cửa hàng đó để được hỗ trợ đổi / trả sản phẩm"
+        }
+      }
+    },
+    "section": {
+      "productsTitle": "ĐỔI VỚI NHỮNG SẢN PHẨM BẠN ĐÃ MUA TẠI CCHAT",
+      "returnPeriod": "Thời gian đổi trả:",
+      "returnPeriodDesc": "CChat tiếp nhận yêu cầu đổi trả của khách hàng với trường hợp đặt online là 07 ngày từ khi đơn hàng giao thành công.",
+      "conditions": "Điều kiện:",
+      "condition1": "Sản phẩm còn nguyên vẹn, đầy đủ tem mác, phụ kiện, hộp, túi, quà tặng đi kèm.",
+      "condition2": "Sản phẩm chưa chỉnh sửa, chưa sử dụng, chưa giặt ủi, không có mùi lạ, không bị hư hỏng do tác động bên ngoài.",
+      "condition3": "Sản phẩm được sử dụng và bảo quản theo đúng hướng dẫn của CChat.",
+      "condition4": "Đơn hàng đổi có giá tương đương hoặc cao hơn giá các sản phẩm đã mua.",
+      "costsTitle": "Chi phí đổi/trả hàng:",
+      "costsDesc": "Khi khách hàng gửi yêu cầu đổi/trả hàng cho CChat, ngoài phần chênh lệch giá sản phẩm đổi khách hàng cần thanh toán thêm các khoản phí sau:",
+      "customerInitiated": "Đổi/trả theo nhu cầu:",
+      "customerInitiatedDesc": "Khách hàng thanh toán phí đổi hàng 2 chiều, bao gồm:",
+      "refundFee": "Phí hoàn hàng;",
+      "exchangeFee": "Phí giao đơn hàng đổi mới: 30.000VNĐ;",
+      "cchatInitiated": "Đổi/trả do lỗi từ CChat:",
+      "cchatInitiatedDesc": "Khách hàng không cần thanh toán phí đổi hàng.",
+      "stepsTitle": "CÁC BƯỚC THỰC HIỆN ĐỔI/TRẢ SẢN PHẨM ONLINE",
+      "stepsNote": "(Khách mua tại cửa hàng nào sẽ mang trực tiếp sản phẩm + hóa đơn qua cửa hàng đó để được hỗ trợ đổi/trả sản phẩm.)",
+      "step1Title": "Bước 1",
+      "step1Desc": "Khách hàng gửi yêu cầu đổi/trả sản phẩm cho CChat.",
+      "step2Title": "Bước 2",
+      "step2Desc": "Khách hàng cung cấp hình ảnh/video sản phẩm đổi/trả theo yêu cầu từ CChat.",
+      "step3Title": "Bước 3",
+      "step3Desc": "Khách hàng gửi tại sản phẩm đổi/trả cho CChat theo hướng dẫn.",
+      "step4Title": "Bước 4",
+      "step4Desc": "Sau khi nhận hàng CChat tiến hành xử lý yêu cầu đổi/trả trong 2 ngày làm việc.",
+      "stepsWarning": "Lưu ý: Khách hàng tự ý gửi hàng về đổi mà không thông qua sự xác nhận của nhân viên xử lý khiếu nại CChat thì mọi vấn đề liên quan sản phẩm đó CChat không chịu trách nhiệm.",
+      "returnPeriodTitle": "THỜI GIAN ĐỔI/TRẢ",
+      "returnPeriodText": "CChat tiếp nhận yêu cầu đổi trả của khách hàng với đơn hàng online là 07 ngày từ khi đơn hàng giao thành công",
+      "policiesTitle": "CHÍNH SÁCH ÁP DỤNG",
+      "exchangePolicyTitle": "1. Chính sách đổi hàng:",
+      "exchangePolicyRule": "Áp dụng đổi hàng 1 lần/1 đơn hàng.",
+      "exchangeApplicableTitle": "Các trường hợp áp dụng đổi hàng:",
+      "exchangeApplicable1": "Theo nhu cầu đổi size, đổi màu của khách hàng và đơn hàng, sản phẩm đảm bảo đủ điều kiện áp dụng của Cchat.",
+      "exchangeApplicable2": "Khách hàng đổi sang màu khác sẽ thanh toán số tiền chênh lệch nếu giá trị đơn hàng đổi lớn hơn giá trị sản phẩm gửi đổi hàng. CChat không hoàn lại tiền dư dưới mọi hình thức.",
+      "exchangeApplicable3Title": "Tất cả các trường hợp sản phẩm, đơn hàng có phát sinh lỗi được xác nhận từ CChat:",
+      "exchangeApplicable3a": "Sản phẩm lỗi do sản xuất: rách, bẩn, trầy xước, bung cúc, hỏng khóa, lỗi đường may, lỗi chất liệu, mốc bẩn, loang màu, hoen gỉ, gãy rụng...",
+      "exchangeApplicable3b": "Giao sai/thiếu sản phẩm so với đơn đặt hàng: màu sắc, size, số lượng, loại sản phẩm.",
+      "exchangeNotApplicableTitle": "Các trường hợp không áp dụng đổi hàng:",
+      "exchangeNotApplicable1": "Mua hàng hoặc nhận hàng (đơn hàng online) quá 7 ngày.",
+      "exchangeNotApplicable2": "Hàng phụ kiện: khuyên tai, vòng tay, vòng cổ, chocker, cặp, tag áo, hoa cài, khăn lụa...",
+      "exchangeNotApplicable3": "Sản phẩm mặc dán: Áo quây, áo 2 dây, áo sát nách, ba lỗ (cotton, thun, len)",
+      "exchangeNotApplicable4": "Sản phẩm thuộc dòng underwear.",
+      "exchangeNotApplicable5": "Hàng sale trên 50%.",
+      "returnPolicyTitle": "2. Chính sách trả hàng:",
+      "returnApplicable1": "Khách hàng được trả hàng trong trường hợp sản phẩm hoặc đơn hàng có phát sinh lỗi được xác nhận từ CChat và không có nhu cầu đổi sang sản phẩm khác.",
+      "returnApplicable2": "Sản phẩm lỗi do sản xuất: rách, bẩn, trầy xước, bung cúc, hỏng khóa, lỗi đường may, lỗi chất liệu, mốc bẩn, loang màu, hoen gỉ, gãy rụng...",
+      "returnApplicable3": "Giao sai/thiếu sản phẩm so với đơn đặt hàng: màu sắc, size, số lượng, loại sản phẩm.",
+      "returnApplicable4": "Hoàn tiền qua tài khoản ngân hàng mà khách hàng cung cấp.",
+      "returnApplicable5": "CChat chịu 100% phí trả hàng."
+    },
+    "dialog": {
+      "title": "Yêu cầu đổi/trả hàng",
+      "notesTitle": "Lưu ý khi đổi/trả hàng/hoàn tiền:",
+      "note1": "Sản phẩm còn nguyên vẹn, đầy đủ tem mác, phụ kiện, hộp, túi, quà tặng đi kèm.",
+      "note2": "Sản phẩm chưa chỉnh sửa, chưa sử dụng, chưa giặt ủi, không có mùi lạ, không bị hư hỏng do tác động bên ngoài.",
+      "note3": "Sản phẩm được sử dụng và bảo quản theo đúng hướng dẫn của CChat.",
+      "note4": "Đơn hàng đổi có giá tương đương hoặc cao hơn giá các sản phẩm đã mua.",
+      "viewPolicy": "Xem chính sách:",
+      "viewPolicyLink": "Tại đây",
+      "agreeCheckbox": "Tôi đã hiểu chính sách đổi/trả",
+      "supportType": "Bạn cần CChat hỗ trợ vấn đề gì?",
+      "selectPlaceholder": "Vui lòng chọn",
+      "exchange": "Đổi hàng",
+      "return": "Trả hàng/Hoàn tiền",
+      "exchangeReasonsTitle": "Cho CChat biết lý do đổi hàng của bạn nhé!",
+      "exchangeReasonSize": "Đổi size khác",
+      "exchangeReasonColor": "Đổi màu khác",
+      "exchangeReasonModel": "Đổi mẫu khác",
+      "exchangeReasonOther": "Lý do khác",
+      "returnReasonsTitle": "Cho CChat biết lý do trả hàng của bạn nhé!",
+      "returnReasonWrongItem": "Giao sai hàng (sai sản phẩm/màu/size)",
+      "returnReasonNotAsDescribed": "Sản phẩm không đúng như mô tả",
+      "returnReasonNotSatisfied": "Không ưng ý",
+      "returnReasonOther": "Lý do khác",
+      "productToExchange": "Sản phẩm bạn muốn đổi và nhận lại là gì?",
+      "productToExchangeLabel": "Sản phẩm (tên sản phẩm - màu - size) bạn cần đổi (có thể nhiều hơn 1 sản phẩm)",
+      "productToExchangePlaceholder": "Ví dụ: Áo thun CChat Basic - Đen - S",
+      "productWantedLabel": "Sản phẩm (tên sản phẩm - màu - size) bạn muốn nhận lại",
+      "productWantedPlaceholder": "Ví dụ: Áo thun CChat Basic - Đen - S",
+      "otherReasonLabel": "Câu trả lời",
+      "otherReasonPlaceholder": "Tối đa 256 ký tự",
+      "bankInfoTitle": "Bạn muốn nhận hoàn tiền qua tài khoản ngân hàng nào?",
+      "bankName": "Tên ngân hàng",
+      "bankNamePlaceholder": "Chọn tên ngân hàng",
+      "accountNumber": "Số tài khoản ngân hàng",
+      "accountNumberPlaceholder": "Nhập số tài khoản",
+      "accountHolder": "Họ và tên chủ tài khoản",
+      "accountHolderPlaceholder": "Tối đa 256 ký tự",
+      "orderId": "Mã đơn hàng",
+      "orderIdPlaceholder": "AbcD1234xyz",
+      "productImages": "Hình ảnh sản phẩm",
+      "uploadButton": "Chọn ảnh/video",
+      "cancelButton": "Huỷ",
+      "submitButton": "Gửi yêu cầu",
+      "submitting": "Đang gửi...",
+      "loginRequired": "Vui lòng đăng nhập để gửi yêu cầu đổi/trả hàng",
+      "errors": {
+        "agreeRequired": "Vui lòng xác nhận đã hiểu chính sách đổi/trả",
+        "supportTypeRequired": "Vui lòng chọn loại hỗ trợ",
+        "reasonRequired": "Vui lòng chọn ít nhất một lý do",
+        "otherReasonRequired": "Vui lòng nhập lý do khác",
+        "productToExchangeRequired": "Vui lòng nhập sản phẩm cần đổi",
+        "productWantedRequired": "Vui lòng nhập sản phẩm muốn nhận",
+        "bankNameRequired": "Vui lòng chọn ngân hàng",
+        "accountNumberRequired": "Vui lòng nhập số tài khoản",
+        "accountNumberInvalid": "Số tài khoản chỉ được chứa số",
+        "accountHolderRequired": "Vui lòng nhập tên chủ tài khoản",
+        "orderIdRequired": "Vui lòng nhập mã đơn hàng",
+        "imagesRequired": "Vui lòng tải lên ít nhất 1 hình ảnh sản phẩm"
+      },
+      "success": {
+        "submitted": "Yêu cầu đổi/trả hàng đã được gửi thành công! Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất."
+      }
+    }
+  },
+  "privacyPolicy": {
+    "pageTitle": "CHÍNH SÁCH BẢO MẬT",
+    "subtitle": "CHÍNH SÁCH BẢO MẬT THÔNG TIN KHÁCH HÀNG",
+    "section1": {
+      "number": "01",
+      "title": "MỤC ĐÍCH THU THẬP VÀ SỬ DỤNG",
+      "subtitle": "THÔNG TIN CỦA CCHAT",
+      "cardText": "CCHAT chủ yếu thu thập các thông tin cơ bản của khách hàng liên quan tới đơn đặt hàng bao gồm:",
+      "cardHighlight": "Họ tên, email, số điện thoại, địa chỉ",
+      "description": "Các thông tin cá nhân này được sử dụng nhằm mục đích xử lý đơn hàng trên website, nâng cao chất lượng dịch vụ, chăm sóc khách hàng, nghiên cứu thị trường, hỗ trợ các hoạt động Marketing, quản lý nội bộ hoặc theo yêu cầu của pháp luật",
+      "commitmentTitle": "CHÚNG TÔI CAM KẾT",
+      "commitments": {
+        "item1": "Việc thu thập và sử dụng thông tin cá nhân đều được thông qua ý kiến đồng ý từ phía khách hàng",
+        "item2": "Thông tin khách hàng được chúng tôi sử dụng đúng mục đích của việc thu thập",
+        "item3": "Thông tin khách hàng sẽ được lưu trữ cho đến khi có yêu cầu ban quản trị huỷ bỏ, còn lại mọi thông tin cá nhân sẽ được bảo mật trên máy chủ của CCHAT.",
+        "item4": "Chúng tôi chỉ sử dụng thông tin được khách hàng cung cấp, không sử dụng các thông tin của khách hàng đến từ nguồn khác.",
+        "item5": "Chỉ cho phép các đối tượng sau được tiếp cận với thông tin của khách hàng: Nhân viên công ty (những người thực hiện việc xử lý đơn hàng, chăm sóc khách hàng và xử lý thắc mắc và vấn đề của khách hàng), cơ quan nhà nước có thẩm quyền"
+      },
+      "footer": "Trong quá trình giới thiệu sản phẩm, quảng cáo và chăm sóc khách hàng, khách hàng hoàn toàn có thể gửi yêu cầu dừng việc sử dụng thông tin khách hàng đến chúng tôi."
+    },
+    "section2": {
+      "number": "02",
+      "title": "CÁCH THỨC BẢO MẬT THÔNG TIN",
+      "subtitle": "CỦA CCHAT",
+      "description": "Việc bảo mật các thông tin khách hàng được dựa trên sự đảm bảo việc tuân thủ của từng cán bộ, nhân viên CCHAT, đối tác và hệ thống lưu trữ dữ liệu. Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát, rò rỉ dữ liệu khách hàng, chúng tôi sẽ có trách nhiệm thông báo vụ việc cho cơ quan chức năng điều tra xử lý kịp thời thông báo đến khách hàng.",
+      "disclaimer": "Tuy nhiên, do đặc điểm của môi trường internet, không một dữ liệu nào trên mội trường mạng cũng có thể được bảo mật 100%. Vì vậy, CCHAT không cam kết chắc chắn rằng các thông tin cá nhân được bảo mật tuyệt đối."
+    },
+    "section3": {
+      "number": "03",
+      "title": "TRÁCH NHIỆM BẢO MẬT THÔNG TIN",
+      "subtitle": "CỦA KHÁCH HÀNG",
+      "description1": "Khách hàng vui lòng chỉ cung cấp đủ và đúng các thông tin theo yêu cầu của CCHAT. Khách hàng hoàn toàn chịu trách nhiệm về tính trung thực và chính xác đối với các thông tin đã cung cấp cũng như tự chịu trách nhiệm nếu cung cấp các thông tin ngoài yêu cầu.",
+      "description2": "Trong trường hợp khách hàng cũng cung cấp thông tin cá nhân của mình cho nhiều tổ chức, cá nhân khác nhau, khách hàng phải yêu cầu các bên liên quan cùng bảo mật. Mọi thông tin cá nhân của khách hàng khi bị tiết lộ gây thiệt hại đến khách hàng, khách hàng phải tự xác định được nguồn tiết lộ thông tin.",
+      "disclaimer1": "CCHAT không chịu trách nhiệm khi thông tin khách hàng bị tiết lộ mà không có căn cứ xác đáng thể hiện CCHAT là bên tiết lộ thông tin.",
+      "disclaimer2": "Khách hàng tự bảo quản tài khoản đăng nhập trên các trang và ứng dụng thương mại điện tử của CCHAT",
+      "disclaimer3": "Chúng tôi không chịu trách nhiệm về việc khách hàng bị lộ thông tin khi khách hàng không tuân thủ các yêu cầu trên"
+    },
+    "section4": {
+      "number": "04",
+      "title": "LUẬT ÁP DỤNG KHI XẢY RA",
+      "subtitle": "TRANH CHẤP",
+      "description": "Mọi tranh chấp xảy ra giữa khách và CCHAT sẽ được hoà giải. Nếu hoà giải không thành sẽ được giải quyết tại Toà án có thẩm quyền và tuân theo pháp luật Việt Nam"
+    }
+  },
+  "locations": {
+    "title": "HỆ THỐNG CÁC\nCỬA HÀNG CCHAT",
+    "description": "Với mong muốn mang đến cho khách hàng những trải nghiệm tốt nhất khi mua sắm các sản phẩm thời trang, trong thời gian qua CCHAT luôn nỗ lực không ngừng mở rộng các cửa hàng trên toàn quốc.",
+    "totalStores": "Cửa hàng trên toàn quốc",
+    "grandOpening": "KHAI TRƯƠNG",
+    "alwaysPromotions": "Luôn có Khuyến mãi",
+    "customersPerDay": "Phụ nữ được phục vụ mỗi ngày",
+    "selectStore": "CHỌN CƠ SỞ",
+    "storesInHanoi": "Cơ sở tại Hà Nội",
+    "storesInOtherCities": "Cơ sở tại các thành phố khác",
+    "openingHours": "THỜI GIAN MỞ CỬA",
+    "daily": "HÀNG NGÀY",
+    "address": "Địa chỉ",
+    "phone": "Điện thoại",
+    "galleryTitle": "Một số hình ảnh tại cửa hàng CCHAT"
+  },
+  "reviews": {
+    "title": "ĐÁNH GIÁ SẢN PHẨM",
+    "reviewCount": "{count} lượt đánh giá",
+    "filters": {
+      "newest": "Mới nhất",
+      "highest": "Cao nhất",
+      "lowest": "Thấp nhất"
+    },
+    "productInfo": "Sản phẩm",
+    "height": "Chiều cao",
+    "weight": "Cân nặng",
+    "fitLevel": "Mức độ vừa của sản phẩm",
+    "purchasedOn": "Đã mua ngày {date}",
+    "writeReview": "VIẾT ĐÁNH GIÁ",
+    "noReviews": "Chưa có đánh giá nào",
+    "emptyState": {
+      "title": "Hiện chưa có đánh giá nào",
+      "subtitle": "Bạn sẽ là người đầu tiên đánh giá sản phẩm này chứ!"
+    },
+    "fitLevels": {
+      "tight": "Chật",
+      "fit": "Vừa vặn",
+      "loose": "Rộng"
+    },
+    "variantColor": "Màu đã mua:",
+    "size": "Kích thước:",
+    "reviewFrom": "Đánh giá từ",
+    "dialog": {
+      "title": "Đánh giá sản phẩm",
+      "close": "Đóng",
+      "previous": "Trước",
+      "next": "Sau"
+    },
+    "dialogTitle": "Viết đánh giá sản phẩm",
+    "rating": "Đánh giá sản phẩm",
+    "heightPlaceholder": "x1",
+    "weightPlaceholder": "x1",
+    "productFit": "Mức độ vừa cơ sản phẩm",
+    "productFitPlaceholder": "Chọn",
+    "fitOptions": {
+      "tight": "Chật",
+      "perfect": "Vừa vặn",
+      "loose": "Rộng"
+    },
+    "comment": "Nội dung đánh giá",
+    "commentPlaceholder": "Nhập đánh giá của bạn",
+    "mediaTitle": "Ảnh / video sản phẩm",
+    "addImage": "Thêm hình ảnh",
+    "addVideo": "Thêm video",
+    "submitReview": "GỬI ĐÁNH GIÁ",
+    "submitting": "Đang gửi...",
+    "fillAllRequiredFields": "Vui lòng điền đầy đủ thông tin bắt buộc",
+    "confirmCancelTitle": "Xác nhận hủy",
+    "confirmCancelMessage": "Thông tin thay đổi chưa được lưu lại. Bạn có chắc chắn muốn thoát không?",
+    "keepEditing": "Tiếp tục",
+    "confirmDiscard": "Hủy bỏ",
+    "loading": "Đang tải...",
+    "orderNotFound": "Không tìm thấy đơn hàng",
+    "noProductsToReview": "Không có sản phẩm để đánh giá",
+    "submitError": "Có lỗi xảy ra khi gửi đánh giá",
+    "uploading": "Đang tải lên...",
+    "ratingRequired": "Vui lòng chọn đánh giá",
+    "commentRequired": "Vui lòng nhập nội dung đánh giá",
+    "commentTooLong": "Nội dung đánh giá quá dài (tối đa 500 ký tự)",
+    "heightRequired": "Vui lòng nhập chiều cao",
+    "heightInvalid": "Chiều cao không hợp lệ (50-250 cm)",
+    "weightRequired": "Vui lòng nhập cân nặng",
+    "weightInvalid": "Cân nặng không hợp lệ (20-200 kg)",
+    "tooManyImages": "Chỉ được tải lên tối đa 5 file (ảnh + video)",
+    "invalidFileType": "Chỉ chấp nhận file JPG, PNG, MP4, MOV",
+    "imageSizeExceeded": "Kích thước ảnh vượt quá 5MB",
+    "videoSizeExceeded": "Kích thước video vượt quá 50MB",
+    "productRating": "Đánh giá sản phẩm:",
+    "fitLevelLabel": "Mức độ vừa cỡ sản phẩm:",
+    "reviewContent": "Nội dung đánh giá:",
+    "productImages": "Hình ảnh sản phẩm",
+    "submissionDate": "Ngày gửi đánh giá:"
+  },
+  "accountDeletion": {
+    "pageTitle": "XÓA TÀI KHOẢN VĨNH VIỄN",
+    "subtitle": "HƯỚNG DẪN XÓA DỮ LIỆU TÀI KHOẢN",
+    "deleteAccount": "Xóa tài khoản",
+    "deleteAccountShort": "Xóa TK",
+    "intro": {
+      "number": "01",
+      "title": "QUYỀN XÓA DỮ LIỆU",
+      "subtitle": "CỦA BẠN",
+      "description": "Theo quy định về bảo vệ dữ liệu cá nhân, bạn có quyền yêu cầu xóa vĩnh viễn tài khoản và tất cả dữ liệu liên quan của mình khỏi hệ thống CCHAT.",
+      "note": "Khi bạn đăng nhập bằng Facebook, chúng tôi chỉ lưu trữ các thông tin cơ bản như tên, email và ảnh đại diện để tạo tài khoản. Bạn có thể yêu cầu xóa hoàn toàn những dữ liệu này bất cứ lúc nào."
+    },
+    "steps": {
+      "number": "02",
+      "title": "CÁCH YÊU CẦU",
+      "subtitle": "XÓA TÀI KHOẢN",
+      "step1": {
+        "number": "01",
+        "title": "Đăng nhập",
+        "description": "Đăng nhập vào tài khoản CCHAT của bạn"
+      },
+      "step2": {
+        "number": "02",
+        "title": "Vào trang tài khoản",
+        "description": "Vào mục \"Xóa tài khoản\" trong trang quản lý tài khoản"
+      },
+      "step3": {
+        "number": "03",
+        "title": "Xác nhận xóa",
+        "description": "Nhập tên của bạn để xác nhận và hoàn tất việc xóa tài khoản"
+      }
+    },
+    "data": {
+      "number": "03",
+      "title": "DỮ LIỆU SẼ BỊ XÓA",
+      "subtitle": "VĨNH VIỄN",
+      "description": "Khi yêu cầu xóa tài khoản được xử lý, các dữ liệu sau sẽ bị xóa vĩnh viễn và không thể khôi phục:",
+      "items": {
+        "item1": "Thông tin cá nhân (họ tên, email, số điện thoại, địa chỉ)",
+        "item2": "Lịch sử đơn hàng và giao dịch",
+        "item3": "Danh sách yêu thích và giỏ hàng",
+        "item4": "Đánh giá và nhận xét sản phẩm",
+        "item5": "Điểm tích lũy và ưu đãi thành viên",
+        "item6": "Dữ liệu đăng nhập từ Facebook (nếu có)"
+      },
+      "warning": "Lưu ý: Sau khi xóa, bạn sẽ không thể khôi phục tài khoản hoặc truy cập các dữ liệu đã xóa."
+    },
+    "form": {
+      "number": "04",
+      "title": "XÓA TÀI KHOẢN",
+      "subtitle": "CỦA BẠN",
+      "redirectDescription": "Để xóa tài khoản, vui lòng đăng nhập và vào trang quản lý tài khoản. Tại đó bạn sẽ tìm thấy tùy chọn xóa tài khoản vĩnh viễn.",
+      "goToAccount": "Đi đến trang tài khoản",
+      "loginRequired": "Vui lòng đăng nhập để thực hiện xóa tài khoản",
+      "loginRequiredDescription": "Bạn cần đăng nhập vào tài khoản trước khi có thể yêu cầu xóa.",
+      "contactNote": "Nếu cần hỗ trợ, vui lòng liên hệ support@cchat.vn"
+    },
+    "deleteDialog": {
+      "title": "Xác nhận xóa tài khoản",
+      "description": "Hành động này không thể hoàn tác. Tất cả dữ liệu của bạn sẽ bị xóa vĩnh viễn.",
+      "confirmInstruction": "Để xác nhận, vui lòng nhập tên của bạn:",
+      "namePlaceholder": "Nhập tên của bạn",
+      "nameNotMatch": "Tên không khớp",
+      "deleting": "Đang xóa...",
+      "success": "Tài khoản đã được xóa thành công"
+    }
+  },
+  "termsPolicy": {
+    "pageTitle": "ĐIỀU KHOẢN DỊCH VỤ",
+    "lastUpdated": "Cập nhật lần cuối: 01/01/2025",
+    "intro": "Chào mừng bạn đến với CCHAT. Khi truy cập và sử dụng website của chúng tôi, bạn đồng ý tuân thủ các điều khoản và điều kiện dưới đây. Vui lòng đọc kỹ trước khi sử dụng dịch vụ.",
+    "section1": {
+      "title": "ĐIỀU KIỆN SỬ DỤNG",
+      "content1": "Bằng việc truy cập website <highlight>cchat.vn</highlight>, bạn xác nhận rằng bạn đã đủ 18 tuổi hoặc có sự đồng ý của phụ huynh/người giám hộ để sử dụng dịch vụ.",
+      "content2": "Bạn cam kết sử dụng website cho mục đích hợp pháp và không vi phạm quyền lợi của bên thứ ba.",
+      "content3": "CCHAT có quyền từ chối dịch vụ, chấm dứt tài khoản hoặc hủy đơn hàng nếu phát hiện hành vi vi phạm điều khoản."
+    },
+    "section2": {
+      "title": "TÀI KHOẢN NGƯỜI DÙNG",
+      "content1": "Khi đăng ký tài khoản, bạn phải cung cấp thông tin chính xác và cập nhật khi có thay đổi.",
+      "content2": "Bạn chịu trách nhiệm bảo mật thông tin đăng nhập và tất cả hoạt động diễn ra dưới tài khoản của mình.",
+      "content3": "Mỗi khách hàng chỉ được phép sở hữu <highlight>một tài khoản</highlight>. CCHAT có quyền hủy các tài khoản trùng lặp.",
+      "content4": "Nếu phát hiện tài khoản bị truy cập trái phép, vui lòng thông báo ngay cho chúng tôi qua hotline <highlight>0868 506 800</highlight>."
+    },
+    "section3": {
+      "title": "ĐẶT HÀNG VÀ THANH TOÁN",
+      "content1": "Tất cả đơn hàng được đặt trên website đều phải tuân theo quy trình xác nhận của CCHAT.",
+      "content2": "Giá sản phẩm có thể thay đổi mà không cần thông báo trước. Giá áp dụng là giá tại thời điểm đặt hàng.",
+      "content3": "CCHAT chấp nhận các hình thức thanh toán: <highlight>COD (thanh toán khi nhận hàng)</highlight>, chuyển khoản ngân hàng, và các ví điện tử.",
+      "content4": "Chúng tôi có quyền hủy đơn hàng nếu phát hiện gian lận hoặc thông tin không chính xác.",
+      "content5": "Màu sắc sản phẩm hiển thị trên website có thể khác biệt so với thực tế do cấu hình màn hình. Đây không phải là lỗi sản phẩm."
+    },
+    "section4": {
+      "title": "QUYỀN SỞ HỮU TRÍ TUỆ",
+      "content1": "Toàn bộ nội dung trên website bao gồm logo, hình ảnh, văn bản, thiết kế đều thuộc quyền sở hữu của <highlight>CCHAT</highlight>.",
+      "content2": "Nghiêm cấm sao chép, phân phối hoặc sử dụng nội dung website cho mục đích thương mại mà không có sự cho phép bằng văn bản.",
+      "content3": "Các thương hiệu, nhãn hiệu xuất hiện trên website thuộc quyền sở hữu của chủ sở hữu tương ứng."
+    },
+    "section5": {
+      "title": "GIỚI HẠN TRÁCH NHIỆM",
+      "content1": "CCHAT không chịu trách nhiệm về bất kỳ thiệt hại nào phát sinh từ việc sử dụng hoặc không thể sử dụng website.",
+      "content2": "Chúng tôi không đảm bảo website sẽ hoạt động liên tục, không có lỗi hoặc virus.",
+      "content3": "CCHAT không chịu trách nhiệm về nội dung của các website bên thứ ba được liên kết từ website của chúng tôi."
+    },
+    "section6": {
+      "title": "ĐIỀU KHOẢN CHUNG",
+      "content1": "CCHAT có quyền thay đổi điều khoản này bất cứ lúc nào. Thay đổi có hiệu lực ngay khi được đăng tải trên website.",
+      "content2": "Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Mọi tranh chấp sẽ được giải quyết tại tòa án có thẩm quyền tại Việt Nam.",
+      "content3": "Nếu có bất kỳ câu hỏi nào về điều khoản dịch vụ, vui lòng liên hệ:"
+    },
+    "contact": {
+      "email": "Email: support@cchat.vn",
+      "hotline": "Hotline: 0868 506 800 (8h - 17h, tất cả các ngày)"
+    }
+  },
+  "faqPage": {
+    "pageTitle": "CÂU HỎI THƯỜNG GẶP",
+    "searchPlaceholder": "Tìm kiếm câu hỏi...",
+    "categories": {
+      "ordering": {
+        "title": "Đặt hàng",
+        "questions": {
+          "q1": {
+            "question": "Làm thế nào để đặt hàng trên CCHAT?",
+            "answer": "Bạn có thể đặt hàng theo các bước sau:\n1. Chọn sản phẩm và thêm vào giỏ hàng\n2. Nhấn vào giỏ hàng và kiểm tra đơn hàng\n3. Điền thông tin giao hàng\n4. Chọn phương thức thanh toán\n5. Xác nhận đặt hàng\nSau khi đặt hàng thành công, bạn sẽ nhận được email/SMS xác nhận."
+          },
+          "q2": {
+            "question": "Tôi có thể hủy hoặc thay đổi đơn hàng không?",
+            "answer": "Bạn có thể hủy hoặc thay đổi đơn hàng trong vòng 2 giờ sau khi đặt bằng cách liên hệ hotline 0868 506 800. Sau khi đơn hàng đã được xử lý và giao cho đơn vị vận chuyển, việc thay đổi sẽ không thể thực hiện được."
+          },
+          "q3": {
+            "question": "Làm sao để kiểm tra tình trạng đơn hàng?",
+            "answer": "Bạn có thể kiểm tra tình trạng đơn hàng bằng cách:\n- Đăng nhập tài khoản và vào mục \"Đơn hàng của tôi\"\n- Sử dụng mã vận đơn được gửi qua SMS/email để tra cứu trên website đơn vị vận chuyển\n- Liên hệ hotline 0868 506 800 để được hỗ trợ"
+          }
+        }
+      },
+      "payment": {
+        "title": "Thanh toán",
+        "questions": {
+          "q1": {
+            "question": "CCHAT chấp nhận những hình thức thanh toán nào?",
+            "answer": "CCHAT chấp nhận các hình thức thanh toán:\n- COD (thanh toán khi nhận hàng)\n- Chuyển khoản ngân hàng\n- Ví điện tử (MoMo, ZaloPay, VNPay)\n- Thẻ tín dụng/ghi nợ (Visa, Mastercard)"
+          },
+          "q2": {
+            "question": "Thanh toán trên CCHAT có an toàn không?",
+            "answer": "Tất cả giao dịch thanh toán trực tuyến trên CCHAT đều được mã hóa SSL và xử lý qua các cổng thanh toán uy tín. Chúng tôi không lưu trữ thông tin thẻ tín dụng của khách hàng."
+          },
+          "q3": {
+            "question": "Tôi có thể xuất hóa đơn VAT không?",
+            "answer": "Có, CCHAT hỗ trợ xuất hóa đơn VAT cho đơn hàng. Vui lòng cung cấp thông tin công ty khi đặt hàng hoặc liên hệ hotline trong vòng 24h sau khi nhận hàng để yêu cầu xuất hóa đơn."
+          }
+        }
+      },
+      "shipping": {
+        "title": "Giao hàng",
+        "questions": {
+          "q1": {
+            "question": "Thời gian giao hàng mất bao lâu?",
+            "answer": "Thời gian giao hàng:\n- Nội thành Hà Nội, TP.HCM: 1-2 ngày\n- Các tỉnh thành khác: 3-5 ngày\nThời gian có thể kéo dài hơn trong các dịp lễ, Tết hoặc khi có sự cố bất khả kháng."
+          },
+          "q2": {
+            "question": "Phí vận chuyển là bao nhiêu?",
+            "answer": "Phí vận chuyển tùy thuộc vào khu vực và giá trị đơn hàng:\n- Miễn phí ship khi mua từ 2 sản phẩm trở lên\n- Đơn hàng dưới 2 sản phẩm: phí ship từ 20.000đ - 40.000đ tùy khu vực"
+          },
+          "q3": {
+            "question": "Tôi có thể chọn thời gian giao hàng không?",
+            "answer": "Hiện tại CCHAT chưa hỗ trợ chọn khung giờ giao hàng cụ thể. Nhân viên giao hàng sẽ liên hệ trước khi giao để xác nhận. Nếu bạn không có mặt, đơn hàng sẽ được giao lại vào ngày làm việc tiếp theo."
+          }
+        }
+      },
+      "returns": {
+        "title": "Đổi trả",
+        "questions": {
+          "q1": {
+            "question": "Chính sách đổi trả của CCHAT như thế nào?",
+            "answer": "CCHAT áp dụng chính sách đổi trả trong vòng 7 ngày kể từ ngày nhận hàng với điều kiện:\n- Sản phẩm chưa qua sử dụng, còn nguyên tag và nhãn mác\n- Có hóa đơn hoặc thông tin đơn hàng\n- Không áp dụng cho sản phẩm sale từ 50% trở lên"
+          },
+          "q2": {
+            "question": "Làm thế nào để đổi size sản phẩm?",
+            "answer": "Để đổi size, bạn vui lòng:\n1. Liên hệ hotline 0868 506 800 trong vòng 7 ngày kể từ ngày nhận hàng\n2. Đóng gói sản phẩm cẩn thận và gửi về địa chỉ cửa hàng\n3. CCHAT sẽ gửi lại sản phẩm size mới trong vòng 3-5 ngày\nPhí ship đổi size: Miễn phí lần đầu tiên"
+          },
+          "q3": {
+            "question": "Khi nào tôi nhận được tiền hoàn trả?",
+            "answer": "Sau khi CCHAT nhận và kiểm tra sản phẩm trả:\n- Hoàn tiền qua tài khoản ngân hàng: 5-7 ngày làm việc\n- Hoàn tiền qua ví điện tử: 1-3 ngày làm việc\n- Đổi sang sản phẩm khác: gửi lại trong vòng 3-5 ngày"
+          }
+        }
+      },
+      "products": {
+        "title": "Sản phẩm",
+        "questions": {
+          "q1": {
+            "question": "Làm sao để chọn đúng size?",
+            "answer": "CCHAT cung cấp bảng size chi tiết cho từng sản phẩm. Bạn nên:\n1. Xem bảng size trong mô tả sản phẩm\n2. Đo số đo cơ thể và so sánh với bảng size\n3. Tham khảo hướng dẫn đo size trên website\nNếu còn phân vân, hãy liên hệ hotline để được tư vấn."
+          },
+          "q2": {
+            "question": "Hướng dẫn bảo quản sản phẩm?",
+            "answer": "Để sản phẩm bền đẹp:\n- Giặt máy ở chế độ nhẹ, nước lạnh\n- Không sử dụng chất tẩy mạnh\n- Phơi trong bóng râm, tránh ánh nắng trực tiếp\n- Ủi ở nhiệt độ thấp, mặt trái\nTham khảo thêm hướng dẫn giặt trên nhãn sản phẩm."
+          },
+          "q3": {
+            "question": "Sản phẩm CCHAT có được bảo hành không?",
+            "answer": "CCHAT bảo hành sản phẩm trong trường hợp lỗi từ nhà sản xuất (đường may, khóa kéo, nút...) trong vòng 30 ngày kể từ ngày mua. Không bảo hành các trường hợp hư hỏng do sử dụng không đúng cách."
+          }
+        }
+      },
+      "account": {
+        "title": "Tài khoản",
+        "questions": {
+          "q1": {
+            "question": "Làm thế nào để đăng ký tài khoản?",
+            "answer": "Bạn có thể đăng ký tài khoản CCHAT bằng cách:\n1. Nhấn vào biểu tượng tài khoản trên website\n2. Chọn \"Đăng ký\"\n3. Điền thông tin: họ tên, email, số điện thoại, mật khẩu\n4. Xác nhận qua email/SMS\nHoặc đăng ký nhanh bằng tài khoản Facebook."
+          },
+          "q2": {
+            "question": "Tôi quên mật khẩu, phải làm sao?",
+            "answer": "Để lấy lại mật khẩu:\n1. Nhấn \"Quên mật khẩu\" tại trang đăng nhập\n2. Nhập email đã đăng ký\n3. Kiểm tra email và nhấn link đặt lại mật khẩu\n4. Tạo mật khẩu mới\nNếu không nhận được email, hãy kiểm tra thư mục spam hoặc liên hệ hotline."
+          },
+          "q3": {
+            "question": "Chương trình VIP của CCHAT như thế nào?",
+            "answer": "Chương trình VIP CCHAT:\n- Tích điểm 1% giá trị đơn hàng\n- Điểm có thể đổi thành voucher giảm giá\n- Thành viên VIP được ưu tiên sale sớm, quà tặng sinh nhật\n- Xem chi tiết tại trang Chính sách VIP"
+          }
+        }
+      }
+    },
+    "contact": {
+      "title": "Bạn không tìm thấy câu trả lời?",
+      "description": "Liên hệ với chúng tôi để được hỗ trợ:",
+      "hotline": "Hotline: 0868 506 800",
+      "hotlineTime": "(8h - 17h, tất cả các ngày)",
+      "email": "Email: support@cchat.vn"
+    }
+  },
+  "guide": {
+    "title": "HƯỚNG DẪN MUA HÀNG",
+    "step1": {
+      "title": "TÌM KIẾM SẢN PHẨM YÊU THÍCH",
+      "description": "Khách hàng có thể tìm kiếm sản phẩm bằng 2 cách:",
+      "method1": "Cách 1: Nhập MÃ SP vào thanh tìm kiếm",
+      "method2": "Cách 2: Tìm kiếm theo từ khóa",
+      "afterSearch": "Sau khi tìm kiếm và lựa chọn được sản phẩm yêu thích, Khách hàng vui lòng chọn MÀU SẮC - KÍCH CỠ - SỐ LƯỢNG sản phẩm muốn mua. Sau đó chọn mua hàng bằng cách bấm chuột vào nút \"THÊM VÀO GIỎ HÀNG\"",
+      "cartSteps": "Khi đã lựa chọn được đủ các sản phẩm cần mua, khách hàng click vào icon \"GIỎ HÀNG\" trên góc phải màn hình. Khách hàng có thể chọn thêm/ bớt số lượng sản phẩm tại mục \"XEM GIỎ HÀNG\" và điền mã giảm giá vào phần \"NHẬP MÃ GIẢM GIÁ\" (nếu có) rồi ấn chọn \"ĐẶT HÀNG\" để tiến hành đặt hàng Online"
+    },
+    "step2": {
+      "title": "THANH TOÁN ĐƠN HÀNG",
+      "description": "Tại trang thanh toán, khách hàng đăng nhập/ tạo tài khoản hoặc điền đầy đủ thông tin vận chuyển trước khi chuyển sang bước tiếp theo",
+      "shippingTitle": "Giao hàng trên toàn quốc",
+      "shippingFee": "Phí vận chuyển dựa trên trọng lượng của đơn hàng và địa điểm giao hàng",
+      "paymentTitle": "Quý khách có thể sử dụng 1 trong 4 hình thức thanh toán như sau:",
+      "paymentMethods": {
+        "cod": "Thanh toán khi nhận hàng (COD)",
+        "onepayInternational": "OnePay Quốc tế (Visa/Mastercard)",
+        "onepayDomestic": "OnePay Nội địa (Thẻ ATM)",
+        "qr": "Thanh toán QR (VietQR)"
+      }
+    },
+    "step3": {
+      "title": "XÁC NHẬN ĐƠN HÀNG",
+      "case1": {
+        "title": "Trường hợp 1:",
+        "description": "Đối với những khách hàng đã có tài khoản trên Website và đăng nhập trước khi mua hàng",
+        "instructions": "Sau khi hoàn tất quy trình mua hàng Online trên Website, Quý khách vui lòng ấn vào phần tài khoản ở góc phải màn hình, chọn mục \"LỊCH SỬ ĐƠN HÀNG\" để theo dõi đơn hàng"
+      },
+      "case2": {
+        "title": "Trường hợp 2:",
+        "description": "Đối với những khách hàng chưa có tài khoản trên Website",
+        "instructions": "Sau khi hoàn tất quy trình mua hàng Online trên Website, Quý khách vui lòng đăng ký tài khoản trên Website bằng SĐT đã đặt hàng và áp dụng thao tác theo dõi đơn hàng tương tự Cách 1."
+      }
+    }
+  },
+  "notification": {
+    "title": "Thông báo",
+    "markAllAsRead": "Đánh dấu tất cả là đã đọc",
+    "noNotifications": "Bạn chưa có thông báo nào.",
+    "justNow": "Vừa xong",
+    "minutesAgo": "{count} phút trước",
+    "hoursAgo": "{count} giờ trước",
+    "daysAgo": "{count} ngày trước"
+  }
+}

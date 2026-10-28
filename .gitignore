@@ -1,0 +1,8 @@
+.claude
+
+# Kubernetes secrets - never commit sensitive data
+infra/k8s/prod/secret/*.yaml
+infra/k8s/staging/secret/*.yaml
+
+# Local operational backups (access tokens, DB dumps) - never commit
+.local/

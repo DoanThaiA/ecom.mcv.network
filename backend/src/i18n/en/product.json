@@ -1,0 +1,12 @@
+{
+  "notFound": "Product not found",
+  "created": "Product created successfully",
+  "updated": "Product updated successfully",
+  "deleted": "Product deleted successfully",
+  "syncStarted": "Product synchronization started",
+  "syncCompleted": "Product synchronization completed",
+  "syncFailed": "Product synchronization failed",
+  "businessIdNotFound": "Business ID not found",
+  "codeAlreadyExists": "Product with code {code} already exists",
+  "quantityMustBePositive": "Quantity must be a positive number"
+}

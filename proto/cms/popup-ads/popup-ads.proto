@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package cms.popup_ads;
+
+import "shared/popup-ads/popup-ads.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+// Create popup ads request
+message CreatePopupAdsRequest {
+  string                    image     = 1; // Image URL (773x464px)
+  google.protobuf.Timestamp start_at  = 2; // Display start time
+  google.protobuf.Timestamp end_at    = 3; // Display end time
+  string                    name      = 4; // Popup name
+  optional string           link      = 5; // Optional click-through URL
+  optional int32            order     = 6; // Display order (default: 0)
+  optional bool             is_active = 7; // Default: true
+}
+
+// Update popup ads request
+message UpdatePopupAdsRequest {
+  string                             popup_ads_id = 1;
+  optional string                    image        = 2;
+  optional google.protobuf.Timestamp start_at     = 3;
+  optional google.protobuf.Timestamp end_at       = 4;
+  optional string                    name         = 5;
+  optional string                    link         = 6;
+  optional int32                     order        = 7;
+  optional bool                      is_active    = 8;
+}
+
+// Filter popup ads request
+message FilterPopupAds {
+  optional bool is_active = 1; // Filter by active status
+}
+
+// Sort popup ads request
+message SortPopupAds {
+  string order_by = 1; // 'order' | 'createdAt' | 'startAt' | 'endAt'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query popup ads request
+message QueryPopupAdsRequest {
+  optional int32          page    = 1;
+  optional int32          limit   = 2;
+  optional FilterPopupAds filters = 3;
+  repeated SortPopupAds   sort    = 4;
+}
+
+// Query popup ads response (paginated)
+message QueryPopupAdsResponse {
+  repeated shared.popup_ads.PopupAdsListItem data          = 1;
+  bool                                       has_next_page = 2;
+  int32                                      total         = 3;
+  int32                                      page          = 4;
+  int32                                      limit         = 5;
+  int32                                      total_pages   = 6;
+}
+
+// Get popup ads by ID request
+message GetPopupAdsRequest {
+  string popup_ads_id = 1;
+}
+
+// Delete popup ads request
+message DeletePopupAdsRequest {
+  string popup_ads_id = 1;
+}
+
+// Popup ads service for CMS management
+service PopupAdsService {
+  // Create a new popup ads
+  rpc CreatePopupAds(CreatePopupAdsRequest) returns (shared.popup_ads.PopupAds);
+
+  // Get popup ads by ID
+  rpc GetPopupAds(GetPopupAdsRequest) returns (shared.popup_ads.PopupAds);
+
+  // Query popup ads with pagination and filters
+  rpc QueryPopupAds(QueryPopupAdsRequest) returns (QueryPopupAdsResponse);
+
+  // Update popup ads
+  rpc UpdatePopupAds(UpdatePopupAdsRequest) returns (shared.popup_ads.PopupAds);
+
+  // Delete popup ads (soft delete)
+  rpc DeletePopupAds(DeletePopupAdsRequest) returns (google.protobuf.Empty);
+}

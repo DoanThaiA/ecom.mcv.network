@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package cms.shipping;
+
+import "google/protobuf/empty.proto";
+import "shared/shipping/shipping-settings.proto";
+
+// Update shipping settings DTO
+message UpdateShippingSettingsRequest {
+  optional shared.shipping.ShippingCalculationMethod calculation_method = 1;
+  optional double                                    fixed_shipping_fee = 2;
+}
+
+// Shipping settings service for CMS management
+service ShippingSettingsService {
+  // Get shipping settings (singleton)
+  rpc GetShippingSettings(google.protobuf.Empty) returns (shared.shipping.ShippingSettings);
+
+  // Update shipping settings
+  rpc UpdateShippingSettings(UpdateShippingSettingsRequest) returns (shared.shipping.ShippingSettings);
+}

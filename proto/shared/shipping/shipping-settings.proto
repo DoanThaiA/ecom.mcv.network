@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package shared.shipping;
+
+import "google/protobuf/timestamp.proto";
+
+// Shipping settings calculation method (singleton)
+enum ShippingCalculationMethod {
+  SHIPPING_CALCULATION_METHOD_UNSPECIFIED   = 0;
+  SHIPPING_CALCULATION_METHOD_CARRIER_BASED = 1; // Real-time carrier rates (e.g., Nhanh.vn)
+  SHIPPING_CALCULATION_METHOD_FIXED         = 2; // Fixed fee for all orders
+}
+
+// Global shipping settings (singleton)
+message ShippingSettings {
+  string                    id                 = 1;
+  ShippingCalculationMethod calculation_method = 2;
+  double                    fixed_shipping_fee = 3;
+  google.protobuf.Timestamp updated_at         = 4;
+}

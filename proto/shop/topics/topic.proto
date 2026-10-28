@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package shop.topics;
+
+import "shared/topics/topic.proto";
+import "shop/products/product.proto";
+import "google/protobuf/empty.proto";
+
+// Shop topic list response
+message ShopTopicListResponse {
+  repeated shared.topics.ShopTopicItem topics = 1;
+}
+
+// Get topic by slug request
+message GetTopicBySlugRequest {
+  string slug           = 1;
+  optional int32 page   = 2;
+  optional int32 limit  = 3;
+}
+
+// Get topic products request (paginated)
+message GetTopicProductsRequest {
+  string         slug  = 1;
+  optional int32 page  = 2;
+  optional int32 limit = 3;
+}
+
+// Shop topic service for public topic endpoints
+service ShopTopicService {
+  // Get all active topics for navigation
+  rpc GetTopics(google.protobuf.Empty) returns (ShopTopicListResponse);
+
+  // Get topic by slug with products/categories
+  rpc GetTopicBySlug(GetTopicBySlugRequest) returns (shared.topics.ShopTopicResponse);
+
+  // Get topic products (for infinite scroll)
+  // Returns full product objects with variants
+  rpc GetTopicProducts(GetTopicProductsRequest) returns (shop.products.ShopTopicProductsResponse);
+}

@@ -1,0 +1,262 @@
+{
+  "products": [
+    {
+      "_id": "69561193abd3fed1bcd68216",
+      "businessId": "57499",
+      "source": "nhanh",
+      "code": "25KDG2009OT-Be-XXL",
+      "barcode": "2000214528329",
+      "name": "Áo phao Marry - Be - XXL",
+      "status": 2,
+      "type": "regular",
+      "attributes": [
+        {
+          "id": 538892,
+          "name": "Màu Sắc",
+          "value": "Be"
+        },
+        {
+          "id": 467341,
+          "name": "Kích Thước",
+          "value": "XXL"
+        }
+      ],
+      "images": {
+        "avatar": "https://pos.nvncdn.com/312d68-57499/ps/20251104_4PdQulNTyv.jpeg?v=1762238183",
+        "others": []
+      },
+      "prices": {
+        "retail": 919000,
+        "wholesale": 413550,
+        "import": 379570,
+        "old": 0,
+        "avgCost": 379570
+      },
+      "inventory": {
+        "remain": 35,
+        "shipping": 0,
+        "damaged": 0,
+        "holding": 1,
+        "warranty": 0,
+        "warrantyHolding": 0,
+        "available": 34
+      },
+      "reviewStats": {
+        "averageRating": 0,
+        "reviewCount": 0
+      },
+      "flashSale": {
+        "flashSaleId": null,
+        "flashSaleName": null,
+        "originalPrice": 919000,
+        "flashSalePrice": null,
+        "discountType": null,
+        "discountValue": 0,
+        "discountAmount": 0,
+        "discountPercent": 0,
+        "promotionalQuantity": 0,
+        "soldCount": 0,
+        "remainingStock": 0,
+        "endTime": null,
+        "effectivePrice": 919000
+      },
+      "parentProductId": "69561193abd3fed1bcd68269",
+      "hide": false
+    },
+    {
+      "_id": "69561193abd3fed1bcd6825c",
+      "businessId": "57499",
+      "source": "nhanh",
+      "code": "25KDG2009OT-Be-L",
+      "barcode": "2000214527582",
+      "name": "Áo phao Marry - Be - L",
+      "status": 2,
+      "type": "regular",
+      "attributes": [
+        {
+          "id": 538892,
+          "name": "Màu Sắc",
+          "value": "Be"
+        },
+        {
+          "id": 450677,
+          "name": "Kích Thước",
+          "value": "L"
+        }
+      ],
+      "images": {
+        "avatar": "https://pos.nvncdn.com/312d68-57499/ps/20251104_4PdQulNTyv.jpeg?v=1762238183",
+        "others": []
+      },
+      "prices": {
+        "retail": 919000,
+        "wholesale": 413550,
+        "import": 379570,
+        "old": 0,
+        "avgCost": 379570
+      },
+      "inventory": {
+        "remain": 34,
+        "shipping": 19,
+        "damaged": 0,
+        "holding": 4,
+        "warranty": 0,
+        "warrantyHolding": 0,
+        "available": 11
+      },
+      "reviewStats": {
+        "averageRating": 0,
+        "reviewCount": 0
+      },
+      "flashSale": {
+        "flashSaleId": null,
+        "flashSaleName": null,
+        "originalPrice": 919000,
+        "flashSalePrice": null,
+        "discountType": null,
+        "discountValue": 0,
+        "discountAmount": 0,
+        "discountPercent": 0,
+        "promotionalQuantity": 0,
+        "soldCount": 0,
+        "remainingStock": 0,
+        "endTime": null,
+        "effectivePrice": 919000
+      },
+      "parentProductId": "69561193abd3fed1bcd68269",
+      "hide": false
+    },
+    {
+      "_id": "69561193abd3fed1bcd6825d",
+      "businessId": "57499",
+      "source": "nhanh",
+      "code": "25KDG2009OT-Be-M",
+      "barcode": "2000214527575",
+      "name": "Áo phao Marry - Be - M",
+      "status": 2,
+      "type": "regular",
+      "attributes": [
+        {
+          "id": 538892,
+          "name": "Màu Sắc",
+          "value": "Be"
+        },
+        {
+          "id": 450676,
+          "name": "Kích Thước",
+          "value": "M"
+        }
+      ],
+      "images": {
+        "avatar": "https://pos.nvncdn.com/312d68-57499/ps/Ao-phao-Marry-Be-M-1.jpg?v=1762221336",
+        "others": [
+          "https://pos.nvncdn.com/312d68-57499/ps/Ao-phao-Marry-Be-M.jpg?v=1762221333",
+          "https://pos.nvncdn.com/312d68-57499/ps/Ao-phao-Marry-Be-M-2.jpg?v=1762240231"
+        ]
+      },
+      "prices": {
+        "retail": 919000,
+        "wholesale": 413550,
+        "import": 379570,
+        "old": 0,
+        "avgCost": 379570
+      },
+      "inventory": {
+        "remain": 102,
+        "shipping": 43,
+        "damaged": 0,
+        "holding": 20,
+        "warranty": 0,
+        "warrantyHolding": 0,
+        "available": 39
+      },
+      "reviewStats": {
+        "averageRating": 0,
+        "reviewCount": 0
+      },
+      "flashSale": {
+        "flashSaleId": null,
+        "flashSaleName": null,
+        "originalPrice": 919000,
+        "flashSalePrice": null,
+        "discountType": null,
+        "discountValue": 0,
+        "discountAmount": 0,
+        "discountPercent": 0,
+        "promotionalQuantity": 0,
+        "soldCount": 0,
+        "remainingStock": 0,
+        "endTime": null,
+        "effectivePrice": 919000
+      },
+      "parentProductId": "69561193abd3fed1bcd68269",
+      "hide": false
+    }
+  ],
+  "singleProduct": {
+    "_id": "69561193abd3fed1bcd6825d",
+    "businessId": "57499",
+    "source": "nhanh",
+    "code": "25KDG2009OT-Be-M",
+    "barcode": "2000214527575",
+    "name": "Áo phao Marry - Be - M",
+    "status": 2,
+    "type": "regular",
+    "attributes": [
+      {
+        "id": 538892,
+        "name": "Màu Sắc",
+        "value": "Be"
+      },
+      {
+        "id": 450676,
+        "name": "Kích Thước",
+        "value": "M"
+      }
+    ],
+    "images": {
+      "avatar": "https://pos.nvncdn.com/312d68-57499/ps/Ao-phao-Marry-Be-M-1.jpg?v=1762221336",
+      "others": [
+        "https://pos.nvncdn.com/312d68-57499/ps/Ao-phao-Marry-Be-M.jpg?v=1762221333",
+        "https://pos.nvncdn.com/312d68-57499/ps/Ao-phao-Marry-Be-M-2.jpg?v=1762240231"
+      ]
+    },
+    "prices": {
+      "retail": 919000,
+      "wholesale": 413550,
+      "import": 379570,
+      "old": 0,
+      "avgCost": 379570
+    },
+    "inventory": {
+      "remain": 102,
+      "shipping": 43,
+      "damaged": 0,
+      "holding": 20,
+      "warranty": 0,
+      "warrantyHolding": 0,
+      "available": 39
+    },
+    "reviewStats": {
+      "averageRating": 0,
+      "reviewCount": 0
+    },
+    "flashSale": {
+      "flashSaleId": null,
+      "flashSaleName": null,
+      "originalPrice": 919000,
+      "flashSalePrice": null,
+      "discountType": null,
+      "discountValue": 0,
+      "discountAmount": 0,
+      "discountPercent": 0,
+      "promotionalQuantity": 0,
+      "soldCount": 0,
+      "remainingStock": 0,
+      "endTime": null,
+      "effectivePrice": 919000
+    },
+    "parentProductId": "69561193abd3fed1bcd68269",
+    "hide": false
+  }
+}

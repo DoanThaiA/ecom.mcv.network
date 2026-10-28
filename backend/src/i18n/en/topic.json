@@ -1,0 +1,10 @@
+{
+  "notFound": "Topic not found",
+  "slugExists": "A topic with this slug already exists",
+  "productsNotFound": "One or more products not found",
+  "productAlreadyInTopic": "Product is already in this topic",
+  "productNotInTopic": "Product is not in this topic",
+  "fileRequired": "Excel file is required",
+  "emptyExcelFile": "Excel file has no valid data rows",
+  "invalidTypeForProductImport": "Only product-type topics can import products"
+}

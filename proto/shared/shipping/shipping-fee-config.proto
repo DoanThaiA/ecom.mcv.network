@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package shared.shipping;
+
+import "google/protobuf/timestamp.proto";
+import "shared/common/enums.proto";
+
+// ==================== Flat Rate Config ====================
+
+// Configuration for flat rate shipping
+message FlatRateConfig {
+  double fee = 1; // Fixed shipping fee in VND
+}
+
+// ==================== Free Threshold Config ====================
+
+// Configuration for free shipping above threshold
+message FreeThresholdConfig {
+  double threshold = 1; // Order value threshold for free shipping
+  double fee_below = 2; // Shipping fee when order is below threshold
+}
+
+// ==================== Weight Based Config ====================
+
+// Weight tier for weight-based shipping
+message WeightTier {
+  double min_weight = 1; // Minimum weight in grams
+  double max_weight = 2; // Maximum weight in grams (0 = unlimited)
+  double fee        = 3; // Shipping fee for this weight range
+}
+
+// Configuration for weight-based shipping
+message WeightBasedConfig {
+  double              base_weight            = 1; // Base weight included in base_fee (grams)
+  double              base_fee               = 2; // Base shipping fee
+  double              additional_fee_per_kg  = 3; // Additional fee per kg over base_weight
+  repeated WeightTier tiers                  = 4; // Optional: weight tiers (overrides simple calculation)
+}
+
+// ==================== Location Based Config ====================
+
+// Location tier for location-based shipping
+message LocationTier {
+  string          name        = 1; // Tier name (e.g., "Nội thành", "Ngoại thành")
+  repeated string province_ids = 2; // Province/city IDs in this tier
+  double          fee         = 3; // Shipping fee for this tier
+}
+
+// Configuration for location-based shipping
+message LocationBasedConfig {
+  repeated LocationTier tiers       = 1; // Location tiers
+  double                default_fee = 2; // Default fee for unlisted locations
+}
+
+// ==================== Tiered Shipping Config ====================
+
+// Order value tier for tiered shipping
+message OrderValueTier {
+  double min_order_value = 1; // Minimum order value
+  double max_order_value = 2; // Maximum order value (0 = unlimited)
+  double fee             = 3; // Shipping fee for this order value range
+}
+
+// Configuration for tiered shipping based on order value
+message TieredShippingConfig {
+  repeated OrderValueTier tiers = 1; // Order value tiers
+}
+
+// ==================== Carrier Based Config ====================
+
+// Configuration for carrier-based shipping (e.g., Nhanh.vn)
+message CarrierBasedConfig {
+  optional string preferred_carrier_id = 1; // Preferred carrier ID
+  double          markup_percentage    = 2; // Markup on carrier rate (percentage)
+  double          markup_fixed         = 3; // Fixed markup on carrier rate (VND)
+  optional double free_threshold       = 4; // Order value for free shipping (optional)
+}
+
+// ==================== Shipping Fee Config Domain Entity ====================
+
+// Shipping fee configuration domain entity
+message ShippingFeeConfig {
+  string                                id                     = 1;
+  string                                name                   = 2;
+  shared.common.ShippingFeeMethod       method                 = 3;
+  bool                                  is_active              = 4;
+  optional google.protobuf.Timestamp    start_time             = 5;  // Optional scheduled start
+  optional google.protobuf.Timestamp    end_time               = 6;  // Optional scheduled end
+  double                                default_product_weight = 7;  // Fallback weight for products without weight (grams)
+  shared.common.ShippingFeeConfigStatus status                 = 8;  // Computed from start_time, end_time, is_active
+
+  // Method-specific configuration (oneof for type safety)
+  oneof config {
+    FlatRateConfig       flat_rate_config       = 10;
+    FreeThresholdConfig  free_threshold_config  = 11;
+    WeightBasedConfig    weight_based_config    = 12;
+    LocationBasedConfig  location_based_config  = 13;
+    TieredShippingConfig tiered_config          = 14;
+    CarrierBasedConfig   carrier_based_config   = 15;
+  }
+
+  google.protobuf.Timestamp          created_at = 20;
+  google.protobuf.Timestamp          updated_at = 21;
+  optional google.protobuf.Timestamp deleted_at = 22;
+}
+
+// Shipping fee config list item (for list view)
+message ShippingFeeConfigListItem {
+  string                                id         = 1;
+  string                                name       = 2;
+  shared.common.ShippingFeeMethod       method     = 3;
+  bool                                  is_active  = 4;
+  shared.common.ShippingFeeConfigStatus status     = 5;
+  google.protobuf.Timestamp             created_at = 6;
+  google.protobuf.Timestamp             updated_at = 7;
+}

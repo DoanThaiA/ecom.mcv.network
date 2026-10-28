@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package shared.product_inventories;
+
+import "google/protobuf/timestamp.proto";
+
+// Depot warranty information
+message DepotWarrantyInfo {
+  optional int32 remain  = 1;
+  optional int32 holding = 2;
+}
+
+// Depot product inventory
+message DepotProductInventory {
+  string                     depot_id  = 1;
+  int32                      remain    = 2;
+  int32                      available = 3;
+  optional int32             shipping  = 4;
+  optional int32             damaged   = 5;
+  optional int32             holding   = 6;
+  optional DepotWarrantyInfo warranty  = 7;
+}
+
+// Product inventory prices
+message ProductInventoryPrices {
+  optional double retail    = 1;
+  optional double wholesale = 2;
+  optional double import    = 3;
+  optional double avg_cost  = 4;
+}
+
+// Product inventory image
+message ProductInventoryImage {
+  optional string   avatar = 1;
+  repeated string   others = 2;
+}
+
+// Product inventory domain entity
+message ProductInventory {
+  string                          id              = 1;
+  string                          business_id     = 2;
+  string                          product_id      = 3;
+  string                          source          = 4; // 'nhanh' | 'shopify'
+  optional string                 barcode         = 5;
+  optional string                 product_name    = 6;
+  int32                           total_remain    = 7;
+  int32                           total_available = 8;
+  optional int32                  total_shipping  = 9;
+  optional int32                  total_damaged   = 10;
+  optional int32                  total_holding   = 11;
+  optional ProductInventoryPrices prices          = 12;
+  repeated DepotProductInventory  depots          = 13;
+  google.protobuf.Timestamp       created_at      = 14;
+  google.protobuf.Timestamp       updated_at      = 15;
+  // Variant inventories (for parent products only, populated in singular GET endpoints)
+  repeated ProductInventory       variant_inventories = 16;
+  // Product image (from variant product)
+  optional ProductInventoryImage  image               = 17;
+}
+
+// Filter product inventory DTO
+message FilterProductInventory {
+  optional string product_id = 1;
+  optional string search     = 2;
+  optional string source     = 3; // 'nhanh' | 'shopify'
+  optional bool   in_stock   = 4;
+}
+
+// Sort product inventory DTO
+message SortProductInventory {
+  string order_by = 1;
+  string order    = 2;
+}
+
+// Query product inventory DTO
+message QueryProductInventory {
+  optional int32                  page    = 1;
+  optional int32                  limit   = 2;
+  optional FilterProductInventory filters = 3;
+  repeated SortProductInventory   sort    = 4;
+}

@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package shared.promotions;
+
+import "google/protobuf/timestamp.proto";
+import "shared/common/enums.proto";
+
+// ==================== Bundle Deal Domain Types ====================
+
+// Single gift product in a tier
+message GiftProduct {
+  string product_id = 1;
+  string name       = 2;
+  string image      = 3;
+}
+
+// Bundle deal tier (min order value → gift products)
+message BundleDealTier {
+  int32                min_order_value = 1;
+  repeated GiftProduct gift_products   = 2;
+}
+
+// Bundle deal configuration
+message BundleDealConfig {
+  shared.common.BundleDealSubType sub_type                            = 1;
+  repeated BundleDealTier         tiers                               = 2;
+  bool                            not_applicable_with_other_promotions = 3;
+  optional int32                  required_quantity                   = 4;  // BUY_X_GET_Y
+  repeated GiftProduct            required_products                   = 5;  // BUY_X_GET_Y
+  optional int32                  gift_quantity                       = 6;  // BUY_X_GET_Y
+  repeated GiftProduct            gift_products                       = 7;  // BUY_X_GET_Y
+  optional double                 minimum_order_value                 = 8;  // BUY_X_GET_Y
+  optional int32                  max_gift_quantity                   = 9;  // BUY_X_GET_Y
+  optional int32                  current_gift_count                  = 10; // BUY_X_GET_Y
+}
+
+// ==================== Order Discount Domain Types ====================
+
+// Usage record for tracking per-customer usage
+message PromotionUsageRecord {
+  string                    user_id = 1;
+  google.protobuf.Timestamp used_at = 2;
+}
+
+// Order discount configuration
+message OrderDiscountConfig {
+  shared.common.OrderDiscountSubType sub_type                            = 1;
+  optional string                    promo_code                          = 2;  // Required for PROMO_CODE sub_type
+  shared.common.DiscountType         discount_type                       = 3;
+  double                             discount_value                      = 4;  // VND for fixed, percentage for percentage
+  optional double                    max_discount_value                  = 5;  // Cap for percentage discounts
+  double                             minimum_order_value                 = 6;
+  bool                               not_applicable_with_other_promotions = 7;
+  bool                               single_use_per_customer             = 8;
+  optional int32                     total_usage_limit                   = 9;
+  int32                              current_usage_count                 = 10;
+  repeated PromotionUsageRecord      usage_records                       = 11;
+}
+
+// ==================== Product Discount Domain Types ====================
+
+// Product in a product discount promotion
+message ProductDiscountProduct {
+  string                     product_id       = 1;
+  string                     name             = 2;
+  string                     image            = 3;
+  string                     code             = 4;  // Mã sản phẩm
+  double                     original_price   = 5;  // Giá vốn
+  shared.common.DiscountType discount_type    = 6;
+  double                     discount_value   = 7;
+  double                     discounted_price = 8;  // Giá sau giảm (computed)
+  int32                      sold_count       = 9;  // Đã bán
+  bool                       is_enabled       = 10; // Bật/Tắt
+}
+
+// Product discount configuration
+message ProductDiscountConfig {
+  shared.common.ProductDiscountSubType sub_type                            = 1;
+  optional string                      voucher_code                        = 2;  // Required for VOUCHER sub_type
+  shared.common.DiscountType           discount_type                       = 3;  // FIXED or PERCENTAGE
+  double                               discount_value                      = 4;
+  optional double                      max_discount_value                  = 5;  // Tối đa (cho %)
+  double                               minimum_order_value                 = 6;  // Hoá đơn trị giá từ
+  repeated ProductDiscountProduct      products                            = 7;
+  optional int32                       total_usage_limit                   = 8;  // Tổng lượt sử dụng tối đa
+  optional int32                       max_usage_per_customer              = 9;  // Lượt sử dụng tối đa/người
+  int32                                current_usage_count                 = 10; // Số lượt đã sử dụng
+  repeated PromotionUsageRecord        usage_records                       = 11; // Lịch sử sử dụng per-user
+  bool                                 not_applicable_with_other_promotions = 12;
+}
+
+// ==================== Promotion Domain Entity ====================
+
+// Promotion domain entity
+message Promotion {
+  string                        id         = 1;
+  shared.common.PromotionType   type       = 2;
+  string                        name       = 3;
+  google.protobuf.Timestamp     start_time = 4;
+  google.protobuf.Timestamp     end_time   = 5;
+  bool                          is_enabled = 6;
+  shared.common.PromotionStatus status     = 7; // Computed from start_time, end_time, is_enabled
+
+  // Type-specific configuration (oneof for type safety)
+  oneof config {
+    BundleDealConfig      bundle_deal_config      = 10;
+    OrderDiscountConfig   order_discount_config   = 11;
+    ProductDiscountConfig product_discount_config = 12;
+  }
+
+  google.protobuf.Timestamp          created_at = 20;
+  google.protobuf.Timestamp          updated_at = 21;
+  optional google.protobuf.Timestamp deleted_at = 22;
+}

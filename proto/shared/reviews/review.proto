@@ -1,0 +1,183 @@
+syntax = "proto3";
+package shared.reviews;
+import "google/protobuf/timestamp.proto";
+
+// ==================== Enums ====================
+
+enum FitLevel {
+  FIT_LEVEL_UNSPECIFIED = 0;
+  FIT_LEVEL_FIT         = 1; // Vừa vặn
+  FIT_LEVEL_LOOSE       = 2; // Rộng
+  FIT_LEVEL_TIGHT       = 3; // Chật
+}
+
+enum ReviewStatus {
+  REVIEW_STATUS_UNSPECIFIED = 0;
+  REVIEW_STATUS_VISIBLE     = 1; // Hiển thị
+  REVIEW_STATUS_HIDDEN      = 2; // Admin ẩn
+}
+
+enum MediaType {
+  MEDIA_TYPE_UNSPECIFIED = 0;
+  MEDIA_TYPE_IMAGE       = 1;
+  MEDIA_TYPE_VIDEO       = 2;
+}
+
+// ==================== Embedded Types ====================
+
+message ReviewMedia {
+  string          url       = 1;
+  MediaType       type      = 2;
+  optional string thumbnail = 3;  // Video thumbnail
+}
+
+// User info snapshot
+message ReviewUser {
+  string user_id   = 1;
+  string full_name = 2;
+}
+
+// Order info snapshot
+message ReviewOrderSnapshot {
+  string                    order_id       = 1;
+  string                    order_number   = 2;
+  optional int64            nhanh_order_id = 3;
+  google.protobuf.Timestamp order_date     = 4; // Ngày mua
+}
+
+// Single product review within order
+message ProductReview {
+  string          product_id    = 1;
+  optional string variant_id    = 2;
+  string          product_name  = 3;
+  optional string product_image = 4;
+  int32           quantity      = 5;
+
+  int32                rating    = 6; // 1-5 sao
+  int32                height_cm = 7; // Chiều cao (cm)
+  double               weight_kg = 8; // Cân nặng (kg)
+  FitLevel             fit_level = 9; // Mức độ vừa
+  optional string      content   = 10;       // Nội dung đánh giá
+  repeated ReviewMedia media     = 11; // Ảnh/video (max 5)
+  ReviewStatus         status    = 12; // Visibility status per product
+}
+
+// ==================== Main Entity ====================
+
+message Review {
+  string              id             = 1;
+  ReviewUser          user           = 2;
+  ReviewOrderSnapshot order_snapshot = 3;
+
+  repeated ProductReview product_reviews = 4;
+
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+// ==================== API DTOs ====================
+
+message CreateProductReviewDto {
+  string          product_id = 1;
+  optional string variant_id = 2;
+  int32           rating     = 3; // 1-5, default 5
+  int32           height_cm  = 4; // Required
+  double          weight_kg  = 5; // Required
+  FitLevel        fit_level  = 6; // Default FIT
+  optional string content    = 7;
+  repeated string media_ids  = 8; // File IDs from upload
+}
+
+message CreateReviewDto {
+  string                          order_number    = 1;
+  repeated CreateProductReviewDto product_reviews = 2;
+}
+
+message ToggleVisibilityDto {
+  optional bool visible = 1;  // true = show, false = hide
+}
+
+message QueryReviewDto {
+  optional int32        page       = 1;
+  optional int32        limit      = 2;
+  optional string       product_id = 3;
+  optional ReviewStatus status     = 4;
+  optional int32        rating     = 5;          // Filter by exact rating
+  optional FitLevel     fit_level  = 6;
+  optional int32        height_cm  = 7;
+  optional double       weight_kg  = 8;
+  optional string       keyword    = 9;        // Search ID đơn, tên SP, nội dung
+  optional string       sort_by    = 10;       // 'newest', 'highest', 'lowest'
+}
+
+// ==================== CMS Create Review (Seeding) ====================
+
+// DTO cho CMS tạo review từng sản phẩm (không cần order thực)
+message CreateCmsProductReviewDto {
+  string          product_id = 1;
+  optional string variant_id = 2;
+  int32           rating     = 3; // 1-5, default 5
+  int32           height_cm  = 4; // Required (50-250)
+  double          weight_kg  = 5; // Required (20-300)
+  FitLevel        fit_level  = 6; // Default FIT
+  optional string content    = 7;
+  repeated string media_ids  = 8; // File IDs from upload (max 5)
+}
+
+// DTO cho CMS tạo review seeding (không cần order thực)
+message CreateCmsReviewDto {
+  string                             user_name       = 1; // Tên người dùng (fake)
+  repeated CreateCmsProductReviewDto product_reviews = 2;
+}
+
+message ReviewListResponse {
+  repeated Review data        = 1;
+  int32           total       = 2;
+  int32           page        = 3;
+  int32           limit       = 4;
+  int32           total_pages = 5;
+}
+
+// ==================== CMS Flattened Response ====================
+
+// Flattened product review for CMS (each product review is a separate row)
+message CmsProductReview {
+  string          review_id     = 1; // Review ID (order-level)
+  string          product_id    = 2;
+  optional string variant_id    = 3;
+  string          product_name  = 4; // "Áo măng tô - Hồng - S"
+  optional string product_image = 5;
+
+  // Product review data
+  int32                rating    = 6; // 1-5 sao
+  int32                height_cm = 7; // Chiều cao (cm)
+  double               weight_kg = 8; // Cân nặng (kg)
+  FitLevel             fit_level = 9; // Mức độ vừa
+  optional string      content   = 10;       // Nội dung đánh giá
+  repeated ReviewMedia media     = 11; // Ảnh/video (max 5)
+  ReviewStatus         status    = 12; // Visibility status
+
+  // Order info
+  string         order_number   = 13; // "ORD-20251225-0001"
+  optional int64 nhanh_order_id = 14; // 25996444
+
+  // User info
+  string user_name = 15;
+
+  google.protobuf.Timestamp created_at = 16;
+  string                    order_id   = 17;
+}
+
+message CmsProductReviewListResponse {
+  repeated CmsProductReview data        = 1;
+  int32                     total       = 2;
+  int32                     page        = 3;
+  int32                     limit       = 4;
+  int32                     total_pages = 5;
+}
+
+// Product review stats (embedded in Product)
+message ReviewStats {
+  double average_rating = 1; // VD: 4.9
+  int32  review_count   = 2; // Tổng số đánh giá hiển thị
+}

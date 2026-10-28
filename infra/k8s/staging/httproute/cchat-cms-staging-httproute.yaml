@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: cchat-cms-staging
+  namespace: mmenu-staging
+spec:
+  parentRefs:
+    - name: external-http-gateway-staging
+      kind: Gateway
+      sectionName: https
+  hostnames:
+    - stagingcchatcms.mmenu.io
+  rules:
+    - backendRefs:
+        - name: cchat-cms-staging
+          namespace: cchat
+          port: 3000

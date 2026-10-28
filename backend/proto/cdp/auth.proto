@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package auth;
+
+message User {
+  string userId = 1;
+  string username = 2;
+}
+
+message AccessToken {
+  string token = 1;
+  int64 expireTime = 2;
+}
+
+message LoginRequest {
+  string phone = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  int32 code = 1;
+  string message = 2;
+  User user = 3;
+  AccessToken accessToken = 4;
+}
+
+service AuthRoutes {
+  rpc login(LoginRequest) returns (LoginResponse) {}
+}

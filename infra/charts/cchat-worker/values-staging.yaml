@@ -1,0 +1,47 @@
+# Staging values for cchat-worker
+replicaCount: 1
+
+image:
+  repository: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker/cchat-worker
+  pullPolicy: Always
+  tag: "staging"
+
+# Override to create staging-specific deployment name
+fullnameOverride: "cchat-worker-staging"
+
+service:
+  type: ClusterIP
+  port: 3001
+
+# Reference to staging ConfigMap and Secret
+configEnv: cchat-api-staging
+secretEnv: cchat-api-staging-secret
+
+resources:
+  limits:
+    cpu: 1
+    memory: 2Gi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+livenessProbe:
+  httpGet:
+    path: /api/health
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /api/health
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80

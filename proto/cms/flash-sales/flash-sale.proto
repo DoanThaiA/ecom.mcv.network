@@ -1,0 +1,230 @@
+syntax = "proto3";
+
+package cms.flash_sales;
+
+import "shared/common/enums.proto";
+import "shared/flash-sales/flash-sale.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// Create flash sale DTO
+message CreateFlashSaleRequest {
+  string                    name       = 1;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time   = 3;
+}
+
+// Update flash sale DTO
+message UpdateFlashSaleRequest {
+  string                             flash_sale_id = 1;
+  optional string                    name          = 2;
+  optional google.protobuf.Timestamp start_time    = 3;
+  optional google.protobuf.Timestamp end_time      = 4;
+  optional bool                      is_enabled    = 5;
+}
+
+// Filter flash sale DTO
+message FilterFlashSale {
+  optional string                        search     = 1;                    // Search by name
+  optional shared.common.FlashSaleStatus status     = 2;    // Filter by computed status
+  optional string                        product_id = 3;                // Flash sales containing this product
+}
+
+// Sort flash sale DTO
+message SortFlashSale {
+  string order_by = 1; // 'createdAt' | 'name' | 'startTime' | 'endTime'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query flash sales request
+message QueryFlashSalesRequest {
+  optional int32           page    = 1;
+  optional int32           limit   = 2;
+  optional FilterFlashSale filters = 3;
+  repeated SortFlashSale   sort    = 4;
+}
+
+// Query flash sales response (paginated)
+message QueryFlashSalesResponse {
+  repeated shared.flash_sales.FlashSaleListItem data          = 1;
+  bool                                          has_next_page = 2;
+  int32                                         total         = 3;
+  int32                                         page          = 4;
+  int32                                         limit         = 5;
+  int32                                         total_pages   = 6;
+}
+
+// Filter flash sale products (for flash sale detail)
+message FilterFlashSaleProduct {
+  optional string search            = 1; // Search by product name or code
+  repeated string category_ids      = 2; // Filter by category IDs
+  repeated string topic_product_ids = 3; // Filter by topic product IDs
+  optional double min_price         = 4; // Minimum effective price
+  optional double max_price         = 5; // Maximum effective price
+}
+
+// Sort flash sale products (for flash sale detail)
+message SortFlashSaleProduct {
+  string order_by = 1; // Field to sort by
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Get flash sale by ID request
+message GetFlashSaleRequest {
+  string                          flash_sale_id = 1;
+  optional int32                  page          = 2;
+  optional int32                  limit         = 3;
+  optional FilterFlashSaleProduct filters       = 4;
+  repeated SortFlashSaleProduct   sort          = 5;
+}
+
+// Delete flash sale request
+message DeleteFlashSaleRequest {
+  string flash_sale_id = 1;
+}
+
+// Toggle flash sale enabled/disabled request
+message ToggleFlashSaleRequest {
+  string flash_sale_id = 1;
+}
+
+// Add product to flash sale DTO
+message AddFlashSaleProductRequest {
+  string                     flash_sale_id        = 1;
+  string                     product_id           = 2;
+  shared.common.DiscountType discount_type        = 3;
+  double                     discount_value       = 4;
+  int32                      promotional_quantity = 5;
+  optional bool              is_enabled           = 6;
+}
+
+// Update product in flash sale DTO
+message UpdateFlashSaleProductRequest {
+  string                              flash_sale_id        = 1;
+  string                              product_id           = 2;
+  optional shared.common.DiscountType discount_type        = 3;
+  optional double                     discount_value       = 4;
+  optional int32                      promotional_quantity = 5;
+  optional bool                       is_enabled           = 6;
+}
+
+// Remove product from flash sale request
+message RemoveFlashSaleProductRequest {
+  string flash_sale_id = 1;
+  string product_id    = 2;
+}
+
+// Toggle product enabled/disabled in flash sale request
+message ToggleFlashSaleProductRequest {
+  string flash_sale_id = 1;
+  string product_id    = 2;
+}
+
+// Single product item for bulk add
+message BulkAddFlashSaleProductItem {
+  string                     product_id           = 1;
+  shared.common.DiscountType discount_type        = 2;
+  double                     discount_value       = 3;
+  int32                      promotional_quantity = 4;
+  optional bool              is_enabled           = 5;
+}
+
+// Bulk add products to flash sale request
+message BulkAddFlashSaleProductsRequest {
+  string                               flash_sale_id = 1;
+  repeated BulkAddFlashSaleProductItem products      = 2;
+}
+
+// Single product item for bulk update
+message BulkUpdateFlashSaleProductItem {
+  string                              product_id           = 1;
+  optional shared.common.DiscountType discount_type        = 2;
+  optional double                     discount_value       = 3;
+  optional int32                      promotional_quantity = 4;
+  optional bool                       is_enabled           = 5;
+  optional int32                      order                = 6;
+}
+
+// Bulk update products in flash sale request
+message BulkUpdateFlashSaleProductsRequest {
+  string                                  flash_sale_id = 1;
+  repeated BulkUpdateFlashSaleProductItem products      = 2;
+}
+
+// Validation error codes for Excel import
+enum ValidationErrorCode {
+  VALIDATION_ERROR_CODE_UNSPECIFIED   = 0;
+  VALIDATION_ERROR_CODE_NOT_FOUND     = 1;  // Product not found
+  VALIDATION_ERROR_CODE_NO_STOCK      = 2;  // Product has no available stock
+  VALIDATION_ERROR_CODE_NO_IMAGE      = 3;  // Product has no image
+  VALIDATION_ERROR_CODE_CONFLICT      = 4;  // Product in another active flash sale
+  VALIDATION_ERROR_CODE_INVALID_DISCOUNT = 5; // Invalid discount value
+  VALIDATION_ERROR_CODE_DUPLICATE     = 6;  // Duplicate product code in Excel
+  VALIDATION_ERROR_CODE_INVALID_FORMAT = 7; // Invalid row format
+}
+
+// Validated product from Excel import
+message ValidatedProduct {
+  string                     product_id           = 1;
+  string                     code                 = 2;
+  string                     name                 = 3;   // Name from Excel
+  optional string            actual_name          = 4;   // Actual name from database
+  optional string            image                = 5;
+  double                     original_price       = 6;
+  shared.common.DiscountType discount_type        = 7;
+  double                     discount_value       = 8;
+  double                     flash_sale_price     = 9;
+  int32                      promotional_quantity = 10;
+  int32                      stock                = 11;
+  bool                       is_valid             = 12;
+  repeated ValidationErrorCode errors             = 13;
+  int32                      row_number           = 14;  // Excel row number
+}
+
+// Response for Excel product validation
+message ValidateExcelProductsResponse {
+  repeated ValidatedProduct valid_products   = 1;
+  repeated ValidatedProduct invalid_products = 2;
+  int32                     total            = 3;
+  int32                     valid_count      = 4;
+  int32                     invalid_count    = 5;
+}
+
+// Flash Sale service for CMS flash sale management
+service FlashSaleService {
+  // Create a new flash sale campaign
+  rpc CreateFlashSale(CreateFlashSaleRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Get flash sale by ID
+  rpc GetFlashSale(GetFlashSaleRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Query flash sales with pagination
+  rpc QueryFlashSales(QueryFlashSalesRequest) returns (QueryFlashSalesResponse);
+
+  // Update flash sale campaign
+  rpc UpdateFlashSale(UpdateFlashSaleRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Delete flash sale (soft delete)
+  rpc DeleteFlashSale(DeleteFlashSaleRequest) returns (google.protobuf.Empty);
+
+  // Toggle flash sale enabled/disabled
+  rpc ToggleFlashSale(ToggleFlashSaleRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Add product to flash sale
+  rpc AddFlashSaleProduct(AddFlashSaleProductRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Update product in flash sale
+  rpc UpdateFlashSaleProduct(UpdateFlashSaleProductRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Remove product from flash sale
+  rpc RemoveFlashSaleProduct(RemoveFlashSaleProductRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Toggle product enabled/disabled in flash sale
+  rpc ToggleFlashSaleProduct(ToggleFlashSaleProductRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Bulk add products to flash sale
+  rpc BulkAddFlashSaleProducts(BulkAddFlashSaleProductsRequest) returns (shared.flash_sales.FlashSaleResponse);
+
+  // Bulk update products in flash sale
+  rpc BulkUpdateFlashSaleProducts(BulkUpdateFlashSaleProductsRequest) returns (shared.flash_sales.FlashSaleResponse);
+}

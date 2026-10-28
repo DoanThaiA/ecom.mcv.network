@@ -1,0 +1,9 @@
+{
+  "notFound": "Phiên nhập không tồn tại",
+  "rowNotFound": "Dòng nhập không tồn tại",
+  "alreadyProcessed": "Phiên nhập đã được xử lý",
+  "noValidProducts": "Không có sản phẩm hợp lệ để nhập",
+  "fileRequired": "File Excel là bắt buộc",
+  "emptyExcelFile": "File Excel không có dữ liệu hợp lệ",
+  "affiliateNotFound": "Đại lý không tồn tại"
+}

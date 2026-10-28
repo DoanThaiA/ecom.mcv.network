@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package cms.cms_users;
+
+import "shared/common/enums.proto";
+import "shared/files/file.proto";
+import "google/protobuf/timestamp.proto";
+
+// Permission group enumeration
+// Note: Values align with TS enum: owner=1, manager=2, staff=3
+enum PermissionGroupEnum {
+  PERMISSION_GROUP_UNSPECIFIED = 0;
+  PERMISSION_GROUP_OWNER       = 1;
+  PERMISSION_GROUP_MANAGER     = 2;
+  PERMISSION_GROUP_STAFF       = 3;
+}
+
+// Account type – website admin or affiliate agent.
+enum AccountTypeEnum {
+  ACCOUNT_TYPE_UNSPECIFIED   = 0;
+  ACCOUNT_TYPE_WEBSITE_ADMIN = 1;
+  ACCOUNT_TYPE_AFFILIATE     = 2;
+}
+
+// Module-level permission – controls feature access for non-owner roles.
+enum ModulePermissionEnum {
+  MODULE_PERMISSION_UNSPECIFIED                  = 0;
+  MODULE_PERMISSION_PRODUCT_MANAGEMENT           = 1;
+  MODULE_PERMISSION_ORDER_MANAGEMENT             = 2;
+  MODULE_PERMISSION_RETURN_MANAGEMENT            = 3;
+  MODULE_PERMISSION_FLASH_SALE_MANAGEMENT        = 4;
+  MODULE_PERMISSION_PROMOTION_MANAGEMENT         = 5;
+  MODULE_PERMISSION_NEWS_MANAGEMENT              = 6;
+  MODULE_PERMISSION_HOMEPAGE_MANAGEMENT          = 7;
+  MODULE_PERMISSION_SETTINGS                     = 8;
+  MODULE_PERMISSION_PUSH_NOTIFICATION_MANAGEMENT = 9;
+  MODULE_PERMISSION_AFFILIATE_MANAGEMENT         = 10;
+  MODULE_PERMISSION_ACCOUNT_MANAGEMENT           = 11;
+  MODULE_PERMISSION_SHIPPING_MANAGEMENT          = 12;
+}
+
+// CMS User domain entity
+message CmsUser {
+  string                            id               = 1;
+  optional string                   email            = 2;
+  optional string                   first_name       = 3;
+  optional string                   last_name        = 4;
+  optional shared.files.File        photo            = 5;
+  optional PermissionGroupEnum      permission_group = 6;
+  optional shared.common.StatusEnum status           = 7;
+  google.protobuf.Timestamp         created_at       = 8;
+  google.protobuf.Timestamp         updated_at       = 9;
+  google.protobuf.Timestamp         deleted_at       = 10;
+  optional string                   phone            = 11;
+  optional AccountTypeEnum          account_type     = 12;
+  repeated ModulePermissionEnum     permissions      = 13;
+  optional string                   affiliate_id     = 14;
+}
+
+// CMS User DTO (for simple user ID reference)
+message CmsUserDto {
+  string id = 1;
+}
+
+// Create CMS user DTO
+message CreateCmsUser {
+  string                            email            = 1;
+  optional string                   password         = 2;
+  string                            first_name       = 3;
+  optional string                   last_name        = 4;
+  optional shared.files.File        photo            = 5;
+  PermissionGroupEnum               permission_group = 6;
+  optional shared.common.StatusEnum status           = 7;
+  optional string                   phone            = 8;
+  AccountTypeEnum                   account_type     = 9;
+  repeated ModulePermissionEnum     permissions      = 10;
+  optional string                   affiliate_id     = 11;
+}
+
+// Update CMS user DTO
+message UpdateCmsUser {
+  optional string                   email            = 1;
+  optional string                   password         = 2;
+  optional string                   first_name       = 3;
+  optional string                   last_name        = 4;
+  optional shared.files.File        photo            = 5;
+  optional PermissionGroupEnum      permission_group = 6;
+  optional shared.common.StatusEnum status           = 7;
+  repeated ModulePermissionEnum     permissions      = 8;
+}
+
+// Filter CMS user DTO
+message FilterCmsUser {
+  repeated PermissionGroupEnum      permission_groups = 1;
+  optional string                   search            = 2;
+  repeated shared.common.StatusEnum statuses          = 3;
+  repeated AccountTypeEnum          account_types     = 4;
+}
+
+// Sort CMS user DTO
+message SortCmsUser {
+  string order_by = 1;
+  string order    = 2;
+}
+
+// Query CMS user DTO
+message QueryCmsUser {
+  optional int32         page    = 1;
+  optional int32         limit   = 2;
+  optional FilterCmsUser filters = 3;
+  repeated SortCmsUser   sort    = 4;
+}

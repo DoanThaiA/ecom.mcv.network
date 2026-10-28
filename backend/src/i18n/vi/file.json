@@ -1,0 +1,10 @@
+{
+  "selectFile": "Vui lòng chọn tệp",
+  "cantUploadFileType": "Không thể tải lên loại tệp này",
+  "payloadTooLarge": "Dung lượng tải lên quá lớn",
+  "fileTooLarge": "Tệp quá lớn. Kích thước tối đa là {{maxSize}}",
+  "invalidFileType": "Loại tệp không hợp lệ. Định dạng được phép: {{allowedTypes}}",
+  "uploadFailed": "Tải tệp lên thất bại",
+  "fileNotFound": "Không tìm thấy tệp",
+  "invalidFileId": "Mã tệp không hợp lệ"
+}

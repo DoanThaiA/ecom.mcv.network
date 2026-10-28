@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package cms.commission_settings;
+
+import "shared/commission-settings/commission-settings.proto";
+import "google/protobuf/empty.proto";
+
+// Update commission settings DTO
+message UpdateCommissionSettingsRequest {
+  optional double default_commission_rate = 1;
+  optional bool   auto_update_products    = 2;
+}
+
+// Update commission settings response (includes job_id if recalculation triggered)
+message UpdateCommissionSettingsResponse {
+  shared.commission_settings.CommissionSettingsResponse settings = 1;
+  optional string                                       job_id   = 2; // Present when rate change triggers recalculation
+}
+
+// Commission settings service for CMS management
+service CommissionSettingsService {
+  // Get commission settings (singleton)
+  rpc GetCommissionSettings(google.protobuf.Empty) returns (shared.commission_settings.CommissionSettingsResponse);
+
+  // Update commission settings
+  rpc UpdateCommissionSettings(UpdateCommissionSettingsRequest) returns (UpdateCommissionSettingsResponse);
+}

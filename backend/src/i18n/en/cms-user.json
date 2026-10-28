@@ -1,0 +1,15 @@
+{
+  "permissionGroupNotExists": "Permission group does not exist",
+  "superAdminForbidden": "Super admin permission cannot be set via API",
+  "affiliateIdRequired": "Affiliate ID is required for affiliate accounts",
+  "affiliateNotFound": "Affiliate not found",
+  "affiliateAlreadyLinked": "This affiliate already has a linked CMS account",
+  "passwordRequired": "Password is required for website admin accounts",
+  "welcomeEmailSubject": "Your CMS Account Has Been Created",
+  "welcomeText1": "Welcome to CChat CMS!",
+  "welcomeText2": "Your affiliate CMS account has been successfully created. You can now log in using the credentials below.",
+  "welcomeText3": "Your login credentials:",
+  "welcomePasswordLabel": "Temporary Password",
+  "welcomeText4": "For security reasons, please change your password after your first login.",
+  "welcomeLoginBtn": "Log in to CMS"
+}

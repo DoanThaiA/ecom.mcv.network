@@ -1,0 +1,6 @@
+{
+  "notFound": "Push notification not found",
+  "cannotEditNonDraft": "Cannot edit a non-draft notification",
+  "cannotSendNonDraft": "Only draft or pending notifications can be sent",
+  "cannotRecallNonSent": "Only sent notifications can be recalled"
+}

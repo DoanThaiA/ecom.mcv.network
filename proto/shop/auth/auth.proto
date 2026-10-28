@@ -1,0 +1,136 @@
+syntax = "proto3";
+
+package shop.auth;
+
+import "shared/users/user.proto";
+import "shared/files/file.proto";
+
+// Auth confirm email DTO
+message AuthConfirmEmail {
+  string hash = 1;
+}
+
+// Auth email login DTO
+message AuthEmailLogin {
+  string email    = 1;
+  string password = 2;
+}
+
+// Auth forgot password DTO (email-based)
+message AuthForgotPassword {
+  string email = 1;
+}
+
+// Auth register login DTO (email-based)
+message AuthRegisterLogin {
+  string          email      = 1;
+  string          password   = 2;
+  string          first_name = 3;
+  optional string last_name  = 4;
+}
+
+// Auth reset password DTO (email-based)
+message AuthResetPassword {
+  string password = 1;
+  string hash     = 2;
+}
+
+// Auth update DTO
+message AuthUpdate {
+  optional shared.files.File photo        = 1;
+  optional string            first_name   = 2;
+  optional string            last_name    = 3;
+  optional string            email        = 4;
+  optional string            password     = 5;
+  optional string            old_password = 6;
+}
+
+// Auth phone login DTO
+message AuthPhoneLogin {
+  string phone    = 1;
+  string password = 2;
+}
+
+// Auth phone register DTO
+message AuthPhoneRegister {
+  string          phone      = 1;
+  string          first_name = 2;
+  optional string last_name  = 3;
+  string          password   = 4;
+  optional string otp_method = 5;  // OTP delivery method: "sms" or "zns"
+}
+
+// Auth phone verify OTP DTO
+message AuthPhoneVerifyOtp {
+  string phone = 1;
+  string otp   = 2;
+}
+
+// Auth phone forgot password request DTO (Step 1: Request OTP)
+message AuthPhoneForgotPasswordRequest {
+  string          phone      = 1;
+  optional string otp_method = 2;  // "sms" or "zns"
+}
+
+// Auth phone forgot password verify DTO (Step 2: Verify OTP)
+message AuthPhoneForgotPasswordVerify {
+  string phone = 1;
+  string otp   = 2;
+}
+
+// Auth phone forgot password complete DTO (Step 3: Set new password)
+message AuthPhoneForgotPasswordComplete {
+  string phone    = 1;
+  string password = 2;
+  string hash     = 3; // Token received after OTP verification
+}
+
+// Auth phone link request DTO (Step 1: Request OTP to link phone)
+message AuthPhoneLinkRequest {
+  string          phone      = 1;
+  optional string otp_method = 2;  // "sms" or "zns"
+}
+
+// Auth phone link verify DTO (Step 2: Verify OTP and link phone)
+message AuthPhoneLinkVerify {
+  string          phone    = 1;
+  string          otp      = 2;
+  optional string password = 3;  // Required if user has no existing password (social login users)
+}
+
+// Auth Facebook login DTO
+message AuthFacebookLogin {
+  string code = 1;
+}
+
+// Auth Google login DTO
+message AuthGoogleLogin {
+  string          code  = 1;
+  optional string state = 2;
+}
+
+// Auth Zalo login DTO
+message AuthZaloLogin {
+  string code  = 1;
+  string state = 2;
+}
+
+// Unlink social account DTO
+message UnlinkSocialAccount {
+  string provider = 1;  // "google", "facebook", or "zalo"
+}
+
+// Login response DTO
+message LoginResponse {
+  string            token         = 1;
+  string            refresh_token = 2;
+  int64             token_expires = 3;
+  shared.users.User user          = 4;
+}
+
+// Refresh response DTO
+message RefreshResponse {
+  string token         = 1;
+  string refresh_token = 2;
+  int64  token_expires = 3;
+}

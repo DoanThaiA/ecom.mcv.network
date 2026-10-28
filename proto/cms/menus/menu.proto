@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package cms.menus;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "shared/menus/menu.proto";
+import "google/protobuf/empty.proto";
+
+// Create menu request
+message CreateMenuRequest {
+  string                            name        = 1;
+  optional string                   parent_id   = 2;
+  shared.common.MenuType            type        = 3;
+  optional string                   category_id = 4;  // Required when type = CATEGORY
+  optional string                   topic_id    = 5;     // Required when type = TOPIC
+  optional string                   url         = 6;          // Required when type = URL, auto-generated otherwise
+  optional int32                    order       = 7;
+  optional shared.common.MenuStatus status      = 8;
+  optional shared.common.Localization localization = 9;  // Localization
+}
+
+// Update menu request
+message UpdateMenuRequest {
+  string                            menu_id     = 1;
+  optional string                   name        = 2;
+  optional string                   parent_id   = 3;
+  optional shared.common.MenuType   type        = 4;
+  optional string                   category_id = 5;
+  optional string                   topic_id    = 6;
+  optional string                   url         = 7;
+  optional int32                    order       = 8;
+  optional shared.common.MenuStatus status      = 9;
+  optional shared.common.Localization localization = 10; // Localization
+}
+
+// Filter menu DTO
+message FilterMenu {
+  optional string                   search    = 1;
+  optional shared.common.MenuStatus status    = 2;
+  optional string                   parent_id = 3;
+}
+
+// Sort menu DTO
+message SortMenu {
+  string order_by = 1; // 'createdAt' | 'name' | 'order'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query menus request
+message QueryMenusRequest {
+  optional FilterMenu filters = 1;
+  repeated SortMenu   sort    = 2;
+}
+
+// Query menus response
+message QueryMenusResponse {
+  repeated shared.menus.Menu data = 1;
+}
+
+// Get menu by ID request
+message GetMenuRequest {
+  string menu_id = 1;
+}
+
+// Delete menu request
+message DeleteMenuRequest {
+  string menu_id = 1;
+}
+
+// Reorder menu item
+message ReorderMenuItem {
+  string menu_id = 1;
+  int32  order   = 2;
+}
+
+// Reorder menus request
+message ReorderMenusRequest {
+  repeated ReorderMenuItem menus = 1;
+}
+
+// Menu service for CMS menu management
+service MenuService {
+  // Create a new menu
+  rpc CreateMenu(CreateMenuRequest) returns (shared.menus.Menu);
+
+  // Get menu by ID
+  rpc GetMenu(GetMenuRequest) returns (shared.menus.Menu);
+
+  // Query all menus
+  rpc QueryMenus(QueryMenusRequest) returns (QueryMenusResponse);
+
+  // Update menu
+  rpc UpdateMenu(UpdateMenuRequest) returns (shared.menus.Menu);
+
+  // Delete menu (soft delete)
+  rpc DeleteMenu(DeleteMenuRequest) returns (google.protobuf.Empty);
+
+  // Bulk reorder menus
+  rpc ReorderMenus(ReorderMenusRequest) returns (google.protobuf.Empty);
+}

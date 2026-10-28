@@ -1,0 +1,10 @@
+{
+  "selectFile": "Please select a file",
+  "cantUploadFileType": "Cannot upload this file type",
+  "payloadTooLarge": "Payload too large",
+  "fileTooLarge": "File is too large. Maximum size is {{maxSize}}",
+  "invalidFileType": "Invalid file type. Allowed types: {{allowedTypes}}",
+  "uploadFailed": "File upload failed",
+  "fileNotFound": "File not found",
+  "invalidFileId": "Invalid file ID"
+}

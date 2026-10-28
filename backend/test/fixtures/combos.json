@@ -1,0 +1,48 @@
+{
+  "combos": [
+    {
+      "_id": "695c7b0bdb09b87fccdb5839",
+      "name": "Combo công sở",
+      "description": "<p></p>",
+      "image": "https://mmenu-dev.s3.ap-southeast-1.amazonaws.com/8271ec4da24ee7c318076.jpg",
+      "items": [
+        {
+          "productId": "69561269abd3fed1bcd6caa4",
+          "quantity": 1
+        },
+        {
+          "productId": "695611b2abd3fed1bcd69564",
+          "quantity": 1
+        }
+      ],
+      "discountType": "fixed",
+      "discountValue": 100000,
+      "originalPrice": 1029000,
+      "status": "active",
+      "validFrom": "2026-01-04T17:00:00.000Z",
+      "validTo": "2026-01-09T17:00:00.000Z"
+    }
+  ],
+  "singleCombo": {
+    "_id": "695c7b0bdb09b87fccdb5839",
+    "name": "Combo công sở",
+    "description": "<p></p>",
+    "image": "https://mmenu-dev.s3.ap-southeast-1.amazonaws.com/8271ec4da24ee7c318076.jpg",
+    "items": [
+      {
+        "productId": "69561269abd3fed1bcd6caa4",
+        "quantity": 1
+      },
+      {
+        "productId": "695611b2abd3fed1bcd69564",
+        "quantity": 1
+      }
+    ],
+    "discountType": "fixed",
+    "discountValue": 100000,
+    "originalPrice": 1029000,
+    "status": "active",
+    "validFrom": "2026-01-04T17:00:00.000Z",
+    "validTo": "2026-01-09T17:00:00.000Z"
+  }
+}

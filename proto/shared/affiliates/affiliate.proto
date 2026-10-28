@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package shared.affiliates;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// Affiliate domain entity
+message Affiliate {
+  string                             id                      = 1;
+  string                             name                    = 2;
+  string                             affiliate_code          = 3;
+  shared.common.AffiliateType        type                    = 4;
+  string                             email                   = 5;
+  string                             phone                   = 6;
+  optional string                    bank_account_holder     = 7;
+  optional string                    bank_name               = 8;
+  optional string                    bank_account_number     = 9;
+  optional string                    citizen_id              = 10;
+  optional string                    notes                   = 11;
+  shared.common.AffiliateStatus      status                  = 12;
+  optional double                    default_commission_rate = 13;
+  bool                               auto_update_products    = 14;
+  google.protobuf.Timestamp          created_at              = 15;
+  google.protobuf.Timestamp          updated_at              = 16;
+  optional google.protobuf.Timestamp deleted_at              = 17;
+}
+
+// Affiliate list item (for paginated list response)
+message AffiliateListItem {
+  string                        id                      = 1;
+  string                        name                    = 2;
+  string                        affiliate_code          = 3;
+  shared.common.AffiliateType   type                    = 4;
+  string                        email                   = 5;
+  string                        phone                   = 6;
+  shared.common.AffiliateStatus status                  = 7;
+  optional double               default_commission_rate = 8;
+  bool                          auto_update_products    = 9;
+  google.protobuf.Timestamp     created_at              = 10;
+  google.protobuf.Timestamp     updated_at              = 11;
+}

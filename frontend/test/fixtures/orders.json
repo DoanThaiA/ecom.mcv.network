@@ -1,0 +1,74 @@
+{
+  "singleOrder": {
+    "id": "order-1",
+    "orderNumber": "ORD001",
+    "userId": "user-1",
+    "items": [
+      {
+        "productId": "prod-1",
+        "product": {
+          "id": "prod-1",
+          "name": "Áo thun nam",
+          "price": 299000,
+          "images": ["https://example.com/product1.jpg"]
+        },
+        "variantId": "v1",
+        "variant": {
+          "size": "M",
+          "color": "Đen"
+        },
+        "quantity": 2,
+        "price": 299000
+      }
+    ],
+    "subtotal": 598000,
+    "shippingFee": 30000,
+    "discount": 0,
+    "total": 628000,
+    "status": "PENDING",
+    "paymentMethod": "COD",
+    "paymentStatus": "UNPAID",
+    "shippingAddress": {
+      "id": "addr-1",
+      "fullName": "Nguyễn Văn A",
+      "phone": "0912345678",
+      "address": "123 Đường ABC",
+      "ward": "Phường 1",
+      "district": "Quận 1",
+      "city": "TP.HCM",
+      "isDefault": true
+    },
+    "timeline": [
+      {
+        "status": "PENDING",
+        "time": "2024-01-01T10:00:00Z",
+        "note": "Đơn hàng đã được tạo"
+      }
+    ],
+    "createdAt": "2024-01-01T10:00:00Z",
+    "updatedAt": "2024-01-01T10:00:00Z"
+  },
+  "orders": [
+    {
+      "id": "order-1",
+      "orderNumber": "ORD001",
+      "total": 628000,
+      "status": "PENDING",
+      "createdAt": "2024-01-01T10:00:00Z"
+    },
+    {
+      "id": "order-2",
+      "orderNumber": "ORD002",
+      "total": 1200000,
+      "status": "SHIPPING",
+      "createdAt": "2024-01-02T10:00:00Z"
+    },
+    {
+      "id": "order-3",
+      "orderNumber": "ORD003",
+      "total": 599000,
+      "status": "COMPLETED",
+      "createdAt": "2023-12-25T10:00:00Z"
+    }
+  ]
+}

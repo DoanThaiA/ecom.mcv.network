@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+package cms.product_commissions;
+
+import "shared/product-commissions/product-commission.proto";
+import "google/protobuf/empty.proto";
+
+// Single product item for bulk add
+message AddProductCommissionItem {
+  string          product_id      = 1;
+  optional double commission_rate = 2; // If omitted, uses cascade: affiliate default → global default
+}
+
+// Add product commissions request (global context)
+message AddGlobalProductCommissionsRequest {
+  repeated AddProductCommissionItem products = 1;
+}
+
+// Add product commissions request (affiliate context)
+message AddAffiliateProductCommissionsRequest {
+  string                            affiliate_id = 1;
+  repeated AddProductCommissionItem products     = 2;
+}
+
+// Update single product commission rate request (global context)
+message UpdateGlobalProductCommissionRequest {
+  string product_id      = 1;
+  double commission_rate = 2;
+}
+
+// Update single product commission rate request (affiliate context)
+message UpdateAffiliateProductCommissionRequest {
+  string affiliate_id    = 1;
+  string product_id      = 2;
+  double commission_rate = 3;
+}
+
+// Bulk update commission rate request (global context)
+message BulkUpdateGlobalCommissionRateRequest {
+  repeated string product_ids     = 1;
+  double          commission_rate = 2;
+}
+
+// Bulk update commission rate request (affiliate context)
+message BulkUpdateAffiliateCommissionRateRequest {
+  string          affiliate_id    = 1;
+  repeated string product_ids     = 2;
+  double          commission_rate = 3;
+}
+
+// Delete single product commission request (global context)
+message DeleteGlobalProductCommissionRequest {
+  string product_id = 1;
+}
+
+// Delete single product commission request (affiliate context)
+message DeleteAffiliateProductCommissionRequest {
+  string affiliate_id = 1;
+  string product_id   = 2;
+}
+
+// Bulk delete product commissions request (global context)
+message BulkDeleteGlobalProductCommissionsRequest {
+  repeated string product_ids = 1;
+}
+
+// Bulk delete product commissions request (affiliate context)
+message BulkDeleteAffiliateProductCommissionsRequest {
+  string          affiliate_id = 1;
+  repeated string product_ids  = 2;
+}
+
+// Filter product commissions DTO
+message FilterProductCommission {
+  optional string search         = 1; // Search by product name or code
+  optional string category_name  = 2; // Single category name
+  repeated string category_names = 3; // Multiple category names
+}
+
+// Sort product commissions DTO
+message SortProductCommission {
+  string order_by = 1; // 'name' | 'code' | 'costPrice' | 'commissionRate' | 'estimatedCommission' | 'createdAt'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query global product commissions request
+message QueryGlobalProductCommissionsRequest {
+  optional int32                   page    = 1;
+  optional int32                   limit   = 2;
+  optional FilterProductCommission filters = 3;
+  repeated SortProductCommission   sort    = 4;
+}
+
+// Query affiliate product commissions request
+message QueryAffiliateProductCommissionsRequest {
+  string                           affiliate_id = 1;
+  optional int32                   page         = 2;
+  optional int32                   limit        = 3;
+  optional FilterProductCommission filters      = 4;
+  repeated SortProductCommission   sort         = 5;
+}
+
+// Product commission service for CMS management
+service ProductCommissionService {
+  // --- Global product commissions (under /commission-settings/products) ---
+
+  // List global product commissions with pagination
+  rpc QueryGlobalProductCommissions(QueryGlobalProductCommissionsRequest) returns (shared.product_commissions.ProductCommissionsPage);
+
+  // Bulk add products to global commission list
+  rpc AddGlobalProductCommissions(AddGlobalProductCommissionsRequest) returns (shared.product_commissions.ProductCommissionsPage);
+
+  // Update single global product commission rate
+  rpc UpdateGlobalProductCommission(UpdateGlobalProductCommissionRequest) returns (shared.product_commissions.ProductCommission);
+
+  // Bulk update global product commission rates
+  rpc BulkUpdateGlobalCommissionRate(BulkUpdateGlobalCommissionRateRequest) returns (google.protobuf.Empty);
+
+  // Remove single product from global commission list
+  rpc DeleteGlobalProductCommission(DeleteGlobalProductCommissionRequest) returns (google.protobuf.Empty);
+
+  // Bulk remove products from global commission list
+  rpc BulkDeleteGlobalProductCommissions(BulkDeleteGlobalProductCommissionsRequest) returns (google.protobuf.Empty);
+
+  // --- Affiliate product commissions (under /affiliates/:affiliateId/product-commissions) ---
+
+  // List affiliate product commissions with pagination
+  rpc QueryAffiliateProductCommissions(QueryAffiliateProductCommissionsRequest) returns (shared.product_commissions.ProductCommissionsPage);
+
+  // Bulk add products to affiliate commission list
+  rpc AddAffiliateProductCommissions(AddAffiliateProductCommissionsRequest) returns (shared.product_commissions.ProductCommissionsPage);
+
+  // Update single affiliate product commission rate
+  rpc UpdateAffiliateProductCommission(UpdateAffiliateProductCommissionRequest) returns (shared.product_commissions.ProductCommission);
+
+  // Bulk update affiliate product commission rates
+  rpc BulkUpdateAffiliateCommissionRate(BulkUpdateAffiliateCommissionRateRequest) returns (google.protobuf.Empty);
+
+  // Remove single product from affiliate commission list
+  rpc DeleteAffiliateProductCommission(DeleteAffiliateProductCommissionRequest) returns (google.protobuf.Empty);
+
+  // Bulk remove products from affiliate commission list
+  rpc BulkDeleteAffiliateProductCommissions(BulkDeleteAffiliateProductCommissionsRequest) returns (google.protobuf.Empty);
+}

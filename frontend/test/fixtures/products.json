@@ -1,0 +1,77 @@
+{
+  "singleProduct": {
+    "id": "prod-1",
+    "name": "Áo thun nam",
+    "slug": "ao-thun-nam",
+    "description": "Áo thun cotton 100% cao cấp",
+    "price": 299000,
+    "comparePrice": 399000,
+    "categoryId": "cat-1",
+    "categoryName": "Áo thun",
+    "images": [
+      "https://example.com/product1-1.jpg",
+      "https://example.com/product1-2.jpg"
+    ],
+    "variants": [
+      {
+        "id": "v1",
+        "size": "M",
+        "color": "Đen",
+        "sku": "AT-M-DEN",
+        "stock": 100,
+        "price": 299000
+      },
+      {
+        "id": "v2",
+        "size": "L",
+        "color": "Trắng",
+        "sku": "AT-L-TRANG",
+        "stock": 50,
+        "price": 299000
+      }
+    ],
+    "status": "ACTIVE",
+    "rating": 4.5,
+    "reviewCount": 120,
+    "soldCount": 500,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  "products": [
+    {
+      "id": "prod-1",
+      "name": "Áo thun nam",
+      "slug": "ao-thun-nam",
+      "price": 299000,
+      "comparePrice": 399000,
+      "categoryId": "cat-1",
+      "categoryName": "Áo thun",
+      "images": ["https://example.com/product1.jpg"],
+      "status": "ACTIVE",
+      "rating": 4.5
+    },
+    {
+      "id": "prod-2",
+      "name": "Quần jean nam",
+      "slug": "quan-jean-nam",
+      "price": 599000,
+      "comparePrice": 799000,
+      "categoryId": "cat-2",
+      "categoryName": "Quần jean",
+      "images": ["https://example.com/product2.jpg"],
+      "status": "ACTIVE",
+      "rating": 4.8
+    },
+    {
+      "id": "prod-3",
+      "name": "Giày thể thao",
+      "slug": "giay-the-thao",
+      "price": 1200000,
+      "comparePrice": 1500000,
+      "categoryId": "cat-3",
+      "categoryName": "Giày",
+      "images": ["https://example.com/product3.jpg"],
+      "status": "ACTIVE",
+      "rating": 4.7
+    }
+  ]
+}

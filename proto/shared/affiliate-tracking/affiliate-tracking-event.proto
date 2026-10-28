@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package shared.affiliate_tracking;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+// Tracking event type enumeration
+enum TrackingEventType {
+  TRACKING_EVENT_TYPE_UNSPECIFIED = 0;
+  TRACKING_EVENT_TYPE_CLICK       = 1;
+}
+
+// Affiliate tracking event domain entity
+message AffiliateTrackingEvent {
+  string                          id             = 1;
+  TrackingEventType               type           = 2;
+  string                          affiliate_id   = 3;
+  string                          affiliate_code = 4;
+  optional string                 product_id     = 5;
+  string                          session_id     = 6;
+  optional string                 ip             = 7;
+  optional string                 user_agent     = 8;
+  optional google.protobuf.Struct metadata       = 9;
+  google.protobuf.Timestamp       created_at     = 10;
+}

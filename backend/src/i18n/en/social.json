@@ -1,0 +1,44 @@
+{
+  "socialAccountAlreadyLinked": "This social account is already linked to another user",
+  "socialAccountAlreadyConnected": "This social account is already connected to your account",
+  "cannotUnlinkLastAuthMethod": "Cannot unlink. You must have at least one authentication method",
+  "cannotUnlinkPrimaryAccount": "Cannot unlink your primary authentication method",
+  "providerNotLinked": "This provider is not linked to your account",
+  "wrongToken": "Invalid authentication token",
+  "facebookApiError": "Facebook API error",
+  "invalidFacebookProfile": "Invalid Facebook profile data",
+  "facebookApiTimeout": "Facebook API request timeout",
+  "failedToGetProfile": "Failed to get profile from provider",
+  "credentialsNotConfigured": "Social authentication credentials not configured",
+  "tokenVerificationFailed": "Token verification failed",
+  "invalidAccessToken": "Invalid access token",
+  "tokenNotBelongToApp": "Access token does not belong to this application",
+  "failedToExchangeToken": "Failed to exchange authentication token",
+  "googleAuthError": "Google authentication error",
+  "appleAuthError": "Apple authentication error",
+  "providerNotSupported": "Authentication provider not supported",
+  "zaloApiError": "Zalo API error",
+  "zaloApiTimeout": "Zalo API request timeout",
+  "invalidZaloProfile": "Invalid Zalo profile data",
+  "invalidTokenResponse": "Invalid token response from provider",
+  "invalidOrExpiredState": "Invalid or expired OAuth state",
+  "integration": {
+    "zaloOa": {
+      "credentialsNotConfigured": "Zalo OA credentials not configured",
+      "failedToGetAccessToken": "Failed to get access token from Zalo OA",
+      "failedToRefreshToken": "Failed to refresh access token from Zalo OA",
+      "noAccessTokenInResponse": "No access token in Zalo OA response",
+      "noAccessToken": "No Zalo OA access token available. Please authenticate first",
+      "apiTimeout": "Zalo OA API request timeout",
+      "apiError": "Zalo OA API error",
+      "invalidAuthCode": "Invalid or expired authorization code",
+      "invalidTokenResponse": "Invalid token response from Zalo OA"
+    },
+    "zaloZns": {
+      "failedToSend": "Failed to send ZNS message",
+      "apiTimeout": "ZNS API request timeout",
+      "invalidTemplate": "Invalid ZNS template",
+      "invalidPhone": "Invalid phone number format"
+    }
+  }
+}

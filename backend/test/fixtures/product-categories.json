@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "_id": "6955f3dfabd3fed1bcd51827",
+      "businessId": "57499",
+      "source": "nhanh",
+      "code": "Combo",
+      "name": "Combo",
+      "status": 2
+    },
+    {
+      "_id": "6955f3dfabd3fed1bcd51828",
+      "businessId": "57499",
+      "source": "nhanh",
+      "code": "DL",
+      "name": "ĐỒ LÓT",
+      "status": 2
+    }
+  ],
+  "singleCategory": {
+    "_id": "6955f3dfabd3fed1bcd51827",
+    "businessId": "57499",
+    "source": "nhanh",
+    "code": "Combo",
+    "name": "Combo",
+    "status": 2
+  }
+}

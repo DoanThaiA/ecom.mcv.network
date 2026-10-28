@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+package shared.products;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "shared/product-banners/product-banner.proto";
+import "google/protobuf/timestamp.proto";
+
+// Product prices
+message ProductPrices {
+  double          retail    = 1;
+  optional double wholesale = 2;
+  optional double import    = 3;
+  optional double old       = 4;
+  optional double avg_cost  = 5;
+}
+
+// Product images
+message ProductImages {
+  optional string avatar = 1;
+  repeated string others = 2;
+}
+
+// Product inventory
+message ProductInventoryInfo {
+  int32          remain           = 1;
+  int32          available        = 2;
+  optional int32 shipping         = 3;
+  optional int32 damaged          = 4;
+  optional int32 holding          = 5;
+  optional int32 warranty         = 6;
+  optional int32 warranty_holding = 7;
+  optional int32 holding_new      = 8;
+  optional int32 shipping_export  = 9;
+}
+
+// Product category reference
+message ProductCategoryRef {
+  string id   = 1;
+  string name = 2;
+}
+
+// Product attribute - for variant products to identify their specific attribute values
+// Example: { id: "1", name: "Color", value: "Red" }
+message ProductAttribute {
+  optional string id    = 1;
+  string          name  = 2;
+  string          value = 3;
+}
+
+// Variant option - aggregated attribute definition from child variants
+// Example: { id: "3", name: "Mau sac", values: ["Den", "Trang"] }
+message VariantOption {
+  string          id     = 1;
+  string          name   = 2;
+  repeated string values = 3;
+}
+
+// Flash sale info attached to product (runtime only, not stored)
+message ProductFlashSaleInfo {
+  string                     flash_sale_id        = 1;
+  string                     flash_sale_name      = 2;
+  double                     original_price       = 3;
+  double                     flash_sale_price     = 4;
+  shared.common.DiscountType discount_type        = 5;
+  double                     discount_value       = 6;
+  double                     discount_amount      = 7;
+  int32                      promotional_quantity = 8;
+  int32                      sold_count           = 9;
+  int32                      remaining_stock      = 10;
+  google.protobuf.Timestamp  end_time             = 11;
+  int32                      discount_percent     = 12;
+  double                     effective_price      = 13;
+}
+
+// Product discount info (CTKM auto-apply, no min order) - synced like flash sale
+message ProductDiscountInfo {
+  string                     promotion_id     = 1;
+  string                     promotion_name   = 2;
+  double                     original_price   = 3;
+  double                     discounted_price = 4;
+  shared.common.DiscountType discount_type    = 5;
+  double                     discount_value   = 6;
+  double                     discount_amount  = 7;
+  int32                      discount_percent = 8;
+  int32                      sold_count       = 9;
+  google.protobuf.Timestamp  end_time         = 10;
+  double                     effective_price  = 11;
+}
+
+// Review statistics for product
+message ProductReviewStats {
+  double average_rating = 1; // Average rating (1-5, 1 decimal)
+  int32  review_count   = 2; // Total visible review count
+}
+
+// Product details - CMS-only data not synced from external sources
+message ProductDetails {
+  optional string material          = 1;           // Material composition
+  optional string style             = 2;              // Product style
+  optional string highlights        = 3;         // Key highlights/features
+  optional string suitable_for      = 4;       // Suitable for occasions/usage
+  optional string care_instructions = 5;  // Care and maintenance instructions
+}
+
+// Product details localization - multilingual support for detail fields
+message DetailsLocalization {
+  optional shared.common.Localization material          = 1; // Localized material
+  optional shared.common.Localization style             = 2; // Localized style
+  optional shared.common.Localization highlights        = 3; // Localized highlights
+  optional shared.common.Localization suitable_for      = 4; // Localized suitable for
+  optional shared.common.Localization care_instructions = 5; // Localized care instructions
+}
+
+// Product-description media configured in CMS and shared by all locales.
+message ProductDescriptionMedia {
+  repeated string top_images    = 1;
+  repeated string slider_images = 2;
+  repeated string bottom_images = 3;
+}
+
+// Product domain entity
+message Product {
+  string                                                id                       = 1;
+  string                                                business_id              = 2;
+  string                                                source                   = 3; // 'nhanh' | 'shopify'
+  string                                                code                     = 4;
+  optional string                                       barcode                  = 5;
+  string                                                name                     = 6;
+  optional string                                       description              = 7;
+  optional string                                       content                  = 8; // detailed HTML content
+  ProductPrices                                         prices                   = 9;
+  optional double                                       vat                      = 10;
+  ProductImages                                         images                   = 11;
+  optional ProductInventoryInfo                         inventory                = 12;
+  shared.common.ProductStatus                           status                   = 13;
+  string                                                type                     = 14; // 'regular'
+  optional ProductCategoryRef                           category                 = 15;
+  repeated ProductAttribute                             attributes               = 16; // For variant products
+  repeated VariantOption                                variant_options          = 17; // Aggregated attribute options (parent products only)
+  repeated Product                                      variants                 = 18; // Child variant products (parent products only)
+  google.protobuf.Timestamp                             created_at               = 19;
+  google.protobuf.Timestamp                             updated_at               = 20;
+  optional google.protobuf.Timestamp                    deleted_at               = 21;
+  optional ProductFlashSaleInfo                         flash_sale               = 22; // Flash sale info (runtime only)
+  optional ProductReviewStats                           review_stats             = 23; // Review statistics
+  optional ProductDetails                               details                  = 24; // CMS-only product details
+  bool                                                  hide                     = 25; // Hide product from shopping client (CMS-only)
+  optional string                                       slug                     = 26; // SEO-friendly URL slug
+  optional shared.common.Localization                   name_localization        = 27; // Multilingual product name
+  optional shared.common.Localization                   description_localization = 28; // Multilingual description
+  optional DetailsLocalization                          details_localization     = 29; // Multilingual details
+  optional shared.common.ProductBadge                   badge                    = 30; // CMS-only promotional badge
+  optional shared.product_banners.EmbeddedProductBanner product_banner           = 31; // CMS-managed product banner overlay
+  optional string                                       size_guide               = 32; // Size guide image URL (CMS-managed)
+  optional ProductDiscountInfo                          product_discount         = 33; // Product discount info (CTKM auto-apply)
+  optional ProductDescriptionMedia                       description_media        = 34; // CMS-managed product-description media
+}

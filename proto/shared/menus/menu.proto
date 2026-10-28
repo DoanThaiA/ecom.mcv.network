@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package shared.menus;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "google/protobuf/timestamp.proto";
+
+// Menu domain entity
+message Menu {
+  string                             id          = 1;
+  string                             name        = 2;
+  optional string                    parent_id   = 3;
+  shared.common.MenuType             type        = 4;
+  optional string                    category_id = 5;
+  optional string                    topic_id    = 6;
+  optional string                    url         = 7;
+  int32                              order       = 8;
+  shared.common.MenuStatus           status      = 9;
+  google.protobuf.Timestamp          created_at  = 10;
+  google.protobuf.Timestamp          updated_at  = 11;
+  optional google.protobuf.Timestamp deleted_at  = 12;
+  optional shared.common.Localization localization = 13;  // Localization
+}

@@ -1,0 +1,35 @@
+import { AppConfig } from './app-config.type';
+import { AuthConfig } from '../auth/config/auth-config.type';
+import { DatabaseConfig } from '../database/config/database-config.type';
+import { FacebookConfig } from '../auth-facebook/config/facebook-config.type';
+import { FileConfig } from '../files/config/file-config.type';
+import { GoogleConfig } from '../auth-google/config/google-config.type';
+import { MailConfig } from '../mail/config/mail-config.type';
+import { EsmsConfig } from '../sms/esms/config/esms-config.type';
+import { ZaloConfig } from '../zalo/config/zalo-config.type';
+import { NhanhConfig } from '../nhanh/config/nhanh-config.type';
+import { CacheConfig } from '../cache/config/cache-config.type';
+import { CdpConfig } from '../cdp/config/cdp-config.type';
+import { OnepayConfig } from '../payment/onepay/config/onepay-config.type';
+import { InfocmsConfig } from '../payment/infocms/config/infocms-config.type';
+import { OpenaiConfig } from '../ai/config/openai-config.type';
+import { TelegramConfig } from '../telegram/config/telegram-config.type';
+
+export type AllConfigType = {
+  app: AppConfig;
+  auth: AuthConfig;
+  database: DatabaseConfig;
+  facebook: FacebookConfig;
+  file: FileConfig;
+  google: GoogleConfig;
+  mail: MailConfig;
+  esms: EsmsConfig;
+  zalo: ZaloConfig;
+  nhanh: NhanhConfig;
+  cache: CacheConfig;
+  cdp: CdpConfig;
+  onepay: OnepayConfig;
+  infocms: InfocmsConfig;
+  openai: OpenaiConfig;
+  telegram: TelegramConfig;
+};

@@ -1,0 +1,81 @@
+{
+  "cart": {
+    "notFound": "Không tìm thấy giỏ hàng",
+    "itemNotFound": "Không tìm thấy sản phẩm trong giỏ hàng",
+    "cleared": "Đã xóa giỏ hàng thành công",
+    "authRequiredForMerge": "Người dùng phải đăng nhập để hợp nhất giỏ hàng",
+    "createFailed": "Không thể tạo giỏ hàng"
+  },
+  "order": {
+    "notFound": "Không tìm thấy đơn hàng",
+    "created": "Tạo đơn hàng thành công",
+    "cancelled": "Hủy đơn hàng thành công",
+    "cannotCancel": "Không thể hủy đơn hàng ở trạng thái hiện tại",
+    "notAuthorized": "Không có quyền truy cập đơn hàng này",
+    "notYourOrder": "Bạn không thể tạo yêu cầu đổi/trả cho đơn hàng này",
+    "invalidStatusTransition": "Chuyển trạng thái không hợp lệ từ {from} sang {to}",
+    "cartEmpty": "Giỏ hàng trống",
+    "noItemsSelected": "Không có sản phẩm hợp lệ được chọn để thanh toán",
+    "tokenInvalid": "Mã xác nhận không hợp lệ hoặc đã hết hạn",
+    "tokenExpired": "Mã xác nhận đã hết hạn"
+  },
+  "checkout": {
+    "sessionNotFound": "Không tìm thấy phiên thanh toán",
+    "sessionExpired": "Phiên thanh toán đã hết hạn",
+    "sessionAlreadyCompleted": "Phiên thanh toán đã hoàn tất",
+    "sessionNotActive": "Phiên thanh toán không hoạt động",
+    "notAuthorized": "Không có quyền truy cập phiên thanh toán này",
+    "noItemsSelected": "Không có sản phẩm hợp lệ được chọn để thanh toán",
+    "validationFailed": "Kiểm tra thanh toán thất bại",
+    "orderCreated": "Tạo đơn hàng thành công",
+    "voucherMinimumNotMet": "Giá trị đơn hàng tối thiểu {minimum} là bắt buộc để sử dụng voucher này",
+    "voucherNotApplicableWithOtherPromotions": "Voucher {voucherCode} không thể sử dụng cùng với các chương trình khuyến mãi khác"
+  },
+  "flashSale": {
+    "ended": "Flash sale đã kết thúc",
+    "insufficientStock": "Số lượng flash sale không đủ"
+  },
+  "product": {
+    "notFound": "Không tìm thấy sản phẩm",
+    "notAvailable": "Sản phẩm không khả dụng",
+    "outOfStock": "Sản phẩm đã hết hàng",
+    "insufficientInventory": "Số lượng tồn kho không đủ"
+  },
+  "session": {
+    "required": "Yêu cầu Session ID"
+  },
+  "review": {
+    "orderNotCompleted": "Đơn hàng chưa hoàn thành",
+    "alreadyReviewed": "Đơn hàng đã được đánh giá",
+    "notYourOrder": "Bạn không có quyền đánh giá đơn hàng này",
+    "incompleteReview": "Vui lòng đánh giá tất cả sản phẩm trong đơn hàng trước khi gửi",
+    "fileTooLarge": "Kích thước ảnh/video vượt quá giới hạn cho phép (Ảnh 5MB, Video 50MB)",
+    "tooManyFiles": "Bạn chỉ có thể tải lên tối đa 5 ảnh/video",
+    "success": "Đánh giá thành công. Cảm ơn bạn đã đánh giá!",
+    "notFound": "Không tìm thấy đánh giá"
+  },
+  "promotion": {
+    "invalidPromotion": "Chương trình khuyến mãi không hợp lệ hoặc đã kết thúc",
+    "invalidTier": "Mức ưu đãi không hợp lệ",
+    "invalidGiftProduct": "Sản phẩm quà tặng không hợp lệ",
+    "variantRequired": "Vui lòng chọn phân loại sản phẩm",
+    "invalidVariant": "Phân loại sản phẩm không hợp lệ",
+    "giftOutOfStock": "Sản phẩm quà tặng đã hết hàng",
+    "notEligible": "Giỏ hàng chưa đủ điều kiện nhận quà",
+    "giftNotFound": "Không tìm thấy sản phẩm quà tặng trong giỏ hàng",
+    "giftAdded": "Thêm quà tặng thành công",
+    "giftRemoved": "Xóa quà tặng thành công",
+    "giftQuantityExceeded": "Bạn đã đạt giới hạn số lượng quà tặng cho chương trình này",
+    "giftLimitReached": "Chương trình đã hết số lượng quà tặng",
+    "invalidVoucher": "Mã voucher không hợp lệ hoặc đã hết hạn",
+    "voucherLoginRequired": "Vui lòng đăng nhập để sử dụng voucher",
+    "productDiscountApplied": "Áp dụng chương trình giảm giá thành công",
+    "productDiscountRemoved": "Đã gỡ chương trình giảm giá",
+    "productDiscountNotEligible": "Chưa đủ điều kiện áp dụng chương trình giảm giá này",
+    "productDiscountVoucherInvalid": "Mã giảm giá sản phẩm không hợp lệ hoặc đã hết hạn",
+    "orderDiscountNotEligible": "Chưa đủ điều kiện áp dụng chương trình giảm giá hóa đơn này",
+    "noEligibleProductsForVoucher": "Không có sản phẩm nào trong giỏ hàng đủ điều kiện áp dụng mã này",
+    "voucherUsageLimitExceeded": "Mã giảm giá đã hết lượt sử dụng",
+    "voucherMaxUsagePerCustomerExceeded": "Bạn đã sử dụng hết lượt cho mã giảm giá này"
+  }
+}

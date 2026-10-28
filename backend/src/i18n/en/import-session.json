@@ -1,0 +1,9 @@
+{
+  "notFound": "Import session not found",
+  "rowNotFound": "Import session row not found",
+  "alreadyProcessed": "Import session has already been processed",
+  "noValidProducts": "No valid products to import",
+  "fileRequired": "Excel file is required",
+  "emptyExcelFile": "Excel file has no valid data rows",
+  "affiliateNotFound": "Affiliate not found"
+}

@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package shared.users;
+
+import "shared/common/enums.proto";
+import "shared/files/file.proto";
+import "google/protobuf/timestamp.proto";
+
+// Social account linked to a user
+message SocialAccount {
+  shared.common.AuthProvider provider     = 1;
+  string                     social_id    = 2;
+  optional string            email        = 3;
+  optional string            first_name   = 4;
+  optional string            last_name    = 5;
+  optional string            avatar_url   = 6;
+  google.protobuf.Timestamp  connected_at = 7;
+}
+
+// User domain entity
+message User {
+  string          id    = 1;
+  optional string email = 2;
+  optional string phone = 3;
+  // password is excluded
+  string                             provider          = 4;
+  optional string                    social_id         = 5;
+  optional string                    first_name        = 6;
+  optional string                    last_name         = 7;
+  optional shared.files.File         photo             = 8;
+  optional string                    social_avatar_url = 9;
+  optional shared.common.StatusEnum  status            = 10;
+  optional string                    cdp_customer_id   = 11;
+  repeated SocialAccount             social_accounts   = 12;
+  google.protobuf.Timestamp          created_at        = 13;
+  google.protobuf.Timestamp          updated_at        = 14;
+  optional google.protobuf.Timestamp deleted_at        = 15;
+}
+
+// User DTO (for simple user ID reference)
+message UserDto {
+  string id = 1;
+}
+
+// Create user DTO
+message CreateUser {
+  optional string                   email             = 1;
+  optional string                   phone             = 2;
+  optional string                   password          = 3;
+  optional string                   provider          = 4;
+  optional string                   social_id         = 5;
+  optional string                   first_name        = 6;
+  optional string                   last_name         = 7;
+  optional shared.files.File        photo             = 8;
+  optional string                   social_avatar_url = 9;
+  optional shared.common.StatusEnum status            = 10;
+}
+
+// Update user DTO
+message UpdateUser {
+  optional string                   email             = 1;
+  optional string                   phone             = 2;
+  optional string                   password          = 3;
+  optional string                   provider          = 4;
+  optional string                   social_id         = 5;
+  optional string                   first_name        = 6;
+  optional string                   last_name         = 7;
+  optional shared.files.File        photo             = 8;
+  optional string                   social_avatar_url = 9;
+  optional shared.common.StatusEnum status            = 10;
+}
+
+// Filter user DTO
+message FilterUser {
+  optional google.protobuf.Timestamp created_at_from = 1;
+  optional google.protobuf.Timestamp created_at_to   = 2;
+}
+
+// Sort user DTO
+message SortUser {
+  string order_by = 1;
+  string order    = 2;
+}
+
+// Query user DTO
+message QueryUser {
+  optional int32      page    = 1;
+  optional int32      limit   = 2;
+  optional FilterUser filters = 3;
+  repeated SortUser   sort    = 4;
+}

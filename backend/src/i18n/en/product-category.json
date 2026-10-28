@@ -1,0 +1,9 @@
+{
+  "notFound": "Category not found",
+  "created": "Category created successfully",
+  "updated": "Category updated successfully",
+  "deleted": "Category deleted successfully",
+  "syncStarted": "Category synchronization started",
+  "syncCompleted": "Category synchronization completed",
+  "syncFailed": "Category synchronization failed"
+}

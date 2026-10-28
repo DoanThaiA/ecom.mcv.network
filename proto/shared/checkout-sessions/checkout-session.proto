@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+package shared.checkout_sessions;
+
+import "shared/common/enums.proto";
+import "shared/orders/order.proto";
+import "shared/vouchers/voucher.proto";
+import "google/protobuf/timestamp.proto";
+
+// Checkout session customer info
+message CheckoutSessionCustomer {
+  optional string name  = 1;
+  optional string phone = 2;
+  optional string email = 3;
+}
+
+// Checkout session shipping address
+message CheckoutSessionAddress {
+  optional string address     = 1;
+  optional string ward        = 2;
+  optional string district    = 3;
+  optional string city        = 4;
+  optional int32  city_id     = 5;
+  optional int32  district_id = 6;
+  optional int32  ward_id     = 7;
+}
+
+// Checkout session item discount detail
+message CheckoutSessionItemDiscountDetail {
+  shared.common.DiscountDetailType type                     = 1;
+  string                           reference_id             = 2;
+  string                           reference_name           = 3;
+  shared.common.DiscountType       discount_type            = 4;
+  double                           discount_value           = 5;
+  double                           discount_amount_per_unit = 6;
+  double                           discount_amount          = 7;
+}
+
+// Checkout session item
+message CheckoutSessionItem {
+  string                                     product_id         = 1;
+  optional string                            variant_id         = 2;
+  string                                     code               = 3;
+  string                                     name               = 4;
+  optional string                            image              = 5;
+  double                                     original_price     = 6;
+  double                                     effective_price    = 7;
+  int32                                      quantity           = 8;
+  double                                     subtotal           = 9;
+  double                                     discount           = 10;
+  optional string                            combo_instance_id  = 11;
+  optional string                            combo_id           = 12;
+  optional string                            combo_name         = 13;
+  optional string                            flash_sale_id      = 14;
+  optional string                            flash_sale_name    = 15;
+  bool                                       is_available       = 16;
+  optional string                            unavailable_reason = 17;
+  repeated CheckoutSessionItemDiscountDetail discount_details   = 18;
+}
+
+// Checkout session combo instance
+message CheckoutSessionComboInstance {
+  string                     combo_instance_id = 1;
+  string                     combo_id          = 2;
+  string                     combo_name        = 3;
+  shared.common.DiscountType discount_type     = 4;
+  double                     discount_value    = 5;
+  double                     original_price    = 6;
+  double                     discount_amount   = 7;
+}
+
+// Checkout session discount detail
+message CheckoutSessionDiscountDetail {
+  shared.common.DiscountDetailType type            = 1;
+  string                           reference_id    = 2;
+  string                           reference_name  = 3;
+  optional string                  instance_id     = 4;
+  shared.common.DiscountType       discount_type   = 5;
+  double                           discount_value  = 6;
+  double                           discount_amount = 7;
+}
+
+// Applied shipping promotion in checkout session
+message CheckoutSessionShippingPromotion {
+  string                              id              = 1;
+  string                              name            = 2;
+  shared.common.ShippingPromotionType type            = 3;
+  double                              discount_amount = 4;
+}
+
+// Checkout session shipping info
+message CheckoutSessionShipping {
+  double          fee          = 1;
+  optional int32  depot_id     = 2;
+  optional string depot_name   = 3;
+  optional int32  carrier_id   = 4;
+  optional string carrier_name = 5;
+}
+
+// Checkout session domain entity
+message CheckoutSession {
+  string                                    id                     = 1;
+  string                                    session_number         = 2;
+  optional string                           user_id                = 3;
+  string                                    session_id             = 4;
+  bool                                      clear_cart_after_order = 5;
+  optional CheckoutSessionCustomer          customer               = 6;
+  optional CheckoutSessionAddress           shipping_address       = 7;
+  repeated CheckoutSessionItem              items                  = 8;
+  repeated CheckoutSessionComboInstance     combo_instances        = 9;
+  double                                    subtotal               = 10;
+  double                                    shipping_fee           = 11;
+  double                                    discount               = 12;
+  repeated CheckoutSessionDiscountDetail    discount_details       = 13;
+  double                                    total_discount         = 14;
+  double                                    shipping_discount      = 29;
+  optional CheckoutSessionShippingPromotion shipping_promotion     = 30;
+  optional CheckoutSessionShipping          shipping               = 15;
+  double                                    total                  = 16;
+  optional shared.orders.PaymentMethod      payment_method         = 17;
+  optional string                           note                   = 18;
+  shared.common.CheckoutSessionStatus       status                 = 19;
+  google.protobuf.Timestamp                 created_at             = 20;
+  google.protobuf.Timestamp                 updated_at             = 21;
+  google.protobuf.Timestamp                 expires_at             = 22;
+  optional string                           order_id               = 23;
+  optional string                           order_number           = 24;
+  bool                                      has_unavailable_items  = 25;
+  bool                                      can_place_order        = 26;
+  repeated string                           missing_fields         = 27;
+  repeated shared.vouchers.Voucher          applied_vouchers       = 28;
+}
+
+// Item validation error (used in place order response)
+message ItemValidationError {
+  string                                product_id         = 1;
+  optional string                       variant_id         = 2;
+  string                                product_name       = 3;
+  shared.common.ItemValidationErrorType error              = 4;
+  string                                message            = 5;
+  optional int32                        available_quantity = 6;
+}

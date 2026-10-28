@@ -1,0 +1,15 @@
+{
+  "notFound": "Không tìm thấy chương trình flash sale",
+  "productNotFound": "Không tìm thấy sản phẩm",
+  "productAlreadyInFlashSale": "Sản phẩm đã có trong chương trình flash sale này",
+  "productInAnotherActiveFlashSale": "Sản phẩm đang tham gia chương trình flash sale khác đang hoạt động",
+  "productNotInFlashSale": "Sản phẩm không có trong chương trình flash sale này",
+  "startTimeMustBeBeforeEndTime": "Thời gian bắt đầu phải trước thời gian kết thúc",
+  "percentageDiscountMax": "Phần trăm giảm giá không được vượt quá 100%",
+  "fixedDiscountExceedsPrice": "Số tiền giảm giá không được vượt quá giá gốc",
+  "overlappingFlashSale": "Chỉ được phép có một chương trình flash sale hoạt động tại một thời điểm. Khoảng thời gian bị trùng với chương trình flash sale đã có.",
+  "productNoStock": "Sản phẩm không có tồn kho",
+  "productNoImages": "Sản phẩm phải có ít nhất một hình ảnh",
+  "bulkAddValidationFailed": "Một số sản phẩm không đạt yêu cầu xác thực",
+  "discountValueMustBePositive": "Mức giảm giá phải lớn hơn 0"
+}

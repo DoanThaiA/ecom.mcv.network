@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package shared.carts;
+
+import "shared/products/product.proto";
+
+// Flash sale info for cart item
+message CartItemFlashSaleInfo {
+  string flash_sale_id    = 1;
+  double original_price   = 2;
+  double flash_sale_price = 3;
+  int32  remaining_stock  = 4;
+}
+
+// Cart item
+message CartItem {
+  string                                    product_id        = 1;
+  optional string                           variant_id        = 2;
+  string                                    code              = 3;
+  string                                    name              = 4;
+  optional string                           image             = 5;
+  double                                    price             = 6;
+  double                                    effective_price   = 7;
+  int32                                     quantity          = 8;
+  double                                    subtotal          = 9;
+  optional CartItemFlashSaleInfo            flash_sale        = 10;
+  repeated shared.products.ProductAttribute attributes        = 11;
+  optional string                           combo_instance_id = 12;
+  // Gift item fields for "Mua để nhận quà" promotion
+  bool            is_gift           = 13;
+  optional string promotion_id      = 14;
+  optional string promotion_tier_id = 15;
+  optional double original_price    = 16;  // Original price for display (strikethrough)
+}
+
+// Cart combo instance
+message CartComboInstance {
+  string combo_instance_id = 1;
+  string combo_id          = 2;
+  string combo_name        = 3;
+  double original_price    = 4;
+  double discount_amount   = 5;
+  double final_price       = 6;
+  int32  item_count        = 7;
+}
+
+// Cart domain entity
+message Cart {
+  string                     id                  = 1;
+  repeated CartItem          items               = 2;
+  repeated CartComboInstance combo_instances     = 3;
+  int32                      item_count          = 4;
+  double                     subtotal            = 5;
+  double                     combo_discount      = 6;
+  double                     flash_sale_discount = 7;
+  double                     total               = 8;
+}

@@ -1,0 +1,168 @@
+{
+  "orders": [
+    {
+      "_id": "695745ce9c7709dfed33b32a",
+      "orderNumber": "ORD-20260102-0001",
+      "sessionId": "a3474e5a-6dae-4c1d-8302-c43c99724823",
+      "customer": {
+        "name": "a",
+        "phone": "+84921222121"
+      },
+      "shippingAddress": {
+        "address": "a",
+        "ward": "Phường Dư Hàng Kênh",
+        "district": "Quận Lê Chân",
+        "city": "Hải Phòng",
+        "country": "Vietnam",
+        "cityId": 280,
+        "districtId": 364,
+        "wardId": 4950
+      },
+      "items": [
+        {
+          "productId": "6956119aabd3fed1bcd6878e",
+          "code": "Sét bộ Roses - ghi - M",
+          "name": "Sét bộ Roses - ghi - M",
+          "price": 968000,
+          "quantity": 1,
+          "subtotal": 968000,
+          "discount": 0,
+          "originalPrice": 968000,
+          "discountDetails": null
+        }
+      ],
+      "subtotal": 968000,
+      "shippingFee": 0,
+      "depotId": 58147,
+      "discount": 0,
+      "discountDetails": [],
+      "totalDiscount": 0,
+      "total": 968000,
+      "status": "pending",
+      "paymentStatus": "pending",
+      "paymentMethod": "cod",
+      "note": "a",
+      "paymentHistory": [],
+      "nhanh": {
+        "orderId": 677862594,
+        "syncStatus": "synced",
+        "syncedAt": "2026-01-02T04:13:02.847Z",
+        "trackingUrl": "https://nhanh.vn/tracking?businessId=57499&id=677862594&key=1af059b9866d"
+      },
+      "cdp": {
+        "customerId": "695745ce2cb606b1b47057d1",
+        "syncStatus": "synced",
+        "syncedAt": "2026-01-02T04:13:03.298Z"
+      }
+    },
+    {
+      "_id": "695746249c7709dfed33b39a",
+      "orderNumber": "ORD-20260102-0002",
+      "sessionId": "a3474e5a-6dae-4c1d-8302-c43c99724823",
+      "customer": {
+        "name": "a",
+        "phone": "+84921111111"
+      },
+      "shippingAddress": {
+        "address": "a",
+        "ward": "Phường Đức Chính",
+        "district": "Thị xã Đông Triều",
+        "city": "Quảng Ninh",
+        "country": "Vietnam",
+        "cityId": 270,
+        "districtId": 734,
+        "wardId": 3844
+      },
+      "items": [
+        {
+          "productId": "6956119aabd3fed1bcd6878e",
+          "code": "Sét bộ Roses - ghi - M",
+          "name": "Sét bộ Roses - ghi - M",
+          "price": 968000,
+          "quantity": 1,
+          "subtotal": 968000,
+          "discount": 0,
+          "originalPrice": 968000,
+          "discountDetails": null
+        }
+      ],
+      "subtotal": 968000,
+      "shippingFee": 0,
+      "depotId": 58147,
+      "discount": 0,
+      "discountDetails": [],
+      "totalDiscount": 0,
+      "total": 968000,
+      "status": "pending",
+      "paymentStatus": "pending",
+      "paymentMethod": "cod",
+      "paymentHistory": [],
+      "cdp": {
+        "customerId": "695746242cb606b1b470580d",
+        "syncStatus": "synced",
+        "syncedAt": "2026-01-02T04:14:29.027Z"
+      },
+      "nhanh": {
+        "orderId": 677863532,
+        "syncStatus": "synced",
+        "syncedAt": "2026-01-02T04:14:29.222Z",
+        "trackingUrl": "https://nhanh.vn/tracking?businessId=57499&id=677863532&key=158fdbd7975b"
+      }
+    }
+  ],
+  "singleOrder": {
+    "_id": "695745ce9c7709dfed33b32a",
+    "orderNumber": "ORD-20260102-0001",
+    "sessionId": "a3474e5a-6dae-4c1d-8302-c43c99724823",
+    "customer": {
+      "name": "a",
+      "phone": "+84921222121"
+    },
+    "shippingAddress": {
+      "address": "a",
+      "ward": "Phường Dư Hàng Kênh",
+      "district": "Quận Lê Chân",
+      "city": "Hải Phòng",
+      "country": "Vietnam",
+      "cityId": 280,
+      "districtId": 364,
+      "wardId": 4950
+    },
+    "items": [
+      {
+        "productId": "6956119aabd3fed1bcd6878e",
+        "code": "Sét bộ Roses - ghi - M",
+        "name": "Sét bộ Roses - ghi - M",
+        "price": 968000,
+        "quantity": 1,
+        "subtotal": 968000,
+        "discount": 0,
+        "originalPrice": 968000,
+        "discountDetails": null
+      }
+    ],
+    "subtotal": 968000,
+    "shippingFee": 0,
+    "depotId": 58147,
+    "discount": 0,
+    "discountDetails": [],
+    "totalDiscount": 0,
+    "total": 968000,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "paymentMethod": "cod",
+    "note": "a",
+    "paymentHistory": [],
+    "nhanh": {
+      "orderId": 677862594,
+      "syncStatus": "synced",
+      "syncedAt": "2026-01-02T04:13:02.847Z",
+      "trackingUrl": "https://nhanh.vn/tracking?businessId=57499&id=677862594&key=1af059b9866d"
+    },
+    "cdp": {
+      "customerId": "695745ce2cb606b1b47057d1",
+      "syncStatus": "synced",
+      "syncedAt": "2026-01-02T04:13:03.298Z"
+    }
+  }
+}

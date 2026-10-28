@@ -1,0 +1,7 @@
+{
+  "notFound": "Job not found",
+  "alreadyRunning": "A job of this type is already running",
+  "cannotCancel": "Job cannot be cancelled",
+  "syncCooldown": "Please wait at least 5 minutes between sync jobs of the same type",
+  "started": "Job started"
+}

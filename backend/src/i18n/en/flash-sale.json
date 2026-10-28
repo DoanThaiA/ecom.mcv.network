@@ -1,0 +1,15 @@
+{
+  "notFound": "Flash sale not found",
+  "productNotFound": "Product not found",
+  "productAlreadyInFlashSale": "Product is already in this flash sale",
+  "productInAnotherActiveFlashSale": "Product is already in another active flash sale",
+  "productNotInFlashSale": "Product is not in this flash sale",
+  "startTimeMustBeBeforeEndTime": "Start time must be before end time",
+  "percentageDiscountMax": "Percentage discount cannot exceed 100%",
+  "fixedDiscountExceedsPrice": "Fixed discount cannot exceed original price",
+  "overlappingFlashSale": "Only one flash sale can be active at a time. The time range overlaps with an existing flash sale.",
+  "productNoStock": "Product has no available stock",
+  "productNoImages": "Product must have at least one image",
+  "bulkAddValidationFailed": "Some products failed validation",
+  "discountValueMustBePositive": "Discount value must be greater than 0"
+}

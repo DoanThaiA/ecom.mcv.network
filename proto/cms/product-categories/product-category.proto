@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package cms.product_categories;
+
+import "shared/common/localization.proto";
+import "shared/product-categories/product-category.proto";
+
+// Update product category localization request
+message UpdateProductCategoryLocalizationRequest {
+  string                          category_id       = 1;
+  shared.common.Localization      name_localization = 2;
+}
+
+// Response message for update
+message UpdateProductCategoryLocalizationResponse {
+  shared.product_categories.ProductCategory category = 1;
+}

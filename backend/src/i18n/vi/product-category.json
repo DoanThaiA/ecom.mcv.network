@@ -1,0 +1,9 @@
+{
+  "notFound": "Không tìm thấy danh mục",
+  "created": "Tạo danh mục thành công",
+  "updated": "Cập nhật danh mục thành công",
+  "deleted": "Xóa danh mục thành công",
+  "syncStarted": "Bắt đầu đồng bộ danh mục",
+  "syncCompleted": "Đồng bộ danh mục hoàn tất",
+  "syncFailed": "Đồng bộ danh mục thất bại"
+}

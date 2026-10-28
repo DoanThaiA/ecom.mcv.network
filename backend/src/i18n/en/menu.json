@@ -1,0 +1,10 @@
+{
+  "notFound": "Menu not found",
+  "parentNotFound": "Parent menu not found",
+  "categoryIdRequired": "Category ID is required when type is CATEGORY",
+  "topicIdRequired": "Topic ID is required when type is TOPIC",
+  "urlRequired": "URL is required when type is URL",
+  "categoryNotFound": "Category not found",
+  "topicNotFound": "Topic not found",
+  "circularReference": "Menu cannot be its own parent"
+}

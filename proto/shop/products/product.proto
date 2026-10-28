@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package shop.products;
+
+import "shared/products/product.proto";
+import "shared/product-categories/product-category.proto";
+import "shared/topics/topic.proto";
+import "shared/banners/banner.proto";
+
+// Shop filter product DTO (public - limited filters)
+message ShopFilterProduct {
+  optional string search       = 1;
+  repeated string category_ids = 2; // Multiple category filter
+  optional string topic_id     = 3; // Filter by topic ID
+  optional double min_price    = 4;
+  optional double max_price    = 5;
+}
+
+// Shop sort product DTO
+message ShopSortProduct {
+  optional string order_by = 1; // 'name' | 'price' | 'createdAt' | 'discount' | 'discountPercent'
+  optional string order    = 2; // 'asc' | 'desc'
+}
+
+// Shop query product DTO (for infinite scroll)
+message ShopQueryProduct {
+  optional int32             page    = 1;
+  optional int32             limit   = 2; // max 50
+  optional string            cursor  = 3; // For cursor-based pagination
+  optional ShopFilterProduct filters = 4;
+  optional ShopSortProduct   sort    = 5;
+}
+
+// Landing page banners grouped by position
+message LandingBanners {
+  repeated shared.banners.BannerListItem hero_slider = 1; // Active hero slider banners
+  repeated shared.banners.BannerListItem ad_section  = 2; // Active ad section banners
+}
+
+// Shop landing page response
+message ShopLandingResponse {
+  repeated shared.products.Product                   featured_products = 1;
+  repeated shared.products.Product                   latest_products   = 2;
+  repeated shared.product_categories.ProductCategory categories        = 3;
+  repeated shared.topics.ShopTopicItem               topics            = 4;
+  LandingBanners                                     banners           = 5;
+}
+
+// Shop topic product (for topic detail page)
+message ShopTopicProduct {
+  string          id    = 1;
+  string          name  = 2;
+  optional string image = 3;
+  double          price = 4;
+  optional string code  = 5;
+}
+
+// Shop topic response (full topic with products)
+message ShopTopicResponse {
+  string                    id             = 1;
+  string                    name           = 2;
+  string                    slug           = 3;
+  optional string           description    = 4;
+  optional string           image          = 5;
+  repeated ShopTopicProduct products       = 6;
+  int32                     total_products = 7;
+}
+
+// Shop topic products query
+message ShopTopicProductsQuery {
+  optional int32 page  = 1;
+  optional int32 limit = 2;
+}
+
+// Get shop topic by slug request
+message GetShopTopicRequest {
+  string         slug  = 1;
+  optional int32 page  = 2;
+  optional int32 limit = 3;
+}
+
+// Shop topic products response (paginated with variants)
+message ShopTopicProductsResponse {
+  repeated shared.products.Product data          = 1;
+  bool                             has_next_page = 2;
+  int32                            total         = 3;
+  int32                            page          = 4;
+  int32                            limit         = 5;
+  int32                            total_pages   = 6;
+}
+
+// Shop topic service for product fetching (accessing topics and products)
+service ShopTopicProductService {
+  // Get topic by slug with products
+  rpc GetTopicBySlug(GetShopTopicRequest) returns (ShopTopicResponse);
+
+  // Get paginated products by topic slug
+  rpc GetTopicProducts(GetShopTopicRequest) returns (ShopTopicProductsResponse);
+}

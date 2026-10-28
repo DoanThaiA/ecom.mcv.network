@@ -1,0 +1,10 @@
+{
+  "notFound": "Khong tim thay chu de",
+  "slugExists": "Chu de voi slug nay da ton tai",
+  "productsNotFound": "Mot hoac nhieu san pham khong tim thay",
+  "productAlreadyInTopic": "San pham da co trong chu de nay",
+  "productNotInTopic": "San pham khong co trong chu de nay",
+  "fileRequired": "File Excel la bat buoc",
+  "emptyExcelFile": "File Excel khong co du lieu hop le",
+  "invalidTypeForProductImport": "Chi co the import san pham vao chu de loai san pham"
+}

@@ -1,0 +1,44 @@
+{
+  "socialAccountAlreadyLinked": "Tài khoản mạng xã hội này đã được liên kết với người dùng khác",
+  "socialAccountAlreadyConnected": "Tài khoản mạng xã hội này đã được liên kết với tài khoản của bạn",
+  "cannotUnlinkLastAuthMethod": "Không thể hủy liên kết. Bạn phải có ít nhất một phương thức xác thực",
+  "cannotUnlinkPrimaryAccount": "Không thể hủy liên kết phương thức xác thực chính của bạn",
+  "providerNotLinked": "Nhà cung cấp này chưa được liên kết với tài khoản của bạn",
+  "wrongToken": "Mã xác thực không hợp lệ",
+  "facebookApiError": "Lỗi API Facebook",
+  "invalidFacebookProfile": "Dữ liệu hồ sơ Facebook không hợp lệ",
+  "facebookApiTimeout": "Yêu cầu API Facebook hết thời gian",
+  "failedToGetProfile": "Không thể lấy hồ sơ từ nhà cung cấp",
+  "credentialsNotConfigured": "Chưa cấu hình thông tin xác thực mạng xã hội",
+  "tokenVerificationFailed": "Xác minh mã thông báo thất bại",
+  "invalidAccessToken": "Access token không hợp lệ",
+  "tokenNotBelongToApp": "Access token không thuộc về ứng dụng này",
+  "failedToExchangeToken": "Không thể đổi mã xác thực",
+  "googleAuthError": "Lỗi xác thực Google",
+  "appleAuthError": "Lỗi xác thực Apple",
+  "providerNotSupported": "Nhà cung cấp xác thực không được hỗ trợ",
+  "zaloApiError": "Lỗi API Zalo",
+  "zaloApiTimeout": "Yêu cầu API Zalo hết thời gian",
+  "invalidZaloProfile": "Dữ liệu hồ sơ Zalo không hợp lệ",
+  "invalidTokenResponse": "Phản hồi token không hợp lệ từ nhà cung cấp",
+  "invalidOrExpiredState": "Trạng thái OAuth không hợp lệ hoặc đã hết hạn",
+  "integration": {
+    "zaloOa": {
+      "credentialsNotConfigured": "Chưa cấu hình thông tin xác thực Zalo OA",
+      "failedToGetAccessToken": "Không thể lấy access token từ Zalo OA",
+      "failedToRefreshToken": "Không thể làm mới access token từ Zalo OA",
+      "noAccessTokenInResponse": "Không có access token trong phản hồi từ Zalo OA",
+      "noAccessToken": "Không có access token Zalo OA. Vui lòng xác thực trước",
+      "apiTimeout": "API Zalo OA hết thời gian chờ",
+      "apiError": "Lỗi API Zalo OA",
+      "invalidAuthCode": "Mã ủy quyền không hợp lệ hoặc đã hết hạn",
+      "invalidTokenResponse": "Phản hồi token không hợp lệ từ Zalo OA"
+    },
+    "zaloZns": {
+      "failedToSend": "Không thể gửi tin nhắn ZNS",
+      "apiTimeout": "API ZNS hết thời gian chờ",
+      "invalidTemplate": "Mẫu ZNS không hợp lệ",
+      "invalidPhone": "Số điện thoại không đúng định dạng"
+    }
+  }
+}

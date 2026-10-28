@@ -1,0 +1,25 @@
+<svg width="143" height="122" viewBox="0 0 143 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Box -->
+  <path d="M71.5 10L130 35V85L71.5 110L13 85V35L71.5 10Z" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="2"/>
+
+  <!-- Box top left flap -->
+  <path d="M13 35L71.5 10L71.5 55L13 35Z" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1.5"/>
+
+  <!-- Box top right flap -->
+  <path d="M130 35L71.5 10L71.5 55L130 35Z" fill="#EEEEEE" stroke="#E0E0E0" stroke-width="1.5"/>
+
+  <!-- Box front left -->
+  <path d="M13 35L71.5 55V110L13 85V35Z" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1.5"/>
+
+  <!-- Box front right -->
+  <path d="M130 35L71.5 55V110L130 85V35Z" fill="#F0F0F0" stroke="#E0E0E0" stroke-width="1.5"/>
+
+  <!-- Box tape -->
+  <rect x="62" y="55" width="19" height="55" fill="#E8E8E8" stroke="#D0D0D0" stroke-width="1"/>
+
+  <!-- Checkmark circle -->
+  <circle cx="115" cy="25" r="22" fill="#6FA479"/>
+
+  <!-- Checkmark -->
+  <path d="M105 25L112 32L127 17" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

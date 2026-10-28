@@ -1,0 +1,2033 @@
+{
+  "common": {
+    "language": "English",
+    "feedback": {
+      "question": "Was this article helpful?",
+      "contactInfo": "Have feedback or questions? Reach out to us at",
+      "orCall": "or call",
+      "thankYou": "Customer Service for assistance, thank you!"
+    },
+    "confirmDelete": "Are you sure you want to delete this address?",
+    "deleteAddressTitle": "Delete Address",
+    "buttons": {
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "apply": "Apply",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "continue": "Continue",
+      "submit": "Submit",
+      "backToHome": "Back to Home",
+      "viewAll": "View all",
+      "loadMore": "Load More",
+      "close": "Close",
+      "update": "Update"
+    },
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Enter new password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Re-enter password",
+      "address": "Address",
+      "addressPlaceholder": "Enter your address",
+      "street": "Street, Building, House No.",
+      "streetPlaceholder": "Enter street, building, house number",
+      "city": "City/Province",
+      "cityPlaceholder": "Select city/province",
+      "district": "District",
+      "districtPlaceholder": "Select district",
+      "ward": "Ward",
+      "wardPlaceholder": "Select ward",
+      "setAsDefault": "Set as default"
+    },
+    "errors": {
+      "required": "This field is required",
+      "fullNameRequired": "Please enter your full name",
+      "emailOrPhoneRequired": "Please enter your email or phone number",
+      "emailInvalid": "Invalid email address",
+      "phoneInvalid": "Invalid phone number",
+      "passwordRequired": "Please enter password",
+      "passwordInvalid": "Password must be at least 8 characters; including uppercase, lowercase, numbers & special characters.",
+      "confirmPasswordRequired": "Please re-enter password",
+      "confirmPasswordMismatch": "Passwords do not match",
+      "saveFailed": "Unable to save information. Please check and try again.",
+      "loadFailed": "Failed to load address",
+      "saveAddressFailed": "Failed to save address",
+      "deleteAddressFailed": "Failed to delete address",
+      "setDefaultFailed": "Failed to set default address"
+    },
+    "status": {
+      "loading": "Loading...",
+      "saving": "Saving...",
+      "submitting": "Submitting...",
+      "processing": "Processing...",
+      "updating": "Updating...",
+      "connected": "Connected",
+      "disconnected": "Disconnected",
+      "reconnecting": "Reconnecting...",
+      "geocoding": "Finding location..."
+    },
+    "success": {
+      "saved": "Saved successfully",
+      "deleted": "Deleted successfully",
+      "updated": "Updated successfully"
+    },
+    "commerce": {
+      "addToCart": "Add to cart",
+      "buyNow": "Buy now",
+      "flashSale": "Flash Sale",
+      "outOfStock": "Out of stock",
+      "inStock": "In stock"
+    },
+    "auth": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "logout": "Logout"
+    },
+    "order": {
+      "orderNumber": "Order Number",
+      "orderDate": "Order Date",
+      "orderStatus": "Order Status",
+      "shippingAddress": "Shipping Address",
+      "paymentMethod": "Payment Method",
+      "subtotal": "Subtotal",
+      "shippingFee": "Shipping Fee",
+      "discount": "Discount",
+      "total": "Total"
+    },
+    "labels": {
+      "size": "Size",
+      "color": "Color",
+      "quantity": "Quantity",
+      "price": "Price",
+      "products": "products",
+      "default": "Default"
+    },
+    "categoryNotFound": "Category not found"
+  },
+  "nav": {
+    "cart": "Cart",
+    "profile": "Profile",
+    "aboutCChat": "About CChat",
+    "download": "Download",
+    "notifications": "Notifications",
+    "search": "Search...",
+    "shirts": "Shirts",
+    "pants": "Pants",
+    "blouses": "Blouses",
+    "suits": "Suits",
+    "skirts": "Skirts",
+    "dresses": "Dresses",
+    "tshirts": "T-Shirts",
+    "accessories": "Accessories",
+    "aoDai": "Ao Dai",
+    "categories": "Categories"
+  },
+  "promo": {
+    "newOrderDiscount": "Sign up and get 50,000đ discount for new orders"
+  },
+  "footer": {
+    "callToBuy": "Call to purchase",
+    "callTime": "(08:00 - 21:00)",
+    "phoneNumber": "0868 506 800",
+    "allDaysOfWeek": "All days of the week",
+    "feedbackComplaint": "Feedback, Complaints",
+    "feedbackTime": "(08:00 - 17:00)",
+    "policies": "Policies",
+    "policyTerms": "Terms of Service",
+    "policyVIP": "VIP customer policy",
+    "policyPayment": "Payment policy",
+    "policyReturn": "Return/Exchange policy",
+    "policyWarranty": "Warranty policy",
+    "policyDelivery": "Delivery policy",
+    "policyPrivacy": "Privacy policy",
+    "aboutCChat": "About CChat",
+    "introduction": "Introduction",
+    "careers": "Careers",
+    "storeSystem": "Store system",
+    "storeSystemButton": "CCHAT STORE SYSTEM",
+    "storeSystemSection": "CCHAT Store System",
+    "viewStoreSystem": "VIEW CCHAT STORE SYSTEM",
+    "storeList": "Store list",
+    "shopeeStore": "CChat store on Shopee",
+    "lazadaStore": "CChat store on Lazada",
+    "newsPromotion": "News & Promotions",
+    "newsPromotionSection": "News & Promotions",
+    "customerService": "Customer Service",
+    "shoppingGuide": "Shopping Guide",
+    "faq": "FAQ - Q&A",
+    "fashionTrends": "Fashion Trends 2025",
+    "megaSale": "Mega Sale",
+    "megaLivestream": "Mega Livestream",
+    "downloadApp": "Download CChat app",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "followCChat": "Follow CChat",
+    "companyInfo": "Trang Anh Manufacturing & Trading Co., Ltd. Address: No. 38, Lane 27 Ly Son, Group 30 Ngoc Thuy Ward, Hanoi City, Vietnam. Tax Code: 0108731654",
+    "companyName": "Trang Anh Manufacturing & Trading Co., Ltd.",
+    "address": "Address: No. 38, Lane 27 Ly Son, Group 30, Ngoc Thuy Ward, Hanoi City, Vietnam",
+    "taxCode": "Tax Code: 0108731654",
+    "copyright": "© CCHAT All rights reserved",
+    "hotline": "Hotline",
+    "shopeeStoreLabel": "CCHAT Store",
+    "onShopee": "On Shopee",
+    "emailLabel": "Email",
+    "emailAddress": "cskh@cchat.vn",
+    "tiktokStoreLabel": "CCHAT Store",
+    "onTiktok": "On Tiktok",
+    "tiktokShop": "CChat Store on Tiktok shop",
+    "shopeeShop": "CChat Store on Shopee",
+    "fanpageLabel": "Fanpage",
+    "onFacebook": "Facebook",
+    "facebook": "Facebook",
+    "tiktok": "Tiktok",
+    "businessPartner": "Business Partnership",
+    "franchiseAgent": "Franchise Agent",
+    "affiliate": "Affiliate",
+    "stores": {
+      "baTrieu": "CChat - Ba Trieu",
+      "baTrieuAddress": "58B Ba Trieu, Hoan Kiem, Hanoi",
+      "chuaBoc": "CChat - Chua Boc",
+      "chuaBocAddress": "187 Chua Boc, Dong Da, Hanoi",
+      "phamNgocThach": "CChat - Pham Ngoc Thach",
+      "phamNgocThachAddress": "102A.B1 Pham Ngoc Thach, Dong Da, Hanoi",
+      "hangVoi": "CChat - Hang Voi",
+      "hangVoiAddress": "42 Hang Voi, Hoan Kiem, Hanoi",
+      "haiPhong": "CChat - Hai Phong",
+      "haiPhongAddress": "Floor 2 Aeon Mall Hai Phong"
+    }
+  },
+  "home": {
+    "title": "Welcome to CChat Website",
+    "subtitle": "Your modern chat application with Radix UI theme",
+    "getStarted": "Get Started",
+    "modern": "🚀 Modern",
+    "modernDesc": "Built with the latest technologies",
+    "fast": "⚡ Fast",
+    "fastDesc": "Optimized for performance",
+    "beautiful": "🎨 Beautiful",
+    "beautifulDesc": "Radix UI theme system",
+    "promotionText": "Enter CMFIV25 to get 50K off for orders from 499K",
+    "exploreNow": "Explore",
+    "heroTitle": "AUTUMN HAZE",
+    "heroSubtitle": "NEW COLLECTION IS COMING",
+    "seeAll": "See All",
+    "productName": "Product Name",
+    "topProducts": "TOP PRODUCTS OF THE WEEK",
+    "newBadge": "New",
+    "preorderBadge": "Pre-order",
+    "comboProducts": "Product Combos",
+    "comboDeals": "COMBO DEALS",
+    "newProducts": "New Products",
+    "comingSoon": "Coming Soon",
+    "endsIn": "Ends in",
+    "buyNow": "BUY NOW",
+    "noProducts": "No products",
+    "superSaleTitle": "SUPER SALE BLACK FRIDAY",
+    "discountText": "UP TO 30% OFF - SAVE UP TO 50K",
+    "categories": "PRODUCT CATEGORIES",
+    "saleBannerAlt": "Sale banner"
+  },
+  "sizeGuide": {
+    "title": "SIZE GUIDE",
+    "height": "Height",
+    "weight": "Weight",
+    "yourSize": "Your recommended size is {size}",
+    "fitDescription": "comfortable fit, relaxed style",
+    "stretchMaterial": "Stretchy material that fits your body well",
+    "formFitting": "Relaxed fit allows you to choose your standard size",
+    "sizeChart": "Refer to the size chart for accurate measurements",
+    "consultNote": "For more accurate sizing, please chat with our staff for personalized advice"
+  },
+  "signin": {
+    "title": "SIGN IN",
+    "benefitsTitle": "Lots of shopping privileges and benefits are waiting for you",
+    "voucherBenefit": "Voucher discounts",
+    "exclusiveGiftBenefit": "Exclusive gifts",
+    "cashbackBenefit": "Cashback",
+    "phoneNumber": "Phone Number",
+    "phoneNumberPlaceholder": "Enter your phone number",
+    "emailOrPhone": "Email or Phone Number",
+    "emailOrPhonePlaceholder": "Enter your email or phone number",
+    "forgotPassword": "Forgot password?",
+    "signInButton": "Sign In",
+    "lockedButton": "Try again in {minutes}:{seconds}",
+    "orSignInWith": "or sign in with",
+    "facebook": "Facebook",
+    "google": "Google",
+    "zalo": "Zalo",
+    "noAccount": "Don't have an account?",
+    "signUpNow": "Sign up now!",
+    "errors": {
+      "phoneNumberRequired": "Please enter your phone number",
+      "phoneNumberInvalid": "Invalid phone number",
+      "emailOrPhoneRequired": "Please enter your email or phone number",
+      "emailOrPhoneEmpty": "Please enter phone number/email",
+      "invalidFormat": "Phone number/Email is invalid",
+      "wrongCredentials": "Login information is incorrect",
+      "lockedOut": "You have entered incorrectly 5 times. Please try again after 15 minutes",
+      "captchaInvalid": "Captcha code is incorrect",
+      "loginFailed": "Login failed. Please check your phone number and password.",
+      "networkError": "Connection error. Please try again later.",
+      "unknownError": "An error occurred. Please try again.",
+      "featureNotImplemented": "This feature is not implemented yet",
+      "googleLoginFailed": "Google login failed. Please try again.",
+      "oauthRedirectFailed": "Unable to connect with OAuth provider",
+      "oauthCallbackFailed": "Login failed",
+      "registerFailed": "Registration failed"
+    },
+    "captcha": {
+      "placeholder": "Enter captcha",
+      "refresh": "Refresh"
+    },
+    "captchaCountdown": "Captcha will auto-hide in {minutes}:{seconds}"
+  },
+  "signup": {
+    "title": "SIGN UP",
+    "subtitle": "Join CChat and start chatting today",
+    "emailOrPhone": "Email or Phone Number",
+    "emailOrPhonePlaceholder": "Enter your email or phone number",
+    "signUpButton": "Continue",
+    "signingUp": "Signing up...",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "errors": {
+      "emailOrPhoneRequired": "Please enter your email or phone number",
+      "phoneNumberInvalid": "Invalid phone number or email"
+    },
+    "success": {
+      "emailRegistration": "Registration successful! Please check your email to verify your account.",
+      "phoneRegistration": "Registration successful! Please verify your phone number."
+    }
+  },
+  "auth": {
+    "loginSuccess": "Login successful!",
+    "sessionExpired": "Your session has expired. Please sign in again."
+  },
+  "otpSource": {
+    "title": "SELECT OTP METHOD",
+    "description": "Choose where you want to receive the verification code",
+    "emailOption": "Email",
+    "emailDescription": "Receive OTP via email",
+    "phoneOption": "SMS",
+    "phoneDescription": "Receive verification code via phone number",
+    "zaloOption": "Zalo",
+    "zaloDescription": "Receive verification code via Zalo account",
+    "continueButton": "Continue",
+    "sendToPhone": "Send to phone number {phone}"
+  },
+  "phoneVerification": {
+    "title": "PHONE VERIFICATION",
+    "description": "Enter the verification code sent to",
+    "verifyButton": "Continue",
+    "resendCode": "Resend code",
+    "resendCodeIn": "Didn't receive code? ({seconds}s)",
+    "errors": {
+      "incompleteCode": "Please enter all 6 digits",
+      "invalidCode": "Verification code is incorrect",
+      "codeExpired": "Verification code has expired. Please resend the code",
+      "tooManyAttempts": "You have entered the wrong code more than 3 times. Please try again in 15 minutes",
+      "dailyLimitReached": "You have reached the daily limit for verification codes",
+      "lockedCountdown": "You have entered wrong code more than 3 times. Please try again after {minutes} minutes {seconds} seconds"
+    },
+    "success": {
+      "verifiedSignup": "Verification successful! You can now sign in.",
+      "verifiedForgotPassword": "Verification successful! Please reset your password.",
+      "resendCodeSuccess": "Verification code resent successfully!"
+    }
+  },
+  "signupSuccess": {
+    "title": "REGISTRATION SUCCESSFUL",
+    "message": "Congratulations! Your account has been created successfully!",
+    "redirectingIn": "Redirecting to home page in {seconds}s"
+  },
+  "verifySignup": {
+    "successTitle": "Account registration successful.",
+    "successMessage": "Wishing you a wonderful shopping experience with CChat.",
+    "errorTitle": "Account registration failed because the verification link has expired.",
+    "errorMessage": "Please register again.",
+    "registerAgain": "REGISTER ACCOUNT"
+  },
+  "emailVerificationNotice": {
+    "title": "Email verification",
+    "description": "Please check email {email} to verify your account",
+    "resendButton": "Resend verification email ({seconds}s)",
+    "resendButtonReady": "Resend verification email",
+    "backToSignIn": "Back to sign in"
+  },
+  "forgotPasswordEmailSent": {
+    "title": "FORGOT PASSWORD",
+    "description": "Please check your email to change password",
+    "backToSignIn": "Back to sign in"
+  },
+  "forgotPassword": {
+    "title": "Forgot password",
+    "description": "Enter the email or phone number you used to register your account",
+    "emailOrPhone": "Phone Number/Email",
+    "emailOrPhonePlaceholder": "Enter email or phone number",
+    "phoneNumber": "Phone Number",
+    "phoneNumberPlaceholder": "Enter your phone number",
+    "sendCodeButton": "Continue",
+    "backToSignIn": "Back to Sign In",
+    "errors": {
+      "emailOrPhoneRequired": "Please enter email or phone number",
+      "emailInvalid": "Invalid email",
+      "phoneNumberRequired": "Please enter phone number",
+      "phoneNumberInvalid": "Invalid phone number"
+    }
+  },
+  "resetPassword": {
+    "title": "CREATE NEW PASSWORD",
+    "submitButton": "Continue",
+    "resetting": "Resetting...",
+    "linkExpiredTitle": "Link Expired",
+    "linkExpiredMessage": "This password reset link has expired. Please request a new one.",
+    "backToHomeButton": "Back to Home",
+    "success": "Password has been reset successfully!",
+    "successTitle": "Password Changed Successfully!",
+    "successMessage": "Your password has been updated successfully. You can now sign in with your new password.",
+    "canCloseTab": "You may safely close this page.",
+    "loading": "Loading..."
+  },
+  "myReviews": {
+    "pageTitle": "My Reviews",
+    "noReviews": "You don't have any reviews yet"
+  },
+  "changePassword": {
+    "title": "CHANGE PASSWORD",
+    "currentPassword": "Current Password",
+    "currentPasswordPlaceholder": "Enter current password",
+    "submitButton": "Change Password",
+    "errors": {
+      "currentPasswordRequired": "Please enter current password"
+    },
+    "success": {
+      "passwordUpdated": "Password updated successfully"
+    }
+  },
+  "userMenu": {
+    "accountInfo": "Account Information",
+    "changePassword": "Change Password",
+    "orderHistory": "Order History",
+    "logout": "Logout"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "noNotifications": "No notifications yet",
+    "mockData": {
+      "orderConfirmed": {
+        "title": "Order confirmed",
+        "message": "Your order #{orderId} has been confirmed and is being processed.",
+        "time": "5 minutes ago"
+      },
+      "specialDiscount": {
+        "title": "Special discount",
+        "message": "30% off all shirts. Offer valid until end of this week!",
+        "time": "1 hour ago"
+      },
+      "orderDelivered": {
+        "title": "Order delivered",
+        "message": "Order #{orderId} has been delivered successfully.",
+        "time": "1 day ago"
+      },
+      "newPromotion": {
+        "title": "New promotion",
+        "message": "Weekend Flash Sale - Up to 50% off selected items!",
+        "time": "2 days ago"
+      },
+      "pointsEarned": {
+        "title": "Points earned",
+        "message": "You earned 100 reward points from order #{orderId}.",
+        "time": "3 days ago"
+      }
+    }
+  },
+  "product": {
+    "addToCart": "Add to cart"
+  },
+  "productDetail": {
+    "breadcrumb": "Home",
+    "category1": "Category Level 1",
+    "category2": "Category Level 2",
+    "selectSize": "Select size",
+    "selectColor": "Select color",
+    "size": "Size",
+    "color": "Color",
+    "soldOut": "Sold out",
+    "almostSoldOut": "Almost sold out",
+    "sizeGuideLink": "Size guide",
+    "quantity": "Quantity",
+    "addToCartButton": "Add to cart",
+    "buyNowButton": "Buy now",
+    "description": "Product description",
+    "descriptionTitle": "PRODUCT DESCRIPTION",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "material": "Material",
+    "careInstructions": "Care instructions",
+    "sizeGuide": "Size guide",
+    "relatedProducts": "SUGGESTED PRODUCTS",
+    "productInfo": "Product information",
+    "sku": "SKU",
+    "category": "Category",
+    "tags": "Tags",
+    "share": "Share",
+    "freeShipping": "Free shipping nationwide",
+    "freeShippingDesc": "for orders over 300k",
+    "returnPolicy": "Return policy",
+    "returnPolicyDesc": "Free returns within 90 days",
+    "payment": "Payment",
+    "paymentDesc": "Cash on delivery",
+    "support": "Quick support",
+    "supportDesc": "0868 506 800 (08:00 - 21:00)",
+    "comboOfferTitle": "Special offer for you",
+    "suggestedProducts": "SUGGESTED PRODUCTS",
+    "comboPrice": "Combo price",
+    "comboProductsTitle": "Combo products",
+    "totalPrice": "Total price",
+    "youSave": "You save",
+    "adding": "Adding...",
+    "processing": "Processing...",
+    "maxQuantityReached": "Maximum quantity available is {max} items",
+    "productCode": "Product Code",
+    "flashSaleEnds": "Ends in",
+    "appliedVoucher": "Promotion applied to this order",
+    "policyAuthentic": "Authentic products",
+    "policyHotline": "Hotline 0868 506 800 (8am-5pm)",
+    "policyHotlineDesc": "all days of the week",
+    "policyReturn7Days": "Return within 7 days",
+    "package": "Package",
+    "productDescription": "Product Description",
+    "keyFeatures": "Key Features",
+    "usageAndCare": "Usage and Care Instructions",
+    "purchaseNotes": "Purchase Notes",
+    "aboutBrand": "About Our Partner Brand",
+    "conclusion": "Conclusion",
+    "specProductName": "Product Name",
+    "specProductCode": "Product Code",
+    "specMaterial": "Material",
+    "specStyle": "Style",
+    "specHighlights": "Highlights",
+    "specSuitableFor": "Suitable For",
+    "specCare": "Care Instructions",
+    "collapse": "COLLAPSE",
+    "expand": "VIEW MORE",
+    "pleaseSelectAllVariants": "Please select all options",
+    "pleaseSelectAllProducts": "Please select all products",
+    "pleaseSelectColor": "Please select a color",
+    "pleaseSelectSize": "Please select a size",
+    "addedToCart": "Added to cart",
+    "addComboToCart": "Add Combo",
+    "defaultMaterial": "Wool",
+    "defaultStyle": "Straight fit",
+    "defaultHighlights": "2 rows of buttons, back vent, double flap pockets, faux chest pocket, sleeve vents with faux buttons",
+    "defaultSuitableFor": "Office work, casual outings...",
+    "defaultCare": "Machine wash on gentle cycle at normal temperature - Dry on low heat - Wash with similar colors - Do not soak - Do not use harsh chemicals",
+    "failedToProceedCheckout": "Failed to proceed to checkout. Please try again.",
+    "selectProduct": "Select product",
+    "selectVariant": "Select",
+    "promotions": {
+      "title": "Offers",
+      "shippingLabel": "Shipping",
+      "orderLabel": "Promotions",
+      "giftLabel": "Free gifts",
+      "giftListLabel": "Free gift list, scroll horizontally to view more",
+      "freeShipping": "Freeship",
+      "shippingDiscount": "Shipping discount {value}",
+      "shippingTierCondition": "Orders from {amount}: save {value} on shipping",
+      "orderDiscount": "Save {value}",
+      "morePromotions": "+{count}",
+      "minimumOrder": "Minimum order {amount}",
+      "maximumDiscount": "Maximum discount {amount}",
+      "promotionEnds": "Valid until {date}",
+      "notStackable": "Cannot be combined with other promotions",
+      "singleUse": "Limited to one use per customer",
+      "promoCodeLabel": "Code",
+      "copyCode": "Copy code {code}",
+      "copy": "Copy",
+      "copied": "Copied",
+      "viewPromotionDetails": "View offer details for {promotion}",
+      "viewMorePromotions": "View {count} more offers",
+      "buyToGetGiftCondition": "Spend {amount} and receive a gift",
+      "buyXGetYCondition": "Buy {requiredQuantity} eligible products and receive {giftQuantity} gift",
+      "giftPrice": "Gift price",
+      "giftPriceValue": "Gift price: {amount}",
+      "giftUnavailable": "Temporarily unavailable",
+      "originalPrice": "Original price {amount}"
+    }
+  },
+  "search": {
+    "title": "SEARCH RESULTS",
+    "searchingFor": "Searching for",
+    "noResultsForKeyword": "No results matching your search keyword",
+    "searchResults": "Search results",
+    "noResults": "No products found",
+    "trendingKeywords": "Trending keywords today",
+    "recentlyViewed": "Recently viewed",
+    "noRecentlyViewed": "No recently viewed products"
+  },
+  "productListing": {
+    "title": "PRODUCT LIST",
+    "productsCount": "products",
+    "sortBy": "Sort by",
+    "sortDefault": "Default",
+    "sortNameAsc": "Name: A-Z",
+    "sortNameDesc": "Name: Z-A",
+    "sortPriceAsc": "Price: Low to High",
+    "sortPriceDesc": "Price: High to Low",
+    "sortOldest": "Oldest",
+    "sortNewest": "Newest",
+    "sortDiscountAsc": "Discount: Low to High",
+    "sortDiscountDesc": "Discount: High to Low",
+    "sortDiscountPercentAsc": "Discount %: Low to High",
+    "sortDiscountPercentDesc": "Discount %: High to Low",
+    "sortBestSeller": "Best Seller",
+    "filters": "Filters",
+    "productCategories": "Product Categories",
+    "priceRange": "Price Range",
+    "priceRangeLabel": "Price range",
+    "minPrice": "Minimum",
+    "maxPrice": "Maximum",
+    "size": "Size",
+    "color": "Color",
+    "trend": "Trends",
+    "applyFilters": "Apply",
+    "clearFilters": "Clear",
+    "noProducts": "No matching products found",
+    "quickAddToCart": "Quick add to cart +",
+    "reset": "RESET",
+    "apply": "APPLY",
+    "selectColor": "Select color",
+    "selectSize": "Select size",
+    "productType": "Product type",
+    "suggestedProducts": "SUGGESTED PRODUCTS",
+    "productTypes": {
+      "new": "New",
+      "bestSeller": "Best Seller",
+      "superDeal": "Super Deal",
+      "clearance": "Clearance"
+    },
+    "categories": {
+      "custom": "Custom Order",
+      "shirts": "Shirts",
+      "blouses": "Blouses",
+      "tshirts": "T-Shirts",
+      "jackets": "Jackets",
+      "sleeveless": "Sleeveless",
+      "sets": "Sets",
+      "skirts": "Skirts",
+      "dresses": "Dresses",
+      "pants": "Pants",
+      "suits": "Suits",
+      "accessories": "Accessories",
+      "aoDai": "Ao Dai"
+    },
+    "colors": {
+      "burgundy": "Mixed",
+      "red": "Red",
+      "blue": "Blue",
+      "orange": "Orange",
+      "gray": "Gray",
+      "black": "Black",
+      "green": "Green",
+      "blueWhite": "Blue & White",
+      "teal": "Teal",
+      "beige": "Beige",
+      "taupe": "Taupe",
+      "lightGray": "Light Gray",
+      "olive": "Olive",
+      "darkGray": "Dark Gray"
+    },
+    "trends": {
+      "older": "Older",
+      "young20": "Young 20"
+    }
+  },
+  "viewAll": {
+    "flashSale": "FLASH SALE",
+    "topProducts": "TOP PRODUCTS OF THE WEEK",
+    "comboProducts": "Product Combos",
+    "comboDeals": "COMBO DEALS",
+    "newProducts": "New Products",
+    "allProducts": "All Products",
+    "allCategories": "PRODUCT CATEGORIES",
+    "noCategories": "No categories found",
+    "showingProducts": "Showing products",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "flashSale": {
+    "pageTitle": "FLASH SALE",
+    "totalProducts": "{count} products"
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Page Not Found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "or": "or",
+    "continueShopping": "Continue Shopping"
+  },
+  "account": {
+    "pageTitle": "Account Information",
+    "accountInfo": "Account Information",
+    "accountInfoShort": "Account",
+    "changePassword": "Change Password",
+    "changePasswordShort": "Password",
+    "orderHistory": "Order History",
+    "orderHistoryShort": "Orders",
+    "logout": "Logout",
+    "logoutShort": "Logout",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "editButton": "Edit",
+    "editDialogTitle": "EDIT ACCOUNT INFORMATION",
+    "updateButton": "Update",
+    "cancelButton": "Cancel",
+    "firstNamePlaceholder": "Enter first name",
+    "lastNamePlaceholder": "Enter last name",
+    "logoutDialogTitle": "Confirmation",
+    "logoutDialogMessage": "Are you sure you want to logout from this device?",
+    "logoutConfirm": "Logout",
+    "logoutCancel": "Cancel",
+    "changeAvatar": "Click to change avatar",
+    "logoutSuccess": "Logout success",
+    "profileUpdated": "Profile updated successfully",
+    "emailUpdatePending": "A verification email has been sent to your new email address. Please check your inbox to confirm the change."
+  },
+  "linkedAccounts": {
+    "title": "Linked Accounts",
+    "titleShort": "Accounts",
+    "description": "Manage your connected social accounts",
+    "link": "Link",
+    "unlink": "Unlink",
+    "linked": "Linked",
+    "notLinked": "Not linked",
+    "unlinkConfirmTitle": "Confirm Unlink",
+    "unlinkConfirmMessage": "Are you sure you want to unlink your {provider} account?",
+    "linkSuccess": "Account linked successfully",
+    "unlinkSuccess": "Account unlinked successfully",
+    "linkError": "Failed to link account. Please try again.",
+    "unlinkError": "Failed to unlink account. Please try again.",
+    "linking": "Linking with {provider}",
+    "unlinking": "Unlinking..."
+  },
+  "orderHistory": {
+    "pageTitle": "ORDER HISTORY",
+    "total": "Total",
+    "requestReturn": "Request Return",
+    "writeReview": "Write Review",
+    "readReview": "Read Review",
+    "reviewed": "Reviewed",
+    "checking": "Checking...",
+    "yourReview": "Your Review",
+    "reviewImages": "Review Images",
+    "noReviewFound": "No review found",
+    "height": "Height",
+    "weight": "Weight",
+    "fit": "Fit",
+    "fitOptions": {
+      "tight": "Tight",
+      "perfect": "Perfect Fit",
+      "loose": "Loose"
+    },
+    "noOrders": "You have no orders yet",
+    "moreProducts": "more products",
+    "items": "items",
+    "products": "products",
+    "viewDetail": "View Details",
+    "viewMore": "View More",
+    "orderStatusLabel": "Order Status",
+    "paymentStatusLabel": "Payment Status",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipping",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "paymentStatus": {
+      "pending": "Awaiting Payment",
+      "paid": "Paid",
+      "failed": "Payment Failed",
+      "refunded": "Refunded"
+    }
+  },
+  "orderDetail": {
+    "pageTitle": "ORDER DETAILS",
+    "orderInformation": "Order Information",
+    "orderDate": "Order Date",
+    "orderStatus": "Order Status",
+    "orderStatusLabel": "Order Status",
+    "paymentStatusLabel": "Payment Status",
+    "productList": "Product List",
+    "paymentSummary": "Payment Summary",
+    "discount": "Discount",
+    "deliveryInformation": "Delivery Information",
+    "backToOrderHistory": "Back",
+    "orderNotFound": "Order not found",
+    "loading": "Loading orders...",
+    "productInfo": "Product information",
+    "shippingInfo": "Shipping Information",
+    "confirmOrder": "Confirm order",
+    "savings": "Save",
+    "status": {
+      "unspecified": "Unspecified",
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    },
+    "paymentStatus": {
+      "pending": "Awaiting Payment",
+      "paid": "Paid",
+      "failed": "Payment Failed",
+      "refunded": "Refunded"
+    },
+    "paymentMethods": {
+      "cod": "COD",
+      "bank_transfer": "Bank transfer",
+      "credit_card": "Credit card",
+      "e_wallet": "E wallet",
+      "onepay_intercard": "OnePay International (Visa/Mastercard)",
+      "onepay_domestic": "OnePay Domestic (ATM Cards)",
+      "infocms_vietqr": "VietQR"
+    },
+    "writeReview": "Write a Review",
+    "reviewed": "Reviewed",
+    "processingPayment": "Processing payment...",
+    "paymentPending": "Order is pending payment",
+    "payNow": "Pay Now",
+    "paymentRetryFailed": "Payment failed, please try again",
+    "note": "Note",
+    "street": "Address",
+    "sessionExpired": "Session expired"
+  },
+  "cart": {
+    "pageTitle": "SHOPPING CART",
+    "loading": "Loading cart...",
+    "emptyCart": "Your cart is empty",
+    "emptyCartMessage": "You don't have any items in your cart yet",
+    "continueShopping": "Continue Shopping",
+    "productName": "Product Name",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "size": "Size",
+    "color": "Color",
+    "comboProduct": "Combo product",
+    "remove": "Remove",
+    "updateCart": "Update Cart",
+    "clearCart": "Clear Cart",
+    "cartSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "totalAmount": "Total",
+    "checkout": "Checkout",
+    "itemsInCart": "items",
+    "removeConfirm": "Remove Item",
+    "removeMessage": "Are you sure you want to remove this item from your cart?",
+    "clearCartConfirm": "Clear Cart",
+    "clearCartMessage": "Are you sure you want to remove all items from your cart?",
+    "addedToCart": "Added to cart",
+    "addedToCartSuccess": "Added to cart successfully",
+    "viewCart": "VIEW CART",
+    "subtotalLabel": "Subtotal",
+    "products": "products",
+    "errorAddingToCart": "Error adding to cart",
+    "cartUpdated": "Cart updated",
+    "maxQuantityReached": "Maximum quantity reached",
+    "freeShipping": "Free shipping for orders over 500,000đ",
+    "gift": "FREE GIFT",
+    "shippingTitle": "Shipping Information",
+    "notes": "Order Notes",
+    "notesPlaceholder": "Any special instructions for your order...",
+    "shippingMethod": "Shipping Method",
+    "standard": "Standard Shipping",
+    "express": "Express Shipping",
+    "standardDesc": "Delivered within 3-5 business days",
+    "expressDesc": "Delivered within 1-2 business days",
+    "estimatedDelivery": "Estimated delivery",
+    "saveAddress": "Save this address",
+    "proceedToPayment": "Proceed to Payment",
+    "paymentDetailsTitle": "Payment Details",
+    "freeShippingLabel": "Free",
+    "voucherDiscount": "Voucher Discount",
+    "allProducts": "All Products",
+    "clearAll": "Clear All",
+    "shippingInfoTitle": "SHIPPING INFORMATION",
+    "paymentMethodTitle": "PAYMENT METHOD",
+    "selectFromAddressBook": "Select from address book",
+    "otherRecipient": "Other recipient (if any)",
+    "paymentCOD": "Cash on Delivery",
+    "paymentZaloPay": "Pay with ZaloPay",
+    "paymentMoMo": "Pay with MoMo Wallet",
+    "paymentOnePayInternational": "OnePay International (Visa/Mastercard)",
+    "paymentOnePayDomestic": "OnePay Domestic (ATM Cards)",
+    "paymentVietQR": "QR Payment (VietQR)",
+    "returnPolicy": "If you are not satisfied with our products, you can return them. Learn more here.",
+    "allPaymentSupported": "All payment methods supported",
+    "voucherWallet": "Voucher Wallet",
+    "enterDiscountCode": "Enter discount code",
+    "apply": "APPLY",
+    "placeOrder": "PLACE ORDER",
+    "placingOrder": "Placing order...",
+    "pleaseEnterShippingInfo": "Please enter all required shipping information",
+    "updateAddress": "Update",
+    "deleteAddress": "Delete",
+    "defaultAddress": "Default",
+    "oldAddressInfo": "This is an old address, please help us update it to ensure accurate delivery.",
+    "editShippingInfo": "Edit Shipping Information",
+    "addShippingAddress": "Add Shipping Address",
+    "addNewAddress": "Add New Address",
+    "manageAddresses": "Manage Addresses",
+    "noShippingAddresses": "You haven't added any shipping addresses yet.",
+    "goToAccountSettings": "Go to Account Settings",
+    "clearingCart": "Clearing...",
+    "totalShippingFee": "Total shipping fee",
+    "calculating": "Calculating...",
+    "cchatVoucher": "CCHAT voucher",
+    "selectAll": "Select all",
+    "voucher": "Voucher",
+    "enterDiscountCodePlaceholder": "Enter discount code",
+    "please": "Please",
+    "signInOrSignUp": "sign in / sign up",
+    "appliedVouchers": "Applied vouchers",
+    "appliedDiscounts": "Applied discounts",
+    "selectPromotion": "Select promotion",
+    "applying": "Applying...",
+    "promotionPicker": {
+      "title": "Select promotion",
+      "enterVoucherCode": "Enter voucher code",
+      "orSelectPromotion": "Or select promotion",
+      "availablePromotions": "Available promotions",
+      "unavailablePromotions": "Not eligible promotions",
+      "noPromotions": "No promotions available",
+      "applySuccess": "Promotion applied successfully",
+      "applyError": "Failed to apply promotion",
+      "removeSuccess": "Promotion removed",
+      "exclusiveConflict": "Cannot add promotion when an exclusive promotion is already applied. Please remove the exclusive promotion first."
+    },
+    "shippingPromotion": {
+      "title": "Shipping promotions",
+      "shippingFeeDiscount": "Shipping fee discount",
+      "applySuccess": "Shipping promotion applied successfully",
+      "removeSuccess": "Shipping promotion removed",
+      "removedDueToQuantityChange": "Shipping promotion was removed due to quantity change. Please re-apply."
+    },
+    "voucherCodeRequired": "Please enter a voucher code",
+    "checkoutSessionNotFound": "Checkout session not found. Please try again.",
+    "voucherAppliedSuccess": "Voucher applied successfully!",
+    "voucherApplyError": "Failed to apply voucher. Please check the code and try again.",
+    "voucherRemovedSuccess": "Voucher removed",
+    "voucherRemoveError": "Failed to remove voucher",
+    "vouchersPageTitle": "Vouchers",
+    "availableVouchers": "Available vouchers",
+    "unavailableVouchers": "Unavailable vouchers",
+    "noVouchersApplied": "No vouchers applied yet",
+    "confirmButton": "CONFIRM",
+    "confirmingRemoval": "Processing...",
+    "vouchersRemoveSuccess": "Vouchers updated successfully",
+    "vouchersRemoveError": "Failed to remove some vouchers. Please try again.",
+    "voucherMinOrder": "Min order {amount}",
+    "saved": "Saved",
+    "selectCity": "Select city/province",
+    "giftPromotion": "Gift",
+    "specialOffers": "Special offers for you",
+    "giftFromOrder": "Gift for orders from 799k with fall items",
+    "get": "Get now",
+    "orderNotEligible": "Order does not meet the conditions to apply code",
+    "discountPercent": "-100%",
+    "voucherCode": "WELCOMEABC",
+    "voucherDesc": "15% off up to 50k for any order (Not applicable for SALE category)",
+    "voucherExpiry": "Exp: dd/mm/yyyy",
+    "voucherConditions": "Conditions",
+    "country": "Country",
+    "countryPlaceholder": "Enter country",
+    "failedToCalculateCheckout": "Failed to calculate order. Please try again.",
+    "failedToUpdateCheckout": "Failed to update checkout information. Please try again.",
+    "orderPlacedSuccessfully": "Order placed successfully!",
+    "flashSalePriceAdjusted": "{name} flash sale is no longer available, applied regular price {price}",
+    "failedToPlaceOrder": "Failed to place order. Please try again.",
+    "cannotPlaceOrder": "Cannot place order",
+    "hasUnavailableItems": "Some items are unavailable",
+    "unavailableItemsWarning": "Some items in your order are no longer available. Please remove them to proceed.",
+    "missingFields": "Missing required information",
+    "processingPayment": "Processing payment information",
+    "retryPayment": "Retry payment",
+    "paymentSessionExpired": "Payment session expired. Please pay again.",
+    "paymentRetryFailed": "Failed to retry payment. Please try again.",
+    "giftTag": "Gift",
+    "changeGift": "Change",
+    "totalPayment": "Total payment",
+    "giftOffer": {
+      "title": "Special offers for you",
+      "buyMoreHint": "Buy {amount} more to get a gift",
+      "giftBadge": "Gift",
+      "claimButton": "Claim now",
+      "changeButton": "Change",
+      "selectGiftTitle": "Select your gift",
+      "minOrderHint": "Gift for orders from {amount}",
+      "selectVariant": "Select variant",
+      "outOfStock": "Out of stock",
+      "stockInfo": "Remaining:",
+      "confirmButton": "Confirm",
+      "selecting": "Selecting...",
+      "addSuccess": "Gift added to cart",
+      "addError": "Failed to add gift",
+      "removeError": "Failed to remove gift",
+      "noImage": "No image",
+      "minOrderLabel": "Free gift for orders from {amount}",
+      "buyMoreToUnlock": "Buy {amount} more",
+      "buyXGetYHint": "Buy {current}/{required} products to get gift",
+      "buyXGetYEligible": "You are eligible for a gift",
+      "buyMoreProductsToUnlock": "Add {count} more",
+      "selectedCount": "Selected {current}/{max} gifts",
+      "selectVariantFirst": "Select variant first",
+      "maxGiftsReached": "Maximum gifts selected",
+      "selectGiftsButton": "Select gifts ({current}/{max})",
+      "addVariant": "Add variant"
+    },
+    "productDiscount": {
+      "title": "Offers",
+      "availableTitle": "Available offers",
+      "unavailableTitle": "Unavailable offers",
+      "applied": "Applied",
+      "appliedVoucher": "Voucher applied",
+      "discountLabel": "Discount",
+      "maxDiscount": "max",
+      "minOrderLabel": "Min order {amount}",
+      "eligibleProductsCount": "{count} eligible products",
+      "potentialSaving": "Potential savings",
+      "buyMoreHint": "Buy {amount} more to apply",
+      "buyMoreToUnlock": "Buy {amount} more to unlock {name}",
+      "applyButton": "Apply",
+      "removeButton": "Remove",
+      "applying": "Applying...",
+      "notEligible": "Not eligible",
+      "applySuccess": "Discount program applied successfully",
+      "applyError": "Failed to apply discount program",
+      "removeSuccess": "Discount program removed",
+      "removeError": "Failed to remove discount program"
+    },
+    "reduce": "Reduce",
+    "cancelPayment": "Cancel payment",
+    "itemRemoved": "Item removed from cart",
+    "failedToRemoveItem": "Failed to remove item",
+    "failedToUpdateQuantity": "Failed to update quantity. Please try again.",
+    "failedToClearCart": "Failed to clear cart. Please try again.",
+    "maxDiscountPerProduct": "Max",
+    "maxDiscount": "Max",
+    "forOrdersAbove": "for orders above",
+    "perEligibleProduct": "eligible item",
+    "validUntil": "Valid until",
+    "discountPerProduct": "Off"
+  },
+  "addressBook": {
+    "pageTitle": "Address",
+    "title": "My Addresses",
+    "empty": "No addresses yet",
+    "emptyDescription": "Add your first shipping address to get started",
+    "streetAddress": "Street Address",
+    "addNewAddress": "Add New Address",
+    "addAddress": "Add Address",
+    "addAddressTitle": "Add Address",
+    "editAddress": "Edit Address",
+    "editAddressTitle": "Edit Address",
+    "deleteAddress": "Delete Address",
+    "deleteConfirm": "Are you sure you want to delete this address?",
+    "setAsDefault": "Set as default",
+    "defaultBadge": "Default",
+    "saveChanges": "Save Changes"
+  },
+  "authCallback": {
+    "processing": "Processing...",
+    "loggingIn": "Logging in with {provider}",
+    "success": "Login successful!",
+    "redirecting": "Redirecting...",
+    "error": "Login Error",
+    "errorMessage": "Unable to login. Please try again.",
+    "authCancelled": "You cancelled the login",
+    "invalidProvider": "Invalid provider"
+  },
+  "confirmEmail": {
+    "title": "EMAIL VERIFICATION",
+    "verifying": "Verifying your email...",
+    "success": "Email Verified!",
+    "successMessage": "Thank you! Your email has been successfully verified.",
+    "successAction": "You can close this page and continue using our service.",
+    "error": "Verification Failed",
+    "errorMessage": "We couldn't verify your email. The link may have expired or is invalid.",
+    "errorAction": "Please try signing up again or contact us for support.",
+    "invalidToken": "The verification link is invalid or has expired."
+  },
+  "confirmNewEmail": {
+    "title": "EMAIL CHANGE VERIFICATION",
+    "verifying": "Verifying your new email...",
+    "success": "Email Changed!",
+    "successMessage": "Your email address has been successfully updated.",
+    "successAction": "You can close this page and continue using our service.",
+    "error": "Verification Failed",
+    "errorMessage": "We couldn't verify your new email. The link may have expired or is invalid.",
+    "errorAction": "Please try updating your email again or contact us for support.",
+    "invalidToken": "The verification link is invalid or has expired."
+  },
+  "orderSuccess": {
+    "title": "Order placed successfully!",
+    "orderCode": "Order code",
+    "copyOrderCode": "Copy order code",
+    "copied": "Copied!",
+    "message": "We will process your order as soon as possible. Thank you for ordering at CChat.",
+    "trackOrderButton": "TRACK YOUR ORDER HERE",
+    "signUpNowButton": "SIGN UP NOW TO TRACK YOUR ORDER",
+    "signUpMessage": "Create an account to easily track your order and enjoy exclusive benefits.",
+    "youMayAlsoLike": "You may also like"
+  },
+  "orderConfirm": {
+    "title": "Order Confirmed!",
+    "message": "Your order has been confirmed. We will process your order as soon as possible. Thank you for ordering at CChat.",
+    "confirmTitle": "Confirm Your Order",
+    "confirmMessage": "Please review your order details below and click confirm to complete your order.",
+    "confirmButton": "CONFIRM ORDER",
+    "loading": "Loading order information...",
+    "invalidToken": "The order confirmation link is invalid or has expired.",
+    "orderNotFound": "Order not found. Please check your confirmation link.",
+    "customer": "Customer",
+    "phone": "Phone",
+    "orderItems": "Items",
+    "expand": "View",
+    "collapse": "Collapse",
+    "paymentMethods": {
+      "cod": "Cash on Delivery",
+      "bank_transfer": "Bank Transfer",
+      "card": "Credit/Debit Card",
+      "ewallet": "E-Wallet",
+      "onepay_intercard": "International Card",
+      "onepay_domestic": "Domestic ATM Card",
+      "infocms_vietqr": "VietQR"
+    }
+  },
+  "paymentSuccess": {
+    "title": "Payment Successful!",
+    "message": "Thank you for your payment. We will process your order as soon as possible.",
+    "viewOrderHistory": "VIEW ORDER HISTORY",
+    "paymentFailed": "Payment Failed",
+    "supportHotline": "Contact Support",
+    "hotlineNumber": "0868 506 800",
+    "errorCodes": {
+      "1": "Bank declined to authorize the transaction",
+      "2": "Card issuer declined to authorize the transaction",
+      "3": "No response received from the bank",
+      "4": "Card has expired or expiration date is invalid",
+      "5": "Insufficient card balance/limit for payment",
+      "6": "No response received from the bank",
+      "7": "Error occurred while processing the transaction",
+      "8": "Bank does not support online payment",
+      "9": "Invalid cardholder/account name",
+      "10": "Card has expired or is blocked",
+      "11": "Card/Account is not registered for online payment",
+      "12": "Invalid issue date or expiration date",
+      "13": "Transaction exceeded online payment limit",
+      "14": "Invalid card number",
+      "21": "Insufficient account balance for payment",
+      "22": "Invalid account information",
+      "23": "Card/Account is blocked or not activated",
+      "24": "Invalid card/account information",
+      "25": "Invalid OTP verification code",
+      "26": "OTP verification code has expired",
+      "98": "Transaction authentication was cancelled",
+      "99": "Transaction was cancelled",
+      "B": "Error during transaction authentication",
+      "D": "Error during transaction authentication",
+      "F": "Transaction authentication failed",
+      "U": "Security code authentication failed",
+      "Z": "Transaction was declined",
+      "253": "Payment session has expired",
+      "invalid_signature": "Payment verification failed",
+      "default": "An error occurred"
+    }
+  },
+  "paymentMethods": {
+    "cod": "Cash on Delivery",
+    "onepayIntercard": "International Card",
+    "onepayDomestic": "Domestic ATM Card",
+    "vietqr": "VietQR"
+  },
+  "paymentQR": {
+    "title": "Payment",
+    "scanQR": "Scan QR code to pay",
+    "amount": "Amount",
+    "orderCode": "Order code",
+    "bankName": "Bank",
+    "accountNumber": "Account number",
+    "accountName": "Account name",
+    "content": "Transfer content",
+    "timeRemaining": "Time remaining",
+    "minutes": "minutes",
+    "seconds": "seconds",
+    "expired": "QR code has expired",
+    "refreshQR": "Refresh QR code",
+    "paymentNote": "After payment, your order will be confirmed within 1-2 minutes",
+    "paidButton": "I have paid",
+    "processing": "Processing...",
+    "cancelButton": "Cancel order",
+    "zalopay": "ZaloPay",
+    "momo": "MoMo",
+    "bankTransfer": "Bank transfer"
+  },
+  "qrDialog": {
+    "title": "Scan QR code to pay",
+    "scanInstruction": "Use your banking app to scan the code",
+    "noQrData": "No QR data available"
+  },
+  "policyPlaceholder": {
+    "comingSoon": "Coming Soon",
+    "contentBeingUpdated": "Content is being updated, please check back later."
+  },
+  "deliveryPolicy": {
+    "pageTitle": "DELIVERY POLICY",
+    "banner": {
+      "line1": "DELIVERY TIME",
+      "line2": "3 - 5 DAYS"
+    },
+    "section1": {
+      "title": "DELIVERY TIME <highlight>3-5 DAYS</highlight>",
+      "description": "Normally, after CCHAT receives the order information from the Customer, we will process the order <highlight>within 24 hours</highlight> and respond to the customer regarding payment and delivery.",
+      "deliveryTimeInfo": "The normal delivery time will be about <highlight>3-5 days</highlight> from the date the customer's order is confirmed or as agreed with the customer when ordering."
+    },
+    "section2": {
+      "delayIntro": "However, there will also be cases where delivery is extended due to the following force majeure reasons:",
+      "delayReasons": {
+        "reason1": "CCHAT staff cannot contact the customer by phone, so they cannot <highlight>confirm the order</highlight> or hand it over to the shipping carrier.",
+        "reason2": "The address or phone number provided by the customer is <highlight>incorrect</highlight>.",
+        "reason3": "The number of orders at CCHAT is overloaded, causing order processing to be delayed.",
+        "reason4": "The shipping partner encounters problems causing delivery to the customer to be delayed."
+      },
+      "deliveryAttempts": "Customer orders will be delivered <highlight>a maximum of 3 times</highlight>. If the first delivery is unsuccessful, the delivery staff will contact you again after 1-2 business days. Therefore, if after 3 delivery attempts the order is still unsuccessful, the order will be cancelled.",
+      "checkOrder": "To check information or order status, please call Hotline <highlight>0868 506 800</highlight> for CCHAT customer service staff to check for you.",
+      "checkProduct": "You can completely check the product before receiving and paying the delivery staff. In case of any issues, please contact <highlight>0868 506 800</highlight> immediately for timely support."
+    }
+  },
+  "news": {
+    "title": "NEWS",
+    "latestNews": "LATEST NEWS",
+    "relatedArticles": "RELATED ARTICLES",
+    "breadcrumbHome": "News",
+    "mostViewed": "Most Viewed",
+    "featured": "FEATURED",
+    "noArticles": "No articles yet",
+    "readMore": "Read more →"
+  },
+  "about": {
+    "hero": {
+      "title": "DISCOVER\nCCHAT",
+      "descriptionPart1": "A ",
+      "smartCasual": "smart casual",
+      "descriptionPart2": " fashion brand bringing youthfulness and confidence to modern women",
+      "slogan": "Elegant - Youthful - Modern - Versatile",
+      "learnMore": "Learn more"
+    },
+    "timeline": {
+      "number": "01",
+      "title": "OUR JOURNEY",
+      "description": "In 2017, CCHAT opened its first store in Hanoi, marking the beginning of a mission to redefine modern fashion for Vietnamese women. Through passion and relentless innovation, CCHAT has achieved remarkable milestones:",
+      "years": {
+        "2018": "2018",
+        "2019": "2019",
+        "2020": "2020",
+        "2021-now": "2021 - Present"
+      },
+      "items": {
+        "2018": "Expanded retail network",
+        "2019": "Serving 50,000+ customers monthly",
+        "2020": "200% revenue growth",
+        "2021-now": "Rapid expansion to 20+ locations nationwide, cementing our position as a leader in women's fashion"
+      }
+    },
+    "visionMission": {
+      "number": "02",
+      "title": "VISION & MISSION",
+      "tabs": {
+        "vision": "Vision",
+        "mission": "Mission"
+      },
+      "vision": {
+        "part1": "To become ",
+        "highlight1": "Vietnam's #1 fashion brand",
+        "part2": " – a destination where women discover ",
+        "highlight2": "confidence and their unique style,",
+        "part3": " and where every team member finds ",
+        "highlight3": "joy, pride, and purpose",
+        "part4": " in their work"
+      },
+      "mission": {
+        "description": "Empowering women with confidence"
+      }
+    },
+    "customerValue": {
+      "number": "03",
+      "title": "CUSTOMER VALUE",
+      "description": "At CCHAT, customers are at the heart of everything we do. We deliver value through:",
+      "items": {
+        "image": "Image: Professional & Passionate",
+        "product": "Products: Diverse, Innovative & Premium Quality",
+        "service": "Service: Reliable & Supportive"
+      },
+      "conclusion": "These pillars enable CCHAT to go beyond selling clothes – we create memorable shopping experiences for Vietnamese women."
+    },
+    "coreValue": {
+      "number": "04",
+      "title": "CORE VALUES",
+      "intro": "Four foundational values guide every member of the CCHAT team:",
+      "centerText": "CCHAT Core Values",
+      "values": {
+        "integrity": {
+          "title": "INTEGRITY",
+          "desc": "Honesty in thought, word, and action"
+        },
+        "proactive": {
+          "title": "INITIATIVE & OWNERSHIP",
+          "desc": "Continuous learning and contribution"
+        },
+        "openness": {
+          "title": "OPENNESS",
+          "desc": "Embracing growth through every challenge"
+        },
+        "gratitude": {
+          "title": "COMPASSION",
+          "desc": "Empathy and genuine care"
+        }
+      },
+      "conclusion": "These values shape a passionate team committed to delivering exceptional products and outstanding service."
+    },
+    "brandManifesto": {
+      "number": "05",
+      "title": "BRAND MANIFESTO",
+      "paragraph1": "We believe that every woman carries within her a unique beauty. CCHAT exists to awaken that beauty - in a delicate, gentle, and inspiring way.",
+      "paragraph2": "We don't create clothes just to wear. We create designs for women to confidently step into life, to smile when they look in the mirror, and to feel they deserve better things every day.",
+      "paragraph3": "CCHAT fashion is a blend of elegance – youthfulness – modernity - versatile application. CCHAT products are perfected with quality materials and meticulous cuts to flatter every body type.",
+      "paragraph4": "We believe in gentle transformation: just one suitable design is enough to change the mood of an entire day. To help you stand taller, walk more confidently, and live more vibrantly.",
+      "conclusion": "CCHAT — where your true beauty is awakened through creativity and inspiration!"
+    },
+    "brandStory": {
+      "number": "06",
+      "title": "BRAND STORY",
+      "question": "CCHAT began with a simple question: What makes a woman feel truly beautiful?",
+      "paragraph1": "Not expensive items. Not chasing trends. But the moment they wear a design that makes them see themselves – feeling younger, more confident, and experiencing small but real joy.",
+      "paragraph2": "From that moment, CCHAT was born.",
+      "paragraph3": "We chose the path of sophistication and creativity: Elegant, gentle designs with unique accents - different enough for you to feel special, practical enough to wear every day.",
+      "paragraph4": "Each CCHAT product is created from: quality materials, flattering cuts, and design thinking aimed at making women always feel their most beautiful version.",
+      "paragraph5": "CCHAT believes that fashion is not just what you wear. It's how you tell your own story — a story of confidence, happiness, and inspiration.",
+      "conclusionPart1": "We only play a small role: helping you ",
+      "conclusionHighlight": "shine in your own unique way",
+      "conclusionPart2": "."
+    },
+    "brandPersonality": {
+      "number": "07",
+      "title": "BRAND PERSONALITY",
+      "archetype1": "THE MAGICIAN",
+      "archetype2": "THE EVERYPERSON",
+      "traits": {
+        "flexible": {
+          "title": "Flexible",
+          "desc": "Flexible in product application: easy to mix and match, versatile for different contexts and activities..."
+        },
+        "prudent": {
+          "title": "Friendly",
+          "desc": "Customer service space, communication activities, and experiences create a friendly, approachable feeling."
+        },
+        "smart": {
+          "title": "Smart",
+          "desc": "Smart designs that help wearers conceal flaws, appear younger, and enhance their figure..."
+        },
+        "reliable": {
+          "title": "Reliable",
+          "desc": "Deliver on promises and commitments. Understand customer needs and provide experiences that meet or exceed expectations."
+        },
+        "attractive": {
+          "title": "Attractive",
+          "desc": "Visually impressive and spirited activities that create buzz."
+        },
+        "courteous": {
+          "title": "Courteous",
+          "desc": "Polished appearance, meticulous presentation. Avoiding excessive flashiness or 'over-the-top' promotion, focusing on customer value."
+        },
+        "energetic": {
+          "title": "Energetic",
+          "desc": "Helping women look better and perform well in all activities: family, career, and self-care."
+        }
+      }
+    },
+    "brandDNA": {
+      "number": "08",
+      "title": "BRAND DNA",
+      "positioning": {
+        "title": "Brand Positioning",
+        "description": "A smart casual fashion brand that brings youthfulness and confidence to modern women"
+      },
+      "personality": {
+        "title": "Brand Personality",
+        "description": "Flexible, Smart, Attractive, Energetic, Prudent, Reliable and Practical."
+      },
+      "coreAttribute": {
+        "title": "Core Attribute",
+        "description": "Women's smart casual fashion with creative design, continuous innovation with quality higher than price."
+      },
+      "philosophy": {
+        "title": "Operating Philosophy",
+        "description": "BEAUTIFUL FROM QUALITY"
+      }
+    }
+  },
+  "returnPolicy": {
+    "pageTitle": "RETURN & EXCHANGE POLICY",
+    "registerButton": "Register for return/exchange",
+    "requestButton": "Request return",
+    "banner": {
+      "line1": "FREE EXCHANGE",
+      "line2": "WITHIN 7 DAYS"
+    },
+    "section1": {
+      "number": "01",
+      "title": "EXCHANGE / RETURN PERIOD",
+      "description": "CCHAT accepts exchange/return requests within:",
+      "storeOrder": "In-store orders: 07 days from purchase date",
+      "onlineOrder": "Online orders: 07 days from successful delivery"
+    },
+    "section2": {
+      "number": "02",
+      "title": "APPLICABLE POLICIES",
+      "exchangePolicy": {
+        "title": "Exchange Policy",
+        "description": "Exchange is applicable once per order"
+      },
+      "exchangeApplicable": {
+        "title": "Applicable Exchange Cases",
+        "items": {
+          "item1": "Customer requests size/style change and the order/product meets CCHAT's conditions.",
+          "item2": "Customers exchanging for a different style will pay the price difference if the exchange order value is higher than the original product. CCHAT does not refund excess amounts in any form.",
+          "item3": "All cases where products/orders have defects confirmed by CCHAT:",
+          "item3a": "Manufacturing defects: torn, dirty, scratched, loose buttons, broken zipper, sewing defects, material defects, mold, color bleeding, rust, broken parts...",
+          "item3b": "Wrong/missing products compared to order: color, size, quantity, product type."
+        }
+      },
+      "exchangeNotApplicable": {
+        "title": "Non-Applicable Exchange Cases",
+        "items": {
+          "item1": "Purchase or receipt (online orders) exceeds 7 days.",
+          "item2": "Accessories: earrings, bracelets, necklaces, chokers, clips, tags, brooches, silk scarves...",
+          "item3": "Adhesive clothing: tube tops, spaghetti straps, tank tops, sleeveless (cotton, jersey, knit)",
+          "item4": "Underwear products.",
+          "item5": "Items on sale over 50%."
+        }
+      },
+      "returnPolicy": {
+        "title": "Return Policy",
+        "items": {
+          "item1": "Customers can return products when the product/order has defects confirmed by CCHAT and they don't want to exchange for another product.",
+          "item2": "Manufacturing defects: torn, dirty, scratched, loose buttons, broken zipper, sewing defects, material defects, mold, color bleeding, rust, broken parts...",
+          "item3": "Wrong/missing products compared to order: color, size, quantity, product type.",
+          "item4": "Refund via customer's provided bank account.",
+          "item5": "CCHAT covers 100% of return shipping fees."
+        }
+      },
+      "productConditions": {
+        "title": "Product Conditions for Exchange / Return",
+        "items": {
+          "item1": "Product is intact, with all tags, accessories, boxes, bags, and gifts included.",
+          "item2": "Product has not been altered, used, washed/ironed, has no strange smell, and is not damaged by external factors.",
+          "item3": "Product has been used and stored according to CCHAT's instructions.",
+          "item4": "Exchange order value must be equal to or higher than the purchased products."
+        }
+      },
+      "fees": {
+        "title": "Exchange / Return Fees",
+        "description": "When submitting an exchange/return request to CCHAT, customers need to pay the following fees in addition to product price differences",
+        "byRequest": {
+          "number": "01",
+          "title": "Exchange / Return by Request",
+          "description": "Customer pays two-way shipping fees, including:",
+          "items": {
+            "item1": "Shipping fee",
+            "item2": "New order delivery fee: 30,000 VND"
+          }
+        },
+        "byDefect": {
+          "number": "02",
+          "title": "Exchange / Return due to CCHAT's Error",
+          "description": "Customer does not need to pay exchange fees"
+        }
+      },
+      "process": {
+        "title": "Steps to Exchange / Return Products",
+        "online": {
+          "number": "01",
+          "title": "For Online Orders",
+          "steps": {
+            "step1": "Step 1: Customer submits exchange/return request to CCHAT",
+            "step2": "Step 2: Customer provides product images/videos as requested by CCHAT",
+            "step3": "Step 3: Customer sends the product back to CCHAT following instructions",
+            "step4": "Step 4: After receiving the product, CCHAT processes the request within 2 business days"
+          }
+        },
+        "inStore": {
+          "number": "02",
+          "title": "For In-Store Purchases",
+          "description": "Customers who purchased at a store should bring the product + receipt directly to that store for exchange/return support"
+        }
+      }
+    },
+    "section": {
+      "productsTitle": "FOR PRODUCTS YOU PURCHASED AT CCHAT",
+      "returnPeriod": "Return period:",
+      "returnPeriodDesc": "CChat accepts return/exchange requests for online orders within 07 days from successful delivery.",
+      "conditions": "Conditions:",
+      "condition1": "Product is intact, with all tags, accessories, boxes, bags, and gifts included.",
+      "condition2": "Product has not been altered, used, washed/ironed, has no strange smell, and is not damaged by external factors.",
+      "condition3": "Product has been used and stored according to CChat's instructions.",
+      "condition4": "Exchange order value must be equal to or higher than the purchased products.",
+      "costsTitle": "Return/Exchange costs:",
+      "costsDesc": "When customers submit return/exchange requests to CChat, besides the product price difference, customers need to pay the following fees:",
+      "customerInitiated": "Customer-initiated return/exchange:",
+      "customerInitiatedDesc": "Customer pays two-way shipping fees, including:",
+      "refundFee": "Return shipping fee;",
+      "exchangeFee": "New order delivery fee: 30,000 VND;",
+      "cchatInitiated": "CChat-initiated return/exchange:",
+      "cchatInitiatedDesc": "Customer does not need to pay shipping fees.",
+      "stepsTitle": "STEPS TO RETURN/EXCHANGE ONLINE PRODUCTS",
+      "stepsNote": "(Customers who purchased at a store should bring the product + receipt directly to that store for return/exchange support.)",
+      "step1Title": "Step 1",
+      "step1Desc": "Customer submits return/exchange request to CChat.",
+      "step2Title": "Step 2",
+      "step2Desc": "Customer provides product images/videos as requested by CChat.",
+      "step3Title": "Step 3",
+      "step3Desc": "Customer sends the return/exchange product to CChat as instructed.",
+      "step4Title": "Step 4",
+      "step4Desc": "After receiving the product, CChat processes the return/exchange request within 2 business days.",
+      "stepsWarning": "Note: If customers send products back without confirmation from CChat complaint staff, CChat is not responsible for any issues related to that product.",
+      "returnPeriodTitle": "RETURN/EXCHANGE PERIOD",
+      "returnPeriodText": "CChat accepts return/exchange requests for online orders within 07 days from successful delivery",
+      "policiesTitle": "APPLICABLE POLICIES",
+      "exchangePolicyTitle": "1. Exchange Policy:",
+      "exchangePolicyRule": "Exchange applies once per order.",
+      "exchangeApplicableTitle": "Cases eligible for exchange:",
+      "exchangeApplicable1": "Customer requests size/color change and the order/product meets CChat's conditions.",
+      "exchangeApplicable2": "Customers exchanging for a different color will pay the price difference if the exchange order value is higher than the returned product. CChat does not refund excess amounts in any form.",
+      "exchangeApplicable3Title": "All cases where products/orders have defects confirmed by CChat:",
+      "exchangeApplicable3a": "Manufacturing defects: tears, stains, scratches, loose buttons, broken zippers, sewing defects, material defects, mold, color bleeding, rust, cracks...",
+      "exchangeApplicable3b": "Wrong/missing products compared to order: color, size, quantity, product type.",
+      "exchangeNotApplicableTitle": "Cases not eligible for exchange:",
+      "exchangeNotApplicable1": "Purchase or receipt (online orders) over 7 days.",
+      "exchangeNotApplicable2": "Accessories: earrings, bracelets, necklaces, chokers, clips, shirt tags, brooches, silk scarves...",
+      "exchangeNotApplicable3": "Adhesive clothing: tube tops, spaghetti straps, tank tops, sleeveless (cotton, knit, wool)",
+      "exchangeNotApplicable4": "Underwear products.",
+      "exchangeNotApplicable5": "Items on sale over 50%.",
+      "returnPolicyTitle": "2. Return Policy:",
+      "returnApplicable1": "Customers can return products when there are defects confirmed by CChat and they don't want to exchange for another product.",
+      "returnApplicable2": "Manufacturing defects: tears, stains, scratches, loose buttons, broken zippers, sewing defects, material defects, mold, color bleeding, rust, cracks...",
+      "returnApplicable3": "Wrong/missing products compared to order: color, size, quantity, product type.",
+      "returnApplicable4": "Refund via customer's provided bank account.",
+      "returnApplicable5": "CChat covers 100% of return shipping fees."
+    },
+    "dialog": {
+      "title": "Return/Exchange Request",
+      "notesTitle": "Notes for return/exchange/refund:",
+      "note1": "Product is intact, with all tags, accessories, boxes, bags, and gifts included.",
+      "note2": "Product has not been altered, used, washed/ironed, has no strange smell, and is not damaged by external factors.",
+      "note3": "Product has been used and stored according to CChat's instructions.",
+      "note4": "Exchange order value must be equal to or higher than the purchased products.",
+      "viewPolicy": "View policy:",
+      "viewPolicyLink": "Here",
+      "agreeCheckbox": "I understand the return/exchange policy",
+      "supportType": "What do you need CChat to help with?",
+      "selectPlaceholder": "Please select",
+      "exchange": "Exchange",
+      "return": "Return/Refund",
+      "exchangeReasonsTitle": "Tell CChat why you want to exchange!",
+      "exchangeReasonSize": "Different size",
+      "exchangeReasonColor": "Different color",
+      "exchangeReasonModel": "Different model",
+      "exchangeReasonOther": "Other reason",
+      "returnReasonsTitle": "Tell CChat why you want to return!",
+      "returnReasonWrongItem": "Wrong item (wrong product/color/size)",
+      "returnReasonNotAsDescribed": "Product not as described",
+      "returnReasonNotSatisfied": "Not satisfied",
+      "returnReasonOther": "Other reason",
+      "productToExchange": "What product do you want to exchange and receive?",
+      "productToExchangeLabel": "Product (name - color - size) you want to exchange (can be more than 1)",
+      "productToExchangePlaceholder": "E.g.: CChat Basic T-shirt - Black - S",
+      "productWantedLabel": "Product (name - color - size) you want to receive",
+      "productWantedPlaceholder": "E.g.: CChat Basic T-shirt - Black - S",
+      "otherReasonLabel": "Your answer",
+      "otherReasonPlaceholder": "Maximum 256 characters",
+      "bankInfoTitle": "Which bank account do you want to receive the refund?",
+      "bankName": "Bank name",
+      "bankNamePlaceholder": "Select bank name",
+      "accountNumber": "Bank account number",
+      "accountNumberPlaceholder": "Enter account number",
+      "accountHolder": "Account holder name",
+      "accountHolderPlaceholder": "Maximum 256 characters",
+      "orderId": "Order ID",
+      "orderIdPlaceholder": "AbcD1234xyz",
+      "productImages": "Product images",
+      "uploadButton": "Select images/videos",
+      "cancelButton": "Cancel",
+      "submitButton": "Submit request",
+      "submitting": "Submitting...",
+      "loginRequired": "Please login to submit a return/exchange request",
+      "errors": {
+        "agreeRequired": "Please confirm you understand the return/exchange policy",
+        "supportTypeRequired": "Please select support type",
+        "reasonRequired": "Please select at least one reason",
+        "otherReasonRequired": "Please enter other reason",
+        "productToExchangeRequired": "Please enter product to exchange",
+        "productWantedRequired": "Please enter product you want",
+        "bankNameRequired": "Please select bank",
+        "accountNumberRequired": "Please enter account number",
+        "accountNumberInvalid": "Account number must contain only numbers",
+        "accountHolderRequired": "Please enter account holder name",
+        "orderIdRequired": "Please enter order ID",
+        "imagesRequired": "Please upload at least 1 product image"
+      },
+      "success": {
+        "submitted": "Return/exchange request submitted successfully! We will contact you as soon as possible."
+      }
+    }
+  },
+  "privacyPolicy": {
+    "pageTitle": "PRIVACY POLICY",
+    "subtitle": "CUSTOMER INFORMATION PRIVACY POLICY",
+    "section1": {
+      "number": "01",
+      "title": "PURPOSE OF COLLECTING AND USING",
+      "subtitle": "INFORMATION BY CCHAT",
+      "cardText": "CCHAT primarily collects basic customer information related to orders including:",
+      "cardHighlight": "Full name, email, phone number, address",
+      "description": "This personal information is used for order processing on the website, improving service quality, customer care, market research, supporting Marketing activities, internal management, or as required by law",
+      "commitmentTitle": "OUR COMMITMENTS",
+      "commitments": {
+        "item1": "Collection and use of personal information is always done with customer consent",
+        "item2": "Customer information is used only for the intended collection purposes",
+        "item3": "Customer information will be stored until requested for deletion by admin; all other personal information will be secured on CCHAT servers.",
+        "item4": "We only use information provided by customers and do not use customer information from other sources.",
+        "item5": "Only the following parties are allowed access to customer information: Company employees (those who process orders, provide customer care, and handle inquiries and issues), and authorized government agencies"
+      },
+      "footer": "During product introduction, advertising, and customer care, customers may request to stop the use of their information at any time."
+    },
+    "section2": {
+      "number": "02",
+      "title": "INFORMATION SECURITY METHODS",
+      "subtitle": "OF CCHAT",
+      "description": "Information security is based on compliance by all CCHAT staff, employees, partners, and data storage systems. In case of server attacks by hackers leading to data loss or leakage, we will report to authorities for investigation and promptly notify affected customers.",
+      "disclaimer": "However, due to the nature of the internet environment, no data can be 100% secure online. Therefore, CCHAT cannot guarantee absolute protection of personal information."
+    },
+    "section3": {
+      "number": "03",
+      "title": "CUSTOMER RESPONSIBILITY FOR",
+      "subtitle": "INFORMATION SECURITY",
+      "description1": "Customers should only provide complete and accurate information as requested by CCHAT. Customers are fully responsible for the truthfulness and accuracy of provided information, as well as any information provided beyond requirements.",
+      "description2": "If customers provide their personal information to multiple organizations or individuals, customers must request all related parties to maintain confidentiality. For any personal information disclosure causing damage, customers must identify the source of the leak.",
+      "disclaimer1": "CCHAT is not responsible for information disclosure without clear evidence that CCHAT is the source of the leak.",
+      "disclaimer2": "Customers are responsible for securing their login accounts on CCHAT e-commerce platforms and applications",
+      "disclaimer3": "We are not responsible for information leakage when customers do not comply with the above requirements"
+    },
+    "section4": {
+      "number": "04",
+      "title": "APPLICABLE LAW FOR",
+      "subtitle": "DISPUTES",
+      "description": "All disputes between customers and CCHAT will be resolved through mediation. If mediation fails, disputes will be resolved at the competent court under Vietnamese law"
+    }
+  },
+  "locations": {
+    "title": "CCHAT\nSTORE LOCATIONS",
+    "description": "With the desire to provide customers with the best shopping experience for fashion products, CCHAT has been constantly striving to expand stores nationwide.",
+    "totalStores": "Stores nationwide",
+    "grandOpening": "GRAND OPENING",
+    "alwaysPromotions": "Always with Promotions",
+    "customersPerDay": "Women served every day",
+    "selectStore": "SELECT STORE",
+    "storesInHanoi": "Stores in Hanoi",
+    "storesInOtherCities": "Stores in other cities",
+    "openingHours": "OPENING HOURS",
+    "daily": "DAILY",
+    "address": "Address",
+    "phone": "Phone",
+    "galleryTitle": "Some photos at CCHAT stores"
+  },
+  "reviews": {
+    "title": "PRODUCT REVIEWS",
+    "reviewCount": "{count} reviews",
+    "filters": {
+      "newest": "Newest",
+      "highest": "Highest",
+      "lowest": "Lowest"
+    },
+    "productInfo": "Product",
+    "height": "Height",
+    "weight": "Weight",
+    "fitLevel": "Product fit level",
+    "purchasedOn": "Purchased on {date}",
+    "writeReview": "WRITE REVIEW",
+    "noReviews": "No reviews yet",
+    "emptyState": {
+      "title": "No reviews yet",
+      "subtitle": "Be the first to review this product!"
+    },
+    "fitLevels": {
+      "tight": "Tight",
+      "fit": "Perfect fit",
+      "loose": "Loose"
+    },
+    "variantColor": "Color:",
+    "size": "Size:",
+    "reviewFrom": "Review from",
+    "dialog": {
+      "title": "Product Review",
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "dialogTitle": "Write product review",
+    "rating": "Product rating",
+    "heightPlaceholder": "x1",
+    "weightPlaceholder": "x1",
+    "productFit": "Product fit level",
+    "productFitPlaceholder": "Choose",
+    "fitOptions": {
+      "tight": "Tight",
+      "perfect": "Perfect fit",
+      "loose": "Loose"
+    },
+    "comment": "Review content",
+    "commentPlaceholder": "Enter your review",
+    "mediaTitle": "Product images / videos",
+    "addImage": "Add image",
+    "addVideo": "Add video",
+    "submitReview": "SUBMIT REVIEW",
+    "submitting": "Submitting...",
+    "fillAllRequiredFields": "Please fill in all required fields",
+    "confirmCancelTitle": "Confirm cancel",
+    "confirmCancelMessage": "Changes have not been saved. Are you sure you want to exit?",
+    "keepEditing": "Continue",
+    "confirmDiscard": "Discard",
+    "loading": "Loading...",
+    "orderNotFound": "Order not found",
+    "noProductsToReview": "No products to review",
+    "submitError": "An error occurred while submitting review",
+    "uploading": "Uploading...",
+    "ratingRequired": "Please select a rating",
+    "commentRequired": "Please enter your review",
+    "commentTooLong": "Review is too long (maximum 500 characters)",
+    "heightRequired": "Please enter your height",
+    "heightInvalid": "Invalid height (50-250 cm)",
+    "weightRequired": "Please enter your weight",
+    "weightInvalid": "Invalid weight (20-200 kg)",
+    "tooManyImages": "Maximum 5 files allowed (images + videos)",
+    "invalidFileType": "Only JPG, PNG, MP4, MOV files are accepted",
+    "imageSizeExceeded": "Image size exceeds 5MB",
+    "videoSizeExceeded": "Video size exceeds 50MB",
+    "productRating": "Product Rating:",
+    "fitLevelLabel": "Product Fit Level:",
+    "reviewContent": "Review Content:",
+    "productImages": "Product Images",
+    "submissionDate": "Review Submission Date:"
+  },
+  "accountDeletion": {
+    "pageTitle": "DELETE ACCOUNT PERMANENTLY",
+    "subtitle": "ACCOUNT DATA DELETION GUIDE",
+    "deleteAccount": "Delete account",
+    "deleteAccountShort": "Delete",
+    "intro": {
+      "number": "01",
+      "title": "YOUR RIGHT TO",
+      "subtitle": "DELETE DATA",
+      "description": "According to personal data protection regulations, you have the right to request permanent deletion of your account and all related data from CCHAT's system.",
+      "note": "When you log in with Facebook, we only store basic information such as name, email, and profile picture to create an account. You can request complete deletion of this data at any time."
+    },
+    "steps": {
+      "number": "02",
+      "title": "HOW TO REQUEST",
+      "subtitle": "ACCOUNT DELETION",
+      "step1": {
+        "number": "01",
+        "title": "Log in to your account",
+        "description": "Log in to your CCHAT account at cchat.vn"
+      },
+      "step2": {
+        "number": "02",
+        "title": "Go to account page",
+        "description": "Select \"Account Information\" to open your account management page"
+      },
+      "step3": {
+        "number": "03",
+        "title": "Confirm deletion",
+        "description": "Click \"Delete Account\", enter your name to confirm and complete the deletion"
+      }
+    },
+    "data": {
+      "number": "03",
+      "title": "DATA TO BE",
+      "subtitle": "PERMANENTLY DELETED",
+      "description": "When your account deletion request is processed, the following data will be permanently deleted and cannot be recovered:",
+      "items": {
+        "item1": "Personal information (name, email, phone number, address)",
+        "item2": "Order and transaction history",
+        "item3": "Wishlist and shopping cart",
+        "item4": "Product reviews and comments",
+        "item5": "Loyalty points and membership benefits",
+        "item6": "Facebook login data (if applicable)"
+      },
+      "warning": "Note: After deletion, you will not be able to recover your account or access any deleted data."
+    },
+    "form": {
+      "number": "04",
+      "title": "GO TO",
+      "subtitle": "ACCOUNT PAGE",
+      "description": "Please fill in the information below to submit an account deletion request. We will contact you via email to confirm.",
+      "redirectDescription": "To delete your account, please go to the account management page and select \"Delete Account\". You will need to confirm by entering your name.",
+      "goToAccount": "Go to Account Page",
+      "loginRequired": "Please log in to delete your account",
+      "loginRequiredDescription": "You need to log in to your account before you can request deletion.",
+      "email": "Registered account email",
+      "emailPlaceholder": "Enter your email",
+      "reason": "Reason for deletion (optional)",
+      "reasonPlaceholder": "Let us know why you want to delete your account...",
+      "submit": "Submit deletion request",
+      "submitting": "Submitting request...",
+      "success": "Account deletion request has been submitted successfully! We will process it within 30 business days.",
+      "contactNote": "For support, please contact support@cchat.vn"
+    },
+    "deleteDialog": {
+      "title": "Confirm Account Deletion",
+      "description": "This action cannot be undone. All your data will be permanently deleted.",
+      "confirmInstruction": "To confirm, please enter your name:",
+      "namePlaceholder": "Enter your name",
+      "nameNotMatch": "Name does not match",
+      "deleting": "Deleting...",
+      "success": "Account has been deleted successfully"
+    }
+  },
+  "termsPolicy": {
+    "pageTitle": "TERMS OF SERVICE",
+    "lastUpdated": "Last updated: January 1, 2025",
+    "intro": "Welcome to CCHAT. By accessing and using our website, you agree to comply with the following terms and conditions. Please read carefully before using our services.",
+    "section1": {
+      "title": "CONDITIONS OF USE",
+      "content1": "By accessing the website <highlight>cchat.vn</highlight>, you confirm that you are at least 18 years old or have parental/guardian consent to use our services.",
+      "content2": "You agree to use the website for lawful purposes and not to infringe on the rights of third parties.",
+      "content3": "CCHAT reserves the right to refuse service, terminate accounts, or cancel orders if any violation of these terms is detected."
+    },
+    "section2": {
+      "title": "USER ACCOUNTS",
+      "content1": "When registering an account, you must provide accurate information and update it when changes occur.",
+      "content2": "You are responsible for maintaining the security of your login credentials and all activities that occur under your account.",
+      "content3": "Each customer is only allowed to own <highlight>one account</highlight>. CCHAT reserves the right to cancel duplicate accounts.",
+      "content4": "If you detect unauthorized access to your account, please notify us immediately via hotline <highlight>0868 506 800</highlight>."
+    },
+    "section3": {
+      "title": "ORDERS AND PAYMENT",
+      "content1": "All orders placed on the website must follow CCHAT's confirmation process.",
+      "content2": "Product prices may change without prior notice. The applicable price is the price at the time of ordering.",
+      "content3": "CCHAT accepts the following payment methods: <highlight>COD (Cash on Delivery)</highlight>, bank transfer, and e-wallets.",
+      "content4": "We reserve the right to cancel orders if fraud or inaccurate information is detected.",
+      "content5": "Product colors displayed on the website may differ from reality due to screen configurations. This is not a product defect."
+    },
+    "section4": {
+      "title": "INTELLECTUAL PROPERTY",
+      "content1": "All content on the website including logos, images, text, and designs are the property of <highlight>CCHAT</highlight>.",
+      "content2": "It is prohibited to copy, distribute, or use website content for commercial purposes without written permission.",
+      "content3": "Trademarks and brands appearing on the website are the property of their respective owners."
+    },
+    "section5": {
+      "title": "LIMITATION OF LIABILITY",
+      "content1": "CCHAT is not responsible for any damages arising from the use or inability to use the website.",
+      "content2": "We do not guarantee that the website will operate continuously, error-free, or virus-free.",
+      "content3": "CCHAT is not responsible for the content of third-party websites linked from our website."
+    },
+    "section6": {
+      "title": "GENERAL TERMS",
+      "content1": "CCHAT reserves the right to change these terms at any time. Changes take effect immediately upon posting on the website.",
+      "content2": "These terms are governed by Vietnamese law. Any disputes will be resolved at the competent court in Vietnam.",
+      "content3": "If you have any questions about the terms of service, please contact:"
+    },
+    "contact": {
+      "email": "Email: support@cchat.vn",
+      "hotline": "Hotline: 0868 506 800 (8am - 5pm, all days)"
+    }
+  },
+  "faqPage": {
+    "pageTitle": "FREQUENTLY ASKED QUESTIONS",
+    "searchPlaceholder": "Search questions...",
+    "categories": {
+      "ordering": {
+        "title": "Ordering",
+        "questions": {
+          "q1": {
+            "question": "How do I place an order on CCHAT?",
+            "answer": "You can place an order by following these steps:\n1. Select a product and add it to your cart\n2. Click on the cart and review your order\n3. Fill in shipping information\n4. Choose a payment method\n5. Confirm your order\nAfter successful ordering, you will receive an email/SMS confirmation."
+          },
+          "q2": {
+            "question": "Can I cancel or modify my order?",
+            "answer": "You can cancel or modify your order within 2 hours after placing it by contacting hotline 0868 506 800. Once the order has been processed and handed over to the shipping carrier, changes cannot be made."
+          },
+          "q3": {
+            "question": "How do I check my order status?",
+            "answer": "You can check your order status by:\n- Logging into your account and going to \"My Orders\"\n- Using the tracking number sent via SMS/email to track on the carrier's website\n- Contacting hotline 0868 506 800 for assistance"
+          }
+        }
+      },
+      "payment": {
+        "title": "Payment",
+        "questions": {
+          "q1": {
+            "question": "What payment methods does CCHAT accept?",
+            "answer": "CCHAT accepts the following payment methods:\n- COD (Cash on Delivery)\n- Bank transfer\n- E-wallets (MoMo, ZaloPay, VNPay)\n- Credit/debit cards (Visa, Mastercard)"
+          },
+          "q2": {
+            "question": "Is payment on CCHAT secure?",
+            "answer": "All online payments on CCHAT are SSL encrypted and processed through reputable payment gateways. We do not store customer credit card information."
+          },
+          "q3": {
+            "question": "Can I get a VAT invoice?",
+            "answer": "Yes, CCHAT supports VAT invoice issuance for orders. Please provide company information when ordering or contact the hotline within 24 hours after receiving your order to request an invoice."
+          }
+        }
+      },
+      "shipping": {
+        "title": "Shipping",
+        "questions": {
+          "q1": {
+            "question": "How long does shipping take?",
+            "answer": "Shipping times:\n- Within Hanoi, HCMC: 1-2 days\n- Other provinces: 3-5 days\nTimes may be longer during holidays or due to unforeseen circumstances."
+          },
+          "q2": {
+            "question": "How much is the shipping fee?",
+            "answer": "Shipping fees depend on the area and order value:\n- Free shipping when purchasing 2 or more products\n- Orders under 2 products: shipping fee from 20,000đ - 40,000đ depending on area"
+          },
+          "q3": {
+            "question": "Can I choose a delivery time?",
+            "answer": "Currently, CCHAT does not support choosing specific delivery time slots. The delivery person will contact you before delivery to confirm. If you are not available, the order will be delivered again on the next business day."
+          }
+        }
+      },
+      "returns": {
+        "title": "Returns & Exchanges",
+        "questions": {
+          "q1": {
+            "question": "What is CCHAT's return policy?",
+            "answer": "CCHAT applies a return policy within 7 days from the date of receipt with the following conditions:\n- Product has not been used, still has tags and labels\n- Has invoice or order information\n- Does not apply to products on sale 50% or more"
+          },
+          "q2": {
+            "question": "How do I exchange a product size?",
+            "answer": "To exchange size, please:\n1. Contact hotline 0868 506 800 within 7 days from the date of receipt\n2. Pack the product carefully and send it to the store address\n3. CCHAT will send back the new size product within 3-5 days\nSize exchange shipping fee: Free for the first time"
+          },
+          "q3": {
+            "question": "When will I receive my refund?",
+            "answer": "After CCHAT receives and inspects the returned product:\n- Refund via bank account: 5-7 business days\n- Refund via e-wallet: 1-3 business days\n- Exchange for another product: sent within 3-5 days"
+          }
+        }
+      },
+      "products": {
+        "title": "Products",
+        "questions": {
+          "q1": {
+            "question": "How do I choose the right size?",
+            "answer": "CCHAT provides a detailed size chart for each product. You should:\n1. View the size chart in the product description\n2. Measure your body and compare with the size chart\n3. Refer to the size guide on the website\nIf still unsure, please contact the hotline for advice."
+          },
+          "q2": {
+            "question": "How should I care for the products?",
+            "answer": "To keep products looking great:\n- Machine wash on gentle cycle, cold water\n- Do not use strong bleach\n- Dry in shade, avoid direct sunlight\n- Iron at low temperature, inside out\nRefer to the care instructions on the product label."
+          },
+          "q3": {
+            "question": "Do CCHAT products have warranty?",
+            "answer": "CCHAT warrants products in case of manufacturer defects (stitching, zippers, buttons...) within 30 days from the date of purchase. Warranty does not cover damage due to improper use."
+          }
+        }
+      },
+      "account": {
+        "title": "Account",
+        "questions": {
+          "q1": {
+            "question": "How do I register an account?",
+            "answer": "You can register a CCHAT account by:\n1. Click on the account icon on the website\n2. Select \"Register\"\n3. Fill in information: full name, email, phone number, password\n4. Confirm via email/SMS\nOr register quickly with Facebook account."
+          },
+          "q2": {
+            "question": "I forgot my password, what should I do?",
+            "answer": "To recover your password:\n1. Click \"Forgot password\" on the login page\n2. Enter your registered email\n3. Check your email and click the reset link\n4. Create a new password\nIf you don't receive the email, check your spam folder or contact the hotline."
+          },
+          "q3": {
+            "question": "What is CCHAT's VIP program?",
+            "answer": "CCHAT VIP Program:\n- Earn 1% points on order value\n- Points can be exchanged for discount vouchers\n- VIP members get early sale access, birthday gifts\n- See details on the VIP Policy page"
+          }
+        }
+      }
+    },
+    "contact": {
+      "title": "Can't find your answer?",
+      "description": "Contact us for support:",
+      "hotline": "Hotline: 0868 506 800",
+      "hotlineTime": "(8am - 5pm, all days)",
+      "email": "Email: support@cchat.vn"
+    }
+  },
+  "guide": {
+    "title": "SHOPPING GUIDE",
+    "step1": {
+      "title": "SEARCH FOR FAVORITE PRODUCTS",
+      "description": "Customers can search for products in 2 ways:",
+      "method1": "Method 1: Enter PRODUCT CODE into the search bar",
+      "method2": "Method 2: Search by keywords",
+      "afterSearch": "After searching and selecting your favorite product, please choose COLOR - SIZE - QUANTITY of the product you want to buy. Then proceed to purchase by clicking the \"ADD TO CART\" button",
+      "cartSteps": "Once you have selected all the products you need, click on the \"CART\" icon in the top right corner of the screen. You can add/remove product quantities in the \"VIEW CART\" section and enter discount codes in the \"ENTER DISCOUNT CODE\" section (if available), then click \"PLACE ORDER\" to proceed with online ordering"
+    },
+    "step2": {
+      "title": "ORDER PAYMENT",
+      "description": "On the payment page, customers log in/create an account or fill in complete shipping information before proceeding to the next step",
+      "shippingTitle": "Nationwide delivery",
+      "shippingFee": "Shipping fees are based on order weight and delivery location",
+      "paymentTitle": "You can use one of the following 4 payment methods:",
+      "paymentMethods": {
+        "cod": "Cash on Delivery (COD)",
+        "onepayInternational": "OnePay International (Visa/Mastercard)",
+        "onepayDomestic": "OnePay Domestic (ATM Card)",
+        "qr": "QR Payment (VietQR)"
+      }
+    },
+    "step3": {
+      "title": "ORDER CONFIRMATION",
+      "case1": {
+        "title": "Case 1:",
+        "description": "For customers who already have an account on the Website and logged in before shopping",
+        "instructions": "After completing the online shopping process on the Website, please click on the account section in the top right corner of the screen, select \"ORDER HISTORY\" to track your order"
+      },
+      "case2": {
+        "title": "Case 2:",
+        "description": "For customers who do not have an account on the Website",
+        "instructions": "After completing the online shopping process on the Website, please register an account on the Website using the phone number used for ordering and follow the same order tracking steps as Case 1."
+      }
+    }
+  },
+  "notification": {
+    "title": "Notifications",
+    "markAllAsRead": "Mark all as read",
+    "noNotifications": "You have no notifications.",
+    "justNow": "Just now",
+    "minutesAgo": "{count}m ago",
+    "hoursAgo": "{count}h ago",
+    "daysAgo": "{count}d ago"
+  }
+}

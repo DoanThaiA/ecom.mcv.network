@@ -1,0 +1,105 @@
+name: frontend-build-gke-staging
+
+on:
+  push:
+    branches:
+      - staging
+    paths:
+      - frontend/version.json
+
+env:
+  GCP_DOCKER_REPO: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker/cchat-frontend
+  GCP_PROJECT: mmenu-api-prod
+  GKE_CLUSTER: k8s-cluster
+
+jobs:
+  build-image:
+    if: github.ref_name == 'staging'
+    runs-on: 'arc-runner-set'
+    services:
+      docker:
+        image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_dind:28
+        ports:
+          - 2375:2375
+        options: >-
+          --privileged
+          --env DOCKER_TLS_CERTDIR=
+    container:
+      image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_aws:28
+      env:
+        DOCKER_HOST: unix:///var/run/docker.sock
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            frontend
+      - name: before script
+        run: |
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d | docker login -u _json_key --password-stdin asia-southeast1-docker.pkg.dev
+      - name: Generate environment file
+        run: |
+          cd frontend
+          # Backup original .env
+          cp .env .env.backup || true
+
+          # Generate .env with correct API URL for staging
+          echo "NEXT_PUBLIC_API_URL=https://stagingcchatapi.mmenu.io/api/v1" > .env
+          echo "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dynm6h82h" >> .env
+          echo "NEXT_PUBLIC_WS_URL=wss://stagingcchatapi.mmenu.io" >> .env
+          echo "NEXT_PUBLIC_IMAGE_CDN_URL=https://cdn1.mmenu.io" >> .env
+          echo "NEXT_PUBLIC_IMAGE_CDN_ENABLED=false" >> .env
+
+          echo "Generated .env for staging environment"
+          cat .env
+      - name: build
+        run: |
+          cd frontend
+          CI_COMMIT_BRANCH=${{ github.ref_name }}
+          IMAGE_TAG=$CI_COMMIT_BRANCH-$(cat version.json | sed "s/[^0-9\.]//g" | sed '/^$/d')
+
+          echo "Build image ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG"
+          docker build -t ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG -t ${{ env.GCP_DOCKER_REPO }}:$CI_COMMIT_BRANCH -f Dockerfile .
+          docker push ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG
+          docker push ${{ env.GCP_DOCKER_REPO }}:$CI_COMMIT_BRANCH
+
+  deploy:
+    needs: build-image
+    if: always() && needs.build-image.result == 'success' && github.ref_name == 'staging'
+    runs-on: 'arc-runner-set'
+    services:
+      docker:
+        image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_dind:28
+        ports:
+          - 2375:2375
+        options: >-
+          --privileged
+          --env DOCKER_TLS_CERTDIR=
+    container:
+      image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_gcp:28
+      env:
+        DOCKER_HOST: unix:///var/run/docker.sock
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            frontend
+      - name: before script
+        run: |
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d | docker login -u _json_key --password-stdin asia-southeast1-docker.pkg.dev
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d > sa.json && gcloud auth activate-service-account ${{ secrets.GKE_CICD_SA }} --key-file sa.json --project=${{ env.GCP_PROJECT }}
+          gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region asia-southeast1
+      - name: deploy
+        run: |
+          cd frontend
+          CI_COMMIT_BRANCH=${{ github.ref_name }}
+          IMAGE_TAG=$CI_COMMIT_BRANCH-$(cat version.json | sed "s/[^0-9\.]*//g" | sed '/^$/d')
+          IMAGE_URL=${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG
+
+          echo "Deploy image ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG"
+          echo "Deploy $IMAGE_URL to staging deployments"
+          kubectl set image deployment/cchat-frontend-staging -n cchat cchat-frontend=$IMAGE_URL
+      - name: mark staging deploy success
+        run: |
+          curl -X POST https://webhook.mmenu.io/mark-deploy \
+            -H "Content-Type: application/json" \
+            -d "{\"project\":\"cchat-frontend\",\"commitSha\":\"${GITHUB_SHA}\"}"

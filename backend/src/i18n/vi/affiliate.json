@@ -1,0 +1,7 @@
+{
+  "phoneAlreadyExists": "Số điện thoại đã tồn tại",
+  "codeGenerationFailed": "Không thể tạo mã đại lý duy nhất",
+  "notFound": "Không tìm thấy đại lý",
+  "typeNotExists": "Loại đại lý không tồn tại",
+  "statusNotExists": "Trạng thái đại lý không tồn tại"
+}

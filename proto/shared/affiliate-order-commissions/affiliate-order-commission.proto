@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package shared.affiliate_order_commissions;
+
+import "google/protobuf/timestamp.proto";
+
+// Affiliate order commission customer info
+message AffiliateOrderCommissionCustomer {
+  string name  = 1;
+  string phone = 2;
+}
+
+// Affiliate order commission item (per-product commission detail)
+message AffiliateOrderCommissionItem {
+  string product_id        = 1;
+  string product_name      = 2;
+  string product_code      = 3;
+  int32  quantity          = 4;
+  double price             = 5;
+  double subtotal          = 6;
+  double commission_rate   = 7;
+  double commission_amount = 8;
+}
+
+// Affiliate order commission domain entity
+message AffiliateOrderCommission {
+  string                                id               = 1;
+  string                                order_id         = 2;
+  string                                order_number     = 3;
+  string                                order_status     = 4;
+  string                                affiliate_id     = 5;
+  string                                affiliate_code   = 6;
+  AffiliateOrderCommissionCustomer      customer         = 7;
+  repeated AffiliateOrderCommissionItem items            = 8;
+  double                                order_total      = 9;
+  double                                total_discount   = 10;
+  double                                payment_amount   = 11;
+  double                                total_commission = 12;
+  google.protobuf.Timestamp             created_at       = 13;
+  google.protobuf.Timestamp             updated_at       = 14;
+}

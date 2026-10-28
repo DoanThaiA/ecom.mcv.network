@@ -1,0 +1,257 @@
+syntax = "proto3";
+
+package customerRank;
+
+import "common.proto";
+
+message ChangeCustomerRankAction {
+  enum Action {
+    KEEP_CURRENT_RANK = 0;
+    CHANGE_RANK       = 1;
+  }
+
+  Action action           = 1;
+  string customer_rank_id = 2; // if action is CHANGE_RANK
+}
+
+message ChangeCumulativeAmountAction {
+  enum Action {
+    KEEP_CURRENT_CUMULATIVE_AMOUNT = 0;
+    SUBTRACT_CUMULATIVE_AMOUNT     = 1;
+    RESET_CUMULATIVE_AMOUNT        = 2;
+  }
+
+  Action action                = 1;
+  double subtraction_amount    = 2; // if action is SUBTRACT_CUMULATIVE_AMOUNT
+  double new_cumulative_amount = 3; // if action is RESET_CUMULATIVE_AMOUNT
+}
+
+message CustomerRank {
+  string          id                 = 1;
+  string          customer_rank_code = 2;
+  string          customer_rank_name = 3;
+  optional string status             = 4;
+  enum CustomerRankCondition {
+    UNKNOWN                            = 0;
+    PAYMENT_AMOUNT                     = 1;
+    NEW_CUSTOMER                       = 2;
+    PAYMENT_AMOUNT_AND_VISIT_FREQUENCY = 3;
+  }
+  CustomerRankCondition        customer_rank_condition            = 5;
+  double                       required_cumulative_payment_amount = 6; // if condition is PAYMENT_AMOUNT or PAYMENT_AMOUNT_AND_VISIT_FREQUENCY
+  string                       created_at_text                    = 7;
+  string                       updated_at_text                    = 8;
+  string                       color                              = 9;
+  string                       text_color                         = 10;
+  double                       point_earning_rate_per_bill        = 11;
+  optional bool                is_fixed_rank                      = 12;
+  ChangeCumulativeAmountAction after_achieving_rank_action        = 13;
+
+  optional bool                reset_rank_periodically                            = 14;
+  double                       reset_rank_required_cumulative_payment_amount      = 15;
+  ChangeCustomerRankAction     reset_rank_change_customer_rank_action             = 16;
+  ChangeCumulativeAmountAction reset_rank_change_cumulative_payment_amount_action = 17;
+  ChangeCumulativeAmountAction reset_rank_change_cumulative_point_amount_action   = 18;
+  ChangeCumulativeAmountAction reset_rank_after_achieving_rank_action             = 19;
+
+  repeated string promotion_codes                   = 20;
+  repeated string customer_codes                    = 21;
+  int32           required_visit_frequency_per_year = 22; // if condition is PAYMENT_AMOUNT_AND_VISIT_FREQUENCY
+}
+
+message CreateOrUpdateCustomerRankRequest {
+  string       brand_id      = 1;
+  CustomerRank customer_rank = 2;
+}
+
+message CreateOrUpdateCustomerRankResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message GetAllCustomerRanksRequest {
+  string brand_id     = 1;
+  string search_value = 2;
+  string status       = 3;
+  string sort_by      = 4;
+  string sort_order   = 5;
+  string brand_code   = 6;
+}
+
+message GetAllCustomerRanksResponse {
+  int32                 code           = 1;
+  string                message        = 2;
+  repeated CustomerRank customer_ranks = 3;
+}
+
+message GetCustomerRankByIdRequest {
+  string brand_id         = 1;
+  string customer_rank_id = 2;
+}
+
+message GetCustomerRankByIdResponse {
+  int32        code          = 1;
+  string       message       = 2;
+  CustomerRank customer_rank = 3;
+}
+
+message DeleteCustomerRankByIdRequest {
+  string brand_id         = 1;
+  string customer_rank_id = 2;
+}
+
+message DeleteCustomerRankByIdResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message GetCustomerRankDetailByCustomerIdRequest {
+  string brand_id    = 1;
+  string customer_id = 2;
+}
+
+message CustomerRankingHistory {
+  enum CustomerRankingAction {
+    UNKNOWN             = 0;
+    POINT_EARN          = 1;
+    POINT_EXCHANGE      = 2;
+    POINT_RECHARGE      = 3;
+    RANK_CHANGE         = 4;
+    POINT_DEDUCTION     = 5;
+    POINT_ORDER_PAYMENT = 6;
+    POINT_ORDER_CANCEL  = 7;
+    POINT_RESET         = 8;
+  }
+  string                created_at_text = 1;
+  CustomerRankingAction action_type     = 2;
+  string                merchant_name   = 3;
+  string                employee_name   = 4;
+  string                description     = 5;
+  string                brand_id        = 6;
+  string                customer_id     = 7;
+  string                customer_name   = 8;
+  string                customer_code   = 9;
+  string                customer_phone  = 10;
+}
+
+message GetCustomerRankDetailByCustomerIdResponse {
+  int32        code          = 1;
+  string       message       = 2;
+  CustomerRank customer_rank = 3;
+  message CustomerRankingInfo {
+    int64          customer_points          = 1;
+    int64          rank_start_time          = 2; // rank start day, epoch
+    optional int64 rank_reviewed_time       = 3; // most rank review date, epoch
+    optional int64 days_left_till_review    = 4; // how many days left till next review time
+    double         accumulated_spent_amount = 5; // how much money the customer spent
+    double         rank_maintain_amount     = 6; // how much money needed to keep rank
+    double         next_rank_spent_amount   = 7; // how much money need to upgrade rank (tong tich luy hang tiep theo - tong tich luy hien tai)
+    string         next_rank                = 8; // name of next rank
+  }
+  CustomerRankingInfo customer_ranking_info = 4;
+}
+
+message CreateCustomerRankHistoryByCustomerIdRequest {
+  CustomerRankingHistory customer_ranking_history = 1;
+  string                 customer_id              = 2;
+}
+
+message CreateCustomerRankHistoryByCustomerIdResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message GetCustomerRankHistoryByCustomerIdRequest {
+  string brand_id    = 1;
+  string customer_id = 2;
+  int32  page        = 3;
+  int32  limit       = 4;
+}
+
+message GetCustomerRankHistoryByCustomerIdResponse {
+  int32                           code                           = 1;
+  string                          message                        = 2;
+  repeated CustomerRankingHistory customer_ranking_history_items = 5;
+  common.PaginationResponse       pagination                     = 4;
+}
+
+message GetAllCustomerRankHistoryRequest {
+  string                                       brand_id    = 1;
+  int32                                        page        = 3;
+  int32                                        limit       = 4;
+  CustomerRankingHistory.CustomerRankingAction action_type = 5;
+  string                                       search_text = 6;
+  string                                       from        = 7;
+  string                                       to          = 8;
+}
+
+message GetAllCustomerRankHistoryResponse {
+  int32                           code                           = 1;
+  string                          message                        = 2;
+  repeated CustomerRankingHistory customer_ranking_history_items = 5;
+  common.PaginationResponse       pagination                     = 4;
+}
+
+message ExportCustomerRankHistoryExcelRequest {
+  string                                       brand_id    = 1;
+  CustomerRankingHistory.CustomerRankingAction action_type = 2;
+  string                                       search_text = 3;
+  // YYYY-MM-DD
+  string from = 4;
+  string to   = 5;
+}
+
+message ExportCustomerRankHistoryExcelResponse {
+  int32               code      = 1;
+  string              message   = 2;
+  common.FileResponse file_data = 3;
+}
+
+message ExportCustomerRankHistoryByCustomerIdExcelRequest{
+  string brand_id    = 1;
+  string customer_id = 2;
+}
+
+message ExportCustomerRankHistoryByCustomerIdExcelResponse{
+  int32               code      = 1;
+  string              message   = 2;
+  common.FileResponse file_data = 3;
+}
+
+message ImportCustomerCodesToCustomerRankRequest {
+  string brand_id         = 1;
+  string customer_rank_id = 2;
+  bytes  excel_file       = 3;
+}
+
+message ImportCustomerCodesToCustomerRankResponse {
+  int32           code           = 1;
+  string          message        = 2;
+  repeated string customer_codes = 3;
+}
+
+message ExportCustomerCodesFromCustomerRankRequest {
+  string brand_id         = 1;
+  string customer_rank_id = 2;
+}
+
+message ExportCustomerCodesFromCustomerRankResponse {
+  int32               code      = 1;
+  string              message   = 2;
+  common.FileResponse file_data = 3;
+}
+
+service CustomerRankRoutes {
+  rpc createOrUpdateCustomerRank(CreateOrUpdateCustomerRankRequest) returns (CreateOrUpdateCustomerRankResponse) {}
+  rpc getAllCustomerRanks(GetAllCustomerRanksRequest) returns (GetAllCustomerRanksResponse) {}
+  rpc getCustomerRankById(GetCustomerRankByIdRequest) returns (GetCustomerRankByIdResponse) {}
+  rpc deleteCustomerRankById(DeleteCustomerRankByIdRequest) returns (DeleteCustomerRankByIdResponse) {}
+  rpc GetCustomerRankDetailByCustomerId(GetCustomerRankDetailByCustomerIdRequest) returns (GetCustomerRankDetailByCustomerIdResponse) {}
+  rpc GetCustomerRankHistoryByCustomerId(GetCustomerRankHistoryByCustomerIdRequest) returns (GetCustomerRankHistoryByCustomerIdResponse) {}
+  rpc CreateCustomerRankHistoryByCustomerId(CreateCustomerRankHistoryByCustomerIdRequest) returns (CreateCustomerRankHistoryByCustomerIdResponse) {}
+  rpc getAllCustomerRankHistory(GetAllCustomerRankHistoryRequest) returns (GetAllCustomerRankHistoryResponse) {}
+  rpc ExportCustomerRankHistoryExcel(ExportCustomerRankHistoryExcelRequest) returns (ExportCustomerRankHistoryExcelResponse) {}
+  rpc exportCustomerRankHistoryByCustomerIdExcel(ExportCustomerRankHistoryByCustomerIdExcelRequest) returns (ExportCustomerRankHistoryByCustomerIdExcelResponse) {}
+  rpc importCustomerCodesToCustomerRank(ImportCustomerCodesToCustomerRankRequest) returns (ImportCustomerCodesToCustomerRankResponse) {}
+  rpc exportCustomerCodesFromCustomerRank(ExportCustomerCodesFromCustomerRankRequest) returns (ExportCustomerCodesFromCustomerRankResponse) {}
+}

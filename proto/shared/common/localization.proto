@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package shared.common;
+
+// Localization for multi-language support
+message Localization {
+  optional string vi = 1;  // Vietnamese text
+  optional string en = 2;  // English text
+  // Add more languages as needed: fr, zh, ja, etc.
+}

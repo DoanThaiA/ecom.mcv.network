@@ -1,0 +1,11 @@
+{
+  "notFound": "Không tìm thấy thông tin tồn kho",
+  "created": "Tạo tồn kho thành công",
+  "updated": "Cập nhật tồn kho thành công",
+  "deleted": "Xóa tồn kho thành công",
+  "syncStarted": "Bắt đầu đồng bộ tồn kho",
+  "syncCompleted": "Đồng bộ tồn kho hoàn tất",
+  "syncFailed": "Đồng bộ tồn kho thất bại",
+  "outOfStock": "Sản phẩm hết hàng",
+  "insufficientStock": "Không đủ số lượng tồn kho"
+}

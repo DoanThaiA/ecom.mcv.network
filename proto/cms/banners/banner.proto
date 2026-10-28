@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package cms.banners;
+
+import "shared/common/enums.proto";
+import "shared/banners/banner.proto";
+import "google/protobuf/empty.proto";
+
+// Create banner request
+message CreateBannerRequest {
+  shared.common.BannerPosition   position   = 1;
+  shared.common.BannerMediaType  media_type = 2;
+  shared.banners.ResponsiveMedia media      = 3;
+  optional string                link       = 4;
+  int32                          order      = 5;
+  optional bool                  is_active  = 6; // Default: true
+}
+
+// Update banner request
+message UpdateBannerRequest {
+  string                                  banner_id  = 1;
+  optional shared.common.BannerPosition   position   = 2;
+  optional shared.common.BannerMediaType  media_type = 3;
+  optional shared.banners.ResponsiveMedia media      = 4;
+  optional string                         link       = 5;
+  optional int32                          order      = 6;
+  optional bool                           is_active  = 7;
+}
+
+// Filter banner request
+message FilterBanner {
+  optional shared.common.BannerPosition position  = 1; // Filter by position
+  optional bool                         is_active = 2; // Filter by active status
+}
+
+// Sort banner request
+message SortBanner {
+  string order_by = 1; // 'order' | 'createdAt' | 'updatedAt'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query banners request
+message QueryBannersRequest {
+  optional int32        page    = 1;
+  optional int32        limit   = 2;
+  optional FilterBanner filters = 3;
+  repeated SortBanner   sort    = 4;
+}
+
+// Query banners response (paginated)
+message QueryBannersResponse {
+  repeated shared.banners.BannerListItem data          = 1;
+  bool                                   has_next_page = 2;
+  int32                                  total         = 3;
+  int32                                  page          = 4;
+  int32                                  limit         = 5;
+  int32                                  total_pages   = 6;
+}
+
+// Get banner by ID request
+message GetBannerRequest {
+  string banner_id = 1;
+}
+
+// Delete banner request
+message DeleteBannerRequest {
+  string banner_id = 1;
+}
+
+// Reorder banner item
+message ReorderBannerItem {
+  string banner_id = 1;
+  int32  order     = 2;
+}
+
+// Reorder banners request (bulk update order)
+message ReorderBannersRequest {
+  repeated ReorderBannerItem banners = 1;
+}
+
+// Banner service for CMS banner management
+service BannerService {
+  // Create a new banner
+  rpc CreateBanner(CreateBannerRequest) returns (shared.banners.Banner);
+
+  // Get banner by ID
+  rpc GetBanner(GetBannerRequest) returns (shared.banners.Banner);
+
+  // Query banners with pagination and filters
+  rpc QueryBanners(QueryBannersRequest) returns (QueryBannersResponse);
+
+  // Update banner
+  rpc UpdateBanner(UpdateBannerRequest) returns (shared.banners.Banner);
+
+  // Delete banner (soft delete)
+  rpc DeleteBanner(DeleteBannerRequest) returns (google.protobuf.Empty);
+
+  // Reorder banners (bulk update order)
+  rpc ReorderBanners(ReorderBannersRequest) returns (google.protobuf.Empty);
+}

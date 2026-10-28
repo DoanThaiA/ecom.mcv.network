@@ -1,0 +1,101 @@
+name: cms-build-gke
+
+on:
+  push:
+    branches:
+      - internal
+    paths:
+      - cms/version.json
+
+env:
+  GCP_DOCKER_REPO: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker/cchat-cms
+  GCP_PROJECT: mmenu-api-prod
+  GKE_CLUSTER: k8s-cluster
+
+jobs:
+  build-image:
+    if: github.ref_name == 'internal'
+    runs-on: 'arc-runner-set'
+    services:
+      docker:
+        image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_dind:28
+        ports:
+          - 2375:2375
+        options: >-
+          --privileged
+          --env DOCKER_TLS_CERTDIR=
+    container:
+      image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_aws:28
+      env:
+        DOCKER_HOST: unix:///var/run/docker.sock
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            cms
+      - name: before script
+        run: |
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d | docker login -u _json_key --password-stdin asia-southeast1-docker.pkg.dev
+      - name: Generate environment file
+        run: |
+          cd cms
+          # Backup original .env
+          cp .env .env.backup || true
+
+          # Generate .env with correct API URL for internal
+          echo "VITE_API_URL=https://internalcchatapi.mmenu.io/api/v1" > .env
+
+          echo "Generated .env for internal environment"
+          cat .env
+      - name: build
+        run: |
+          cd cms
+          CI_COMMIT_BRANCH=${{ github.ref_name }}
+          IMAGE_TAG=$CI_COMMIT_BRANCH-$(cat version.json | sed "s/[^0-9\.]//g" | sed '/^$/d')
+
+          echo "Build image ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG"
+          docker build -t ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG -t ${{ env.GCP_DOCKER_REPO }}:$CI_COMMIT_BRANCH -f Dockerfile .
+          docker push ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG
+          docker push ${{ env.GCP_DOCKER_REPO }}:$CI_COMMIT_BRANCH
+
+  deploy:
+    needs: build-image
+    if: always() && needs.build-image.result == 'success' && github.ref_name == 'internal'
+    runs-on: 'arc-runner-set'
+    services:
+      docker:
+        image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_dind:28
+        ports:
+          - 2375:2375
+        options: >-
+          --privileged
+          --env DOCKER_TLS_CERTDIR=
+    container:
+      image: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker-public/cicd_gcp:28
+      env:
+        DOCKER_HOST: unix:///var/run/docker.sock
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            cms
+      - name: before script
+        run: |
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d | docker login -u _json_key --password-stdin asia-southeast1-docker.pkg.dev
+          echo ${{ secrets.GKE_CICD_SA_KEY }} | base64 -d > sa.json && gcloud auth activate-service-account ${{ secrets.GKE_CICD_SA }} --key-file sa.json --project=${{ env.GCP_PROJECT }}
+          gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region asia-southeast1
+      - name: deploy
+        run: |
+          cd cms
+          CI_COMMIT_BRANCH=${{ github.ref_name }}
+          IMAGE_TAG=$CI_COMMIT_BRANCH-$(cat version.json | sed "s/[^0-9\.]*//g" | sed '/^$/d')
+          IMAGE_URL=${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG
+
+          echo "Deploy image ${{ env.GCP_DOCKER_REPO }}:$IMAGE_TAG"
+          echo "Deploy $IMAGE_URL to internal deployments"
+          kubectl set image deployment/cchat-cms-internal -n cchat cchat-cms=$IMAGE_URL
+      - name: mark internal deploy success
+        run: |
+          curl -X POST https://webhook.mmenu.io/mark-deploy \
+            -H "Content-Type: application/json" \
+            -d "{\"project\":\"cchat-cms\",\"commitSha\":\"${GITHUB_SHA}\"}"

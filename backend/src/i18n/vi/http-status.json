@@ -1,0 +1,9 @@
+{
+  "400": "Yêu cầu không hợp lệ",
+  "401": "Không có quyền truy cập",
+  "403": "Không được phép truy cập",
+  "404": "Không tôn tại",
+  "409": "Lỗi xung đột",
+  "422": "Sai định dạng",
+  "500": "Lỗi máy chủ"
+}

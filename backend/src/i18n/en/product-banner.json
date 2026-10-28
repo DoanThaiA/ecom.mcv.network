@@ -1,0 +1,8 @@
+{
+  "notFound": "Product banner not found",
+  "created": "Product banner created successfully",
+  "updated": "Product banner updated successfully",
+  "deleted": "Product banner deleted successfully",
+  "productsAssigned": "Products assigned successfully",
+  "productsRemoved": "Products removed successfully"
+}

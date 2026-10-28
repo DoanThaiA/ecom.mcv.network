@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package shop.affiliate_tracking;
+
+import "shared/affiliate-tracking/affiliate-tracking-event.proto";
+import "google/protobuf/empty.proto";
+
+// Track affiliate event request
+message TrackEventRequest {
+  string                                               affiliate_code = 1;
+  optional string                                      product_id     = 2;
+  optional shared.affiliate_tracking.TrackingEventType type           = 3; // Defaults to CLICK
+}
+
+// Affiliate tracking service (public — no authentication required)
+service AffiliateTrackingService {
+  // Track affiliate event (click, view, etc.)
+  // Deduplicates same (affiliateCode, sessionId, productId, type) within 30 minutes
+  // Headers: x-session-id (required), x-forwarded-for (optional), user-agent (optional)
+  rpc TrackEvent(TrackEventRequest) returns (google.protobuf.Empty);
+}

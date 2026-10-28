@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cchat-api-staging
+  namespace: cchat
+  labels:
+    app: cchat-backend
+    environment: staging
+data:
+  # App
+  NODE_ENV: "staging"
+  APP_PORT: "3000"
+  APP_NAME: "CChat E-Commerce API (Staging)"
+  API_PREFIX: "api"
+  APP_FALLBACK_LANGUAGE: "en"
+  APP_HEADER_LANGUAGE: "x-custom-lang"
+
+  # Domains
+  WEBSITE_DOMAIN: "https://stagingcchat.mmenu.io"
+  CMS_DOMAIN: "https://stagingcchatcms.mmenu.io"
+  BACKEND_DOMAIN: "https://stagingcchatapi.mmenu.io"
+
+  # Database
+  DATABASE_MAX_CONNECTIONS: "100"
+
+  # Cache
+  CACHE_TTL: "300000"
+
+  # Auth token expiry
+  AUTH_JWT_TOKEN_EXPIRES_IN: "7d"
+  AUTH_REFRESH_TOKEN_EXPIRES_IN: "3650d"
+  AUTH_FORGOT_TOKEN_EXPIRES_IN: "30m"
+  AUTH_CONFIRM_EMAIL_TOKEN_EXPIRES_IN: "1d"
+
+  # Mail
+  MAIL_HOST: "smtp.gmail.com"
+  MAIL_PORT: "587"
+
+  # S3
+  FILE_DRIVER: "s3"
+  AWS_DEFAULT_S3_BUCKET: "mmenu-dev"
+  AWS_S3_REGION: "ap-southeast-1"
+
+  # Nhanh
+  NHANH_OAUTH_URL: "https://nhanh.vn/oauth"
+  NHANH_API_URL: "https://pos.open.nhanh.vn"
+
+  # Proxy
+  VN_PROXY_URL: "https://proxy.mmenu.io"

@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package shared.popup_ads;
+
+import "google/protobuf/timestamp.proto";
+
+// Popup ads domain entity
+message PopupAds {
+  string                             id         = 1;
+  string                             image      = 2; // Image URL (773x464px)
+  google.protobuf.Timestamp          start_at   = 3; // Display start time
+  google.protobuf.Timestamp          end_at     = 4; // Display end time
+  string                             name       = 5; // Popup name
+  optional string                    link       = 6; // Optional click-through URL
+  int32                              order      = 7; // Display order (lower = displayed first)
+  bool                               is_active  = 8; // Active/Inactive status
+  google.protobuf.Timestamp          created_at = 9;
+  google.protobuf.Timestamp          updated_at = 10;
+  optional google.protobuf.Timestamp deleted_at = 11;
+}
+
+// Popup ads list item (for list views)
+message PopupAdsListItem {
+  string                    id         = 1;
+  string                    image      = 2;
+  google.protobuf.Timestamp start_at   = 3;
+  google.protobuf.Timestamp end_at     = 4;
+  string                    name       = 5;
+  optional string           link       = 6;
+  int32                     order      = 7;
+  bool                      is_active  = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+}

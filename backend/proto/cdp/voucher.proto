@@ -1,0 +1,521 @@
+syntax = "proto3";
+
+import "common.proto";
+import "merchant.proto";
+import "promotion.proto";
+
+package voucher;
+
+enum VoucherStatusForCustomer {
+  UNKNOWN   = 0;
+  AVAILABLE = 1;
+  USED      = 2;
+  EXPIRED   = 3;
+}
+
+enum VoucherExpiryDateType {
+  NO_EXPIRATION_DATE                 = 0;
+  SPECIFY_DATE                       = 1;
+  EXPIRY_AFTER_POINT_REDEMPTION_DATE = 2;
+}
+
+enum VoucherReleaseType {
+  LINK_WITH_POS       = 0; // liên kết POS
+  DISCOUNT_BY_INVOICE = 1; // giảm giá hoá đơn
+  DISCOUNT_BY_PRODUCT = 2; // giảm giá sản phẩm
+}
+
+enum VoucherExchangeType {
+  USE_PROMOTION_CODE  = 0; // link voi promotion pos thong qua promotion_code
+  USE_VOUCHER_RELEASE = 1; // link voi voucher release thong qua voucher_release_id
+}
+
+message VoucherDetail {
+  string                brand_id                           = 1;
+  string                voucher_id                         = 2;
+  string                voucher_code                       = 3; // 1 mã của voucher
+  string                voucher_name                       = 4;
+  string                voucher_image_url                  = 5;
+  string                description                        = 6;
+  optional double       exchange_cost                      = 7;
+  optional int32        voucher_no                         = 8;
+  bool                  enabled                            = 9;
+  string                promotion_code                     = 10; // mã bên POS
+  VoucherExpiryDateType voucher_expiry_date_type           = 11;
+    // SPECIFY_DATE = YYYY-MM-DD
+    // EXPIRY_AFTER_POINT_REDEMPTION_DATE = 30
+    // UNKNOWN_DATE = ""
+  string                expiry_date_value                  = 12;
+  repeated string       apply_merchants_id                 = 13;
+  VoucherExchangeType   voucher_type                       = 14;
+  string                voucher_release_id                 = 15; // id của voucher release lien ket voi voucher doi diem
+}
+
+message CustomerVoucher {
+  VoucherDetail            voucher_detail    = 1;
+  string                   transaction_id    = 2; // cdp transaction id
+  VoucherStatusForCustomer status            = 3;
+  string                   exchanged_at_text = 4;
+  string                   used_at_text      = 5;
+  string                   merchant_name     = 6;
+  string                   transaction_no    = 7; // bill no
+  optional string          available_from    = 8; // HH:MM DD/MM/YYYY nếu có
+}
+
+message CreateOrUpdateVoucherRequest {
+  VoucherDetail voucher_detail = 1;
+}
+
+message CreateOrUpdateVoucherResponse {
+  int32         code           = 1;
+  string        message        = 2;
+  VoucherDetail voucher_detail = 3;
+}
+
+message GetVoucherRequest {
+  int32  page     = 1;
+  int32  limit    = 2;
+  string brand_id = 3;
+  bool   enabled  = 4; // chỉ bao gồm các voucher đang hoạt động cho màn đổi voucher
+}
+
+message GetVoucherResponse {
+  int32                     code       = 1;
+  string                    message    = 2;
+  repeated VoucherDetail    vouchers   = 3;
+  common.PaginationResponse pagination = 4;
+}
+
+message DeleteVoucherRequest {
+  string brand_id   = 1;
+  string voucher_id = 2;
+}
+
+message DeleteVoucherResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+// use on mmenu api to apply voucher code
+message UseVoucherRequest {
+  string          voucher_code               = 1;
+  string          third_party_transaction_id = 2;
+  string          merchant_code              = 3;
+  string          transaction_no             = 4;
+  optional string customer_id                = 5;
+}
+
+message UseVoucherResponse {
+  int32               code           = 1;
+  string              message        = 2;
+  string              promotion_code = 3;
+  VoucherReleaseEvent voucher_detail = 4;
+}
+
+// check if voucher code can be used (without consuming usage)
+message CheckVoucherRequest {
+  string          voucher_code  = 1;
+  string          merchant_code = 2;
+  optional string customer_id   = 3;
+}
+
+message CheckVoucherResponse {
+  int32               code           = 1;
+  string              message        = 2;
+  bool                is_valid       = 3;
+  string              promotion_code = 4;
+  VoucherReleaseEvent voucher_detail = 5;
+}
+
+message RemoveVoucherFromOrderRequest {
+  string voucher_code = 1;
+}
+
+message RemoveVoucherFromOrderResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message ExchangeVoucherRequest {
+  string customer_id = 1;
+  string voucher_id  = 2;
+}
+
+message ExchangeVoucherResponse {
+  int32           code    = 1;
+  string          message = 2;
+  CustomerVoucher voucher = 3;
+}
+
+message GetCustomerVoucherRequest {
+  int32                                     page        = 1;
+  int32                                     limit       = 2;
+  string                                    customer_id = 3;
+  repeated voucher.VoucherStatusForCustomer types       = 4;
+  string                                    from        = 5;
+  string                                    to          = 6;
+  string                                    brand_id    = 7;
+  string                                    merchant_id = 8;
+}
+
+message GetCustomerVoucherResponse {
+  int32                            code       = 1;
+  string                           message    = 2;
+  repeated voucher.CustomerVoucher vouchers   = 3;
+  common.PaginationResponse        pagination = 4;
+}
+
+message GetVoucherDetailRequest {
+  string voucher_id = 1;
+}
+
+message GetVoucherDetailResponse {
+  int32         code           = 1;
+  string        message        = 2;
+  VoucherDetail voucher_detail = 3;
+}
+
+enum VoucherReleaseLimitType {
+  LIMITED   = 0; // Có giới hạn số lượng mã phát hành (mặc định)
+  UNLIMITED = 1; // Không giới hạn số lượng mã
+}
+
+message TimeRange {
+  string from = 1;
+  string to   = 2;
+}
+
+message VoucherReleaseEvent {
+  string voucher_id                 = 1;
+  string brand_id                   = 2;
+  string start_date                 = 3;
+  string end_date                   = 4;
+  string voucher_event_name         = 5;
+  int32  total_voucher_released     = 6;
+  int32  total_voucher_used         = 7;
+  string promotion_code             = 8;
+  int32  max_usage_per_voucher_code = 9;
+    // dowload link
+  string             url          = 10;
+  VoucherReleaseType voucher_type = 11;
+    // Giá trị hoá đơn tối thiểu cần đạt (VNĐ)
+  optional double minimum_order_value = 12;
+    // Số lượng sản phẩm cần mua
+  optional int32 minimum_product_quantity = 13;
+    // Sản phẩm cần mua, tổng số lượng >= minimum_product_quantity, và bắt buộc có sản phẩm mà required = true
+  repeated RequiredProduct required_products = 14;
+    // Không áp dụng kèm các khuyến mại khác
+  bool not_applicable_with_other_promotions = 15;
+    // loại giảm giá
+  common.UnitType discount_type = 16;
+    // Giá trị giảm (% hoặc số tiền)
+  double discount_value = 17;
+    // Giảm giá tối đa (chỉ áp dụng khi giảm theo %)
+  optional double max_discount_value = 18;
+    // giam gia san pham
+  optional int32 max_discount_product_quantity = 19;
+    // cac san pham, danh muc dc giam gia
+  repeated ApplicableDiscountProduct         applicable_products           = 20;
+  repeated ApplicableDiscountProductCategory applicable_product_categories = 21;
+    // giam gia sau thue
+  bool                    discount_after_tax         = 22;
+  repeated string         apply_merchants_id         = 23; // merchants áp dụng
+  string                  status                     = 24;
+  VoucherReleaseLimitType voucher_release_limit_type = 25;
+  repeated string         days_of_week_applied       = 26; // 0..6
+  repeated TimeRange      hours_applied              = 27;
+  repeated string         exclude_dates              = 28;
+  optional bool           one_voucher_per_customer   = 29;
+}
+
+message GetVoucherReleaseRequest {
+  string           brand_id    = 1;
+  string           start_date  = 2;
+  string           end_date    = 3;
+  string           search_text = 4;
+  int32            page        = 5;
+  int32            limit       = 6;
+  common.SortOrder sort_order  = 7;
+  string           sort_field  = 8;
+}
+
+message GetVoucherReleaseResponse {
+  int32                        code                   = 1;
+  string                       message                = 2;
+  repeated VoucherReleaseEvent voucher_release_events = 3;
+  common.PaginationResponse    pagination             = 4;
+}
+
+message ChangeVoucherReleaseStatusRequest {
+  string voucher_release_id = 1;
+  string status             = 2;
+}
+
+message ChangeVoucherReleaseStatusResponse {
+  int32               code                          = 1;
+  string              message                       = 2;
+  VoucherReleaseEvent updated_voucher_release_event = 3;
+}
+
+message ApplicableDiscountProduct {
+  string sku_code = 1;
+  string name     = 2;
+}
+
+message ApplicableDiscountProductCategory {
+  string code = 1;
+  string name = 2;
+}
+
+message RequiredProduct {
+  string sku_code = 1;
+  string name     = 2;
+  bool   required = 3; // bat buoc can mua
+}
+
+message CreateVoucherReleaseRequest {
+  string brand_id           = 1;
+  string voucher_event_name = 2;
+    // YYYY-MM-DD
+  string start_date = 3;
+    // YYYY-MM-DD
+  string end_date       = 4;
+  string promotion_code = 5;
+    // số lượng lần sử dụng cho mỗi code
+  int32 max_usage_per_voucher_code = 6;
+    // hình thức tạo mã
+  bool is_created_by_user = 7;
+    // mã voucher nếu tạo bởi người dùng
+  repeated string voucher_codes = 8;
+    // hệ thống tạo mã
+    // số lượng mã + độ dài
+  int32              release_voucher_code_count = 9;
+  int32              voucher_code_length        = 10;
+  VoucherReleaseType voucher_type               = 11;
+    // Giá trị hoá đơn tối thiểu cần đạt (VNĐ)
+  optional double minimum_order_value = 12;
+    // Số lượng sản phẩm cần mua
+  optional int32 minimum_product_quantity = 13;
+    // Sản phẩm cần mua, tổng số lượng >= minimum_product_quantity, và bắt buộc có sản phẩm mà required = true
+  repeated RequiredProduct required_products = 14;
+    // Không áp dụng kèm các khuyến mại khác
+  bool not_applicable_with_other_promotions = 15;
+    // loại giảm giá
+  common.UnitType discount_type = 16;
+    // Giá trị giảm (% hoặc số tiền)
+  double discount_value = 17;
+    // Giảm giá tối đa (chỉ áp dụng khi giảm theo %)
+  optional double max_discount_value = 18;
+    // giam gia san pham
+  optional int32 max_discount_product_quantity = 19;
+    // cac san pham, danh muc dc giam gia
+  repeated ApplicableDiscountProduct         applicable_products           = 20;
+  repeated ApplicableDiscountProductCategory applicable_product_categories = 21;
+    // giam gia sau thue
+  bool                    discount_after_tax         = 22;
+  repeated string         apply_merchants_id         = 23; // merchants áp dụng
+  VoucherReleaseLimitType voucher_release_limit_type = 24;
+  repeated string         days_of_week_applied       = 25; // 0..6
+  repeated TimeRange      hours_applied              = 26;
+  repeated string         exclude_dates              = 27;
+  optional bool           one_voucher_per_customer   = 28;
+}
+
+message CreateVoucherReleaseResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message GetVoucherReleaseCodesRequest {
+  string voucher_release_event_id = 1;
+}
+
+message GetVoucherReleaseCodesResponse {
+  int32               code      = 1;
+  string              message   = 2;
+  common.FileResponse file_data = 3;
+}
+
+enum GiftCardStatus {
+  GIFT_CARD_UNUSED  = 0;
+  GIFT_CARD_USED    = 1;
+  GIFT_CARD_EXPIRED = 2;
+}
+
+message GiftCardHistory {
+  string transaction_no = 1;
+  string merchant_name  = 2;
+  string used_at_text   = 3;
+  double used_value     = 4;
+}
+
+message GiftCard {
+  string                   gift_card_code      = 1;
+  string                   created_at_text     = 2;
+  string                   expired_at_text     = 3;
+  double                   original_card_value = 4;
+  double                   current_card_value  = 5;
+  GiftCardStatus           status              = 6;
+  repeated GiftCardHistory gift_card_histories = 7;
+  int32                    limit_value         = 8;
+}
+
+message CreateGiftCardRequest {
+  string brand_id      = 1;
+  int32  card_quantity = 2;
+  double card_value    = 3;
+
+    // Hạn sử dụng
+  VoucherExpiryDateType voucher_expiry_date_type           = 4;
+    // SPECIFY_DATE = YYYY-MM-DD
+    // EXPIRY_AFTER_POINT_REDEMPTION_DATE = 30
+    // UNKNOWN_DATE = ""
+  string                expiry_date_value                  = 5;
+
+    // Giới hạn sử dụng
+    // không gửi -> không giới hạn
+    // gửi x -> giới hạn x hoá đơn
+  optional int32 limit_value = 6;
+}
+
+message CreateGiftCardResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message GetGiftCardsRequest {
+  int32                   page         = 1;
+  int32                   limit        = 2;
+  string                  brand_id     = 3;
+  string                  from         = 4;
+  string                  to           = 5;
+  string                  search_value = 6;
+  repeated GiftCardStatus types        = 7;
+}
+
+message GetGiftCardsResponse {
+  int32                     code       = 1;
+  string                    message    = 2;
+  repeated GiftCard         gift_cards = 3;
+  common.PaginationResponse pagination = 4;
+}
+
+message GetGiftCardByCodeRequest {
+  string brand_code     = 1;
+  string gift_card_code = 2;
+}
+
+message GetGiftCardByCodeResponse {
+  int32    code      = 1;
+  string   message   = 2;
+  GiftCard gift_card = 3;
+}
+
+message UseGiftCardRequest {
+  string brand_code                 = 1;
+  string gift_card_code             = 2;
+  double use_value                  = 3;
+  string third_party_transaction_id = 4;
+  string merchant_code              = 5;
+  string transaction_no             = 6;
+  string customer_id                = 7;
+}
+
+message UseGiftCardResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message RemoveGiftCardRequest {
+  string brand_code                 = 1;
+  string gift_card_code             = 2;
+  string third_party_transaction_id = 3;
+}
+
+message RemoveGiftCardResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+message GetGiftCardExcelDataRequest {
+  string                  brand_id     = 1;
+  string                  from         = 2;
+  string                  to           = 3;
+  string                  search_value = 4;
+  repeated GiftCardStatus types        = 5;
+}
+
+message GetGiftCardExcelDataResponse {
+  int32               code      = 1;
+  string              message   = 2;
+  common.FileResponse file_data = 3;
+}
+
+message UpdateCustomerVoucherForTransactionRequest {
+  string brand_code = 1;
+  message CdpVoucher {
+    string                                     voucher_code             = 1;
+    double                                     discount_amount          = 2;
+    repeated promotion.ProductAppliedPromotion productAppliedPromotions = 3;
+  }
+  repeated CdpVoucher cdp_vouchers         = 2;
+  string              transaction_start_at = 3; // date string
+  string              transaction_end_at   = 4; // date string
+  double              subtotal_with_tax    = 5;
+  bool                is_cancel            = 6;
+  string              transaction_no       = 7;
+}
+
+message UpdateCustomerVoucherForTransactionResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+// Assign a voucher to a customer
+message SaveCustomerVoucherRequest {
+  string voucher_id  = 1; // voucher release id
+  string code        = 2; // voucher code
+  string customer_id = 3; // customer id
+}
+
+message SaveCustomerVoucherResponse {
+  int32  code    = 1;
+  string message = 2;
+}
+
+// Get a list of available voucher codes (not yet assigned to customers)
+message GetAvailableVoucherCodesRequest {
+  string voucher_id = 1;
+  int32  limit      = 2;
+}
+
+message GetAvailableVoucherCodesResponse {
+  int32           code          = 1;
+  string          message       = 2;
+  repeated string voucher_codes = 3;
+}
+
+service VoucherRoutes {
+  rpc createOrUpdateVoucher(CreateOrUpdateVoucherRequest) returns (CreateOrUpdateVoucherResponse) {}
+  rpc getVouchers(GetVoucherRequest) returns (GetVoucherResponse) {}
+  rpc deleteVoucher(DeleteVoucherRequest) returns (DeleteVoucherResponse) {}
+  rpc useVoucher(UseVoucherRequest) returns (UseVoucherResponse) {}
+  rpc checkVoucher(CheckVoucherRequest) returns (CheckVoucherResponse) {}
+  rpc removeVoucherFromOrder(RemoveVoucherFromOrderRequest) returns (RemoveVoucherFromOrderResponse) {}
+  rpc exchangeVoucher(ExchangeVoucherRequest) returns (ExchangeVoucherResponse) {}
+  rpc getCustomerVoucher(GetCustomerVoucherRequest) returns (GetCustomerVoucherResponse) {}
+  rpc getVoucherDetail(GetVoucherDetailRequest) returns (GetVoucherDetailResponse) {}
+  rpc getVoucherRelease(GetVoucherReleaseRequest) returns (GetVoucherReleaseResponse) {}
+  rpc createVoucherRelease(CreateVoucherReleaseRequest) returns (CreateVoucherReleaseResponse) {}
+  rpc getVoucherReleaseCodes(GetVoucherReleaseCodesRequest) returns (GetVoucherReleaseCodesResponse) {}
+  rpc createGiftCard(CreateGiftCardRequest) returns (CreateGiftCardResponse) {}
+  rpc getGiftCards(GetGiftCardsRequest) returns (GetGiftCardsResponse) {}
+  rpc getGiftCardByCode(GetGiftCardByCodeRequest) returns (GetGiftCardByCodeResponse) {}
+  rpc useGiftCard(UseGiftCardRequest) returns (UseGiftCardResponse) {}
+  rpc removeGiftCard(RemoveGiftCardRequest) returns (RemoveGiftCardResponse ) {}
+  rpc getGiftCardExcelData(GetGiftCardExcelDataRequest) returns (GetGiftCardExcelDataResponse) {}
+  rpc changeVoucherReleaseStatus(ChangeVoucherReleaseStatusRequest) returns (ChangeVoucherReleaseStatusResponse) {}
+  rpc updateCustomerVoucher(UpdateCustomerVoucherForTransactionRequest) returns (UpdateCustomerVoucherForTransactionResponse) {}
+  rpc saveCustomerVoucher(SaveCustomerVoucherRequest) returns (SaveCustomerVoucherResponse) {}
+  rpc getAvailableVoucherCodes(GetAvailableVoucherCodesRequest) returns (GetAvailableVoucherCodesResponse) {}
+}

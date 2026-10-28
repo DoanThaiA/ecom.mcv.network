@@ -1,0 +1,52 @@
+{
+  "addresses": [
+    {
+      "_id": "695744ad9c7709dfed33b25b",
+      "userId": "6956a42daee8d523921d7051",
+      "fullName": "dang",
+      "phone": "0338729801",
+      "email": "nguyenkhoadang112000@gmail.com",
+      "notes": "asdasd",
+      "street": "145 Lê Quang Định",
+      "cityId": 255,
+      "cityName": "Hồ Chí Minh",
+      "districtId": 360,
+      "districtName": "Quận Bình Thạnh",
+      "wardId": 10341,
+      "wardName": "Phường 1",
+      "isDefault": true
+    },
+    {
+      "_id": "6957456c9c7709dfed33b2c9",
+      "userId": "694e349846293c5fc625a429",
+      "fullName": "â",
+      "phone": "0921241211",
+      "email": "mail@gmail.com",
+      "notes": "a",
+      "street": "a",
+      "cityId": 312,
+      "cityName": "Đà Nẵng",
+      "districtId": 374,
+      "districtName": "Quận Cẩm Lệ",
+      "wardId": 7946,
+      "wardName": "Phường Hòa Thọ Đông",
+      "isDefault": false
+    }
+  ],
+  "singleAddress": {
+    "_id": "695744ad9c7709dfed33b25b",
+    "userId": "6956a42daee8d523921d7051",
+    "fullName": "dang",
+    "phone": "0338729801",
+    "email": "nguyenkhoadang112000@gmail.com",
+    "notes": "asdasd",
+    "street": "145 Lê Quang Định",
+    "cityId": 255,
+    "cityName": "Hồ Chí Minh",
+    "districtId": 360,
+    "districtName": "Quận Bình Thạnh",
+    "wardId": 10341,
+    "wardName": "Phường 1",
+    "isDefault": true
+  }
+}

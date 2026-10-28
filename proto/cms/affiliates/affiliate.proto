@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+package cms.affiliates;
+
+import "shared/common/enums.proto";
+import "shared/affiliates/affiliate.proto";
+import "google/protobuf/empty.proto";
+
+// Create affiliate DTO
+message CreateAffiliateRequest {
+  string                      name                    = 1;
+  shared.common.AffiliateType type                    = 2;
+  string                      email                   = 3;
+  string                      phone                   = 4;
+  optional string             bank_account_holder     = 5;
+  optional string             bank_name               = 6;
+  optional string             bank_account_number     = 7;
+  optional string             citizen_id              = 8;
+  optional string             notes                   = 9;
+  optional double             default_commission_rate = 10;
+  optional bool               auto_update_products    = 11;
+}
+
+// Update affiliate DTO
+message UpdateAffiliateRequest {
+  string                                 affiliate_id            = 1;
+  optional string                        name                    = 2;
+  optional shared.common.AffiliateType   type                    = 3;
+  optional string                        email                   = 4;
+  optional string                        phone                   = 5;
+  optional string                        bank_account_holder     = 6;
+  optional string                        bank_name               = 7;
+  optional string                        bank_account_number     = 8;
+  optional string                        citizen_id              = 9;
+  optional string                        notes                   = 10;
+  optional shared.common.AffiliateStatus status                  = 11;
+  optional double                        default_commission_rate = 12;
+  optional bool                          auto_update_products    = 13;
+}
+
+// Filter affiliate DTO
+message FilterAffiliate {
+  optional string                        search   = 1; // Search by name, phone, affiliate code
+  repeated shared.common.AffiliateStatus statuses = 2;
+  repeated shared.common.AffiliateType   types    = 3;
+}
+
+// Sort affiliate DTO
+message SortAffiliate {
+  string order_by = 1; // 'name' | 'createdAt' | 'type' | 'status'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query affiliates request
+message QueryAffiliatesRequest {
+  optional int32           page    = 1;
+  optional int32           limit   = 2;
+  optional FilterAffiliate filters = 3;
+  repeated SortAffiliate   sort    = 4;
+}
+
+// Query affiliates response (paginated)
+message QueryAffiliatesResponse {
+  repeated shared.affiliates.AffiliateListItem data          = 1;
+  bool                                         has_next_page = 2;
+  int32                                        total         = 3;
+  int32                                        page          = 4;
+  int32                                        limit         = 5;
+  int32                                        total_pages   = 6;
+}
+
+// Get affiliate by ID request
+message GetAffiliateRequest {
+  string affiliate_id = 1;
+}
+
+// Delete affiliate request (soft delete)
+message DeleteAffiliateRequest {
+  string affiliate_id = 1;
+}
+
+// Affiliate service for CMS affiliate management
+service AffiliateService {
+  // Create a new affiliate
+  rpc CreateAffiliate(CreateAffiliateRequest) returns (shared.affiliates.Affiliate);
+
+  // Get affiliate by ID
+  rpc GetAffiliate(GetAffiliateRequest) returns (shared.affiliates.Affiliate);
+
+  // Query affiliates with pagination
+  rpc QueryAffiliates(QueryAffiliatesRequest) returns (QueryAffiliatesResponse);
+
+  // Update affiliate
+  rpc UpdateAffiliate(UpdateAffiliateRequest) returns (shared.affiliates.Affiliate);
+
+  // Delete affiliate (soft delete)
+  rpc DeleteAffiliate(DeleteAffiliateRequest) returns (google.protobuf.Empty);
+}

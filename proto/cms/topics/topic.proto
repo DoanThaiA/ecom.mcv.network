@@ -1,0 +1,239 @@
+syntax = "proto3";
+
+package cms.topics;
+
+import "shared/common/enums.proto";
+import "shared/common/localization.proto";
+import "shared/topics/topic.proto";
+import "google/protobuf/empty.proto";
+
+// Create topic product DTO
+message CreateTopicProduct {
+  string         product_id = 1;
+  optional int32 order      = 2;
+}
+
+// Create topic category DTO
+message CreateTopicCategory {
+  string         category_id = 1;
+  optional int32 order       = 2;
+}
+
+// Create topic banner DTO
+message CreateTopicBanner {
+  shared.common.BannerMediaType      media_type = 1; // IMAGE or VIDEO
+  shared.topics.TopicBannerMedia     media      = 2; // Responsive media URLs
+  optional string                    link       = 3; // Optional click URL
+  optional int32                     order      = 4; // Display order
+}
+
+// Create topic request
+message CreateTopicRequest {
+  string                              name        = 1;
+  optional string                     slug        = 2;  // Auto-generated from name if not provided
+  optional string                     description = 3;
+  optional string                     image       = 4;
+  optional int32                      order       = 5;
+  optional shared.common.TopicStatus  status      = 6;
+  repeated CreateTopicProduct         products    = 7;
+  optional shared.common.Localization localization = 8;
+  optional shared.common.TopicType    type        = 9;  // product, category or banner
+  repeated CreateTopicCategory        categories  = 10;
+  repeated CreateTopicBanner          banners     = 11; // Banner items (only when type=banner)
+}
+
+// Update topic request
+message UpdateTopicRequest {
+  string                             topic_id    = 1;
+  optional string                    name        = 2;
+  optional string                    slug        = 3;
+  optional string                    description = 4;
+  optional string                    image       = 5;
+  optional int32                     order       = 6;
+  optional shared.common.TopicStatus status      = 7;
+  optional shared.common.Localization localization = 8;  // Localization
+}
+
+// Filter topic DTO
+message FilterTopic {
+  optional string                    search = 1;
+  optional shared.common.TopicStatus status = 2;
+}
+
+// Sort topic DTO
+message SortTopic {
+  string order_by = 1; // 'createdAt' | 'name' | 'order'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query topics request
+message QueryTopicsRequest {
+  optional int32       page    = 1;
+  optional int32       limit   = 2;
+  optional FilterTopic filters = 3;
+  repeated SortTopic   sort    = 4;
+}
+
+// Query topics response (paginated)
+message QueryTopicsResponse {
+  repeated shared.topics.Topic data          = 1;
+  bool                         has_next_page = 2;
+  int32                        total         = 3;
+  int32                        page          = 4;
+  int32                        limit         = 5;
+  int32                        total_pages   = 6;
+}
+
+// Get topic by ID request
+message GetTopicRequest {
+  string topic_id = 1;
+}
+
+// Delete topic request
+message DeleteTopicRequest {
+  string topic_id = 1;
+}
+
+// Add products to topic request
+message AddProductsToTopicRequest {
+  string                      topic_id = 1;
+  repeated CreateTopicProduct products = 2;
+}
+
+// Remove products from topic request
+message RemoveProductsFromTopicRequest {
+  string          topic_id    = 1;
+  repeated string product_ids = 2;
+}
+
+// Add categories to topic request
+message AddCategoriesToTopicRequest {
+  string                       topic_id   = 1;
+  repeated CreateTopicCategory categories = 2;
+}
+
+// Remove categories from topic request
+message RemoveCategoriesFromTopicRequest {
+  string          topic_id     = 1;
+  repeated string category_ids = 2;
+}
+
+// Reorder category in topic item
+message ReorderCategoryItem {
+  string category_id = 1;
+  int32  order       = 2;
+}
+
+// Reorder categories in topic request
+message ReorderTopicCategoriesRequest {
+  string                       topic_id   = 1;
+  repeated ReorderCategoryItem categories = 2;
+}
+
+// Reorder product in topic item
+message ReorderProductItem {
+  string product_id = 1;
+  int32  order      = 2;
+}
+
+// Reorder products in topic request
+message ReorderTopicProductsRequest {
+  string                      topic_id = 1;
+  repeated ReorderProductItem products = 2;
+}
+
+// Reorder topic item
+message ReorderTopicItem {
+  string topic_id = 1;
+  int32  order    = 2;
+}
+
+// Reorder topics request
+message ReorderTopicsRequest {
+  repeated ReorderTopicItem topics = 1;
+}
+
+// Update a single banner in topic request
+message UpdateTopicBannerRequest {
+  string                             topic_id   = 1;
+  string                             banner_id  = 2;
+  optional shared.common.BannerMediaType media_type = 3;
+  optional shared.topics.TopicBannerMedia media     = 4;
+  optional string                    link       = 5;
+  optional int32                     order      = 6;
+}
+
+// Add banners to topic request
+message AddBannersToTopicRequest {
+  string                      topic_id = 1;
+  repeated CreateTopicBanner  banners  = 2;
+}
+
+// Remove banners from topic request
+message RemoveBannersFromTopicRequest {
+  string          topic_id   = 1;
+  repeated string banner_ids = 2;
+}
+
+// Reorder banner in topic item
+message ReorderBannerItem {
+  string banner_id = 1;
+  int32  order     = 2;
+}
+
+// Reorder banners in topic request
+message ReorderTopicBannersRequest {
+  string                      topic_id = 1;
+  repeated ReorderBannerItem  banners  = 2;
+}
+
+// Topic service for CMS topic management
+service TopicService {
+  // Create a new topic
+  rpc CreateTopic(CreateTopicRequest) returns (shared.topics.Topic);
+
+  // Get topic by ID
+  rpc GetTopic(GetTopicRequest) returns (shared.topics.Topic);
+
+  // Query topics with pagination
+  rpc QueryTopics(QueryTopicsRequest) returns (QueryTopicsResponse);
+
+  // Update topic
+  rpc UpdateTopic(UpdateTopicRequest) returns (shared.topics.Topic);
+
+  // Delete topic (soft delete)
+  rpc DeleteTopic(DeleteTopicRequest) returns (google.protobuf.Empty);
+
+  // Add products to topic
+  rpc AddProductsToTopic(AddProductsToTopicRequest) returns (shared.topics.Topic);
+
+  // Remove products from topic
+  rpc RemoveProductsFromTopic(RemoveProductsFromTopicRequest) returns (shared.topics.Topic);
+
+  // Reorder products within a topic
+  rpc ReorderTopicProducts(ReorderTopicProductsRequest) returns (shared.topics.Topic);
+
+  // Add categories to topic
+  rpc AddCategoriesToTopic(AddCategoriesToTopicRequest) returns (shared.topics.Topic);
+
+  // Remove categories from topic
+  rpc RemoveCategoriesFromTopic(RemoveCategoriesFromTopicRequest) returns (shared.topics.Topic);
+
+  // Reorder categories within a topic
+  rpc ReorderTopicCategories(ReorderTopicCategoriesRequest) returns (shared.topics.Topic);
+
+  // Bulk reorder topics
+  rpc ReorderTopics(ReorderTopicsRequest) returns (google.protobuf.Empty);
+
+  // Update a single banner in topic
+  rpc UpdateTopicBanner(UpdateTopicBannerRequest) returns (shared.topics.Topic);
+
+  // Add banners to topic
+  rpc AddBannersToTopic(AddBannersToTopicRequest) returns (shared.topics.Topic);
+
+  // Remove banners from topic
+  rpc RemoveBannersFromTopic(RemoveBannersFromTopicRequest) returns (shared.topics.Topic);
+
+  // Reorder banners within a topic
+  rpc ReorderTopicBanners(ReorderTopicBannersRequest) returns (shared.topics.Topic);
+}

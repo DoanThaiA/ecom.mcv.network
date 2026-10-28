@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package cms.zalo;
+
+// Zalo OA callback DTO
+message ZaloOaCallback {
+  string code = 1;
+}
+
+// Zalo OA info DTO
+message ZaloOaInfo {
+  string oa_id        = 1;
+  string name         = 2;
+  string description  = 3;
+  string cate_name    = 4;
+  int32  num_follower = 5;
+  string avatar       = 6;
+  string cover        = 7;
+}
+
+// Zalo OA connection DTO
+message ZaloOaConnection {
+  int64      expires_at               = 1;
+  int64      refresh_token_expires_at = 2;
+  ZaloOaInfo oa_info                  = 3;
+}
+
+// Zalo user login DTO
+message ZaloUserLogin {
+  string code  = 1;
+  string state = 2;
+}

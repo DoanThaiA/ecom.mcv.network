@@ -1,0 +1,21 @@
+{
+  "credentialsNotConfigured": "Nhanh.vn credentials not configured",
+  "wrongToken": "Invalid Nhanh.vn access code",
+  "failedToGetAccessToken": "Failed to get access token from Nhanh.vn",
+  "failedToCheckAccessToken": "Failed to check access token with Nhanh.vn",
+  "noAccessTokenInResponse": "No access token in Nhanh.vn response",
+  "noAccessToken": "No Nhanh.vn access token available. Please authenticate first",
+  "apiTimeout": "Nhanh.vn API request timeout",
+  "apiError": "Nhanh.vn API error",
+  "invalidAccessCode": "Invalid or expired access code",
+  "accessCodeExpired": "Access code has expired (codes expire in 10 minutes)",
+  "invalidTokenResponse": "Invalid token response from Nhanh.vn",
+  "productNotFound": "Product not found in Nhanh.vn",
+  "rateLimitExceeded": "Nhanh.vn API rate limit exceeded. Please try again later",
+  "fullSyncStarted": "Full sync jobs started",
+  "shippingCalculationFailed": "Unable to calculate shipping fee. Please try again",
+  "addressResolutionFailed": "Unable to verify shipping address",
+  "noCarriersAvailable": "No shipping carriers available for this address",
+  "depotNotFound": "Depot not found for product",
+  "locationNotFound": "Location not found"
+}

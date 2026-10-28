@@ -1,0 +1,10 @@
+{
+  "emailAlreadyExists": "Email already exists",
+  "imageNotExists": "Image does not exist",
+  "roleNotExists": "Role does not exist",
+  "statusNotExists": "Status does not exist",
+  "userNotFound": "User not found",
+  "cannotDeleteOwnAccount": "Cannot delete your own account",
+  "cannotUpdateOwnRole": "Cannot update your own role",
+  "cannotUpdateOwnStatus": "Cannot update your own status"
+}

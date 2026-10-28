@@ -1,0 +1,45 @@
+# Production values for cchat-cms
+replicaCount: 1
+
+image:
+  repository: asia-southeast1-docker.pkg.dev/mmenu-api-prod/docker/cchat-cms
+  pullPolicy: Always
+  tag: "prod"
+
+# Override to create prod-specific deployment name
+fullnameOverride: "cchat-cms-prod"
+
+service:
+  type: ClusterIP
+  port: 3000
+
+# No configEnv/secretEnv needed - env vars are baked in at build time
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 1Gi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+livenessProbe:
+  httpGet:
+    path: /version.json
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /version.json
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80

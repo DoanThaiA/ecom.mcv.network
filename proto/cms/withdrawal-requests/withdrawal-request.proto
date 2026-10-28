@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package cms.withdrawal_requests;
+
+import "shared/common/enums.proto";
+import "shared/withdrawal-requests/withdrawal-request.proto";
+import "google/protobuf/empty.proto";
+
+// ==================== Affiliate Portal (self-service) ====================
+
+// Get affiliate balance response
+message AffiliateBalanceResponse {
+  double total_earned      = 1;
+  double total_withdrawn   = 2;
+  double available_balance = 3;
+  double pending_amount    = 4;
+}
+
+// Create withdrawal request (affiliate portal)
+message CreateWithdrawalRequestRequest {
+  double          amount              = 1;
+  string          recipient_name      = 2;
+  string          bank_account_number = 3;
+  string          bank_name           = 4;
+  optional string note                = 5;
+}
+
+// Query my withdrawal requests (affiliate portal)
+message QueryMyWithdrawalRequestsRequest {
+  optional int32                                 page   = 1;
+  optional int32                                 limit  = 2;
+  optional shared.common.WithdrawalRequestStatus status = 3;
+}
+
+// ==================== Admin ====================
+
+// Query all withdrawal requests (admin)
+message QueryWithdrawalRequestsRequest {
+  optional int32                                 page   = 1;
+  optional int32                                 limit  = 2;
+  optional shared.common.WithdrawalRequestStatus status = 3;
+  optional string                                search = 4; // Search by agent name
+}
+
+// Paginated withdrawal request list response (shared by affiliate portal and admin)
+message QueryWithdrawalRequestsResponse {
+  repeated shared.withdrawal_requests.WithdrawalRequestListItem data          = 1;
+  bool                                                          has_next_page = 2;
+  int32                                                         total         = 3;
+  int32                                                         page          = 4;
+  int32                                                         limit         = 5;
+  int32                                                         total_pages   = 6;
+}
+
+// Reject a withdrawal request (admin)
+message RejectWithdrawalRequestRequest {
+  string id     = 1;
+  string reason = 2;
+}
+
+// Single ID request (used for approve / pay)
+message WithdrawalRequestIdRequest {
+  string id = 1;
+}
+
+// Bulk action request (admin)
+message BulkWithdrawalRequestActionRequest {
+  repeated string ids    = 1;
+  optional string reason = 2; // Required for bulk reject
+}
+
+// ==================== Services ====================
+
+// Affiliate portal service (affiliate manages their own requests)
+service AffiliatePortalWithdrawalService {
+  // Get available commission balance
+  rpc GetMyBalance(google.protobuf.Empty) returns (AffiliateBalanceResponse);
+
+  // Create a new withdrawal request
+  rpc CreateMyWithdrawalRequest(CreateWithdrawalRequestRequest) returns (shared.withdrawal_requests.WithdrawalRequest);
+
+  // Get paginated withdrawal request history
+  rpc GetMyWithdrawalRequests(QueryMyWithdrawalRequestsRequest) returns (QueryWithdrawalRequestsResponse);
+
+  // Get a single withdrawal request by ID
+  rpc GetMyWithdrawalRequestById(WithdrawalRequestIdRequest) returns (shared.withdrawal_requests.WithdrawalRequest);
+}
+
+// Admin service (admin manages all affiliates' requests)
+service AdminWithdrawalRequestService {
+  // Get paginated list of all withdrawal requests
+  rpc QueryWithdrawalRequests(QueryWithdrawalRequestsRequest) returns (QueryWithdrawalRequestsResponse);
+
+  // Get a single withdrawal request by ID
+  rpc GetWithdrawalRequest(WithdrawalRequestIdRequest) returns (shared.withdrawal_requests.WithdrawalRequest);
+
+  // Approve a pending withdrawal request
+  rpc ApproveWithdrawalRequest(WithdrawalRequestIdRequest) returns (shared.withdrawal_requests.WithdrawalRequest);
+
+  // Reject a pending withdrawal request
+  rpc RejectWithdrawalRequest(RejectWithdrawalRequestRequest) returns (shared.withdrawal_requests.WithdrawalRequest);
+
+  // Mark an approved withdrawal request as paid
+  rpc PayWithdrawalRequest(WithdrawalRequestIdRequest) returns (shared.withdrawal_requests.WithdrawalRequest);
+
+  // Bulk approve pending withdrawal requests
+  rpc BulkApproveWithdrawalRequests(BulkWithdrawalRequestActionRequest) returns (google.protobuf.Empty);
+
+  // Bulk reject pending withdrawal requests
+  rpc BulkRejectWithdrawalRequests(BulkWithdrawalRequestActionRequest) returns (google.protobuf.Empty);
+
+  // Bulk mark approved withdrawal requests as paid
+  rpc BulkPayWithdrawalRequests(BulkWithdrawalRequestActionRequest) returns (google.protobuf.Empty);
+}

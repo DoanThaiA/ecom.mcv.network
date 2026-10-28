@@ -1,0 +1,335 @@
+syntax = "proto3";
+
+package cms.nhanh;
+
+// Nhanh token response data
+message NhanhTokenData {
+  string          access_token = 1;
+  string          version      = 2;
+  int64           expired_at   = 3;
+  int64           business_id  = 4;
+  repeated int64  depot_ids    = 5;
+  repeated int64  page_ids     = 6;
+  repeated string permissions  = 7;
+}
+
+// Nhanh token response messages
+message NhanhTokenMessages {
+  map<string, StringArray> messages = 1;
+}
+
+// Helper message for repeated strings in map
+message StringArray {
+  repeated string values = 1;
+}
+
+// Nhanh token response DTO
+message NhanhTokenResponse {
+  int32                       code     = 1;
+  optional NhanhTokenData     data     = 2;
+  optional NhanhTokenMessages messages = 3;
+}
+
+// Nhanh callback DTO
+message NhanhCallback {
+  string access_code = 1;
+}
+
+// Nhanh connection DTO
+message NhanhConnection {
+  string          version     = 1;
+  int64           expired_at  = 2;
+  int64           business_id = 3;
+  repeated int64  depot_ids   = 4;
+  repeated int64  page_ids    = 5;
+  repeated string permissions = 6;
+}
+
+// Nhanh product brand filters DTO
+message NhanhProductBrandFilters {
+  repeated int64  ids    = 1;
+  optional string name   = 2;
+  optional string code   = 3;
+  optional int32  status = 4;
+}
+
+// Nhanh product brand DTO
+message NhanhProductBrand {
+  int64           id         = 1;
+  optional string code       = 2;
+  string          name       = 3;
+  int32           status     = 4;
+  optional int64  parent_id  = 5;
+  optional int64  created_at = 6;
+}
+
+// Nhanh product category filters DTO
+message NhanhProductCategoryFilters {
+  optional string name   = 1;
+  optional string code   = 2;
+  optional int32  status = 3;
+}
+
+// Nhanh product category DTO
+message NhanhProductCategory {
+  int64           id        = 1;
+  optional int64  parent_id = 2;
+  string          code      = 3;
+  string          name      = 4;
+  optional int32  order     = 5;
+  optional string image     = 6;
+  optional string content   = 7;
+  int32           status    = 8;
+}
+
+// Nhanh product price range
+message NhanhProductPriceRange {
+  optional double from = 1;
+  optional double to   = 2;
+}
+
+// Nhanh product list filters DTO
+message NhanhProductListFilters {
+  repeated int64                  ids             = 1;
+  optional string                 name            = 2;
+  optional int64                  parent_id       = 3;
+  optional int64                  category_id     = 4;
+  repeated int32                  status          = 5;
+  optional NhanhProductPriceRange price           = 6;
+  optional int64                  brand_id        = 7;
+  optional string                 imei            = 8;
+  optional int64                  updated_at_from = 9;  // Unix timestamp (seconds)
+  optional int64                  updated_at_to   = 10;   // Unix timestamp (seconds)
+}
+
+// Nhanh product prices
+message NhanhProductPrices {
+  double          retail    = 1;
+  optional double import    = 2;
+  optional double old       = 3;
+  optional double wholesale = 4;
+  optional double avg_cost  = 5;
+}
+
+// Nhanh product images
+message NhanhProductImages {
+  optional string avatar = 1;
+  repeated string others = 2;
+}
+
+// Nhanh product shipping
+message NhanhProductShipping {
+  optional double width  = 1;
+  optional double height = 2;
+  optional double length = 3;
+  optional double weight = 4;
+}
+
+// Nhanh product attribute
+message NhanhProductAttribute {
+  optional string id    = 1;
+  string          name  = 2;
+  string          value = 3;
+}
+
+// Nhanh depot inventory
+message NhanhDepotInventory {
+  int64 id        = 1;
+  int32 remain    = 2;
+  int32 available = 3;
+}
+
+// Nhanh product inventory
+message NhanhProductInventoryInfo {
+  int32                        remain    = 1;
+  int32                        available = 2;
+  repeated NhanhDepotInventory depots    = 3;
+}
+
+// Nhanh product list item DTO
+message NhanhProductListItem {
+  int64                              id         = 1;
+  optional int64                     parent_id  = 2;
+  string                             code       = 3;
+  optional string                    barcode    = 4;
+  string                             name       = 5;
+  int32                              status     = 6;
+  optional int64                     brand_id   = 7;
+  optional int32                     type       = 8;
+  NhanhProductPrices                 prices     = 9;
+  optional NhanhProductImages        images     = 10;
+  optional string                    warranty   = 11; // Can be array or object in JSON
+  optional NhanhProductShipping      shipping   = 12;
+  repeated NhanhProductAttribute     attributes = 13;
+  optional NhanhProductInventoryInfo inventory  = 14;
+  int64                              updated_at = 15;
+  int64                              created_at = 16;
+}
+
+// Nhanh product category info
+message NhanhProductCategoryInfo {
+  int64           id   = 1;
+  optional string code = 2;
+  string          name = 3;
+}
+
+// Nhanh product warranty
+message NhanhProductWarranty {
+  optional int32  month   = 1;
+  optional string phone   = 2;
+  optional string address = 3;
+}
+
+// Nhanh product brand info
+message NhanhProductBrandInfo {
+  int64  id   = 1;
+  string name = 2;
+}
+
+// Nhanh product type info
+message NhanhProductTypeInfo {
+  int64  id   = 1;
+  string name = 2;
+}
+
+// Nhanh product detail inventory depot
+message NhanhProductDetailInventoryDepot {
+  int64 id        = 1;
+  int32 remain    = 2;
+  int32 available = 3;
+}
+
+// Nhanh product detail inventory
+message NhanhProductDetailInventory {
+  int32                                     remain    = 1;
+  optional int32                            shipping  = 2;
+  optional int32                            damaged   = 3;
+  optional int32                            holding   = 4;
+  optional int32                            warranty  = 5;
+  int32                                     available = 6;
+  repeated NhanhProductDetailInventoryDepot depots    = 7;
+}
+
+// Nhanh product supplier
+message NhanhProductSupplier {
+  int64           id     = 1;
+  string          name   = 2;
+  optional string mobile = 3;
+}
+
+// Nhanh product detail DTO
+message NhanhProductDetail {
+  int64                                id                = 1;
+  optional int64                       parent_id         = 2;
+  string                               code              = 3;
+  optional string                      barcode           = 4;
+  string                               name              = 5;
+  optional string                      other_name        = 6;
+  string                               status            = 7; // Can be string or number in JSON
+  optional NhanhProductCategoryInfo    category          = 8;
+  optional NhanhProductCategoryInfo    internal_category = 9;
+  NhanhProductPrices                   prices            = 10;
+  optional double                      vat               = 11;
+  optional NhanhProductImages          images            = 12;
+  optional NhanhProductWarranty        warranty          = 13;
+  optional NhanhProductBrandInfo       brand             = 14;
+  optional NhanhProductTypeInfo        type              = 15;
+  optional NhanhProductShipping        shipping          = 16;
+  optional string                      country_name      = 17;
+  optional NhanhProductDetailInventory inventory         = 18;
+  repeated NhanhProductAttribute       attributes        = 19;
+  int64                                updated_at        = 20;
+  int64                                created_at        = 21;
+  optional string                      description       = 22;
+  optional NhanhProductSupplier        suppliers         = 23;
+}
+
+// Nhanh product inventory filters DTO
+message NhanhProductInventoryFilters {
+  repeated int64  ids             = 1;
+  optional string name            = 2;
+  repeated int64  depot_ids       = 3;
+  optional int64  category_id     = 4;
+  repeated int32  status          = 5;
+  repeated int64  brand_ids       = 6;
+  optional string updated_at_from = 7; // Y-m-d H:i:s format (e.g., 2025-01-01 10:30:00)
+  optional string updated_at_to   = 8;   // Y-m-d H:i:s format (e.g., 2025-01-01 10:30:00)
+}
+
+// Nhanh product inventory prices
+message NhanhProductInventoryPrices {
+  double          price     = 1;
+  optional double wholesale = 2;
+  optional double import    = 3;
+  optional double avg_cost  = 4;
+}
+
+// Nhanh depot warranty
+message NhanhDepotWarranty {
+  optional int32 remain  = 1;
+  optional int32 holding = 2;
+}
+
+// Nhanh depot inventory detail
+message NhanhDepotInventoryDetail {
+  int64                       id        = 1;
+  int32                       remain    = 2;
+  optional int32              shipping  = 3;
+  optional int32              damaged   = 4;
+  optional int32              holding   = 5;
+  int32                       available = 6;
+  optional NhanhDepotWarranty warranty  = 7;
+}
+
+// Nhanh product inventory info
+message NhanhProductInventoryDetail {
+  int32                              remain    = 1;
+  optional int32                     shipping  = 2;
+  optional int32                     damaged   = 3;
+  optional int32                     holding   = 4;
+  int32                              available = 5;
+  optional NhanhDepotWarranty        warranty  = 6;
+  repeated NhanhDepotInventoryDetail depots    = 7;
+}
+
+// Nhanh product inventory DTO
+message NhanhProductInventory {
+  int64                                product_id = 1;
+  optional string                      barcode    = 2;
+  string                               name       = 3;
+  optional NhanhProductInventoryPrices prices     = 4;
+  NhanhProductInventoryDetail          inventory  = 5;
+}
+
+// Nhanh depot DTO (from /v3.0/business/depot API)
+message NhanhDepot {
+  int64           id            = 1;
+  string          name          = 2;
+  optional string phone         = 3;
+  optional string address       = 4;
+  optional int64  city_id       = 5;
+  optional int64  district_id   = 6;
+  optional int64  ward_id       = 7;
+  optional string city_name     = 8;
+  optional string district_name = 9;
+  optional string ward_name     = 10;
+  optional string description   = 11;
+  optional int32  status        = 12;
+}
+
+// Nhanh API paginator
+message NhanhPaginator {
+  optional int32      size = 1;
+  map<string, string> sort = 2;
+  map<string, string> next = 3;
+}
+
+// Nhanh API response DTO (generic)
+message NhanhApiResponse {
+  int32                   code       = 1;
+  bytes                   data       = 2; // Generic data field
+  optional NhanhPaginator paginator  = 3;
+  repeated string         warning    = 4;
+  optional string         error_code = 5;
+  map<string, string>     messages   = 6;
+}

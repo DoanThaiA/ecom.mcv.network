@@ -1,0 +1,338 @@
+syntax = "proto3";
+
+package cms.promotions;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "shared/common/enums.proto";
+import "shared/promotions/promotion.proto";
+
+// ==================== List Response ====================
+
+// Promotion list item (summary for list view)
+message PromotionListItem {
+  string                        id         = 1;
+  shared.common.PromotionType   type       = 2;
+  string                        name       = 3;
+  google.protobuf.Timestamp     start_time = 4;
+  google.protobuf.Timestamp     end_time   = 5;
+  bool                          is_enabled = 6;
+  shared.common.PromotionStatus status     = 7;
+  int32                         tier_count = 8;
+  google.protobuf.Timestamp     created_at = 9;
+  google.protobuf.Timestamp     updated_at = 10;
+}
+
+// Promotion list response
+message PromotionListResponse {
+  repeated PromotionListItem data        = 1;
+  int32                      total       = 2;
+  int32                      page        = 3;
+  int32                      limit       = 4;
+  int32                      total_pages = 5;
+}
+
+// ==================== Request/Input DTOs ====================
+
+// Gift product input for create/update
+message GiftProductInput {
+  string product_id = 1;
+}
+
+// Create bundle deal tier input
+message CreateBundleDealTierInput {
+  int32                     min_order_value = 1;
+  repeated GiftProductInput gift_products   = 2;
+}
+
+// Create bundle deal config input
+message CreateBundleDealConfigInput {
+  shared.common.BundleDealSubType    sub_type                             = 1;
+  repeated CreateBundleDealTierInput tiers                                = 2;
+  optional int32                     required_quantity                    = 3; // BUY_X_GET_Y
+  repeated GiftProductInput          required_products                    = 4; // BUY_X_GET_Y
+  optional int32                     gift_quantity                        = 5; // BUY_X_GET_Y
+  repeated GiftProductInput          gift_products                        = 6; // BUY_X_GET_Y
+  optional double                    minimum_order_value                  = 7; // BUY_X_GET_Y
+  optional int32                     max_gift_quantity                    = 8; // BUY_X_GET_Y
+  optional bool                      not_applicable_with_other_promotions = 9; // Default: false
+}
+
+// Create order discount config input
+message CreateOrderDiscountConfigInput {
+  shared.common.OrderDiscountSubType sub_type                             = 1;
+  optional string                    promo_code                           = 2;  // Required for PROMO_CODE sub_type
+  shared.common.DiscountType         discount_type                        = 3;
+  double                             discount_value                       = 4; // VND for fixed, percentage for percentage
+  optional double                    max_discount_value                   = 5;  // Cap for percentage discounts (VND)
+  double                             minimum_order_value                  = 6;
+  optional bool                      not_applicable_with_other_promotions = 7;  // Default: false
+  optional bool                      single_use_per_customer              = 8;  // Default: false
+  optional int32                     total_usage_limit                    = 9;
+}
+
+// Product discount product input for create/update
+message ProductDiscountProductInput {
+  string product_id = 1;
+}
+
+// Create product discount config input
+message CreateProductDiscountConfigInput {
+  shared.common.ProductDiscountSubType sub_type               = 1;
+  optional string                      voucher_code           = 2;  // Required for VOUCHER sub_type
+  shared.common.DiscountType           discount_type          = 3;
+  double                               discount_value         = 4;  // VND for fixed, percentage for percentage
+  optional double                      max_discount_value     = 5;  // Cap for percentage discounts (VND)
+  double                               minimum_order_value    = 6;  // Hoá đơn trị giá từ
+  repeated ProductDiscountProductInput products               = 7;
+  optional int32                       total_usage_limit      = 8;  // Tổng lượt sử dụng tối đa
+  optional int32                       max_usage_per_customer = 9;  // Lượt sử dụng tối đa/người
+}
+
+// Create promotion request
+message CreatePromotionRequest {
+  shared.common.PromotionType type       = 1;
+  string                      name       = 2;
+  google.protobuf.Timestamp   start_time = 3;
+  google.protobuf.Timestamp   end_time   = 4;
+
+  oneof config {
+    CreateBundleDealConfigInput      bundle_deal_config      = 10;
+    CreateOrderDiscountConfigInput   order_discount_config   = 11;
+    CreateProductDiscountConfigInput product_discount_config = 12;
+  }
+}
+
+// Update promotion input
+message UpdatePromotionInput {
+  optional string                    name       = 1;
+  optional google.protobuf.Timestamp start_time = 2;
+  optional google.protobuf.Timestamp end_time   = 3;
+  optional bool                      is_enabled = 4;
+
+  oneof config {
+    CreateBundleDealConfigInput      bundle_deal_config      = 10;
+    CreateOrderDiscountConfigInput   order_discount_config   = 11;
+    CreateProductDiscountConfigInput product_discount_config = 12;
+  }
+}
+
+// Update promotion request
+message UpdatePromotionRequest {
+  string               id   = 1;
+  UpdatePromotionInput data = 2;
+}
+
+// Query promotions request
+message QueryPromotionsRequest {
+  optional int32                         page    = 1;
+  optional int32                         limit   = 2;
+  optional shared.common.PromotionType   type    = 3;
+  optional shared.common.PromotionStatus status  = 4;
+  optional string                        keyword = 5;
+}
+
+// Get promotion request
+message GetPromotionRequest {
+  string id = 1;
+}
+
+// Promotion ID request (for pause/resume/delete)
+message PromotionIdRequest {
+  string id = 1;
+}
+
+// ==================== Excel Validation ====================
+
+// Validation error codes for product discount Excel import
+enum ProductDiscountValidationErrorCode {
+  PRODUCT_DISCOUNT_VALIDATION_ERROR_CODE_UNSPECIFIED         = 0;
+  PRODUCT_DISCOUNT_VALIDATION_ERROR_CODE_NOT_FOUND           = 1;  // Product not found
+  PRODUCT_DISCOUNT_VALIDATION_ERROR_CODE_NO_IMAGE            = 2;  // Product has no image
+  PRODUCT_DISCOUNT_VALIDATION_ERROR_CODE_CONFLICT_FLASH_SALE = 3;  // Product in active flash sale
+  PRODUCT_DISCOUNT_VALIDATION_ERROR_CODE_CONFLICT_PROMOTION  = 4;  // Product in another product discount
+  PRODUCT_DISCOUNT_VALIDATION_ERROR_CODE_DUPLICATE           = 5;  // Duplicate product code in Excel
+  PRODUCT_DISCOUNT_VALIDATION_ERROR_CODE_INVALID_FORMAT      = 6;  // Invalid row format
+}
+
+// Validated product for product discount
+message ValidatedProductDiscountProduct {
+  string                                      product_id     = 1;
+  string                                      code           = 2;
+  string                                      name           = 3;   // Name from Excel
+  optional string                             actual_name    = 4;   // Actual name from database
+  optional string                             image          = 5;
+  double                                      original_price = 6;
+  bool                                        is_valid       = 7;
+  repeated ProductDiscountValidationErrorCode errors         = 8;
+  int32                                       row_number     = 9;   // Excel row number
+}
+
+// Response for product discount Excel validation
+message ValidateProductDiscountExcelResponse {
+  repeated ValidatedProductDiscountProduct valid_products   = 1;
+  repeated ValidatedProductDiscountProduct invalid_products = 2;
+  int32                                    total            = 3;
+  int32                                    valid_count      = 4;
+  int32                                    invalid_count    = 5;
+}
+
+// ==================== Statistics ====================
+
+// Query params for promotion statistics
+message QueryPromotionStatsRequest {
+  string          id        = 1;
+  optional int32  page      = 2;
+  optional int32  limit     = 3;
+  optional string from_date = 4;
+  optional string to_date   = 5;
+}
+
+// --- Order statistics ---
+
+// Product Discount order row
+message ProductDiscountOrderRow {
+  string         order_id         = 1;
+  string         order_number     = 2;
+  optional int32 nhanh_order_id   = 3;
+  string         customer_name    = 4;
+  string         customer_phone   = 5;
+  string         product_name     = 6;
+  int32          quantity         = 7;
+  double         discounted_price = 8;
+  double         total_discount   = 9;
+  double         payment_amount   = 10;
+  string         created_at       = 11;
+}
+
+// Order Discount order row
+message OrderDiscountOrderRow {
+  string         order_id           = 1;
+  string         order_number       = 2;
+  optional int32 nhanh_order_id     = 3;
+  string         customer_name      = 4;
+  string         customer_phone     = 5;
+  double         pre_discount_value = 6;
+  double         discount_value     = 7;
+  double         payment_amount     = 8;
+  string         created_at         = 9;
+}
+
+// Bundle Deal order row
+message BundleDealOrderRow {
+  string         order_id          = 1;
+  string         order_number      = 2;
+  optional int32 nhanh_order_id    = 3;
+  string         customer_name     = 4;
+  string         customer_phone    = 5;
+  string         gift_product_name = 6;
+  int32          gift_quantity     = 7;
+  double         gift_unit_price   = 8;
+  double         gift_value        = 9;
+  double         payment_amount    = 10;
+  string         created_at        = 11;
+}
+
+// Order statistics summary
+message PromotionOrderSummary {
+  int32           total_orders             = 1;
+  optional int32  total_quantity           = 2;
+  optional double total_discount_amount    = 3;
+  double          total_payment_amount     = 4;
+  optional double total_pre_discount_value = 5;
+  optional double total_gift_value         = 6;
+}
+
+// Paginated order statistics response for Product Discount
+message ProductDiscountOrdersResponse {
+  repeated ProductDiscountOrderRow docs        = 1;
+  int32                            total_docs  = 2;
+  int32                            page        = 3;
+  int32                            limit       = 4;
+  int32                            total_pages = 5;
+  PromotionOrderSummary            summary     = 6;
+}
+
+// Paginated order statistics response for Order Discount
+message OrderDiscountOrdersResponse {
+  repeated OrderDiscountOrderRow docs        = 1;
+  int32                          total_docs  = 2;
+  int32                          page        = 3;
+  int32                          limit       = 4;
+  int32                          total_pages = 5;
+  PromotionOrderSummary          summary     = 6;
+}
+
+// Paginated order statistics response for Bundle Deal
+message BundleDealOrdersResponse {
+  repeated BundleDealOrderRow docs        = 1;
+  int32                       total_docs  = 2;
+  int32                       page        = 3;
+  int32                       limit       = 4;
+  int32                       total_pages = 5;
+  PromotionOrderSummary       summary     = 6;
+}
+
+// --- Product statistics ---
+
+// Product Discount product stats row
+message ProductDiscountProductStatsRow {
+  string          product_id           = 1;
+  string          code                 = 2;
+  optional string image                = 3;
+  string          name                 = 4;
+  double          selling_price        = 5;
+  double          discounted_price     = 6;
+  int32           quantity_discounted  = 7;
+  double          total_discount_value = 8;
+}
+
+// Bundle Deal gift product stats row
+message BundleDealGiftProductStatsRow {
+  string          product_id      = 1;
+  string          code            = 2;
+  optional string image           = 3;
+  string          name            = 4;
+  double          selling_price   = 5;
+  int32           quantity_gifted = 6;
+  double          gift_value      = 7;
+}
+
+// Product stats summary
+message PromotionProductStatsSummary {
+  int32           total_quantity       = 1;
+  optional double total_discount_value = 2;
+  optional double total_gift_value     = 3;
+}
+
+// Paginated product stats response for Product Discount
+message ProductDiscountProductStatsResponse {
+  repeated ProductDiscountProductStatsRow docs        = 1;
+  int32                                   total_docs  = 2;
+  int32                                   page        = 3;
+  int32                                   limit       = 4;
+  int32                                   total_pages = 5;
+  PromotionProductStatsSummary            summary     = 6;
+}
+
+// Paginated product stats response for Bundle Deal
+message BundleDealProductStatsResponse {
+  repeated BundleDealGiftProductStatsRow docs        = 1;
+  int32                                  total_docs  = 2;
+  int32                                  page        = 3;
+  int32                                  limit       = 4;
+  int32                                  total_pages = 5;
+  PromotionProductStatsSummary           summary     = 6;
+}
+
+// ==================== Service Definition ====================
+
+service PromotionService {
+  rpc ListPromotions(QueryPromotionsRequest) returns (PromotionListResponse);
+  rpc GetPromotion(GetPromotionRequest) returns (shared.promotions.Promotion);
+  rpc CreatePromotion(CreatePromotionRequest) returns (shared.promotions.Promotion);
+  rpc UpdatePromotion(UpdatePromotionRequest) returns (shared.promotions.Promotion);
+  rpc PausePromotion(PromotionIdRequest) returns (shared.promotions.Promotion);
+  rpc ResumePromotion(PromotionIdRequest) returns (shared.promotions.Promotion);
+  rpc DeletePromotion(PromotionIdRequest) returns (google.protobuf.Empty);
+}

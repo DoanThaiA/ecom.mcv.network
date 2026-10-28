@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package cms.product_banners;
+
+import "shared/common/enums.proto";
+import "shared/product-banners/product-banner.proto";
+import "google/protobuf/empty.proto";
+
+// Create product banner request
+message CreateProductBannerRequest {
+  string                                       name        = 1; // Required: Banner name
+  string                                       image       = 2; // Required: Banner image URL
+  optional shared.common.ProductBannerPosition position    = 3; // Optional: Default BOTTOM
+  optional double                              ratio       = 4; // Optional: Aspect ratio
+  optional bool                                is_active   = 5; // Optional: Default true
+  repeated string                              product_ids = 6; // Optional: Product IDs to assign
+}
+
+// Update product banner request
+message UpdateProductBannerRequest {
+  string                                       banner_id   = 1; // Required: Banner ID
+  optional string                              name        = 2;
+  optional string                              image       = 3;
+  optional shared.common.ProductBannerPosition position    = 4;
+  optional double                              ratio       = 5;
+  optional bool                                is_active   = 6;
+  repeated string                              product_ids = 7; // Replace current product assignments
+}
+
+// Filter product banner request
+message FilterProductBanner {
+  optional string search    = 1; // Search by banner name (case-insensitive)
+  optional bool   is_active = 2; // Filter by active status
+}
+
+// Sort product banner request
+message SortProductBanner {
+  string order_by = 1; // 'createdAt' | 'updatedAt' | 'name'
+  string order    = 2; // 'asc' | 'desc'
+}
+
+// Query product banners request
+message QueryProductBannersRequest {
+  optional int32               page    = 1;
+  optional int32               limit   = 2;
+  optional FilterProductBanner filters = 3;
+  repeated SortProductBanner   sort    = 4;
+}
+
+// Query product banners response (paginated)
+message QueryProductBannersResponse {
+  repeated shared.product_banners.ProductBannerListItem data          = 1;
+  bool                                                  has_next_page = 2;
+  int32                                                 total         = 3;
+  int32                                                 page          = 4;
+  int32                                                 limit         = 5;
+  int32                                                 total_pages   = 6;
+}
+
+// Get product banner by ID request
+message GetProductBannerRequest {
+  string banner_id = 1;
+}
+
+// Delete product banner request
+message DeleteProductBannerRequest {
+  string banner_id = 1;
+}
+
+// Assign products to banner request
+message AssignProductsRequest {
+  string          banner_id   = 1;
+  repeated string product_ids = 2;
+}
+
+// Remove products from banner request
+message RemoveProductsRequest {
+  string          banner_id   = 1;
+  repeated string product_ids = 2;
+}
+
+// Product banner service for CMS product banner management
+service ProductBannerService {
+  // Create a new product banner
+  rpc CreateProductBanner(CreateProductBannerRequest) returns (shared.product_banners.ProductBanner);
+
+  // Get product banner by ID
+  rpc GetProductBanner(GetProductBannerRequest) returns (shared.product_banners.ProductBanner);
+
+  // Query product banners with pagination and filters
+  rpc QueryProductBanners(QueryProductBannersRequest) returns (QueryProductBannersResponse);
+
+  // Update product banner
+  rpc UpdateProductBanner(UpdateProductBannerRequest) returns (shared.product_banners.ProductBanner);
+
+  // Delete product banner (soft delete)
+  rpc DeleteProductBanner(DeleteProductBannerRequest) returns (google.protobuf.Empty);
+
+  // Assign products to a banner
+  rpc AssignProducts(AssignProductsRequest) returns (shared.product_banners.ProductBanner);
+
+  // Remove products from a banner
+  rpc RemoveProducts(RemoveProductsRequest) returns (shared.product_banners.ProductBanner);
+}

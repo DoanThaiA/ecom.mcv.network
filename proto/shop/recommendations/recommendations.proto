@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package shop.recommendations;
+
+import "shared/products/product.proto";
+
+// ==================== Product Views ====================
+
+// Track product view request
+message TrackProductViewRequest {
+  string product_id = 1;
+}
+
+// Track product view response (empty - fire and forget)
+message TrackProductViewResponse {}
+
+// ==================== Recommendations ====================
+
+// Personalized recommendations request
+message GetPersonalizedRecommendationsRequest {
+  optional int32 limit = 1; // Max 20, default 8
+}
+
+// Personalized recommendations response
+message GetPersonalizedRecommendationsResponse {
+  repeated shared.products.Product data = 1;
+}
+
+// Cross-sell recommendations request
+message GetCrossSellRecommendationsRequest {
+  string         product_ids = 1; // Comma-separated product IDs
+  optional int32 limit       = 2; // Max 20, default 8
+}
+
+// Cross-sell recommendations response
+message GetCrossSellRecommendationsResponse {
+  repeated shared.products.Product data = 1;
+}
+
+// ==================== Service Definitions ====================
+
+// Product view tracking service
+service ProductViewService {
+  rpc TrackProductView(TrackProductViewRequest) returns (TrackProductViewResponse);
+}
+
+// Recommendations service
+service RecommendationsService {
+  // Get personalized recommendations based on purchase + view history
+  // Uses JWT userId if authenticated, session-based for guests
+  rpc GetPersonalizedRecommendations(GetPersonalizedRecommendationsRequest) returns (GetPersonalizedRecommendationsResponse);
+
+  // Get cross-sell recommendations based on product IDs
+  // Used on post-checkout or product detail pages
+  rpc GetCrossSellRecommendations(GetCrossSellRecommendationsRequest) returns (GetCrossSellRecommendationsResponse);
+}

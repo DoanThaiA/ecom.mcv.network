@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package shared.push_notifications;
+
+import "shared/common/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+// Push notification domain entity (CMS admin-facing)
+message PushNotification {
+  string                                 id            = 1;
+  shared.common.PushNotificationCategory category      = 2;
+  string                                 title         = 3;
+  string                                 subtitle      = 4;
+  optional string                        url           = 5;
+  shared.common.PushNotificationStatus   status        = 6;
+  optional google.protobuf.Timestamp     scheduled_at  = 7;
+  optional google.protobuf.Timestamp     sent_at       = 8;
+  int32                                  readers_count = 9;
+  optional string                        created_by    = 10;
+  google.protobuf.Timestamp              created_at    = 11;
+  google.protobuf.Timestamp              updated_at    = 12;
+}
+
+// Push notification list item (for list views)
+message PushNotificationListItem {
+  string                                 id            = 1;
+  shared.common.PushNotificationCategory category      = 2;
+  string                                 title         = 3;
+  string                                 subtitle      = 4;
+  optional string                        url           = 5;
+  shared.common.PushNotificationStatus   status        = 6;
+  optional google.protobuf.Timestamp     scheduled_at  = 7;
+  optional google.protobuf.Timestamp     sent_at       = 8;
+  int32                                  readers_count = 9;
+  optional string                        created_by    = 10;
+  google.protobuf.Timestamp              created_at    = 11;
+  google.protobuf.Timestamp              updated_at    = 12;
+}
+
+// User notification entity (shop/frontend-facing)
+message UserNotification {
+  string                                 id              = 1;
+  string                                 notification_id = 2;
+  shared.common.PushNotificationCategory category        = 3;
+  string                                 title           = 4;
+  string                                 subtitle        = 5;
+  optional string                        url             = 6;
+  bool                                   is_read         = 7;
+  google.protobuf.Timestamp              sent_at         = 8;
+  google.protobuf.Timestamp              created_at      = 9;
+}

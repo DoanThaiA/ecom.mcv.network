@@ -1,0 +1,6 @@
+{
+  "notFound": "Không tìm thấy thông báo",
+  "cannotEditNonDraft": "Không thể chỉnh sửa thông báo đã gửi",
+  "cannotSendNonDraft": "Chỉ có thể gửi thông báo nháp hoặc chờ gửi",
+  "cannotRecallNonSent": "Chỉ có thể thu hồi thông báo đã gửi"
+}

@@ -1,0 +1,41 @@
+{
+  "singleVoucher": {
+    "id": "voucher-1",
+    "code": "DISCOUNT10",
+    "type": "percentage",
+    "value": 10,
+    "maxDiscount": 100000,
+    "minOrderValue": 500000,
+    "validFrom": "2024-01-01T00:00:00Z",
+    "validTo": "2024-12-31T23:59:59Z",
+    "usageLimit": 100,
+    "usedCount": 10,
+    "status": "ACTIVE"
+  },
+  "vouchers": [
+    {
+      "id": "voucher-1",
+      "code": "DISCOUNT10",
+      "type": "percentage",
+      "value": 10,
+      "minOrderValue": 500000,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "voucher-2",
+      "code": "FREESHIP",
+      "type": "shipping",
+      "value": 30000,
+      "minOrderValue": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "voucher-3",
+      "code": "SAVE50K",
+      "type": "fixed",
+      "value": 50000,
+      "minOrderValue": 1000000,
+      "status": "ACTIVE"
+    }
+  ]
+}
