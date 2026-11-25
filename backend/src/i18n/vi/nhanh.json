@@ -1,5 +1,7 @@
 {
   "credentialsNotConfigured": "Chưa cấu hình thông tin xác thực Nhanh.vn",
+  "authorizationExpired": "Phiên xác thực Nhanh.vn đã hết hạn hoặc chưa được khởi tạo. Vui lòng bấm Đăng nhập lại",
+  "verifyCodeMismatch": "Mã xác minh không khớp. Vui lòng thực hiện lại việc đăng nhập Nhanh.vn từ đầu",
   "wrongToken": "Mã truy cập Nhanh.vn không hợp lệ",
   "failedToGetAccessToken": "Không thể lấy access token từ Nhanh.vn",
   "failedToCheckAccessToken": "Không thể kiểm tra access token với Nhanh.vn",

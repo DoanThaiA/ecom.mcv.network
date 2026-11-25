@@ -86,13 +86,14 @@ function* nhanhRedirectSaga(action: PayloadAction<NhanhRedirectPayload>) {
  * Consider status 200 or 304 as success (no need to check response.success)
  */
 function* nhanhCallbackSaga(action: PayloadAction<NhanhCallbackPayload>) {
-  const { accessCode, onSuccess, onError } = action.payload;
+  const { accessCode, verifyCode, onSuccess, onError } = action.payload;
   try {
     yield put(setNhanhLoading(true));
 
     // Call API to authenticate with access code
     const response: NhanhCallbackResponse = yield call(nhanhRepository.handleCallback, {
       accessCode,
+      verifyCode,
     });
 
     console.log('Nhanh callback response:', response);

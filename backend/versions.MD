@@ -1,4 +1,10 @@
 # Version Development Report
+## 1.3.4 (2026-11-25)
+- **FIX**: Đăng nhập Nhanh.vn báo `ERR_INVALID_DATA` vì thiếu `service` và `verifyCode`. Nhanh.vn nay bắt buộc cả hai trong địa chỉ xác thực.
+- Backend sinh `verifyCode` ngẫu nhiên, giữ trong cache 30 phút, so khớp khi Nhanh.vn quay về (sai thì 403, hết hạn thì 422) rồi gửi cùng `accessCode` khi đổi token; secret gửi ở header `Authorization` (vẫn giữ `secretKey` trong body).
+- Bỏ tham số `version` khỏi địa chỉ xác thực. `GET /integration/nhanh/redirect` giờ bất đồng bộ.
+- Files: `src/nhanh/*`, `src/i18n/*/nhanh.json`, `test/nhanh/services/nhanh-auth.service.spec.ts`
+
 ## 1.3.3 (2026-11-25)
 - **FEAT**: Script tạo tài khoản CMS đầy đủ quyền hoặc đặt lại mật khẩu: `node dist/database/scripts/create-cms-user.js --email <email>`.
 - Mật khẩu chỉ nhập qua dấu nhắc ẩn hoặc `CMS_USER_PASSWORD`, không có tham số `--password`; tối thiểu 8 ký tự; không tự ghi đè tài khoản có sẵn.

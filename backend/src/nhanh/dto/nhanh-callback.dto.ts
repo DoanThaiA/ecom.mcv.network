@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class NhanhCallbackDto {
   @ApiProperty({
@@ -9,4 +9,13 @@ export class NhanhCallbackDto {
   @IsNotEmpty()
   @IsString()
   accessCode: string;
+
+  @ApiProperty({
+    description: 'Verify code echoed back by Nhanh.vn in the redirect',
+    example: 'f3a9c1d27b8e4d0a95c6e1b2a7d84f03',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  verifyCode?: string;
 }

@@ -20,7 +20,7 @@ GET /api/v1/integration/nhanh/redirect?returnLink=<optional>
 **Response:**
 ```json
 {
-  "url": "https://nhanh.vn/oauth?version=2.0&appId=76504&returnLink=..."
+  "url": "https://nhanh.vn/oauth?appId=76504&service=pos&verifyCode=<random>&returnLink=..."
 }
 ```
 
@@ -28,7 +28,7 @@ GET /api/v1/integration/nhanh/redirect?returnLink=<optional>
 Users log in to Nhanh.vn and select permissions to grant. After authorization, Nhanh.vn redirects to your return link with an `accessCode` parameter:
 
 ```
-https://yourapp.com/api/nhanh/callback?accessCode=ABC123...
+https://yourapp.com/auth/nhanh?accessCode=ABC123...&verifyCode=<random>
 ```
 
 **Note:** Access codes expire in 10 minutes.
@@ -46,7 +46,8 @@ POST /api/v1/integration/nhanh/token
 Content-Type: application/json
 
 {
-  "accessCode": "ABC123..."
+  "accessCode": "ABC123...",
+  "verifyCode": "<random>"
 }
 ```
 

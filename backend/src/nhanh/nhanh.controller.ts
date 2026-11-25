@@ -75,7 +75,7 @@ export class NhanhController {
       },
     },
   })
-  getAuthUrl(): { url: string } {
+  async getAuthUrl(): Promise<{ url: string }> {
     return this.nhanhAuthService.getAuthorizationUrl();
   }
 
@@ -104,7 +104,10 @@ export class NhanhController {
   async handleCallback(
     @Body() callbackDto: NhanhCallbackDto,
   ): Promise<NhanhConnectionDto> {
-    return this.nhanhAuthService.exchangeAccessToken(callbackDto.accessCode);
+    return this.nhanhAuthService.exchangeAccessToken(
+      callbackDto.accessCode,
+      callbackDto.verifyCode,
+    );
   }
 
   @Get('connection')

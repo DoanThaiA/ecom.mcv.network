@@ -4,6 +4,7 @@ import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 import { I18nService } from 'nestjs-i18n';
 import axios from 'axios';
+import { randomBytes } from 'crypto';
 import { AllConfigType } from '../../config/config.type';
 import { throwException } from '../../utils/errors/throw-exception';
 import { NhanhTokenResponseDto } from '../dto/nhanh-token-response.dto';
@@ -12,10 +13,16 @@ import { NhanhAccessToken } from '../interfaces/nhanh.interface';
 import { SecretRepository } from '../../secret/secret.repository';
 import { getCacheKey } from '../../utils/env';
 
+/** Nhanh service whose data the app reads (POS, Vpage and WebApp). */
+const NHANH_OAUTH_SERVICE = 'pos';
+
 @Injectable()
 export class NhanhAuthService {
   private readonly CACHE_KEY = getCacheKey('nhanh:token');
   private readonly DB_KEY = 'nhanh:token';
+  private readonly VERIFY_CODE_CACHE_KEY = getCacheKey('nhanh:verify-code');
+  /** The verify code only needs to outlive the Nhanh login and consent screens. */
+  private readonly VERIFY_CODE_TTL_MS = 30 * 60 * 1000;
 
   constructor(
     private configService: ConfigService<AllConfigType>,
@@ -26,14 +33,14 @@ export class NhanhAuthService {
 
   /**
    * Generates the Nhanh OAuth authorization URL.
+   * Nhanh requires `service` and a random `verifyCode` that comes back in the
+   * redirect. The verify code is kept in the cache until the access code is
+   * exchanged, so the callback can be checked against it.
    * @returns Object containing the authorization URL
    */
-  getAuthorizationUrl(): { url: string } {
+  async getAuthorizationUrl(): Promise<{ url: string }> {
     const appId = this.configService.get('nhanh.appId', { infer: true });
     const oauthUrl = this.configService.get('nhanh.oauthUrl', { infer: true });
-    const apiVersion = this.configService.get('nhanh.apiVersion', {
-      infer: true,
-    });
 
     if (!appId) {
       throwException({
@@ -48,10 +55,18 @@ export class NhanhAuthService {
     });
     const returnLink = `${cmsDomain}/auth/nhanh`;
 
+    const verifyCode = randomBytes(16).toString('hex');
+    await this.cacheManager.set<string>(
+      this.VERIFY_CODE_CACHE_KEY,
+      verifyCode,
+      this.VERIFY_CODE_TTL_MS,
+    );
+
     // Build the authorization URL
     const authUrl = new URL(oauthUrl!);
-    authUrl.searchParams.set('version', apiVersion || '2.0');
     authUrl.searchParams.set('appId', appId);
+    authUrl.searchParams.set('service', NHANH_OAUTH_SERVICE);
+    authUrl.searchParams.set('verifyCode', verifyCode);
     authUrl.searchParams.set('returnLink', returnLink);
 
     return {
@@ -62,9 +77,14 @@ export class NhanhAuthService {
   /**
    * Exchange access code for access token
    * @param accessCode - Access code received from Nhanh OAuth callback
+   * @param verifyCode - Verify code echoed back by Nhanh in the redirect. When
+   * present it must match the stored one; the stored one is used for the exchange.
    * @returns Connection info with business info and expiration (access token is stored server-side only)
    */
-  async exchangeAccessToken(accessCode: string): Promise<NhanhConnectionDto> {
+  async exchangeAccessToken(
+    accessCode: string,
+    verifyCode?: string,
+  ): Promise<NhanhConnectionDto> {
     const appId = this.configService.get('nhanh.appId', { infer: true });
     const appSecret = this.configService.get('nhanh.appSecret', {
       infer: true,
@@ -81,18 +101,38 @@ export class NhanhAuthService {
       });
     }
 
+    const expectedVerifyCode = await this.cacheManager.get<string>(
+      this.VERIFY_CODE_CACHE_KEY,
+    );
+    if (!expectedVerifyCode) {
+      throwException({
+        status: HttpStatus.UNPROCESSABLE_ENTITY,
+        message: this.i18n.t('nhanh.authorizationExpired'),
+      });
+    }
+    if (verifyCode && verifyCode !== expectedVerifyCode) {
+      throwException({
+        status: HttpStatus.FORBIDDEN,
+        message: this.i18n.t('nhanh.verifyCodeMismatch'),
+      });
+    }
+
     try {
       const tokenUrl = `${apiUrl}/v${apiVersion}/app/getaccesstoken?appId=${appId}`;
 
       const response = await axios.post<NhanhTokenResponseDto>(
         tokenUrl,
         {
-          accessCode: accessCode,
+          accessCode,
+          verifyCode: expectedVerifyCode,
+          // Kept in the body for the older contract; the app secret is also
+          // sent in the Authorization header as the current docs require.
           secretKey: appSecret,
         },
         {
           headers: {
             'Content-Type': 'application/json',
+            Authorization: appSecret,
           },
           timeout: 10000,
         },
@@ -126,6 +166,9 @@ export class NhanhAuthService {
         data.data.expiredAt,
         data.data.businessId,
       );
+
+      // The verify code is single use
+      await this.cacheManager.del(this.VERIFY_CODE_CACHE_KEY);
 
       // Return response without accessToken (stored server-side only)
       const { accessToken, ...dataWithoutToken } = data.data;

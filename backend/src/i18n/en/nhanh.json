@@ -1,5 +1,7 @@
 {
   "credentialsNotConfigured": "Nhanh.vn credentials not configured",
+  "authorizationExpired": "The Nhanh.vn authorization has expired or was never started. Please sign in again",
+  "verifyCodeMismatch": "The verification code does not match. Please start the Nhanh.vn sign-in again",
   "wrongToken": "Invalid Nhanh.vn access code",
   "failedToGetAccessToken": "Failed to get access token from Nhanh.vn",
   "failedToCheckAccessToken": "Failed to check access token with Nhanh.vn",

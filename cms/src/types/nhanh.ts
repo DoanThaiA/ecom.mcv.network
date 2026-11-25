@@ -10,6 +10,7 @@ export interface NhanhRedirectResponse {
 
 export interface NhanhCallbackRequest {
   accessCode: string;
+  verifyCode?: string;
 }
 
 export interface NhanhCallbackResponse {

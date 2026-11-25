@@ -1,4 +1,7 @@
 # Version Development Report
+## 1.1.2 (2026-11-25)
+- **FIX**: Đăng nhập Nhanh.vn: trang `/auth/nhanh` gửi thêm `verifyCode` lấy từ địa chỉ quay về lên backend.
+
 ## 1.1.1 (2026-11-25)
 - **FIX**: Hiện lại nút đăng nhập Nhanh.vn khi chưa kết nối.
 - **CHORE**: Cấu hình domain `ecom-cms.mcv.network` và API `ecom-be.mcv.network`.

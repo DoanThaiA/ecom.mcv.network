@@ -38,6 +38,7 @@ export type NhanhRedirectPayload = {
 
 export type NhanhCallbackPayload = {
   accessCode: string;
+  verifyCode?: string;
   onSuccess?: () => void;
   onError?: (error: string) => void;
 };

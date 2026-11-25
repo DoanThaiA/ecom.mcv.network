@@ -28,6 +28,7 @@ export function NhanhAuthCallbackView() {
 
   useEffect(() => {
     const accessCode = searchParams.get('accessCode');
+    const verifyCode = searchParams.get('verifyCode') ?? undefined;
 
     if (!accessCode) {
       setStatus('error');
@@ -39,6 +40,7 @@ export function NhanhAuthCallbackView() {
     dispatch(
       nhanhCallbackRequest({
         accessCode,
+        verifyCode,
         onSuccess: () => {
           setStatus('success');
         },
