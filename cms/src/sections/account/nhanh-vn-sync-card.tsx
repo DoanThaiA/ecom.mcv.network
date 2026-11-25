@@ -276,6 +276,31 @@ export function NhanhVnSyncCard() {
               >
                 {isLoadingCategories ? t('syncing') : t('categorySync')}
               </Button>
+
+              {/* Re-authorize: new permissions only apply to a newly issued token */}
+              <Button
+                onClick={handleLogin}
+                disabled={isLoading}
+                variant="outlined"
+                startIcon={
+                  isLoading ? (
+                    <CircularProgress size={14} color="inherit" />
+                  ) : (
+                    <Iconify icon="mdi:key-change" width={16} />
+                  )
+                }
+                sx={{
+                  borderRadius: 1.25,
+                  px: { xs: 2, sm: 2.5 },
+                  py: { xs: 0.875, sm: 1 },
+                  fontSize: { xs: 12, sm: 13 },
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  maxWidth: { sm: 'fit-content' },
+                }}
+              >
+                {isLoading ? t('loggingInToNhanhVn') : t('relogin')}
+              </Button>
             </Box>
           )}
 

@@ -58,4 +58,27 @@ describe('NhanhVnSyncCard login button', () => {
     expect(screen.queryByText('signin')).not.toBeInTheDocument();
     expect(screen.getByText('syncProducts')).toBeInTheDocument();
   });
+
+  it('offers to re-authorize once connected and restarts the Nhanh.vn login', () => {
+    nhanhState.isConnected = true;
+    render(<NhanhVnSyncCard />);
+
+    fireEvent.click(screen.getByRole('button', { name: /relogin/ }));
+
+    expect(mockDispatch).toHaveBeenCalledWith(nhanhRedirectRequest({}));
+  });
+
+  it('does not offer the re-authorize button before connecting', () => {
+    render(<NhanhVnSyncCard />);
+
+    expect(screen.queryByRole('button', { name: /relogin/ })).not.toBeInTheDocument();
+  });
+
+  it('disables the re-authorize button while the login is loading', () => {
+    nhanhState.isConnected = true;
+    nhanhState.loading = true;
+    render(<NhanhVnSyncCard />);
+
+    expect(screen.getByRole('button', { name: /loggingInToNhanhVn/ })).toBeDisabled();
+  });
 });

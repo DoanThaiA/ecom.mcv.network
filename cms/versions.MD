@@ -1,4 +1,8 @@
 # Version Development Report
+## 1.1.3 (2026-11-25)
+- **FEAT**: Thẻ Nhanh.vn có nút "Đăng nhập lại" khi đã kết nối, để cấp quyền lại mà không cần qua trang /docs.
+- Quyền chỉ áp dụng cho token cấp mới, nên cần đăng nhập lại khi thiếu quyền hoặc token hết hạn (1 năm).
+
 ## 1.1.2 (2026-11-25)
 - **FIX**: Đăng nhập Nhanh.vn: trang `/auth/nhanh` gửi thêm `verifyCode` lấy từ địa chỉ quay về lên backend.
 
