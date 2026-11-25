@@ -1,4 +1,9 @@
 # Version Development Report
+## 1.3.3 (2026-11-25)
+- **FEAT**: Script tạo tài khoản CMS đầy đủ quyền hoặc đặt lại mật khẩu: `node dist/database/scripts/create-cms-user.js --email <email>`.
+- Mật khẩu chỉ nhập qua dấu nhắc ẩn hoặc `CMS_USER_PASSWORD`, không có tham số `--password`; tối thiểu 8 ký tự; không tự ghi đè tài khoản có sẵn.
+- Files: `src/database/scripts/*`, `test/database/create-cms-user.helpers.spec.ts`, `package.json`
+
 ## 1.3.2 (2026-11-25)
 - **FIX**: `REDIS_URL` đọc lại từ biến môi trường, không còn gán cứng `redis://localhost:6379` (mặc định khi không cấu hình); `FILE_DRIVER` đọc từ môi trường, mặc định `s3` như cũ (server dùng ổ đĩa đặt `FILE_DRIVER=local`).
 - Worker `1.0.73`. Files: `src/utils/env.ts`, `test/utils/env.spec.ts`
