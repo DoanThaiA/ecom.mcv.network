@@ -45,6 +45,7 @@ export default defineConfig(({ mode }) => ({
       'cchatcms.mmenu.io',
       'internalcchatcms.mmenu.io',
       'stagingcchatcms.mmenu.io',
+      'ecom-cms.mcv.network',
     ],
   },
   optimizeDeps: {

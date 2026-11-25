@@ -20,11 +20,7 @@ export const env = {
   DATABASE_MAX_CONNECTIONS: process.env.DATABASE_MAX_CONNECTIONS || '100',
 
   // Cache
-  // CHỈ DÀNH CHO MÔI TRƯỜNG INTERNAL — KHÔNG MERGE DÒNG NÀY LÊN NHÁNH main.
-  // Trỏ Redis về localhost để backend/worker internal không nối được Redis
-  // production, qua đó ngừng tiêu thụ chung hàng đợi BullMQ với prod.
-  // Hệ quả trên internal: cache tự lùi về in-memory, các job/cron không chạy.
-  REDIS_URL: 'redis://localhost:6379',
+  REDIS_URL: process.env.REDIS_URL || 'redis://localhost:6379',
   CACHE_TTL: process.env.CACHE_TTL || '300000',
 
   // Auth

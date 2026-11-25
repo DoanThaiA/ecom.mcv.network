@@ -12,7 +12,6 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from 'src/redux/store/store';
 import {
   nhanhRedirectRequest,
-  nhanhSyncAllRequest,
   nhanhSyncProductCategoriesRequest,
   nhanhSyncProductsRequest,
   selectNhanhIsConnected,
@@ -36,10 +35,6 @@ export function NhanhVnSyncCard() {
 
   const handleLogin = () => {
     dispatch(nhanhRedirectRequest({}));
-  };
-
-  const handleSync = () => {
-    dispatch(nhanhSyncAllRequest({}));
   };
 
   const handleSyncCategories = () => {
@@ -164,9 +159,9 @@ export function NhanhVnSyncCard() {
             </Stack>
           </Box>
 
-          {/* Action Buttons */}
-          {/* <Box sx={{ display: 'flex', justifyContent: { xs: 'stretch', sm: 'flex-end' }, gap: 1 }}>
-            {!isConnected ? (
+          {/* Login Button */}
+          {!isConnected && (
+            <Box sx={{ display: 'flex', justifyContent: { xs: 'stretch', sm: 'flex-end' } }}>
               <Button
                 onClick={handleLogin}
                 disabled={isLoading}
@@ -201,42 +196,8 @@ export function NhanhVnSyncCard() {
               >
                 {isLoading ? t('loggingInToNhanhVn') : t('signin')}
               </Button>
-            ) : (
-              <Button
-                onClick={handleSync}
-                disabled={isLoading}
-                variant="contained"
-                startIcon={
-                  isLoading ? (
-                    <CircularProgress size={14} color="inherit" />
-                  ) : (
-                    <Iconify icon="mdi:sync" width={16} />
-                  )
-                }
-                sx={{
-                  borderRadius: 1.25,
-                  px: { xs: 2, sm: 2.5 },
-                  py: { xs: 0.875, sm: 1 },
-                  fontSize: { xs: 12, sm: 13 },
-                  fontWeight: 600,
-                  textTransform: 'none',
-                  bgcolor: '#00AB55',
-                  maxWidth: { sm: 'fit-content' },
-                  transition: 'all 0.2s ease-in-out',
-                  '&:hover': {
-                    bgcolor: '#007B55',
-                    transform: 'translateY(-1px)',
-                  },
-                  '&:disabled': {
-                    bgcolor: '#A4A1AA',
-                    color: '#FFFFFF',
-                  },
-                }}
-              >
-                {isLoading ? t('syncing') : t('syncData')}
-              </Button>
-            )}
-          </Box> */}
+            </Box>
+          )}
 
           {/* Sync Buttons */}
           {isConnected && (

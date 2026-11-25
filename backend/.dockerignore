@@ -16,6 +16,7 @@ files/
 # Environment files
 .env
 .env.local
+.env.prod
 .env.*.local
 
 # IDE

@@ -1,0 +1,53 @@
+services:
+  mongo:
+    image: mongo:7.0.5
+    restart: always
+    volumes: [mongo-data:/data/db]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction"]
+    volumes: [redis-data:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: { context: ./backend, dockerfile: prod.Dockerfile }
+    restart: always
+    env_file: ./backend/.env.prod
+    depends_on:
+      mongo: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    ports: ["127.0.0.1:5100:3000"]
+
+  worker:
+    build: { context: ./backend, dockerfile: worker.Dockerfile }
+    restart: always
+    env_file: ./backend/.env.prod
+    depends_on:
+      mongo: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    ports: ["127.0.0.1:5103:3001"]
+
+  frontend:
+    build: ./frontend
+    restart: always
+    ports: ["127.0.0.1:5101:3000"]
+
+  cms:
+    build: ./cms
+    restart: always
+    ports: ["127.0.0.1:5102:3000"]
+
+volumes:
+  mongo-data:
+  redis-data:

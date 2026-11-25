@@ -1,4 +1,8 @@
 # Version Development Report
+## 1.1.1 (2026-11-25)
+- **FIX**: Hiện lại nút đăng nhập Nhanh.vn khi chưa kết nối.
+- **CHORE**: Cấu hình domain `ecom-cms.mcv.network` và API `ecom-be.mcv.network`.
+
 ## 1.1.0 (2026-07-31)
 - **FEAT**: Quản trị ba vùng ảnh mô tả sản phẩm trong cài đặt website.
 - Vùng 1/3 hỗ trợ thêm, thay, xóa một ảnh; Vùng 2 hỗ trợ multi-upload và kéo-thả.

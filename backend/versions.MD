@@ -1,4 +1,8 @@
 # Version Development Report
+## 1.3.2 (2026-11-25)
+- **FIX**: `REDIS_URL` đọc lại từ biến môi trường, không còn gán cứng `redis://localhost:6379` (mặc định khi không cấu hình).
+- Worker `1.0.73`. Files: `src/utils/env.ts`, `test/utils/env.spec.ts`
+
 ## 1.3.0 (2026-08-12)
 - **FEAT**: Trang admin `/admin/nhanh-reconcile` — đối soát dữ liệu website với Nhanh.vn.
 - **Tra cứu từng mục**: nhập mã sản phẩm hoặc mã đơn, xem trạng thái/tồn kho hai bên cạnh nhau, có nút sửa kèm trang xác nhận (đúng khuôn `/admin/sync-retry`).
