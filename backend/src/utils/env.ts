@@ -42,7 +42,7 @@ export const env = {
   MAIL_PASSWORD: process.env.MAIL_PASSWORD,
 
   // Files (S3)
-  FILE_DRIVER: 's3', // process.env.FILE_DRIVER,
+  FILE_DRIVER: process.env.FILE_DRIVER || 's3',
   ACCESS_KEY_ID: process.env.ACCESS_KEY_ID,
   SECRET_ACCESS_KEY: process.env.SECRET_ACCESS_KEY,
   AWS_DEFAULT_S3_BUCKET: process.env.AWS_DEFAULT_S3_BUCKET || 'mmenu-dev',

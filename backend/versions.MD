@@ -1,6 +1,6 @@
 # Version Development Report
 ## 1.3.2 (2026-11-25)
-- **FIX**: `REDIS_URL` đọc lại từ biến môi trường, không còn gán cứng `redis://localhost:6379` (mặc định khi không cấu hình).
+- **FIX**: `REDIS_URL` đọc lại từ biến môi trường, không còn gán cứng `redis://localhost:6379` (mặc định khi không cấu hình); `FILE_DRIVER` đọc từ môi trường, mặc định `s3` như cũ (server dùng ổ đĩa đặt `FILE_DRIVER=local`).
 - Worker `1.0.73`. Files: `src/utils/env.ts`, `test/utils/env.spec.ts`
 
 ## 1.3.0 (2026-08-12)

@@ -34,3 +34,33 @@ describe('env.REDIS_URL', () => {
     expect(await loadRedisUrl()).toBe('redis://localhost:6379');
   });
 });
+
+describe('env.FILE_DRIVER', () => {
+  const originalFileDriver = process.env.FILE_DRIVER;
+
+  const loadFileDriver = async (): Promise<string> => {
+    jest.resetModules();
+    const { env } = await import('../../src/utils/env');
+    return env.FILE_DRIVER;
+  };
+
+  afterEach(() => {
+    if (originalFileDriver === undefined) {
+      delete process.env.FILE_DRIVER;
+    } else {
+      process.env.FILE_DRIVER = originalFileDriver;
+    }
+  });
+
+  it('should use FILE_DRIVER from the environment', async () => {
+    process.env.FILE_DRIVER = 'local';
+
+    expect(await loadFileDriver()).toBe('local');
+  });
+
+  it('should default to s3 when FILE_DRIVER is not set', async () => {
+    delete process.env.FILE_DRIVER;
+
+    expect(await loadFileDriver()).toBe('s3');
+  });
+});
