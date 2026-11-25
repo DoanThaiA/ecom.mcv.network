@@ -1,4 +1,8 @@
 # Version Development Report
+## 1.3.5 (2026-11-25)
+- **FIX**: Token Nhanh.vn trong cache chỉ giữ tối đa 60 giây thay vì cả năm, database là nguồn chính. Trước đây sau khi đăng nhập lại, worker vẫn dùng token cũ còn trong Redis hoặc bộ nhớ nên đồng bộ báo "Invalid accessToken".
+- Worker `1.0.74`. Files: `src/nhanh/services/nhanh-auth.service.ts`, `test/nhanh/services/nhanh-auth.service.spec.ts`
+
 ## 1.3.4 (2026-11-25)
 - **FIX**: Đăng nhập Nhanh.vn báo `ERR_INVALID_DATA` vì thiếu `service` và `verifyCode`. Nhanh.vn nay bắt buộc cả hai trong địa chỉ xác thực.
 - Backend sinh `verifyCode` ngẫu nhiên, giữ trong cache 30 phút, so khớp khi Nhanh.vn quay về (sai thì 403, hết hạn thì 422) rồi gửi cùng `accessCode` khi đổi token; secret gửi ở header `Authorization` (vẫn giữ `secretKey` trong body).

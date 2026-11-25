@@ -23,6 +23,13 @@ export class NhanhAuthService {
   private readonly VERIFY_CODE_CACHE_KEY = getCacheKey('nhanh:verify-code');
   /** The verify code only needs to outlive the Nhanh login and consent screens. */
   private readonly VERIFY_CODE_TTL_MS = 30 * 60 * 1000;
+  /**
+   * The database is the source of truth for the access token. The cache is
+   * only an accelerator and is shared by several processes (API and worker),
+   * each with its own in-memory fallback, so a cached copy must never outlive
+   * a re-authorization for long. Keep it short instead of for the token's year.
+   */
+  private readonly TOKEN_CACHE_TTL_MS = 60 * 1000;
 
   constructor(
     private configService: ConfigService<AllConfigType>,
@@ -232,7 +239,7 @@ export class NhanhAuthService {
 
     // Only cache if the token hasn't already expired
     if (ttlInSeconds > 0) {
-      const ttlInMs = ttlInSeconds * 1000;
+      const ttlInMs = Math.min(ttlInSeconds * 1000, this.TOKEN_CACHE_TTL_MS);
 
       // Save to cache
       await this.cacheManager.set<NhanhAccessToken>(
@@ -280,7 +287,7 @@ export class NhanhAuthService {
     // Cache the token from database for future requests
     const currentTimestamp = Math.floor(Date.now() / 1000);
     const ttlInSeconds = dbToken.expiredAt - currentTimestamp;
-    const ttlInMs = ttlInSeconds * 1000;
+    const ttlInMs = Math.min(ttlInSeconds * 1000, this.TOKEN_CACHE_TTL_MS);
 
     await this.cacheManager.set<NhanhAccessToken>(
       this.CACHE_KEY,

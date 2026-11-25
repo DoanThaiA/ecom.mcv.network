@@ -127,6 +127,41 @@ describe('NhanhAuthService OAuth flow', () => {
     });
   });
 
+  describe('getAccessToken', () => {
+    const storedToken = () => ({
+      accessToken: 'db-token',
+      expiredAt: Math.floor(Date.now() / 1000) + 365 * 24 * 3600,
+      businessId: 110668,
+    });
+
+    it('should fall back to the database token and cache it only briefly', async () => {
+      secretRepo.get.mockResolvedValue(storedToken());
+
+      const token = await service.getAccessToken();
+
+      expect(token?.accessToken).toBe('db-token');
+      const tokenCall = cacheManager.set.mock.calls.find(([key]) =>
+        String(key).endsWith('nhanh:token'),
+      );
+      expect(tokenCall?.[2]).toBeLessThanOrEqual(60 * 1000);
+    });
+
+    it('should return null when there is no usable token anywhere', async () => {
+      secretRepo.get.mockResolvedValue(null);
+
+      expect(await service.getAccessToken()).toBeNull();
+    });
+
+    it('should ignore an expired token stored in the database', async () => {
+      secretRepo.get.mockResolvedValue({
+        ...storedToken(),
+        expiredAt: Math.floor(Date.now() / 1000) - 10,
+      });
+
+      expect(await service.getAccessToken()).toBeNull();
+    });
+  });
+
   describe('exchangeAccessToken', () => {
     it('should exchange the code using the secret header and the verify code', async () => {
       const verifyCode = await startLogin();
@@ -196,6 +231,19 @@ describe('NhanhAuthService OAuth flow', () => {
 
       expect(mockedAxios.post).not.toHaveBeenCalled();
       expect(secretRepo.set).not.toHaveBeenCalled();
+    });
+
+    it('should cache the new token only briefly so other processes pick up a re-login', async () => {
+      const verifyCode = await startLogin();
+      mockedAxios.post.mockResolvedValue(tokenResponse());
+
+      await service.exchangeAccessToken('ac-1', verifyCode);
+
+      const tokenCall = cacheManager.set.mock.calls.find(([key]) =>
+        String(key).endsWith('nhanh:token'),
+      );
+      expect(tokenCall).toBeDefined();
+      expect(tokenCall?.[2]).toBeLessThanOrEqual(60 * 1000);
     });
 
     it('should keep the verify code when Nhanh rejects the exchange so it can be retried', async () => {
